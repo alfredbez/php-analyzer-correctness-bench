@@ -1,0 +1,2 @@
+[{"link":"https:\/\/psalm.dev\/056","severity":"error","line_from":15,"line_to":15,"type":"TypeDoesNotContainType","message":"Type string for $value is never int","file_name":"src\/repro.php","file_path":"\/bench\/cases\/narrowing\/is-int-on-string\/src\/repro.php","snippet":"    if (is_int($value)) {","selected_text":"is_int($value)","from":397,"to":411,"snippet_from":389,"snippet_to":414,"column_from":9,"column_to":23,"shortcode":56,"error_level":4,"taint_trace":null,"other_references":null}]
+

@@ -1,0 +1,30 @@
+{
+  "_comment": "Pinned tool versions. The correctness matrix is only meaningful when the versions are recorded, so every report carries a copy of this file. The nightly drift job compares these pins against the current stable releases and reports the difference instead of silently updating them.",
+  "php": {
+    "default": "8.3",
+    "matrix": ["8.2", "8.3", "8.4", "8.5"]
+  },
+  "tools": {
+    "phpstan": {
+      "version": "2.3.1",
+      "url": "https://github.com/phpstan/phpstan/releases/download/{version}/phpstan.phar",
+      "binary": "tools/bin/phpstan.phar",
+      "invocation": "php {binary} analyse --no-progress --error-format=json --level={level} --autoload-file={autoload} {targets}",
+      "upstream": "phpstan/phpstan"
+    },
+    "psalm": {
+      "version": "6.20.0",
+      "url": "https://github.com/vimeo/psalm/releases/download/{version}/psalm.phar",
+      "binary": "tools/bin/psalm.phar",
+      "invocation": "php {binary} --no-cache --output-format=json --no-progress --config={config}",
+      "upstream": "vimeo/psalm"
+    },
+    "mago": {
+      "version": "1.57.0",
+      "url": "https://github.com/carthage-software/mago/releases/download/{version}/mago-{version}-x86_64-unknown-linux-gnu.tar.gz",
+      "binary": "tools/bin/mago",
+      "invocation": "{binary} analyze --format json {targets}",
+      "upstream": "carthage-software/mago"
+    }
+  }
+}

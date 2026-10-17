@@ -1,0 +1,1 @@
+{"totals":{"errors":0,"file_errors":1},"files":{"/bench/cases/narrowing/is-int-on-string/src/repro.php":{"errors":1,"messages":[{"message":"Call to function is_int() with string will always evaluate to false.","line":15,"ignorable":true,"identifier":"function.impossibleType"}]}},"errors":[]}

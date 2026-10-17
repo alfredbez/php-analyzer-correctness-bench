@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# PHP runner shim.
+#
+# The benchmark never calls `php` directly. On the VPS there is no PHP in the
+# host, only a Docker image; on a GitHub runner PHP is installed natively. Both
+# call sites therefore go through this shim.
+#
+# Selection order:
+#   BENCH_PHP_CMD  - explicit override, e.g. "docker exec -u 1000:1000 bench-php php"
+#   BENCH_PHP=native - use the host php
+#   default        - docker: create/start the shared container and exec into it
+#
+# The container is named $BENCH_CONTAINER (default: bench-php) and mounts the
+# repository at /bench so that absolute paths inside and outside the container
+# can be translated one-to-one.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+IMAGE="${BENCH_PHP_IMAGE:-php:8.3-cli}"
+CONTAINER="${BENCH_CONTAINER:-bench-php}"
+
+ensure_container() {
+  if ! docker inspect "$CONTAINER" >/dev/null 2>&1; then
+    docker run -d --name "$CONTAINER" \
+      --user "$(id -u):$(id -g)" \
+      -e HOME=/tmp \
+      -v "$ROOT:/bench" -w /bench \
+      "$IMAGE" sleep infinity >/dev/null
+  elif [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER")" != "true" ]; then
+    docker start "$CONTAINER" >/dev/null
+  fi
+}
+
+if [ -n "${BENCH_PHP_CMD:-}" ]; then
+  exec ${BENCH_PHP_CMD} "$@"
+fi
+if [ "${BENCH_PHP:-docker}" = "native" ]; then
+  exec php "$@"
+fi
+
+ensure_container
+exec docker exec -u "$(id -u):$(id -g)" "$CONTAINER" php "$@"

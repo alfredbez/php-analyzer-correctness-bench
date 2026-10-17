@@ -1,0 +1,53 @@
+{
+  "id": "narrowing/is-int-on-string",
+  "title": "is_int() on a string parameter guards an unreachable branch",
+  "domain": "narrowing",
+  "rule_class": "impossible-condition",
+  "php": { "min": "7.4" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "is_int() returns false for every string, so the 'integer' branch of classify() is unreachable and the check cannot distinguish any two inputs.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-int.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "function.impossibleType",
+          "line": 15,
+          "message_regex": "always evaluate to false"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "TypeDoesNotContainType",
+          "line": 15,
+          "message_regex": "never int"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "impossible-type-comparison",
+          "line": 15
+        }
+      ],
+      "allowed": [
+        {
+          "code": "impossible-condition",
+          "line": 15,
+          "reason": "Mago reports the same site twice, once for the assertion and once for the resulting condition. The second diagnostic is correct, not noise."
+        }
+      ]
+    }
+  },
+  "notes": "First case of the corpus and the template for the others: one fixture, three expectations, one runtime proof."
+}

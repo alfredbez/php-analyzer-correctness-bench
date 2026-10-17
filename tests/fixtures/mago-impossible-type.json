@@ -1,0 +1,66 @@
+{
+  "issues": [
+    {
+      "level": "Error",
+      "code": "impossible-type-comparison",
+      "message": "Impossible type assertion: `$value` of type `string` can never be `int`.",
+      "notes": [
+        "The assertion expects `$value` to be `int`, but no value of type `string` can satisfy this."
+      ],
+      "help": "Check that the correct variable is being passed, or update the assertion type.",
+      "annotations": [
+        {
+          "message": "Argument `$value` has type `string`",
+          "kind": "Primary",
+          "span": {
+            "file_id": {
+              "name": "src/repro.php",
+              "path": "/bench/cases/narrowing/is-int-on-string/src/repro.php",
+              "size": 471,
+              "file_type": "Host"
+            },
+            "start": {
+              "offset": 397,
+              "line": 14
+            },
+            "end": {
+              "offset": 411,
+              "line": 14
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": "Warning",
+      "code": "impossible-condition",
+      "message": "This condition (type `false`) will always evaluate to false.",
+      "notes": [
+        "Because this condition is always false, the code block it controls will never be executed."
+      ],
+      "help": "Check the logic of this expression. If the code block is intended to be unreachable, consider removing it. Otherwise, revise the condition.",
+      "annotations": [
+        {
+          "message": "Expression of type `false` is always falsy",
+          "kind": "Primary",
+          "span": {
+            "file_id": {
+              "name": "src/repro.php",
+              "path": "/bench/cases/narrowing/is-int-on-string/src/repro.php",
+              "size": 471,
+              "file_type": "Host"
+            },
+            "start": {
+              "offset": 397,
+              "line": 14
+            },
+            "end": {
+              "offset": 411,
+              "line": 14
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

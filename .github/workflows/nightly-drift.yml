@@ -1,0 +1,69 @@
+name: nightly-drift
+
+# Runs the corpus against the *current stable* releases of the three analyzers
+# and diffs the verdicts against the pinned baseline in results/latest. A flip is
+# either an upstream fix or an upstream regression; both deserve a look. The job
+# never changes tools/versions.json - moving the pin is a human decision.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    env:
+      BENCH_PHP: native
+      BENCH_JOBS: "2"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: none
+          coverage: none
+
+      - name: Install current stable releases
+        run: ./tools/install.sh --latest
+
+      - name: Run the corpus against the current releases
+        run: python3 harness/bench.py run --php-version "$(php -r 'echo PHP_VERSION;')" --label drift
+
+      - name: Compare with the pinned baseline
+        id: drift
+        run: |
+          run_dir="$(ls -td results/runs/*drift | head -1)"
+          echo "run_dir=$run_dir" >> "$GITHUB_OUTPUT"
+          python3 harness/drift.py --fresh "$run_dir/report.json" --out drift.md || true
+          cat drift.md >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drift-report
+          path: |
+            drift.md
+            results/runs/**
+          retention-days: 90
+
+      - name: Report a real change on the issue tracker
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q "No verdict changed" drift.md; then
+            echo "No verdict changed - nothing to report."
+            exit 0
+          fi
+          title="Analyzer drift: $(date -u +%Y-%m-%d)"
+          existing="$(gh issue list --state open --search "Analyzer drift in:title" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file drift.md
+          else
+            gh issue create --title "$title" --body-file drift.md --label drift 2>/dev/null \
+              || gh issue create --title "$title" --body-file drift.md
+          fi

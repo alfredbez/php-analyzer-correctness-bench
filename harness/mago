@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CONTAINER="${BENCH_CONTAINER:-bench-php}"
+if [ "${BENCH_PHP:-docker}" = "native" ]; then exec "$ROOT/tools/bin/mago" "$@"; fi
+docker exec -u "$(id -u):$(id -g)" -e HOME=/tmp "$CONTAINER" /bench/tools/bin/mago "$@"
