@@ -1,7 +1,7 @@
 # Correctness summary
 
-- Run: `2026-10-17T07-19-44Z-bootstrap`
-- Started: 2026-10-17T07:19:44Z (UTC)
+- Run: `2026-10-17T07-22-27Z-bootstrap`
+- Started: 2026-10-17T07:22:27Z (UTC)
 - phpstan: PHPStan - PHP Static Analysis Tool 2.3.1
 - psalm: Psalm 6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c
 - mago: mago 1.57.0
@@ -12,14 +12,14 @@
 
 | Tool | Cases | ok | false positive | false negative | mixed | by-design | tool error | agreement |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mago | 1 | 0 | 0 | 0 | 0 | 0 | 1 | n/a |
-| phpstan | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0.0% |
-| psalm | 1 | 0 | 0 | 0 | 0 | 0 | 1 | n/a |
+| mago | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 100.0% |
+| phpstan | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 100.0% |
+| psalm | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 100.0% |
 
 ## Per domain
 
 | Domain | Tool | Cases | ok | FP | FN | by-design |
 | --- | --- | --- | --- | --- | --- | --- |
-| narrowing | mago | 1 | 0 | 0 | 0 | 0 |
-| narrowing | phpstan | 1 | 0 | 0 | 0 | 0 |
-| narrowing | psalm | 1 | 0 | 0 | 0 | 0 |
+| narrowing | mago | 1 | 1 | 0 | 0 | 0 |
+| narrowing | phpstan | 1 | 1 | 0 | 0 | 0 |
+| narrowing | psalm | 1 | 1 | 0 | 0 | 0 |

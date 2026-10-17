@@ -1,7 +1,7 @@
 {
   "meta": {
-    "run_id": "2026-10-17T07-20-07Z-bootstrap",
-    "started": "2026-10-17T07:20:07Z",
+    "run_id": "2026-10-17T07-22-27Z-bootstrap",
+    "started": "2026-10-17T07:22:27Z",
     "runner": "docker",
     "image": "php:8.3-cli",
     "php_version": "8.3.35",
@@ -65,32 +65,40 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.544,
+          "duration_s": 0.578,
           "php": "8.3.35"
         },
         "psalm": {
           "case": "narrowing/is-int-on-string",
           "tool": "psalm",
-          "verdict": "tool_error",
-          "detail": "Could not find any composer autoloaders in /bench/cases/narrowing/is-int-on-string",
+          "verdict": "ok",
+          "detail": "",
           "missing": [],
           "unexpected": [],
           "acknowledged": [],
-          "diagnostics": [],
-          "exit_code": 1,
-          "duration_s": 0.322,
+          "diagnostics": [
+            {
+              "code": "TypeDoesNotContainType",
+              "message": "Type string for $value is never int",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.389,
           "php": "8.3.35"
         },
         "mago": {
           "case": "narrowing/is-int-on-string",
           "tool": "mago",
-          "verdict": "false_positive",
-          "detail": "unexpected diagnostic(s): impossible-condition@15",
+          "verdict": "ok",
+          "detail": "",
           "missing": [],
-          "unexpected": [
+          "unexpected": [],
+          "acknowledged": [
             "impossible-condition@15"
           ],
-          "acknowledged": [],
           "diagnostics": [
             {
               "code": "impossible-type-comparison",
@@ -108,7 +116,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.252,
+          "duration_s": 0.296,
           "php": "8.3.35"
         }
       },
@@ -123,8 +131,8 @@
   ],
   "summary": {
     "mago": {
-      "ok": 0,
-      "false_positive": 1,
+      "ok": 1,
+      "false_positive": 0,
       "false_negative": 0,
       "mixed": 0,
       "divergence": 0,
@@ -133,12 +141,12 @@
       "skipped": 0,
       "judged": 1,
       "cases": 1,
-      "agreement": 0.0,
-      "defects": 1,
+      "agreement": 100.0,
+      "defects": 0,
       "by_domain": {
         "narrowing": {
-          "ok": 0,
-          "false_positive": 1,
+          "ok": 1,
+          "false_positive": 0,
           "false_negative": 0,
           "mixed": 0,
           "divergence": 0,
@@ -175,26 +183,26 @@
       }
     },
     "psalm": {
-      "ok": 0,
+      "ok": 1,
       "false_positive": 0,
       "false_negative": 0,
       "mixed": 0,
       "divergence": 0,
-      "tool_error": 1,
+      "tool_error": 0,
       "case_error": 0,
       "skipped": 0,
-      "judged": 0,
+      "judged": 1,
       "cases": 1,
-      "agreement": null,
+      "agreement": 100.0,
       "defects": 0,
       "by_domain": {
         "narrowing": {
-          "ok": 0,
+          "ok": 1,
           "false_positive": 0,
           "false_negative": 0,
           "mixed": 0,
           "divergence": 0,
-          "tool_error": 1,
+          "tool_error": 0,
           "case_error": 0,
           "skipped": 0
         }

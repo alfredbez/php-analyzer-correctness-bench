@@ -10,7 +10,6 @@ cases/**/composer.lock
 # Run artifacts. results/latest and results/runs/<run>/SUMMARY.md, MATRIX.md and
 # report.json are committed on purpose; the raw tool output of a run is not.
 results/runs/**/raw/
-results/latest
 
 # Autonomous factory scratch space.
 factory/evidence/
