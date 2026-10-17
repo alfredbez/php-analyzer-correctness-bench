@@ -1,0 +1,17 @@
+[Unit]
+Description=PHP analyzer correctness benchmark - corpus factory round
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/home/abez
+Environment=PATH=/home/abez/.local/bin:/home/abez/.opencode/bin:/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=/home/abez/projects/php-analyzer-correctness-bench
+ExecStart=/usr/bin/python3 /home/abez/projects/php-analyzer-correctness-bench/factory/bench_factory.py round
+TimeoutStartSec=5400
+Nice=10
+IOSchedulingClass=idle
+StandardOutput=journal
+StandardError=journal
+UMask=0077

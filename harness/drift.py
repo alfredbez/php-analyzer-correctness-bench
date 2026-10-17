@@ -64,15 +64,35 @@ def render(baseline: dict, fresh: dict) -> str:
     return "\n".join(lines), changes
 
 
+def resolve_baseline(path: str) -> str:
+    """`auto` means: the newest committed run directory that is not a drift run.
+
+    The baseline lives in the repository as a run snapshot, so a fresh checkout
+    has one without a separate `results/latest` copy that would have to be kept
+    in sync (and would conflict on every parallel write).
+    """
+    if path != "auto":
+        return path
+    runs_dir = os.path.join(ROOT, "results", "runs")
+    candidates = sorted((entry for entry in os.listdir(runs_dir)
+                         if os.path.isdir(os.path.join(runs_dir, entry))
+                         and "drift" not in entry), reverse=True)
+    for entry in candidates:
+        report_path = os.path.join(runs_dir, entry, "report.json")
+        if os.path.exists(report_path):
+            return report_path
+    raise SystemExit("no committed baseline run found in results/runs/")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--baseline", default=os.path.join(ROOT, "results/latest/report.json"))
+    parser.add_argument("--baseline", default="auto")
     parser.add_argument("--fresh", required=True)
     parser.add_argument("--out", default=os.path.join(ROOT, "drift.md"))
     parser.add_argument("--fail-on-change", action="store_true")
     args = parser.parse_args()
 
-    text, changes = render(load(args.baseline), load(args.fresh))
+    text, changes = render(load(resolve_baseline(args.baseline)), load(args.fresh))
     with open(args.out, "w", encoding="utf-8") as handle:
         handle.write(text)
     print(text)

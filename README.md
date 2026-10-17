@@ -60,17 +60,40 @@ without a citation, or a keyword without a statement. A case that cannot be
 justified does not enter the corpus, because a benchmark is only as good as the
 disagreements it refuses to make.
 
+## For analyzer maintainers
+
+The report is not an accusation; it is a work list. Everything needed to check a
+finding is in the repository:
+
+```
+python3 harness/bench.py gaps --tool mago      # everything mago got wrong, with evidence
+python3 harness/bench.py run --case narrowing/is-int-on-string --tool mago
+```
+
+Every case directory is self-contained: `composer.json`, fixtures, and a
+`case.json` that states the ground truth and where it comes from. The raw output
+of every analyzer for every case is written to `results/runs/<run>/raw/<case>/`
+during a run, so "the tool did not say that" can be checked instead of argued.
+
+If a case's ground truth is wrong, that is a bug in the benchmark and the most
+welcome kind of issue. If the ground truth is right and the tool disagrees, the
+case stays as it is - that is what the repository is for. Nothing here is ever
+sent to a maintainer as a pull request.
+
 ## Layout
 
 ```
 cases/<domain>/<slug>/     fixture + case.json + composer.json
 harness/                   runner, adapters, classification, reporting
 tools/versions.json        the pinned analyzer versions of the last run
-results/runs/<run>/        SUMMARY.md, MATRIX.md, report.json (raw output is transient)
-results/latest/            the newest published report
+results/runs/<run>/        SUMMARY.md, MATRIX.md, GAPS-<tool>.md, report.json
+                           (the newest runs are committed; raw output is transient)
 docs/                      methodology, case contract, classification rules
 factory/                   the autonomous loop that grows the corpus
 ```
+
+The newest committed run is the baseline the nightly drift job compares against;
+nothing depends on a mutable "latest" pointer that two writers could fight over.
 
 ## Honest limitations
 

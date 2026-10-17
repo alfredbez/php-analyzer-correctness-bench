@@ -1,7 +1,7 @@
 {
   "meta": {
-    "run_id": "2026-10-17T07-22-27Z-bootstrap",
-    "started": "2026-10-17T07:22:27Z",
+    "run_id": "2026-10-17T07-28-58Z-bootstrap",
+    "started": "2026-10-17T07:28:58Z",
     "runner": "docker",
     "image": "php:8.3-cli",
     "php_version": "8.3.35",
@@ -65,7 +65,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.578,
+          "duration_s": 0.574,
           "php": "8.3.35"
         },
         "psalm": {
@@ -86,7 +86,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.389,
+          "duration_s": 1.558,
           "php": "8.3.35"
         },
         "mago": {
@@ -116,7 +116,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.296,
+          "duration_s": 0.311,
           "php": "8.3.35"
         }
       },

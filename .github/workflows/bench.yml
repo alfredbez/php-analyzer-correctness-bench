@@ -11,7 +11,7 @@ on:
         description: "Single case id to run (optional)"
         required: false
       jobs:
-        description: "Parallel workers"
+        description: "Parallel workers per job"
         required: false
         default: "2"
 
@@ -34,16 +34,16 @@ jobs:
         run: python3 -m unittest discover -s tests -t . -v
 
   bench:
-    name: PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php }} shard ${{ matrix.shard }}
     needs: validate
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         php: ["8.2", "8.3", "8.4", "8.5"]
+        shard: ["1/3", "2/3", "3/3"]
     env:
       BENCH_PHP: native
-      BENCH_JOBS: ${{ github.event.inputs.jobs || '2' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -53,17 +53,24 @@ jobs:
           tools: none
           coverage: none
 
-      - name: Record PHP version
+      - name: Cache the pinned analyzers
+        uses: actions/cache@v4
+        with:
+          path: tools/bin
+          key: analyzers-${{ runner.os }}-${{ hashFiles('tools/versions.json') }}
+
+      - name: Record the PHP version
         id: php
         run: echo "version=$(php -r 'echo PHP_VERSION;')" >> "$GITHUB_OUTPUT"
 
       - name: Install the pinned analyzers
         run: ./tools/install.sh
 
-      - name: Run the corpus
+      - name: Run the shard
         run: |
           set -o pipefail
-          args="--php-version ${{ steps.php.outputs.version }} --jobs ${BENCH_JOBS} --label ci-php${{ matrix.php }}"
+          args="--php-version ${{ steps.php.outputs.version }} --jobs ${{ github.event.inputs.jobs || '2' }}"
+          args="$args --shard ${{ matrix.shard }} --label ci-php${{ matrix.php }}"
           if [ -n "${{ github.event.inputs.case }}" ]; then args="$args --case ${{ github.event.inputs.case }}"; fi
           python3 harness/bench.py run $args | tee bench-output.txt
 
@@ -71,7 +78,7 @@ jobs:
         if: always()
         run: |
           {
-            echo "## PHP ${{ matrix.php }}"
+            echo "## PHP ${{ matrix.php }}, shard ${{ matrix.shard }}"
             echo
             if [ -f results/latest/SUMMARY.md ]; then cat results/latest/SUMMARY.md; else echo "no report produced"; fi
           } >> "$GITHUB_STEP_SUMMARY"
@@ -79,7 +86,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: bench-results-php${{ matrix.php }}
+          name: bench-php${{ matrix.php }}-shard${{ strategy.job-index }}
           path: |
             results/runs/**
             bench-output.txt

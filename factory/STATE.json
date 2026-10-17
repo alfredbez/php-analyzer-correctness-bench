@@ -1,0 +1,20 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "started": 1792222040,
+      "task": {
+        "domain": "narrowing",
+        "source": "/home/abez/projects/mago-upstream-prep/repro (field findings)",
+        "why": "1 of 8 planned cases exist",
+        "count": 2
+      },
+      "status": "dry_run",
+      "implementer": "opencode/deepseek-v4.1-flash-free",
+      "reviewer": "opencode/glm-5.3-flash-free"
+    }
+  ],
+  "rate_limits": {},
+  "domains": {},
+  "sources": []
+}

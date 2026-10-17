@@ -7,8 +7,10 @@ an aggregate. Both are enforced here.
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
+import shutil
 import time
 
 from .runner import ROOT
@@ -139,6 +141,38 @@ def _clip(text: str, limit: int = 70) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
+def render_gaps(report: dict, tool: str) -> str:
+    """A per-tool work list: everything this analyzer got wrong, with evidence."""
+    lines = [f"# Gaps for {tool}", "",
+             f"From run `{report['meta']['run_id']}` "
+             f"({report['meta']['tools'].get(tool, 'unknown version')}, PHP {report['meta']['php_version']}).",
+             "",
+             "Each entry is a case file a maintainer (or their agent) can run directly; the raw "
+             "tool output of the run is in the run directory next to this report.",
+             ""]
+    for record in report["cases"]:
+        result = record["results"].get(tool)
+        if not result or result["verdict"] not in ("false_positive", "false_negative", "mixed"):
+            continue
+        lines.append(f"## `{record['case']}` - {result['verdict']}")
+        lines.append("")
+        lines.append(f"- rule class: `{record['rule_class']}`, domain: `{record['domain']}`")
+        lines.append(f"- ground truth basis: `{record.get('basis')}`")
+        if result.get("detail"):
+            lines.append(f"- what the tool did: {result['detail']}")
+        if result.get("missing"):
+            lines.append(f"- missing: {', '.join(f'`{item}`' for item in result['missing'])}")
+        if result.get("unexpected"):
+            lines.append(f"- reported but not justified: {', '.join(f'`{item}`' for item in result['unexpected'])}")
+        lines.append(f"- run it: `python3 harness/bench.py run --case {record['case']} --tool {tool}` "
+                     f"(case directory: `{record['path']}`)")
+        lines.append("")
+    if len(lines) <= 7:
+        lines.append("Nothing to report: this analyzer matched every case it was judged against.")
+        lines.append("")
+    return "\n".join(lines)
+
+
 def write_report(run_dir: str, report: dict) -> None:
     with open(os.path.join(run_dir, "report.json"), "w", encoding="utf-8") as handle:
         json.dump(report, handle, indent=2)
@@ -146,14 +180,31 @@ def write_report(run_dir: str, report: dict) -> None:
         handle.write(render_summary(report))
     with open(os.path.join(run_dir, "MATRIX.md"), "w", encoding="utf-8") as handle:
         handle.write(render_matrix(report))
+    for tool in sorted(report["summary"]):
+        with open(os.path.join(run_dir, f"GAPS-{tool}.md"), "w", encoding="utf-8") as handle:
+            handle.write(render_gaps(report, tool))
 
 
-def publish(report: dict, run_dir: str) -> None:
-    """Refresh results/latest so that links into the repository stay stable."""
+def publish(report: dict, run_dir: str, keep: int = 20) -> None:
+    """Refresh the local convenience copy and prune old run directories.
+
+    `results/latest/` is regenerated on every publish and therefore not tracked;
+    the committed history is `results/runs/<run>/`. Pruning keeps the newest
+    `keep` runs in the working tree - the older ones stay in git history, so
+    nothing is lost, and a fresh checkout does not carry a hundred snapshots.
+    """
     latest = os.path.join(ROOT, "results", "latest")
     os.makedirs(latest, exist_ok=True)
-    for name in ("report.json", "SUMMARY.md", "MATRIX.md"):
+    for name in os.listdir(run_dir):
+        if not name.endswith((".md", ".json")):
+            continue
         with open(os.path.join(run_dir, name), "r", encoding="utf-8") as source:
             content = source.read()
         with open(os.path.join(latest, name), "w", encoding="utf-8") as target:
             target.write(content)
+
+    runs_dir = os.path.join(ROOT, "results", "runs")
+    runs = sorted((entry for entry in os.listdir(runs_dir)
+                   if os.path.isdir(os.path.join(runs_dir, entry))), reverse=True)
+    for stale in runs[keep:]:
+        shutil.rmtree(os.path.join(runs_dir, stale), ignore_errors=True)
