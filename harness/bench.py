@@ -144,6 +144,19 @@ def _parse_shard(value: str) -> tuple[int, int]:
     return index - 1, total
 
 
+def cmd_audit(args) -> int:
+    path = args.report
+    if not os.path.isabs(path):
+        path = os.path.join(ROOT, path)
+    with open(path, "r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    problems = report.audit(payload)
+    for problem in problems:
+        print(f"- {problem}")
+    print(f"{len(problems)} problem(s) in {os.path.relpath(path, ROOT)}")
+    return 1 if problems and not args.warn_only else 0
+
+
 def cmd_gaps(args) -> int:
     path = args.report
     if not os.path.isabs(path):
@@ -211,6 +224,11 @@ def main(argv=None) -> int:
     p_gaps.add_argument("--report", default="results/latest/report.json")
     p_gaps.add_argument("--tool")
     p_gaps.set_defaults(func=cmd_gaps)
+
+    p_audit = sub.add_parser("audit", help="check a report for unfounded rows")
+    p_audit.add_argument("--report", default="results/latest/report.json")
+    p_audit.add_argument("--warn-only", action="store_true")
+    p_audit.set_defaults(func=cmd_audit)
 
     p_doctor = sub.add_parser("doctor", help="report the execution environment")
     p_doctor.add_argument("--php")

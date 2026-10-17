@@ -151,6 +151,31 @@ def _clip(text: str, limit: int = 70) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
+def audit(report: dict) -> list[str]:
+    """Report-level invariants. Anything here makes a row unreadable or unfounded."""
+    problems = []
+    for record in report["cases"]:
+        if not record.get("basis"):
+            problems.append(f"{record['case']}: no ground truth basis recorded")
+        for tool, result in record["results"].items():
+            verdict = result.get("verdict")
+            if verdict in ("false_positive", "false_negative", "mixed") and not result.get("detail"):
+                problems.append(f"{record['case']} / {tool}: {verdict} without a detail")
+            if verdict in ("false_positive", "false_negative", "mixed") and not result.get("diagnostics") \
+                    and verdict == "false_positive":
+                problems.append(f"{record['case']} / {tool}: false positive without any reported diagnostic")
+            if verdict == "divergence" and not result.get("citation"):
+                problems.append(f"{record['case']} / {tool}: divergence without a citation")
+            if verdict == "tool_error":
+                problems.append(f"{record['case']} / {tool}: tool error - {result.get('detail', '')[:80]}")
+            if verdict == "case_error":
+                problems.append(f"{record['case']} / {tool}: case error - {result.get('detail', '')[:80]}")
+    for tool, summary in report["summary"].items():
+        if summary["judged"] == 0:
+            problems.append(f"{tool}: no case judged this run; the agreement column is empty")
+    return problems
+
+
 def render_gaps(report: dict, tool: str) -> str:
     """A per-tool work list: everything this analyzer got wrong, with evidence."""
     lines = [f"# Gaps for {tool}", "",

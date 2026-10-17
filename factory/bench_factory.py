@@ -274,6 +274,13 @@ def promote(tree: str, state: dict, round_id: int) -> bool:
     if result["code"] != 0:
         log(f"[GATE] round {round_id} failed the corpus run - not promoting")
         return False
+    audit = run([sys.executable, "harness/bench.py", "audit", "--report",
+                 "results/latest/report.json"], cwd=tree, timeout=300)
+    if audit["code"] != 0:
+        log(f"[GATE] round {round_id} failed the report audit:")
+        for line in audit["stdout"].splitlines()[:10]:
+            log("  " + line.strip())
+        return False
     failures = [line for line in result["stdout"].splitlines()
                 if "=tool_error" in line or "=case_error" in line]
     if failures:
