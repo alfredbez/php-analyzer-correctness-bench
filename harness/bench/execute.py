@@ -148,7 +148,7 @@ def run_runtime_proof(case: case_mod.Case, runner: Runner, php_version=None) -> 
     script = case.runtime_script
     if not script:
         return None
-    output = runner.php([case.abs_path(script)], cwd=case.path, timeout=120)
+    output = runner.php([runner.runtime_path(case.abs_path(script))], cwd=case.path, timeout=120)
     return {
         "script": script,
         "exit_code": output["exit_code"],
@@ -168,20 +168,34 @@ def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
     if not case.diagnostics:
         ensure_autoload(case)
 
-    if run_dir and case.runtime_script:
+    # The runtime proof runs first: a case whose own proof fails cannot judge a
+    # tool, so the tools are not run at all and every verdict is case_error.
+    proof_failed = None
+    if case.runtime_script:
         proof = run_runtime_proof(case, runner, php_version)
         record["runtime_proof"] = proof
-        target = os.path.join(run_dir, "raw", case.id, "runtime.json")
-        os.makedirs(os.path.dirname(target), exist_ok=True)
-        with open(target, "w", encoding="utf-8") as handle:
-            json.dump(proof, handle, indent=2)
-
-    for spec in selected:
-        result, evidence = run_tool(case, spec, runner, php_version)
-        record["results"][spec.name] = result
         if run_dir:
-            target = os.path.join(run_dir, "raw", case.id, f"{spec.name}.json")
+            target = os.path.join(run_dir, "raw", case.id, "runtime.json")
             os.makedirs(os.path.dirname(target), exist_ok=True)
             with open(target, "w", encoding="utf-8") as handle:
-                json.dump(evidence, handle, indent=2)
+                json.dump(proof, handle, indent=2)
+        if not proof["confirmed"]:
+            proof_failed = (f"runtime proof {proof['script']} exited {proof['exit_code']}: "
+                            f"{(proof['stderr'] or proof['stdout']).strip()[:200]}")
+
+    for spec in selected:
+        if proof_failed or case.diagnostics:
+            result = {
+                "case": case.id, "tool": spec.name, "verdict": "case_error",
+                "detail": proof_failed or "; ".join(case.diagnostics),
+                "missing": [], "unexpected": [], "acknowledged": [], "diagnostics": [],
+            }
+        else:
+            result, evidence = run_tool(case, spec, runner, php_version)
+            if run_dir:
+                target = os.path.join(run_dir, "raw", case.id, f"{spec.name}.json")
+                os.makedirs(os.path.dirname(target), exist_ok=True)
+                with open(target, "w", encoding="utf-8") as handle:
+                    json.dump(evidence, handle, indent=2)
+        record["results"][spec.name] = result
     return record

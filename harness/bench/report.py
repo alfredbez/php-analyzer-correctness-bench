@@ -39,6 +39,11 @@ def new_run_dir(label: str = "") -> str:
 
 def summarise(records: list[dict], meta: dict) -> dict:
     report = {"meta": meta, "cases": records, "summary": {}, "divergences": []}
+    meta["runtime_proven"] = sum(1 for record in records
+                                 if (record.get("runtime_proof") or {}).get("confirmed"))
+    meta["runtime_proof_failed"] = [record["case"] for record in records
+                                    if record.get("runtime_proof")
+                                    and not record["runtime_proof"]["confirmed"]]
     tools = sorted({tool for record in records for tool in record["results"]})
     for tool in tools:
         counters = {verdict: 0 for verdict in VERDICT_ORDER}
@@ -76,6 +81,11 @@ def render_summary(report: dict) -> str:
         lines.append(f"- {name}: {version}")
     lines.append(f"- PHP: {meta['php_version']}")
     lines.append(f"- Cases: {meta['case_count']} (valid: {meta['valid_cases']})")
+    lines.append(f"- Ground truth proven by running the fixture: "
+                 f"{meta.get('runtime_proven', 0)}/{meta['case_count']}")
+    if meta.get("runtime_proof_failed"):
+        lines.append(f"- **Runtime proofs that failed: {', '.join(meta['runtime_proof_failed'])}** - "
+                     "those cases are excluded and must be repaired")
     lines.append("")
     lines.append("`agreement` = ok / (ok + false positives + false negatives). Cases whose ground truth "
                  "is a by-design divergence, a tool error or a skip are excluded and listed separately.")

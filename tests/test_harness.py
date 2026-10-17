@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from bench import adapters, classify  # noqa: E402
 from bench.case import Case  # noqa: E402
+from bench.runner import ROOT  # noqa: E402
 
 FIXTURES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fixtures")
 
@@ -130,6 +131,51 @@ class ClassificationTest(unittest.TestCase):
         output = {"diagnostics": [], "tool_error": None, "exit_code": 0}
         result = classify.classify(case, "phpstan", output, "8.3.35")
         self.assertEqual(result["verdict"], "skipped")
+
+
+class RuntimeProofGateTest(unittest.TestCase):
+    """A case whose own runtime proof fails must not judge any tool."""
+
+    class StubRunner:
+        mode = "native"
+
+        def __init__(self, proof_exit_code: int):
+            self.proof_exit_code = proof_exit_code
+            self.tool_calls = 0
+
+        def runtime_path(self, path: str) -> str:
+            return path
+
+        def php(self, args, cwd, timeout=300, env=None):
+            if any(str(arg).endswith("check.php") for arg in args):
+                return {"exit_code": self.proof_exit_code, "stdout": "", "stderr": "boom",
+                        "duration_s": 0.0, "argv": args, "cwd": cwd}
+            self.tool_calls += 1
+            return {"exit_code": 0, "stdout": '{"totals":{"errors":0},"files":{},"errors":[]}',
+                    "stderr": "", "duration_s": 0.0, "argv": args, "cwd": cwd}
+
+        def exec(self, argv, cwd, timeout=300, env=None):
+            self.tool_calls += 1
+            return {"exit_code": 0, "stdout": '{"issues":[]}', "stderr": "",
+                    "duration_s": 0.0, "argv": argv, "cwd": cwd}
+
+    def _case(self):
+        from bench import case as case_mod
+        return case_mod.load(os.path.join(ROOT, "cases", "narrowing", "is-int-on-string"))
+
+    def test_failed_proof_marks_every_tool_as_case_error(self):
+        from bench import execute
+        runner = self.StubRunner(proof_exit_code=7)
+        record = execute.run_case(self._case(), runner, tools=["mago"], php_version="8.3.35")
+        self.assertEqual(record["results"]["mago"]["verdict"], "case_error")
+        self.assertEqual(runner.tool_calls, 0, "no tool may run when the proof fails")
+
+    def test_successful_proof_lets_the_tools_run(self):
+        from bench import execute
+        runner = self.StubRunner(proof_exit_code=0)
+        record = execute.run_case(self._case(), runner, tools=["mago"], php_version="8.3.35")
+        self.assertEqual(runner.tool_calls, 1)
+        self.assertNotEqual(record["results"]["mago"]["verdict"], "case_error")
 
 
 class ContractTest(unittest.TestCase):
