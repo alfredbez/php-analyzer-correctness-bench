@@ -34,8 +34,21 @@ class Runner:
         self.image = image or os.environ.get("BENCH_PHP_IMAGE") or ""
         if not self.image:
             self.image = f"php:{php_version or '8.3'}-cli"
-        self.container = container or os.environ.get("BENCH_CONTAINER") or f"bench-php-{self.image.replace(':', '-')}"
+        self.container = container or os.environ.get("BENCH_CONTAINER") or self._default_container()
         self.mode = self._resolve(requested)
+
+    def _default_container(self) -> str:
+        """Container name unique per repository root.
+
+        Several checkouts of this repository (worktrees of the autonomous
+        factory) run in parallel, and a container is only usable for the tree it
+        was started with: the mount is fixed at creation time. A shared name
+        would silently run analyzers against the wrong files, so the root path is
+        part of the name.
+        """
+        import hashlib
+        digest = hashlib.sha1(ROOT.encode()).hexdigest()[:8]
+        return f"bench-{self.image.replace(':', '-')}-{digest}"
 
     def _resolve(self, requested: str) -> str:
         if requested == "native":
@@ -68,6 +81,7 @@ class Runner:
         if state.returncode != 0:
             subprocess.run([
                 "docker", "run", "-d", "--name", self.container,
+                "--label", f"bench.root={ROOT}",
                 "--user", f"{os.getuid()}:{os.getgid()}",
                 "-e", "HOME=/tmp",
                 "-v", f"{ROOT}:{CONTAINER_MOUNT}", "-w", CONTAINER_MOUNT,

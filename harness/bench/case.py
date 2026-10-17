@@ -180,6 +180,15 @@ def validate(case: Case) -> list[str]:
                 problems.append(f"expect.{tool}.allowed entry needs 'code' or 'message_regex'")
             if not item.get("reason"):
                 problems.append(f"expect.{tool}.allowed entry needs a 'reason' - acknowledged output must be justified")
+        # An expectation may name its own basis. That is how a fixture harvested
+        # from one tool's test suite is judged for that tool (upstream_test) while
+        # the other two are judged against the case's neutral ground truth.
+        basis_override = exp.get("basis")
+        if basis_override is not None:
+            if basis_override not in BASES:
+                problems.append(f"expect.{tool}.basis must be one of {BASES}, got {basis_override!r}")
+            elif basis_override in ("upstream_docs", "maintainer_statement", "upstream_test") and not exp.get("citation"):
+                problems.append(f"expect.{tool}.basis {basis_override!r} requires expect.{tool}.citation")
 
     if not os.path.exists(case.abs_path("composer.json")):
         problems.append("composer.json missing - the case must be runnable on its own")
