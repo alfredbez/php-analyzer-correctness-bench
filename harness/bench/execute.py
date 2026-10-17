@@ -224,4 +224,17 @@ def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
                 with open(target, "w", encoding="utf-8") as handle:
                     json.dump(evidence, handle, indent=2)
         record["results"][spec.name] = result
+
+    # If not a single analyzer could produce a result, the fixture does not run
+    # in this environment (typically a syntax newer than the PHP version under
+    # test, or a missing php.min in case.json). That is a corpus problem, not
+    # three analyzer problems.
+    verdicts = [result["verdict"] for result in record["results"].values()]
+    if verdicts and all(verdict == "tool_error" for verdict in verdicts):
+        detail = (f"no analyzer produced a result under PHP {php_version}; "
+                  "check the case's php.min against the syntax it uses")
+        for result in record["results"].values():
+            result["verdict"] = "case_error"
+            result["detail"] = detail
+        record["environment_mismatch"] = True
     return record
