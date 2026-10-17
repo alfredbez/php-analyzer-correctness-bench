@@ -77,8 +77,14 @@ def ensure_autoload(case: case_mod.Case) -> None:
 
 
 def build_argv(case: case_mod.Case, spec: ToolSpec) -> list[str]:
-    """Full argv for one analyzer, with host paths."""
-    binary = os.path.join(ROOT, spec.binary)
+    """Full argv for one analyzer, with host paths.
+
+    An analyzer can be swapped for a specific run with an environment override,
+    which is how a drift check tries a newer release without touching the pins:
+    ``BENCH_TOOL_PHPSTAN=/path/to/phpstan.phar``.
+    """
+    override = os.environ.get(f"BENCH_TOOL_{spec.name.upper()}")
+    binary = override or os.path.join(ROOT, spec.binary)
     targets = [case.abs_path(target) for target in case.target_dirs]
     if spec.name == "phpstan":
         argv = [binary, "analyse", "--no-progress", "--error-format=json",

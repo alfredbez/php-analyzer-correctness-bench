@@ -3,17 +3,19 @@
 # Idempotent: a tool that already matches the pinned version is left alone.
 #
 #   ./tools/install.sh            install the versions pinned in tools/versions.json
-#   ./tools/install.sh --latest    install the current stable releases instead and
-#                                  write the resolved versions to
-#                                  tools/versions.resolved.json (used by the
-#                                  nightly drift job, not by the pinned runs)
+#   ./tools/install.sh --latest    install the current stable releases instead. The
+#                                  drift workflow uses this; the run itself records
+#                                  which versions answered.
+#
+# BENCH_TOOLS_DIR overrides the destination, which is how a drift check can be
+# tried locally without disturbing the pinned binaries.
 set -euo pipefail
 
 MODE="pinned"
 [ "${1:-}" = "--latest" ] && MODE="latest"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BIN_DIR="$ROOT/tools/bin"
+BIN_DIR="${BENCH_TOOLS_DIR:-$ROOT/tools/bin}"
 mkdir -p "$BIN_DIR"
 
 read_version() { python3 -c "import json;print(json.load(open('$ROOT/tools/versions.json'))['tools']['$1']['version'])"; }
@@ -93,36 +95,3 @@ fi
 
 echo "Done. Installed:"
 printf '  %s\n' "$(ls -1 "$BIN_DIR")"
-
-if [ "$MODE" = "latest" ]; then
-  python3 - "$ROOT" <<'PY'
-import json
-import os
-import subprocess
-import sys
-
-root = sys.argv[1]
-pins = json.load(open(os.path.join(root, "tools/versions.json")))
-resolved = {"_comment": "Resolved by tools/install.sh --latest during a drift run.",
-            "resolved_at": subprocess.run(["date", "-u", "+%Y-%m-%dT%H:%M:%SZ"],
-                                          capture_output=True, text=True).stdout.strip(),
-            "tools": {}}
-commands = {
-    "phpstan": ["php", "tools/bin/phpstan.phar", "--version"],
-    "psalm": ["php", "tools/bin/psalm.phar", "--version"],
-    "mago": ["tools/bin/mago", "--version"],
-}
-for name in pins["tools"]:
-    resolved["tools"][name] = {"pinned": pins["tools"][name]["version"]}
-    binary = os.path.join(root, commands[name][0])
-    if not os.path.exists(binary):  # php is not in tools/bin
-        command = [commands[name][0]] + [os.path.join(root, part) for part in commands[name][1:]]
-        if command[0] == "php":
-            command = [os.environ.get("BENCH_PHP_EXECUTABLE", "php")] + command[1:]
-        out = subprocess.run(command, capture_output=True, text=True)
-        resolved["tools"][name]["reported"] = (out.stdout or out.stderr).strip().splitlines()[0]
-with open(os.path.join(root, "tools/versions.resolved.json"), "w") as handle:
-    json.dump(resolved, handle, indent=2)
-print(json.dumps(resolved, indent=2))
-PY
-fi

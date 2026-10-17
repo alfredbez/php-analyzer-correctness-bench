@@ -20,6 +20,12 @@ python3 harness/bench.py run --case narrowing/is-int-on-string
 Requirements: Docker (or a host PHP 8.2+), Python 3.10+, `tools/install.sh`
 having pinned the analyzers into `tools/bin/`.
 
+Running a newer release without touching the pins:
+`BENCH_TOOL_MAGO=/path/to/mago python3 harness/bench.py run --label drift`.
+The same override exists for `BENCH_TOOL_PHPSTAN` and `BENCH_TOOL_PSALM`; the
+nightly drift workflow uses `tools/install.sh --latest` with an out-of-tree
+`BENCH_TOOLS_DIR` for the same purpose.
+
 ## What a result means
 
 Only three judgements are counted:

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "run_id": "2026-10-17T07-28-58Z-bootstrap",
-    "started": "2026-10-17T07:28:58Z",
+    "run_id": "2026-10-17T07-31-44Z-bootstrap",
+    "started": "2026-10-17T07:31:44Z",
     "runner": "docker",
     "image": "php:8.3-cli",
     "php_version": "8.3.35",
@@ -37,7 +37,9 @@
     "valid_cases": 1,
     "selected": [
       "narrowing/is-int-on-string"
-    ]
+    ],
+    "runtime_proven": 1,
+    "runtime_proof_failed": []
   },
   "cases": [
     {
@@ -65,7 +67,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.574,
+          "duration_s": 0.535,
           "php": "8.3.35"
         },
         "psalm": {
@@ -86,7 +88,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.558,
+          "duration_s": 1.448,
           "php": "8.3.35"
         },
         "mago": {
@@ -116,16 +118,16 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.311,
+          "duration_s": 0.172,
           "php": "8.3.35"
         }
       },
       "runtime_proof": {
         "script": "runtime/check.php",
-        "exit_code": 1,
-        "stdout": "",
-        "stderr": "Could not open input file: /home/abez/projects/php-analyzer-correctness-bench/cases/narrowing/is-int-on-string/runtime/check.php\n",
-        "confirmed": false
+        "exit_code": 0,
+        "stdout": "classify() stayed on the string path for 6 sample value(s)\n",
+        "stderr": "",
+        "confirmed": true
       }
     }
   ],
