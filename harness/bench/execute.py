@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 from dataclasses import dataclass
 
 from . import adapters, case as case_mod, classify as classify_mod
@@ -76,6 +77,25 @@ def ensure_autoload(case: case_mod.Case) -> None:
         )
 
 
+def _external_binary(path: str) -> str:
+    """Make a binary from outside the repository reachable.
+
+    Only the repository root is mounted into the container, so a tool installed
+    elsewhere is copied into a gitignored staging directory first.
+    """
+    absolute = os.path.abspath(path)
+    if absolute.startswith(ROOT + os.sep):
+        return absolute
+    staging = os.path.join(ROOT, ".tools-alt")
+    os.makedirs(staging, exist_ok=True)
+    target = os.path.join(staging, os.path.basename(absolute))
+    if (not os.path.exists(target)
+            or os.path.getsize(target) != os.path.getsize(absolute)
+            or os.path.getmtime(target) < os.path.getmtime(absolute)):
+        shutil.copy2(absolute, target)
+    return target
+
+
 def build_argv(case: case_mod.Case, spec: ToolSpec) -> list[str]:
     """Full argv for one analyzer, with host paths.
 
@@ -84,7 +104,7 @@ def build_argv(case: case_mod.Case, spec: ToolSpec) -> list[str]:
     ``BENCH_TOOL_PHPSTAN=/path/to/phpstan.phar``.
     """
     override = os.environ.get(f"BENCH_TOOL_{spec.name.upper()}")
-    binary = override or os.path.join(ROOT, spec.binary)
+    binary = _external_binary(override) if override else os.path.join(ROOT, spec.binary)
     targets = [case.abs_path(target) for target in case.target_dirs]
     if spec.name == "phpstan":
         argv = [binary, "analyse", "--no-progress", "--error-format=json",

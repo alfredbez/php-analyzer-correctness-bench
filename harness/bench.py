@@ -74,9 +74,15 @@ def cmd_run(args) -> int:
         cases = [case for case in cases if case.domain == args.domain]
     if args.shard:
         index, total = _parse_shard(args.shard)
-        cases = [case for position, case in enumerate(cases) if position % total == index]
-        print(f"shard {index + 1}/{total}: {len(cases)} case(s)")
+        all_cases = cases
+        cases = [case for position, case in enumerate(all_cases) if position % total == index]
+        print(f"shard {index + 1}/{total}: {len(cases)} of {len(all_cases)} case(s)")
     if not cases:
+        if args.shard:
+            # An empty shard is a property of the corpus size, not a failure: a
+            # 9-case corpus with 12 workers leaves shards without work.
+            print("this shard has no cases")
+            return 0
         print("no cases selected", file=sys.stderr)
         return 2
 

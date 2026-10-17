@@ -7,6 +7,10 @@ cases/**/vendor/
 cases/**/.generated/
 cases/**/composer.lock
 
+# Analyzer binaries staged from outside the repository for an override run.
+.tools-alt/
+.tools-alt/
+
 # Run artifacts. The newest run directories are committed - they are the report -
 # but the raw tool output inside them is not. results/latest is a regenerated
 # convenience copy of the newest run.
