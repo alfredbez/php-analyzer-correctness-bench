@@ -1,0 +1,72 @@
+{
+  "id": "generics/class-template-substitution-member-type",
+  "title": "A class-level template type argument substitutes into the member's return type",
+  "domain": "generics",
+  "criterion_id": "generics/class-template-substitution",
+  "rule_class": "undefined-method",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Box declares @template T with @return T on get(), so the annotation @param Box<Cat> tells the caller that get() hands back a Cat, and the member access that follows has to be resolved against Cat - which has no bark(). The runtime script decides both halves independently of any analyzer: a value taken from a Box<Dog> dispatches Dog::bark() and returns 'woof', a value taken from a Box<Cat> dispatches Cat::meow() and returns 'meow' (so the substituted type is the class the annotation names, not mixed), and the same get()->bark() access on the Box<Cat> side fails with 'Error: Call to undefined method Cat::bark()'. Callers cannot weaken this: the class-level template is part of the annotation the callee published, exactly like a native parameter type.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/class.error.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "method.notFound", "line": 47, "message_regex": "Cat::bark" }
+      ],
+      "forbidden": [
+        { "code": "method.notFound", "line": 41 },
+        { "code": "method.notFound", "line": 53 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "UndefinedMethod", "line": 47, "message_regex": "Cat::bark" }
+      ],
+      "forbidden": [
+        { "code": "UndefinedMethod", "line": 41 },
+        { "code": "UndefinedMethod", "line": 53 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "non-existent-method", "line": 47, "message_regex": "bark.*Cat" }
+      ],
+      "forbidden": [
+        { "code": "non-existent-method", "line": 41 },
+        { "code": "non-existent-method", "line": 53 }
+      ]
+    }
+  },
+  "notes": "The rule under test is template substitution into a member's type at a use site: the same member access, on the same generic class, with only the type argument changed. All three tools substitute and report, under their own code: PHPStan 2.3.1 method.notFound, Psalm 6.20.0 UndefinedMethod, Mago 1.57.0 non-existent-method. The two forbidden predicates are the asymmetric controls and they are what makes the row about substitution rather than about member access: line 41 is the identical get()->bark() on Box<Dog>, which must stay silent, and line 53 is get()->meow() on Box<Cat>, which must stay silent too. The second control is the harder one - a tool that treated the declared @return mixed of get() as the receiver would report meow() as undefined on mixed and fail the case - so a tool cannot pass by guessing. The required predicates also pin the substituted class in the message ('Cat::bark' / 'bark ... Cat'), so an undefined-method report that does not name Cat does not satisfy the case. Every diagnostic the three tools produced is claimed by a predicate; nothing is acknowledged away and nothing is widened. No existing case in this corpus uses an undefined-method rule class, and none of the other generics cases covers member resolution on a substituted type argument (they cover inference from an argument and a declared bound). The round's source material, Mago's analyzer test suite, is a directory of fixtures without catalogue candidate IDs, and no catalogue lead covers this rule, so no source_candidate_id is recorded.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_test_case",
+        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_chained_call_wrong_consumer.php",
+        "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
+        "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_chained_call_wrong_consumer.php",
+        "note": "pattern source for the class-level @template T with @return T on get(); that fixture consumes the substituted value as a scalar (invalid-argument), this one resolves a member on it. Rewritten, not copied."
+      },
+      {
+        "kind": "upstream_test_case",
+        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_generic_method_on_generic_class.php",
+        "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
+        "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_generic_method_on_generic_class.php",
+        "note": "further evidence that the class-level type argument is substituted into member signatures in this dialect; no case in the suite expects a non-existent-method from that substitution, so Mago is judged by the runtime proof here, like the other two tools"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "mago": "1c3eba0efb04baadd27e17f592989410787b2d59",
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

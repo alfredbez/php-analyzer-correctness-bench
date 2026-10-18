@@ -1,0 +1,69 @@
+{
+  "id": "generics/covariant-template-in-write-position",
+  "title": "A covariant template used in a parameter position makes the declared variance unsound",
+  "domain": "generics",
+  "criterion_id": "generics/template-variance",
+  "rule_class": "template-variance-violation",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Bag declares @template-covariant T, which promises that a Bag<Dog> may be used wherever a Bag<Animal> is expected, and it also declares push() with @param T, a write position. Those two promises cannot both hold. The runtime script executes the program the declarations license: put_cat() is typed Bag<Animal>, the covariant promise makes the caller's Bag<Dog> acceptable to it, put_cat() stores a Cat in that box, and the caller - whose annotation says Bag<Dog> - reads a Cat back. A Cat is not a Dog (the script checks the sibling relationship directly), and adopt() declares the native return type Dog, so the call fails with 'adopt(): Return value must be of type Dog, Cat returned'. A fresh Bag constructed with a Dog does read back a Dog, so the failure is caused by the declared write position and not by the widening on its own.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.declarations.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "generics.variance", "line": 30, "message_regex": "covariant" }
+      ],
+      "forbidden": [
+        { "code": "argument.type", "line": 51 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "InvalidTemplateParam", "line": 29, "message_regex": "covariant" }
+      ],
+      "forbidden": [
+        { "code": "InvalidArgument", "line": 51 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "invalid-template-parameter", "line": 30, "message_regex": "covariant" }
+      ],
+      "forbidden": [
+        { "code": "invalid-argument", "line": 51 }
+      ]
+    }
+  },
+  "notes": "The rule under test is the consistency of a declared generic variance: @template-covariant T means 'every reader of a Bag<Dog> may treat it as a Bag<Animal>', and that is sound only while T never appears in a write position. PHP has no generics, so the declaration itself cannot fail; what fails is the program the declaration grants, and the case's neutral ground truth for all three tools is that program. The three tools report it under different codes and on adjacent lines of the same declaration - PHPStan 2.3.1 generics.variance on the push() signature (line 30), Psalm 6.20.0 InvalidTemplateParam on the @param T docblock line (29), Mago 1.57.0 invalid-template-parameter on the signature (30) - so the row is green with a code and site split rather than a defect. The forbidden predicate on line 51 is the asymmetric control: that call is the covariance widening itself, which the declaration licenses, and a tool that reports it as an argument mismatch instead of reporting the declaration would be pointing at the site the annotation permits. Building a Bag<Dog> that goes through the covariant view into put_cat() is exercised by the runtime script, so no predicate is acknowledged away and nothing is widened. Distinct from the two existing generics cases: generics/template-inference-from-argument tests an inferred function template reaching a native consumer, generics/template-bound-violation tests a value against a declared bound, and neither touches a variance declaration. The round's source material is Mago's analyzer test suite, a directory of fixtures without catalogue candidate IDs, so no source_candidate_id is recorded; the closest catalogue leads cover bound enforcement and @extends arity, which are different rules, and are not claimed here.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_test_case",
+        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_covariant_class.php",
+        "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
+        "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_covariant_class.php",
+        "note": "pattern source for a sound @template-covariant declaration (T is only read there, and Mago expects no diagnostic); this fixture keeps the declaration and adds the write position that makes it unsound. Rewritten, not copied, and Mago's suite carries no expectation for the write-position rule (grep for invalid-template-parameter in that directory returns only @extends/@implements arity fixtures), so Mago is judged here by the runtime proof like the other two."
+      },
+      {
+        "kind": "upstream_test_case",
+        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php",
+        "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
+        "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php",
+        "note": "shows that Mago's suite treats variance declarations as part of the supported dialect (the mirror-image contrapositive annotation), which is why this fixture does not use mode 'unsupported' for any tool"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "mago": "1c3eba0efb04baadd27e17f592989410787b2d59",
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}
