@@ -1,0 +1,64 @@
+{
+  "id": "arrays/array-key-for-string-key",
+  "title": "An array<array-key, int> argument cannot satisfy a parameter declared array<string, int>",
+  "domain": "arrays",
+  "criterion_id": "arrays/element-key-type-contract",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "source_candidate_id": "psalm:6e0079989da3fbda2530",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An array key is an int or a string and nothing else, and array-key is int|string, so an array declared array<array-key, int> is an array<int|string, int> and may contain int keys - the argument here contains the int key 0. The callee declares array<string, int> and applies strtoupper() to every key, which under strict_types fails with a TypeError on that int key. Passing an argument of type array<array-key, int> into a parameter of type array<string, int> is therefore unsound: the declared key type is a contract the argument cannot meet, and a diagnostic belongs on the call. PHP also normalises a numeric string key to int, so the caller cannot satisfy a string key type by spelling key 0 as '0' either.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.array.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [{ "code": "argument.type", "line": 26 }]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [{ "code": "MixedArgumentTypeCoercion", "line": 26 }]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [{ "code": "less-specific-argument", "line": 26 }]
+    }
+  },
+  "notes": "The rule under test is the key dimension of an array argument's type, which is a different contract from the element value type in arrays/scalar-array-for-string-array: array<string, int> constrains the keys, not the values. The runtime script is the neutral ground truth for all three tools: the argument's key set really contains the int key 0 and the callee really fails on it, so the report is required rather than optional. Psalm 6.20.0 (MixedArgumentTypeCoercion) and Mago 1.57.0 (less-specific-argument) both report the call. PHPStan 2.3.1 does not report it at the corpus's level 9, so its verdict is a recorded false negative. The reason is pinned down rather than guessed, and it is a spelling- and configuration-scope gap, not a missing rule: PHPStan resolves the argument's phpdoc type array<array-key, int> to an array whose key is the unspecified (implicitly mixed) key it renders as array<int> - verified with \\PHPStan\\dumpType, which dumps array<array-key, int> as array<int> and array<int|string, int> in full - and at level 9 it then treats that key as compatible with the parameter's string key. Verified siblings in the same level-9 run: the same call with the argument declared array<int|string, int> (the identical type, written without the array-key alias) DOES report argument.type, and a literal argument [0 => 1, 'users' => 2] also reports; and adding checkImplicitMixed: true on top of level 9 makes PHPStan report argument.type on this fixture ('expects array<string, int>, array<int> given'), which is the option conf/config.level10.neon sets for level max. The expectation is therefore not widened: the case requires the diagnostic and records that the pinned level-9 configuration does not produce it. No predicate is acknowledged away. Lead: catalogue candidate psalm:6e0079989da3fbda2530 (Psalm's tests/ArgTest.php:172, allowArrayIntScalarForArrayStringWithArgumentTypeCoercionIgnored); the candidate's distinguishing feature against psalm:0ee15c8f34d3836c9539 is the explicit int key type on its argument side (array<int, scalar>), so this fixture keeps the key-type dimension and re-derives the rule from PHP's key semantics and the runtime rather than from the upstream expectation, which uses an annotation to suppress Psalm's coercion.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "psalm:6e0079989da3fbda2530",
+        "family": "psalm",
+        "provider": "providerValidCodeParse",
+        "path": "tests/ArgTest.php",
+        "line": 172,
+        "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
+        "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
+        "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L172",
+        "note": "lead only; the explicit int key type on the argument side is the part that is kept, the rule was re-derived from the runtime"
+      },
+      {
+        "kind": "upstream_source",
+        "path": "/home/abez/projects/phpstan-src/src/Rules/RuleLevelHelper.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "transformCommonType / transformMixedType map a mixed type to StrictMixedType only when checkExplicitMixed (explicit mixed) or checkImplicitMixed (implicit mixed) is on; with both off the type is returned unchanged and an unspecified key stays lenient, which is why the level-9 run is silent here"
+      },
+      {
+        "kind": "upstream_source",
+        "path": "/home/abez/projects/phpstan-src/conf/config.neon",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "line 73 sets checkImplicitMixed: false in the default configuration; conf/config.level10.neon line 5 sets it true, and conf/config.levelmax.neon includes config.level10.neon"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

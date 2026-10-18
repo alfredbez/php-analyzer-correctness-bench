@@ -1,0 +1,26 @@
+{
+  "name": "bench/arrays-array-key-for-string-key",
+  "description": "An array<array-key, int> argument cannot satisfy a parameter declared array<string, int>",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "2.3.1",
+    "vimeo/psalm": "6.20.0"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  },
+  "scripts": {
+    "analyze": [
+      "phpstan analyse --level=9 --no-progress src",
+      "psalm --no-progress --config=psalm.xml",
+      "mago analyze src"
+    ],
+    "runtime-check": "php runtime/check.php"
+  }
+}

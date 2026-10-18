@@ -1,0 +1,52 @@
+{
+  "id": "arrays/scalar-array-for-string-array",
+  "title": "An array<int, scalar> argument cannot satisfy a parameter declared array<string>",
+  "domain": "arrays",
+  "criterion_id": "arrays/element-value-type-contract",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "source_candidate_id": "psalm:0ee15c8f34d3836c9539",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PHP does not enforce a docblock element type, so an array that the caller declares array<int, scalar> may hold a float. The callee declares array<string> and passes every element to strlen(), and under strict_types that call fails with a TypeError on the float. Passing an argument of type array<int, scalar> into a parameter of type array<string> is therefore unsound: the parameter's declared element type is a contract the argument cannot meet, and a diagnostic belongs on the call.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.strict"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [{ "code": "argument.type", "line": 26 }]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [{ "code": "ArgumentTypeCoercion", "line": 26 }]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [{ "code": "possibly-invalid-argument", "line": 26 }]
+    }
+  },
+  "notes": "The rule under test is the value dimension of an array argument's type: a parameter declared array<string> promises its elements are strings, and an argument declared array<int, scalar> may hold a float or a bool instead. The runtime script is the neutral ground truth for all three tools: it shows the argument really carrying a non-string element, and it shows the callee failing on it, so the report is required rather than optional and neither PHPStan's argument.type nor Psalm's ArgumentTypeCoercion nor Mago's possibly-invalid-argument is a defect here. This is a regression guard: all three pinned versions report the call (PHPStan 2.3.1, Psalm 6.20.0, Mago 1.57.0), so it documents a green row rather than a divergence. The lead was catalogue candidate psalm:0ee15c8f34d3836c9539 (Psalm's tests/ArgTest.php:186, allowArrayScalarForArrayStringWithArgumentTypeCoercionIgnored); the fixture is a clean-room minimal rewrite, not a copy of the test body, and no tool is judged against that suite here - all three expectations follow from the runtime proof. Psalm's upstream fixture suppresses ArgumentTypeCoercion with an annotation, which is consistent with the expectation recorded here: by default Psalm emits the coercion as an error.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "psalm:0ee15c8f34d3836c9539",
+        "family": "psalm",
+        "provider": "providerValidCodeParse",
+        "path": "tests/ArgTest.php",
+        "line": 186,
+        "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
+        "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
+        "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L186",
+        "note": "lead only; the declared element type array<string> of the parameter is the part that is kept, the rule was re-derived from the runtime"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}
