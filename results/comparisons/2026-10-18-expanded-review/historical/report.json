@@ -1,0 +1,5628 @@
+{
+  "meta": {
+    "run_id": "historical",
+    "started": "2026-10-18T20:29:43Z",
+    "runner": "docker",
+    "image": "php:8.4-cli",
+    "php_version": "8.4.26",
+    "tools": {
+      "mago": "mago 1.54.0"
+    },
+    "tool_sha256": {
+      "mago": "9d58d202c752990b0ae83a2303f16f9734daf569bc40ecefe8ee316e68236fc1"
+    },
+    "corpus_fingerprint": "e5fb43c8cec1d68870a5879b3d85e9793045ab2b96f6fcdb92df763438fb6f70",
+    "pins": {
+      "phpstan": {
+        "version": "2.3.1",
+        "url": "https://github.com/phpstan/phpstan/releases/download/{version}/phpstan.phar",
+        "binary": "tools/bin/phpstan.phar",
+        "invocation": "php {binary} analyse --no-progress --error-format=json --level={level} --autoload-file={autoload} {targets}",
+        "upstream": "phpstan/phpstan"
+      },
+      "psalm": {
+        "version": "6.20.0",
+        "url": "https://github.com/vimeo/psalm/releases/download/{version}/psalm.phar",
+        "binary": "tools/bin/psalm.phar",
+        "invocation": "php {binary} --no-cache --output-format=json --no-progress --config={config}",
+        "upstream": "vimeo/psalm"
+      },
+      "mago": {
+        "version": "1.57.0",
+        "url": "https://github.com/carthage-software/mago/releases/download/{version}/mago-{version}-x86_64-unknown-linux-gnu.tar.gz",
+        "binary": "tools/bin/mago",
+        "invocation": "{binary} analyze --format json {targets}",
+        "upstream": "carthage-software/mago"
+      }
+    },
+    "case_count": 142,
+    "criterion_count": 127,
+    "valid_cases": 142,
+    "selected": [
+      "arrays/array-key-for-string-key",
+      "arrays/catalog-mago-2495784ddff2f9b32ae7",
+      "arrays/catalog-mago-3cb66fa76d0fbac8d0a6",
+      "arrays/catalog-mago-516197fbc28d66be6138",
+      "arrays/catalog-mago-aa06b37e787d640d9565",
+      "arrays/catalog-mago-b04020e1b1f459b0e255",
+      "arrays/catalog-mago-bc1302afb96cabb21965",
+      "arrays/catalog-mago-bc8c6a80a3112f0b9fcf",
+      "arrays/catalog-phpstan-2bc9c9c0af361dbd0dea",
+      "arrays/catalog-phpstan-3df530270084e3d904a0",
+      "arrays/catalog-phpstan-a5a1bead8612b57ce91c",
+      "arrays/catalog-phpstan-d438454d94600dcbba53",
+      "arrays/catalog-phpstan-e03afd4ffd085e429c5e",
+      "arrays/catalog-psalm-13be39b2d9591fa1a9e5",
+      "arrays/catalog-psalm-1fb88d68d2ffa0e1ab18",
+      "arrays/catalog-psalm-540e6672f974be8ec019",
+      "arrays/catalog-psalm-59b1c78bfa12967fb1ac",
+      "arrays/catalog-psalm-6e0079989da3fbda2530",
+      "arrays/catalog-psalm-946e241294d114c29a8b",
+      "arrays/numeric-string-array-key",
+      "arrays/scalar-array-for-string-array",
+      "arrays/strict-in-array-narrowing",
+      "assignability/callable-not-closure",
+      "assignability/catalog-mago-70af4f68103648de14b8",
+      "assignability/catalog-mago-af4d2483259287749e40",
+      "assignability/catalog-mago-ddd6d489f1173eabbd99",
+      "assignability/catalog-phpstan-23edd0555732c08f1948",
+      "assignability/catalog-phpstan-34d04d27febb3bff2282",
+      "assignability/catalog-phpstan-70f67b02133286eb99f5",
+      "assignability/catalog-phpstan-935b22d9e63374f594a3",
+      "assignability/catalog-phpstan-abc5fa1b77dc14531ca8",
+      "assignability/catalog-phpstan-bef8ffa161779c8ea9bd",
+      "assignability/catalog-psalm-0e66d52886bd21db7846",
+      "assignability/catalog-psalm-28307cba67aa2a6c65af",
+      "assignability/catalog-psalm-5489e87365002fea3494",
+      "assignability/catalog-psalm-7597f481858da256f914",
+      "assignability/catalog-psalm-7c8a6899c045380fcf5f",
+      "assignability/catalog-psalm-969cef3e55d9ffe925f9",
+      "assignability/catalog-psalm-a6aa7787b414a8456355",
+      "assignability/catalog-psalm-e8412c2dfa81d2a9bbd5",
+      "assignability/catalog-psalm-fbe59540f6b89bde9139",
+      "assignability/docblock-return-covariance",
+      "callables/catalog-mago-1e0010ad90cf2846677d",
+      "callables/catalog-mago-8c7967e992bbf717d0fd",
+      "callables/catalog-mago-ea195975bc7c109ce598",
+      "callables/catalog-phpstan-554b2c43131257c0d354",
+      "callables/catalog-phpstan-6931357e80bcf4ac18ca",
+      "callables/catalog-phpstan-71ff2ec3ba7e1627cfa7",
+      "callables/catalog-psalm-100d258360108b7340f8",
+      "callables/catalog-psalm-7d2ccd7549c78392118c",
+      "callables/catalog-psalm-9e4f5a27653ddc7273ca",
+      "callables/catalog-psalm-f280033f57db8a07358a",
+      "callables/is-object-on-callable-parameter",
+      "callables/negated-is-callable-removes-function-name",
+      "dead-code/catalog-mago-c0e93f2edb2c2610c6e8",
+      "dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04",
+      "dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3",
+      "dead-code/catalog-phpstan-958a009704557ee9b44f",
+      "dead-code/catalog-psalm-2e01e321c4dcfa1729a2",
+      "dead-code/finally-assignment-always-runs",
+      "enums/catalog-mago-c0921366ed9477f63e10",
+      "enums/catalog-phpstan-50e5714f7332b2d3a4ff",
+      "enums/catalog-phpstan-5cca931b9e656814c244",
+      "enums/catalog-psalm-c013f91ca882f9f18a36",
+      "enums/match-not-exhaustive",
+      "enums/try-from-result-nullability",
+      "generics/catalog-mago-5fcd56c1b41c11a4f222",
+      "generics/catalog-phpstan-23069a8fe555fc224d34",
+      "generics/catalog-phpstan-28d71ec402e5aaedb00e",
+      "generics/catalog-phpstan-d2ee700fdda5c0e356e9",
+      "generics/catalog-phpstan-d88a0707d9479f04b2ed",
+      "generics/catalog-psalm-a8cb5b46f221852f2145",
+      "generics/catalog-psalm-af4807bea53ac80a15c3",
+      "generics/class-template-substitution-member-type",
+      "generics/covariant-template-in-write-position",
+      "generics/template-bound-violation",
+      "generics/template-inference-from-argument",
+      "legacy-patterns/array-filter-string-callable-loses-list",
+      "legacy-patterns/catalog-mago-af46b0f735b875e1a546",
+      "legacy-patterns/catalog-mago-ea6e3e02fc81b5208281",
+      "legacy-patterns/catalog-psalm-6c129980869ba963c7aa",
+      "legacy-patterns/count-on-iterable",
+      "legacy-patterns/loose-comparison-with-zero",
+      "narrowing/catalog-mago-011e4b9469d7500de1f2",
+      "narrowing/catalog-mago-1b312aa116cfe2b77850",
+      "narrowing/catalog-mago-213d169182afe4bafef8",
+      "narrowing/catalog-mago-28273499247a04f959b8",
+      "narrowing/catalog-mago-3c721332594e39bdab90",
+      "narrowing/catalog-mago-43b57ad31a5d31bb2f4d",
+      "narrowing/catalog-mago-48e2336d00fe4ea5a90e",
+      "narrowing/catalog-mago-7d48310c1ee3d27f86fb",
+      "narrowing/catalog-mago-a46fe274608e52136bea",
+      "narrowing/catalog-mago-ac60f1cdd2c628cc61fc",
+      "narrowing/catalog-mago-e5b2d1e6e25c64063071",
+      "narrowing/catalog-mago-e65aa880dfdaf921f063",
+      "narrowing/catalog-mago-ea8b8b0683bd66f27f4f",
+      "narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0",
+      "narrowing/catalog-phpstan-2a3506b6815e78d94aa5",
+      "narrowing/catalog-phpstan-51152d85f829e8534475",
+      "narrowing/catalog-phpstan-912f700441dc19e2b58b",
+      "narrowing/catalog-psalm-924aac46207f32ed8ed5",
+      "narrowing/catalog-psalm-cd294fcb8e014ab18e3e",
+      "narrowing/catalog-psalm-de14e6754f8edfa65da8",
+      "narrowing/is-bool-guard-excludes-true",
+      "narrowing/is-int-on-string",
+      "narrowing/is-numeric-after-is-int",
+      "narrowing/is-numeric-guard-excludes-int",
+      "narrowing/negated-instanceof-unrelated-class",
+      "narrowing/object-is-always-truthy",
+      "narrowing/redundant-instanceof-in-condition",
+      "narrowing/redundant-instanceof-on-declared-class",
+      "nullability/catalog-mago-099feb9408203b5d7167",
+      "nullability/catalog-mago-12192c3c16be73f35ba7",
+      "nullability/catalog-phpstan-0f19731e70a569c020bd",
+      "nullability/catalog-phpstan-306c280bb8a6ca46a961",
+      "nullability/catalog-phpstan-3df7186a1b833d024d52",
+      "nullability/catalog-phpstan-3ecb74a1fba6668eac61",
+      "nullability/catalog-phpstan-5588ff8af852e7139b7d",
+      "nullability/catalog-phpstan-5d813bb8b104d0c619ca",
+      "nullability/catalog-phpstan-68486e793e9b077839dc",
+      "nullability/catalog-phpstan-ccdd6746fb9cf55bd2d7",
+      "nullability/catalog-phpstan-d1f39552939e65fa35c3",
+      "nullability/catalog-phpstan-f1455a36807cc2badc75",
+      "nullability/catalog-psalm-b832ee21bb9a15b5e6bc",
+      "nullability/catalog-psalm-c517a982a06f57ea084b",
+      "nullability/catalog-psalm-fe044cea9130c52f9d28",
+      "nullability/elseif-else-return-keeps-possible-null",
+      "nullability/is-null-guard-narrows-away-null",
+      "nullability/loose-null-guard-keeps-empty-string",
+      "nullability/relational-comparison-excludes-null",
+      "phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c",
+      "phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f",
+      "phpdoc-extensions/catalog-phpstan-e134f5937b2ca742f51c",
+      "phpdoc-extensions/catalog-psalm-046e3c888eee140464f5",
+      "phpdoc-extensions/catalog-psalm-06716895300af389cfc9",
+      "phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da",
+      "phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e",
+      "phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c",
+      "phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5",
+      "phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3",
+      "phpdoc-extensions/catalog-psalm-a02980c52843949bdecb",
+      "phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d"
+    ],
+    "runtime_proven": 141,
+    "runtime_proof_failed": []
+  },
+  "cases": [
+    {
+      "case": "arrays/array-key-for-string-key",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/array-key-for-string-key",
+      "results": {
+        "mago": {
+          "case": "arrays/array-key-for-string-key",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "less-specific-argument",
+              "message": "Argument type mismatch for argument #1 of `Bench\\Arrays\\ArrayKeyForStringKey\\render`: expected `array<string, int>`, but provided type `array<array-key, int>` is less specific.",
+              "file": "cases/arrays/array-key-for-string-key/src/repro.php",
+              "line": 26,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.214,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array<array-key, int> argument keys include int 0; the array<string, int> callee fails: strtoupper(): Argument #1 ($string) must be of type string, int given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-2495784ddff2f9b32ae7",
+      "domain": "arrays",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-2495784ddff2f9b32ae7",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-2495784ddff2f9b32ae7",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.246,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-3cb66fa76d0fbac8d0a6",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-3cb66fa76d0fbac8d0a6",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-3cb66fa76d0fbac8d0a6",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.233,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-516197fbc28d66be6138",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-516197fbc28d66be6138",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-516197fbc28d66be6138",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.236,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-aa06b37e787d640d9565",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-aa06b37e787d640d9565",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-aa06b37e787d640d9565",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@7",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `probe`: expected `array{'a': array{'b': int, ...}}`, but found `array{'a': array<string, int>}`.",
+              "file": "cases/arrays/catalog-mago-aa06b37e787d640d9565/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.23,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-b04020e1b1f459b0e255",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-b04020e1b1f459b0e255",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-b04020e1b1f459b0e255",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "redundant-condition@9"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-type-comparison",
+              "message": "Redundant type assertion: `$values` is already `array<array-key, mixed>`.",
+              "file": "cases/arrays/catalog-mago-b04020e1b1f459b0e255/src/repro.php",
+              "line": 9,
+              "severity": "warning"
+            },
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/arrays/catalog-mago-b04020e1b1f459b0e255/src/repro.php",
+              "line": 9,
+              "severity": "warning"
+            },
+            {
+              "code": "less-specific-nested-argument-type",
+              "message": "Argument type mismatch for argument #1 of `sumInts`: expected `array<array-key, int>`, but provided type `array<array-key, mixed>` is less specific.",
+              "file": "cases/arrays/catalog-mago-b04020e1b1f459b0e255/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.233,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-bc1302afb96cabb21965",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-bc1302afb96cabb21965",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-bc1302afb96cabb21965",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "mixed-argument",
+              "message": "Invalid argument type for argument #1 of `needsArray`: expected `array<array-key, mixed>`, but found `truthy-mixed`.",
+              "file": "cases/arrays/catalog-mago-bc1302afb96cabb21965/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.237,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-mago-bc8c6a80a3112f0b9fcf",
+      "domain": "arrays",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-mago-bc8c6a80a3112f0b9fcf",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-mago-bc8c6a80a3112f0b9fcf",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.25,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-phpstan-2bc9c9c0af361dbd0dea",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-phpstan-2bc9c9c0af361dbd0dea",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-phpstan-2bc9c9c0af361dbd0dea",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.322,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-phpstan-3df530270084e3d904a0",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-phpstan-3df530270084e3d904a0",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-phpstan-3df530270084e3d904a0",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@8, possibly-invalid-argument@8",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@8",
+            "possibly-invalid-argument@8"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `array_change_key_case`: expected `array<string, int|string>`, but possibly received `array{2: string, 'foo': int}`.",
+              "file": "cases/arrays/catalog-phpstan-3df530270084e3d904a0/src/repro.php",
+              "line": 8,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `upperKeys`: expected `array{2: string, 'FOO': int}`, but found `non-empty-array<string, int|string>`.",
+              "file": "cases/arrays/catalog-phpstan-3df530270084e3d904a0/src/repro.php",
+              "line": 8,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.234,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-phpstan-a5a1bead8612b57ce91c",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-phpstan-a5a1bead8612b57ce91c",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-phpstan-a5a1bead8612b57ce91c",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.213,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-phpstan-d438454d94600dcbba53",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-phpstan-d438454d94600dcbba53",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-phpstan-d438454d94600dcbba53",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@10",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@10"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `appendCount`: expected `int<1, 4>`, but found `positive-int`.",
+              "file": "cases/arrays/catalog-phpstan-d438454d94600dcbba53/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.262,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-phpstan-e03afd4ffd085e429c5e",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-phpstan-e03afd4ffd085e429c5e",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-phpstan-e03afd4ffd085e429c5e",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.221,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-13be39b2d9591fa1a9e5",
+      "domain": "arrays",
+      "rule_class": "MixedArrayOffset",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-13be39b2d9591fa1a9e5",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-13be39b2d9591fa1a9e5",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): mixed-array-index",
+          "missing": [
+            "mixed-array-index"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.241,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-1fb88d68d2ffa0e1ab18",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-1fb88d68d2ffa0e1ab18",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-1fb88d68d2ffa0e1ab18",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.238,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-540e6672f974be8ec019",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-540e6672f974be8ec019",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-540e6672f974be8ec019",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-argument",
+          "missing": [
+            "invalid-argument"
+          ],
+          "unexpected": [],
+          "acknowledged": [
+            "too-few-arguments@6"
+          ],
+          "diagnostics": [
+            {
+              "code": "too-few-arguments",
+              "message": "Too few arguments provided for function `add`.",
+              "file": "cases/arrays/catalog-psalm-540e6672f974be8ec019/src/probe.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.24,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-59b1c78bfa12967fb1ac",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-59b1c78bfa12967fb1ac",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-59b1c78bfa12967fb1ac",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-argument",
+          "missing": [
+            "invalid-argument"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.226,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-6e0079989da3fbda2530",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-6e0079989da3fbda2530",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-6e0079989da3fbda2530",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `consume`: expected `array<array-key, array-key>`, but possibly received `array<int, scalar>`.",
+              "file": "cases/arrays/catalog-psalm-6e0079989da3fbda2530/src/probe.php",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.261,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/catalog-psalm-946e241294d114c29a8b",
+      "domain": "arrays",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/catalog-psalm-946e241294d114c29a8b",
+      "results": {
+        "mago": {
+          "case": "arrays/catalog-psalm-946e241294d114c29a8b",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.253,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/numeric-string-array-key",
+      "domain": "arrays",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/numeric-string-array-key",
+      "results": {
+        "mago": {
+          "case": "arrays/numeric-string-array-key",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): impossible-condition@12, no-value@17",
+          "missing": [],
+          "unexpected": [
+            "impossible-condition@12",
+            "no-value@17"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/arrays/numeric-string-array-key/src/repro.php",
+              "line": 12,
+              "severity": "warning"
+            },
+            {
+              "code": "no-value",
+              "message": "Argument #1 passed to function `Bench\\Arrays\\NumericStringArrayKey\\accept_string` has type `never`, meaning it cannot produce a value.",
+              "file": "cases/arrays/numeric-string-array-key/src/repro.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.232,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "key 10 is reachable as '10' (array_key_exists, isset, read, write); 4 near miss(es) stayed strings\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/scalar-array-for-string-array",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/scalar-array-for-string-array",
+      "results": {
+        "mago": {
+          "case": "arrays/scalar-array-for-string-array",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\Arrays\\ScalarArrayForStringArray\\total_length`: expected `array<array-key, string>`, but possibly received `array<int, scalar>`.",
+              "file": "cases/arrays/scalar-array-for-string-array/src/repro.php",
+              "line": 26,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.247,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array<int, scalar> argument carries 1 non-string element(s); the array<string> callee fails: strlen(): Argument #1 ($string) must be of type string, float given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/strict-in-array-narrowing",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/strict-in-array-narrowing",
+      "results": {
+        "mago": {
+          "case": "arrays/strict-in-array-narrowing",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@17",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@17"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\Arrays\\StrictInArrayNarrowing\\accept_ab`: expected `string('a')|string('b')`, but possibly received `numeric-string|string('a')|string('b')`.",
+              "file": "cases/arrays/strict-in-array-narrowing/src/repro.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.239,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "6 strict match(es) over 45 needle/haystack pair(s), all 'a'/'b'\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/callable-not-closure",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/callable-not-closure",
+      "results": {
+        "mago": {
+          "case": "assignability/callable-not-closure",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Assignability\\CallableNotClosure\\keep`: expected `(closure(...mixed=): mixed)`, but found `(callable(...mixed=): mixed)`.",
+              "file": "cases/assignability/callable-not-closure/src/repro.php",
+              "line": 14,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Assignability\\CallableNotClosure\\keep`: expected `(closure(...mixed=): mixed)`, but found `string('phpversion')`.",
+              "file": "cases/assignability/callable-not-closure/src/repro.php",
+              "line": 19,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.2,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "'phpversion' is callable but not a Closure; the closure control was accepted\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-mago-70af4f68103648de14b8",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-mago-70af4f68103648de14b8",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-mago-70af4f68103648de14b8",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-argument@11, possibly-null-argument@11",
+          "missing": [],
+          "unexpected": [
+            "invalid-argument@11",
+            "possibly-null-argument@11"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-null-argument",
+              "message": "Argument #1 of function `convert` is possibly `null`, but parameter type `string` does not accept it.",
+              "file": "cases/assignability/catalog-mago-70af4f68103648de14b8/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `convert`: expected `string`, but found `Item|null`.",
+              "file": "cases/assignability/catalog-mago-70af4f68103648de14b8/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.285,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-mago-af4d2483259287749e40",
+      "domain": "assignability",
+      "rule_class": "method.notFound",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-mago-af4d2483259287749e40",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-mago-af4d2483259287749e40",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "mixed-return-statement@10"
+          ],
+          "diagnostics": [
+            {
+              "code": "non-existent-method",
+              "message": "Method `run` does not exist on type `Other`.",
+              "file": "cases/assignability/catalog-mago-af4d2483259287749e40/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `probe`. Saw type `mixed`.",
+              "file": "cases/assignability/catalog-mago-af4d2483259287749e40/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.247,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-mago-ddd6d489f1173eabbd99",
+      "domain": "assignability",
+      "rule_class": "invalid-method-access",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-mago-ddd6d489f1173eabbd99",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-mago-ddd6d489f1173eabbd99",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-method-access@11",
+          "missing": [],
+          "unexpected": [
+            "invalid-method-access@11"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-method-access",
+              "message": "Attempting to access a method on a non-object type (`string`).",
+              "file": "cases/assignability/catalog-mago-ddd6d489f1173eabbd99/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.257,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-23edd0555732c08f1948",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-23edd0555732c08f1948",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-23edd0555732c08f1948",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.256,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-34d04d27febb3bff2282",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-34d04d27febb3bff2282",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-34d04d27febb3bff2282",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.256,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-70f67b02133286eb99f5",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-70f67b02133286eb99f5",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-70f67b02133286eb99f5",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.31,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-935b22d9e63374f594a3",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-935b22d9e63374f594a3",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-935b22d9e63374f594a3",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.294,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-abc5fa1b77dc14531ca8",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-abc5fa1b77dc14531ca8",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-abc5fa1b77dc14531ca8",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@6",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@6"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #2 of `str_repeat`: expected `non-negative-int`, but possibly received `int`.",
+              "file": "cases/assignability/catalog-phpstan-abc5fa1b77dc14531ca8/src/repro.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.184,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-phpstan-bef8ffa161779c8ea9bd",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-bef8ffa161779c8ea9bd",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-phpstan-bef8ffa161779c8ea9bd",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.225,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-0e66d52886bd21db7846",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-0e66d52886bd21db7846",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-0e66d52886bd21db7846",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@17, invalid-return-statement@9",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@17",
+            "invalid-return-statement@9"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `probe`: expected `truthy-string`, but found `non-empty-string`.",
+              "file": "cases/assignability/catalog-psalm-0e66d52886bd21db7846/src/probe.php",
+              "line": 9,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `reversed`: expected `truthy-string`, but found `non-empty-string`.",
+              "file": "cases/assignability/catalog-psalm-0e66d52886bd21db7846/src/probe.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.174,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-28307cba67aa2a6c65af",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-28307cba67aa2a6c65af",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-28307cba67aa2a6c65af",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `consume`: expected `object{hmm: float}`, but possibly received `object`.",
+              "file": "cases/assignability/catalog-psalm-28307cba67aa2a6c65af/src/probe.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.197,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-5489e87365002fea3494",
+      "domain": "assignability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-5489e87365002fea3494",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-5489e87365002fea3494",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@9",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@9"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `probe`: expected `truthy-string`, but found `non-empty-string`.",
+              "file": "cases/assignability/catalog-psalm-5489e87365002fea3494/src/probe.php",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.163,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-7597f481858da256f914",
+      "domain": "assignability",
+      "rule_class": "OverriddenPropertyAccess",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-7597f481858da256f914",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-7597f481858da256f914",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "incompatible-property-access",
+              "message": "Property `ChildValue::$value` has a different write access level than `ParentValue::$value`.",
+              "file": "cases/assignability/catalog-psalm-7597f481858da256f914/src/probe.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.21,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-7c8a6899c045380fcf5f",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-7c8a6899c045380fcf5f",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-7c8a6899c045380fcf5f",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `accept`: expected `int(1)|int(2)|int(3)|string('blue')|string('red')`, but found `int(4)`.",
+              "file": "cases/assignability/catalog-psalm-7c8a6899c045380fcf5f/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.221,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-969cef3e55d9ffe925f9",
+      "domain": "assignability",
+      "rule_class": "argument.count",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-969cef3e55d9ffe925f9",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-969cef3e55d9ffe925f9",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "too-few-arguments",
+              "message": "Too few arguments provided for function `joinFields`.",
+              "file": "cases/assignability/catalog-psalm-969cef3e55d9ffe925f9/src/fixture.php",
+              "line": 4,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.185,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-a6aa7787b414a8456355",
+      "domain": "assignability",
+      "rule_class": "throws.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-a6aa7787b414a8456355",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-a6aa7787b414a8456355",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.205,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-e8412c2dfa81d2a9bbd5",
+      "domain": "assignability",
+      "rule_class": "argument.count",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-e8412c2dfa81d2a9bbd5",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-e8412c2dfa81d2a9bbd5",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.209,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-fbe59540f6b89bde9139",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-fbe59540f6b89bde9139",
+      "results": {
+        "mago": {
+          "case": "assignability/catalog-psalm-fbe59540f6b89bde9139",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.204,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/docblock-return-covariance",
+      "domain": "assignability",
+      "rule_class": "method.childReturnType",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/docblock-return-covariance",
+      "results": {
+        "mago": {
+          "case": "assignability/docblock-return-covariance",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "incompatible-return-type",
+              "message": "Return type `Bench\\Assignability\\DocblockReturnCovariance\\Animal` of `Bench\\Assignability\\DocblockReturnCovariance\\BadShelter::adopt()` is incompatible with parent return type `Bench\\Assignability\\DocblockReturnCovariance\\Dog` of `Bench\\Assignability\\DocblockReturnCovariance\\Shelter::adopt()`",
+              "file": "cases/assignability/docblock-return-covariance/src/repro.php",
+              "line": 32,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.2,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "BadShelter::adopt() returns a Cat, so wake() throws: Call to undefined method Bench\\Assignability\\DocblockReturnCovariance\\Cat::bark()\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-mago-1e0010ad90cf2846677d",
+      "domain": "callables",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-mago-1e0010ad90cf2846677d",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-mago-1e0010ad90cf2846677d",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): impossible-condition@5, impossible-type-comparison@5, no-value@4, no-value@5",
+          "missing": [],
+          "unexpected": [
+            "impossible-condition@5",
+            "impossible-type-comparison@5",
+            "no-value@4",
+            "no-value@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "no-value",
+              "message": "Argument #1 passed to function `strtoupper` has type `never`, meaning it cannot produce a value.",
+              "file": "cases/callables/catalog-mago-1e0010ad90cf2846677d/src/repro.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$callback` of type `(callable(...mixed=): mixed)` can never be `object`.",
+              "file": "cases/callables/catalog-mago-1e0010ad90cf2846677d/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/callables/catalog-mago-1e0010ad90cf2846677d/src/repro.php",
+              "line": 5,
+              "severity": "warning"
+            },
+            {
+              "code": "no-value",
+              "message": "Argument #1 passed to function `get_class` has type `never`, meaning it cannot produce a value.",
+              "file": "cases/callables/catalog-mago-1e0010ad90cf2846677d/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.2,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-mago-8c7967e992bbf717d0fd",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-mago-8c7967e992bbf717d0fd",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-mago-8c7967e992bbf717d0fd",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.195,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-mago-ea195975bc7c109ce598",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-mago-ea195975bc7c109ce598",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-mago-ea195975bc7c109ce598",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `keyed`: expected `array{'test': string}`, but possibly received `array{0: class-string|object, 1: non-empty-string}`.",
+              "file": "cases/callables/catalog-mago-ea195975bc7c109ce598/src/repro.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.179,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-phpstan-554b2c43131257c0d354",
+      "domain": "callables",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-phpstan-554b2c43131257c0d354",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-phpstan-554b2c43131257c0d354",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-condition@6",
+          "missing": [],
+          "unexpected": [
+            "redundant-condition@6"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-condition",
+              "message": "Redundant ternary operator: condition is always truthy.",
+              "file": "cases/callables/catalog-phpstan-554b2c43131257c0d354/src/repro.php",
+              "line": 6,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.19,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-phpstan-6931357e80bcf4ac18ca",
+      "domain": "callables",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-phpstan-6931357e80bcf4ac18ca",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-phpstan-6931357e80bcf4ac18ca",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-return-statement@4",
+          "missing": [],
+          "unexpected": [
+            "mixed-return-statement@4"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `{closure:src/repro.php:4:48}`. Saw type `mixed`.",
+              "file": "cases/callables/catalog-phpstan-6931357e80bcf4ac18ca/src/repro.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `immediate`. Saw type `mixed`.",
+              "file": "cases/callables/catalog-phpstan-6931357e80bcf4ac18ca/src/repro.php",
+              "line": 4,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.202,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-phpstan-71ff2ec3ba7e1627cfa7",
+      "domain": "callables",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-phpstan-71ff2ec3ba7e1627cfa7",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-phpstan-71ff2ec3ba7e1627cfa7",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-argument@10",
+          "missing": [],
+          "unexpected": [
+            "mixed-argument@10"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "mixed-argument",
+              "message": "Invalid argument type for argument #1 of `strlen`: expected `string`, but found `mixed`.",
+              "file": "cases/callables/catalog-phpstan-71ff2ec3ba7e1627cfa7/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.212,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-psalm-100d258360108b7340f8",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-psalm-100d258360108b7340f8",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-psalm-100d258360108b7340f8",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.209,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-psalm-7d2ccd7549c78392118c",
+      "domain": "callables",
+      "rule_class": "phpDoc.parseError",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-psalm-7d2ccd7549c78392118c",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-psalm-7d2ccd7549c78392118c",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.185,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-psalm-9e4f5a27653ddc7273ca",
+      "domain": "callables",
+      "rule_class": "phpDoc.parseError",
+      "basis": "runtime_proof",
+      "path": "cases/callables/catalog-psalm-9e4f5a27653ddc7273ca",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-psalm-9e4f5a27653ddc7273ca",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.214,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/catalog-psalm-f280033f57db8a07358a",
+      "domain": "callables",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/callables/catalog-psalm-f280033f57db8a07358a",
+      "results": {
+        "mago": {
+          "case": "callables/catalog-psalm-f280033f57db8a07358a",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "malformed-docblock-comment@3"
+          ],
+          "diagnostics": [
+            {
+              "code": "invalid-docblock",
+              "message": "PHPDoc comment ended unexpectedly",
+              "file": "cases/callables/catalog-psalm-f280033f57db8a07358a/src/fixture.php",
+              "line": 3,
+              "severity": "error"
+            },
+            {
+              "code": "malformed-docblock-comment",
+              "message": "Failed to parse function-like docblock comment.",
+              "file": "cases/callables/catalog-psalm-f280033f57db8a07358a/src/fixture.php",
+              "line": 3,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.213,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/is-object-on-callable-parameter",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/is-object-on-callable-parameter",
+      "results": {
+        "mago": {
+          "case": "callables/is-object-on-callable-parameter",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): impossible-condition@24, impossible-type-comparison@24, no-value@25",
+          "missing": [],
+          "unexpected": [
+            "impossible-condition@24",
+            "impossible-type-comparison@24",
+            "no-value@25"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$fn` of type `(callable(...mixed=): mixed)` can never be `object`.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 24,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 24,
+              "severity": "warning"
+            },
+            {
+              "code": "no-value",
+              "message": "Argument #1 passed to function `Bench\\Callables\\IsObjectOnCallableParameter\\accept_object` has type `never`, meaning it cannot produce a value.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 25,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.218,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_object() branch reached for 2 of 3 callable shape(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/negated-is-callable-removes-function-name",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/negated-is-callable-removes-function-name",
+      "results": {
+        "mago": {
+          "case": "callables/negated-is-callable-removes-function-name",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@24",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@24"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\Callables\\NegatedIsCallableRemovesFunctionName\\accept_array`: expected `list<int>`, but possibly received `list{int(1)}|string('strlen')`.",
+              "file": "cases/callables/negated-is-callable-removes-function-name/src/repro.php",
+              "line": 24,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.214,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the guard removed the function name; [1] reached accept_array() without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/catalog-mago-c0e93f2edb2c2610c6e8",
+      "domain": "dead-code",
+      "rule_class": "unreachable-code",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/catalog-mago-c0e93f2edb2c2610c6e8",
+      "results": {
+        "mago": {
+          "case": "dead-code/catalog-mago-c0e93f2edb2c2610c6e8",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): unreachable-code",
+          "missing": [
+            "unreachable-code"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.192,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04",
+      "domain": "dead-code",
+      "rule_class": "unused-parameter",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04",
+      "results": {
+        "mago": {
+          "case": "dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.187,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3",
+      "domain": "dead-code",
+      "rule_class": "unused-parameter",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3",
+      "results": {
+        "mago": {
+          "case": "dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.198,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/catalog-phpstan-958a009704557ee9b44f",
+      "domain": "dead-code",
+      "rule_class": "unused-parameter",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/catalog-phpstan-958a009704557ee9b44f",
+      "results": {
+        "mago": {
+          "case": "dead-code/catalog-phpstan-958a009704557ee9b44f",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.203,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/catalog-psalm-2e01e321c4dcfa1729a2",
+      "domain": "dead-code",
+      "rule_class": "RedundantCast",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/catalog-psalm-2e01e321c4dcfa1729a2",
+      "results": {
+        "mago": {
+          "case": "dead-code/catalog-psalm-2e01e321c4dcfa1729a2",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-cast",
+              "message": "Redundant cast to `(object)`: the expression already has this type.",
+              "file": "cases/dead-code/catalog-psalm-2e01e321c4dcfa1729a2/src/probe.php",
+              "line": 4,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.22,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/finally-assignment-always-runs",
+      "domain": "dead-code",
+      "rule_class": "constant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/finally-assignment-always-runs",
+      "results": {
+        "mago": {
+          "case": "dead-code/finally-assignment-always-runs",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.232,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the finally assignment ran before the catch: cleaned_flag() === 1\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/catalog-mago-c0921366ed9477f63e10",
+      "domain": "enums",
+      "rule_class": "method.notFound",
+      "basis": "runtime_proof",
+      "path": "cases/enums/catalog-mago-c0921366ed9477f63e10",
+      "results": {
+        "mago": {
+          "case": "enums/catalog-mago-c0921366ed9477f63e10",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-method-access@11, mixed-return-statement@11",
+          "missing": [],
+          "unexpected": [
+            "invalid-method-access@11",
+            "mixed-return-statement@11"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-method-access",
+              "message": "Attempting to access a method on a non-object type (`unknown-ref(Locale::German)`).",
+              "file": "cases/enums/catalog-mago-c0921366ed9477f63e10/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-method-access",
+              "message": "Attempting to access a method on a non-object type (`unknown-ref(Locale::French)`).",
+              "file": "cases/enums/catalog-mago-c0921366ed9477f63e10/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `Resolver::resolve`. Saw type `mixed`.",
+              "file": "cases/enums/catalog-mago-c0921366ed9477f63e10/src/repro.php",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.213,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/catalog-phpstan-50e5714f7332b2d3a4ff",
+      "domain": "enums",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/enums/catalog-phpstan-50e5714f7332b2d3a4ff",
+      "results": {
+        "mago": {
+          "case": "enums/catalog-phpstan-50e5714f7332b2d3a4ff",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.303,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/catalog-phpstan-5cca931b9e656814c244",
+      "domain": "enums",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/enums/catalog-phpstan-5cca931b9e656814c244",
+      "results": {
+        "mago": {
+          "case": "enums/catalog-phpstan-5cca931b9e656814c244",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.242,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/catalog-psalm-c013f91ca882f9f18a36",
+      "domain": "enums",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/enums/catalog-psalm-c013f91ca882f9f18a36",
+      "results": {
+        "mago": {
+          "case": "enums/catalog-psalm-c013f91ca882f9f18a36",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@8",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@8"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `fromValue`: expected `string('blue')|string('red')`, but possibly received `string`.",
+              "file": "cases/enums/catalog-psalm-c013f91ca882f9f18a36/src/fixture.php",
+              "line": 8,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.244,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/match-not-exhaustive",
+      "domain": "enums",
+      "rule_class": "match.unhandled",
+      "basis": "runtime_proof",
+      "path": "cases/enums/match-not-exhaustive",
+      "results": {
+        "mago": {
+          "case": "enums/match-not-exhaustive",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "match-not-exhaustive",
+              "message": "Non-exhaustive `match` expression: subject of type `enum(Bench\\Enums\\MatchNotExhaustive\\Suit)` is not fully handled.",
+              "file": "cases/enums/match-not-exhaustive/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.2,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "label(Suit::Spades) threw UnhandledMatchError; label_all() handled it\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/try-from-result-nullability",
+      "domain": "enums",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/enums/try-from-result-nullability",
+      "results": {
+        "mago": {
+          "case": "enums/try-from-result-nullability",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-null-argument@20",
+          "missing": [],
+          "unexpected": [
+            "possibly-null-argument@20"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-null-argument",
+              "message": "Argument #1 of function `Bench\\Enums\\TryFromResultNullability\\label` is possibly `null`, but parameter type `enum(Bench\\Enums\\TryFromResultNullability\\Status)` does not accept it.",
+              "file": "cases/enums/try-from-result-nullability/src/repro.php",
+              "line": 20,
+              "severity": "error"
+            },
+            {
+              "code": "possibly-null-argument",
+              "message": "Argument #1 of function `Bench\\Enums\\TryFromResultNullability\\label` is possibly `null`, but parameter type `enum(Bench\\Enums\\TryFromResultNullability\\Status)` does not accept it.",
+              "file": "cases/enums/try-from-result-nullability/src/repro.php",
+              "line": 25,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.169,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "tryFrom('active') = Status::Active, tryFrom('nope') = null and label(null) is a TypeError; from('nope') throws ValueError instead\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-mago-5fcd56c1b41c11a4f222",
+      "domain": "generics",
+      "rule_class": "missing-template-parameter",
+      "basis": "upstream_docs",
+      "path": "cases/generics/catalog-mago-5fcd56c1b41c11a4f222",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-mago-5fcd56c1b41c11a4f222",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@17",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@17"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "missing-template-parameter",
+              "message": "Too few template arguments for `Mapper`: expected at least 1, but found 0.",
+              "file": "cases/generics/catalog-mago-5fcd56c1b41c11a4f222/src/repro.php",
+              "line": 13,
+              "severity": "error"
+            },
+            {
+              "code": "missing-template-parameter",
+              "message": "Too few template arguments for `Intermediate`: expected at least 1, but found 0.",
+              "file": "cases/generics/catalog-mago-5fcd56c1b41c11a4f222/src/repro.php",
+              "line": 16,
+              "severity": "error"
+            },
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Mapper::store`: expected `('T.intermediate extends Entity)`, but possibly received `Product`.",
+              "file": "cases/generics/catalog-mago-5fcd56c1b41c11a4f222/src/repro.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.208,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-phpstan-23069a8fe555fc224d34",
+      "domain": "generics",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/catalog-phpstan-23069a8fe555fc224d34",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-phpstan-23069a8fe555fc224d34",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.209,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-phpstan-28d71ec402e5aaedb00e",
+      "domain": "generics",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/catalog-phpstan-28d71ec402e5aaedb00e",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-phpstan-28d71ec402e5aaedb00e",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@10, invalid-return-statement@9, undefined-string-array-index@10",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@10",
+            "invalid-return-statement@9",
+            "undefined-string-array-index@10"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `keyed`: expected `array{'TKey': int}`, but found `non-empty-array<('TKey.keyed() extends string), int(7)>`.",
+              "file": "cases/generics/catalog-phpstan-28d71ec402e5aaedb00e/src/repro.php",
+              "line": 9,
+              "severity": "error"
+            },
+            {
+              "code": "undefined-string-array-index",
+              "message": "Undefined array key 'slot' accessed on `array{'TKey': int}`.",
+              "file": "cases/generics/catalog-phpstan-28d71ec402e5aaedb00e/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `readSlot`: expected `int`, but found `null`.",
+              "file": "cases/generics/catalog-phpstan-28d71ec402e5aaedb00e/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.19,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-phpstan-d2ee700fdda5c0e356e9",
+      "domain": "generics",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/catalog-phpstan-d2ee700fdda5c0e356e9",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-phpstan-d2ee700fdda5c0e356e9",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.227,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-phpstan-d88a0707d9479f04b2ed",
+      "domain": "generics",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/catalog-phpstan-d88a0707d9479f04b2ed",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-phpstan-d88a0707d9479f04b2ed",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.192,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-psalm-a8cb5b46f221852f2145",
+      "domain": "generics",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/generics/catalog-psalm-a8cb5b46f221852f2145",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-psalm-a8cb5b46f221852f2145",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "malformed-docblock-comment@4"
+          ],
+          "diagnostics": [
+            {
+              "code": "invalid-docblock",
+              "message": "PHPDoc comment ended unexpectedly",
+              "file": "cases/generics/catalog-psalm-a8cb5b46f221852f2145/src/fixture.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "malformed-docblock-comment",
+              "message": "Failed to parse class-like docblock comment.",
+              "file": "cases/generics/catalog-psalm-a8cb5b46f221852f2145/src/fixture.php",
+              "line": 4,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.198,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/catalog-psalm-af4807bea53ac80a15c3",
+      "domain": "generics",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/catalog-psalm-af4807bea53ac80a15c3",
+      "results": {
+        "mago": {
+          "case": "generics/catalog-psalm-af4807bea53ac80a15c3",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.2,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/class-template-substitution-member-type",
+      "domain": "generics",
+      "rule_class": "undefined-method",
+      "basis": "runtime_proof",
+      "path": "cases/generics/class-template-substitution-member-type",
+      "results": {
+        "mago": {
+          "case": "generics/class-template-substitution-member-type",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "non-existent-method",
+              "message": "Method `bark` does not exist on type `Bench\\Generics\\ClassTemplateSubstitutionMemberType\\Cat`.",
+              "file": "cases/generics/class-template-substitution-member-type/src/repro.php",
+              "line": 47,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.235,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "Box<Cat>::get() returns a Cat, which has no bark(): Call to undefined method Bench\\Generics\\ClassTemplateSubstitutionMemberType\\Cat::bark()\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/covariant-template-in-write-position",
+      "domain": "generics",
+      "rule_class": "template-variance-violation",
+      "basis": "runtime_proof",
+      "path": "cases/generics/covariant-template-in-write-position",
+      "results": {
+        "mago": {
+          "case": "generics/covariant-template-in-write-position",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-template-parameter",
+              "message": "Covariant template parameter `T` cannot appear in a parameter position.",
+              "file": "cases/generics/covariant-template-in-write-position/src/repro.php",
+              "line": 30,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.199,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "put_cat() stored a Cat in a Bag<Dog> through the covariant widening; adopt() failed on its Dog return type: Bench\\Generics\\CovariantTemplateInWritePosition\\adopt(): Return value must be of type Bench\\Generics\\CovariantTemplateInWritePosition\\Dog, Bench\\Generics\\CovariantTemplateInWritePosition\\Cat returned\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/template-bound-violation",
+      "domain": "generics",
+      "rule_class": "template-constraint-violation",
+      "basis": "runtime_proof",
+      "path": "cases/generics/template-bound-violation",
+      "results": {
+        "mago": {
+          "case": "generics/template-bound-violation",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "invalid-argument@21"
+          ],
+          "diagnostics": [
+            {
+              "code": "template-constraint-violation",
+              "message": "Argument type mismatch for template `T`.",
+              "file": "cases/generics/template-bound-violation/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Generics\\TemplateBoundViolation\\count_all`: expected `('T.bench\\generics\\templateboundviolation\\count_all() extends Countable)`, but found `list{int(1), int(2), int(3)}`.",
+              "file": "cases/generics/template-bound-violation/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.18,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "[1,2,3] instanceof Countable is false while count_all([1,2,3]) = 3: the bound is violated, not the body\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/template-inference-from-argument",
+      "domain": "generics",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/template-inference-from-argument",
+      "results": {
+        "mago": {
+          "case": "generics/template-inference-from-argument",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `strlen`: expected `string`, but found `int(5)`.",
+              "file": "cases/generics/template-inference-from-argument/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.211,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "strlen(identity('abc')) = 3; strlen(identity(5)) throws: strlen(): Argument #1 ($string) must be of type string, int given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/array-filter-string-callable-loses-list",
+      "domain": "legacy-patterns",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/array-filter-string-callable-loses-list",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/array-filter-string-callable-loses-list",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\LegacyPatterns\\ArrayFilterStringCallableLosesList\\accept_list_of_ints`: expected `list<int>`, but possibly received `array<non-negative-int, int>`.",
+              "file": "cases/legacy-patterns/array-filter-string-callable-loses-list/src/repro.php",
+              "line": 22,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.212,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array_filter() kept key 1 and produced a non-list: array (\n  1 => 1,\n)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/catalog-mago-af46b0f735b875e1a546",
+      "domain": "legacy-patterns",
+      "rule_class": "undefined-variable",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/catalog-mago-af46b0f735b875e1a546",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-iterator@10, mixed-argument@10, mixed-assignment@10, undefined-variable@10, undefined-variable@7",
+          "missing": [],
+          "unexpected": [
+            "invalid-iterator@10",
+            "mixed-argument@10",
+            "mixed-assignment@10",
+            "undefined-variable@10",
+            "undefined-variable@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "undefined-variable",
+              "message": "Undefined variable: `$c`.",
+              "file": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            },
+            {
+              "code": "undefined-variable",
+              "message": "Undefined variable: `$arr`.",
+              "file": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-iterator",
+              "message": "The expression provided to `foreach` is not iterable. It resolved to type `mixed`, which is not iterable.",
+              "file": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-assignment",
+              "message": "Assigning `mixed` type to a variable may lead to unexpected behavior.",
+              "file": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546/src/repro.php",
+              "line": 10,
+              "severity": "warning"
+            },
+            {
+              "code": "mixed-argument",
+              "message": "Invalid argument type for argument #1 of `strtoupper`: expected `string`, but found `mixed`.",
+              "file": "cases/legacy-patterns/catalog-mago-af46b0f735b875e1a546/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.233,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/catalog-mago-ea6e3e02fc81b5208281",
+      "domain": "legacy-patterns",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/catalog-mago-ea6e3e02fc81b5208281",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/catalog-mago-ea6e3e02fc81b5208281",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.205,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/catalog-psalm-6c129980869ba963c7aa",
+      "domain": "legacy-patterns",
+      "rule_class": "property.notFound",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/catalog-psalm-6c129980869ba963c7aa",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/catalog-psalm-6c129980869ba963c7aa",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): non-existent-property@7",
+          "missing": [],
+          "unexpected": [
+            "non-existent-property@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "non-existent-property",
+              "message": "Property `$label` does not exist on class `Bag`.",
+              "file": "cases/legacy-patterns/catalog-psalm-6c129980869ba963c7aa/src/probe.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.243,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/count-on-iterable",
+      "domain": "legacy-patterns",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/count-on-iterable",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/count-on-iterable",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `count`: expected `Countable|array<array-key, mixed>`, but possibly received `iterable<int, string>`.",
+              "file": "cases/legacy-patterns/count-on-iterable/src/repro.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.222,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "count() rejected a Generator: count(): Argument #1 ($value) must be of type Countable|array, Generator given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/loose-comparison-with-zero",
+      "domain": "legacy-patterns",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/loose-comparison-with-zero",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/loose-comparison-with-zero",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "impossible-condition@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `==` comparison: left-hand side is never equal to right-hand side.",
+              "file": "cases/legacy-patterns/loose-comparison-with-zero/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/legacy-patterns/loose-comparison-with-zero/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.186,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "'abc' == 0 evaluated to false and legacy_flag_is_set() returned false\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-011e4b9469d7500de1f2",
+      "domain": "narrowing",
+      "rule_class": "possibly-undefined-variable",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-011e4b9469d7500de1f2",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-011e4b9469d7500de1f2",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "mixed-return-statement@10"
+          ],
+          "diagnostics": [
+            {
+              "code": "undefined-variable",
+              "message": "Undefined variable: `$ready`.",
+              "file": "cases/narrowing/catalog-mago-011e4b9469d7500de1f2/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `probe`. Saw type `mixed`.",
+              "file": "cases/narrowing/catalog-mago-011e4b9469d7500de1f2/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.201,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-1b312aa116cfe2b77850",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-1b312aa116cfe2b77850",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-1b312aa116cfe2b77850",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `stdClass`) will always evaluate to true.",
+              "file": "cases/narrowing/catalog-mago-1b312aa116cfe2b77850/src/repro.php",
+              "line": 5,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.22,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-213d169182afe4bafef8",
+      "domain": "narrowing",
+      "rule_class": "method.notFound",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-213d169182afe4bafef8",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-213d169182afe4bafef8",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-return-statement@7, mixed-return-statement@8, non-existent-method@7, non-existent-method@8",
+          "missing": [],
+          "unexpected": [
+            "mixed-return-statement@7",
+            "mixed-return-statement@8",
+            "non-existent-method@7",
+            "non-existent-method@8"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "non-existent-method",
+              "message": "Method `left` does not exist on type `Right`.",
+              "file": "cases/narrowing/catalog-mago-213d169182afe4bafef8/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `probe`. Saw type `mixed`.",
+              "file": "cases/narrowing/catalog-mago-213d169182afe4bafef8/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            },
+            {
+              "code": "non-existent-method",
+              "message": "Method `right` does not exist on type `Left`.",
+              "file": "cases/narrowing/catalog-mago-213d169182afe4bafef8/src/repro.php",
+              "line": 8,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `probe`. Saw type `mixed`.",
+              "file": "cases/narrowing/catalog-mago-213d169182afe4bafef8/src/repro.php",
+              "line": 8,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.206,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-28273499247a04f959b8",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-28273499247a04f959b8",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-28273499247a04f959b8",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "mixed-operand@5"
+          ],
+          "diagnostics": [
+            {
+              "code": "mixed-operand",
+              "message": "Left operand in `&&` operation has `mixed` type.",
+              "file": "cases/narrowing/catalog-mago-28273499247a04f959b8/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is always truthy and right operand is evaluated.",
+              "file": "cases/narrowing/catalog-mago-28273499247a04f959b8/src/repro.php",
+              "line": 5,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.204,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-3c721332594e39bdab90",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-3c721332594e39bdab90",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-3c721332594e39bdab90",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): redundant-condition",
+          "missing": [
+            "redundant-condition"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.208,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-43b57ad31a5d31bb2f4d",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-43b57ad31a5d31bb2f4d",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "redundant-logical-operation@4",
+            "redundant-logical-operation@4",
+            "redundant-logical-operation@4",
+            "redundant-logical-operation@4",
+            "redundant-condition@4"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `!==` comparison: left-hand side is always not identical to right-hand side.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `!==` comparison: left-hand side is always not identical to right-hand side.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is always truthy and right operand is evaluated.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is evaluated and right operand is always truthy.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `!==` comparison: left-hand side is always not identical to right-hand side.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is always truthy and right operand is evaluated.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is evaluated and right operand is always truthy.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/narrowing/catalog-mago-43b57ad31a5d31bb2f4d/src/repro.php",
+              "line": 4,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.194,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-48e2336d00fe4ea5a90e",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-48e2336d00fe4ea5a90e",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-48e2336d00fe4ea5a90e",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@5",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `strtoupper`: expected `string`, but possibly received `int|string`.",
+              "file": "cases/narrowing/catalog-mago-48e2336d00fe4ea5a90e/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `strtoupper`: expected `string`, but possibly received `float|string`.",
+              "file": "cases/narrowing/catalog-mago-48e2336d00fe4ea5a90e/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.187,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-7d48310c1ee3d27f86fb",
+      "domain": "narrowing",
+      "rule_class": "possibly-undefined-variable",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-7d48310c1ee3d27f86fb",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-7d48310c1ee3d27f86fb",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): possibly-undefined-variable",
+          "missing": [
+            "possibly-undefined-variable"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.193,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-a46fe274608e52136bea",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-a46fe274608e52136bea",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-a46fe274608e52136bea",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "mixed-assignment@6",
+            "mixed-assignment@7"
+          ],
+          "diagnostics": [
+            {
+              "code": "mixed-assignment",
+              "message": "Assigning `mixed` type to a variable may lead to unexpected behavior.",
+              "file": "cases/narrowing/catalog-mago-a46fe274608e52136bea/src/repro.php",
+              "line": 6,
+              "severity": "warning"
+            },
+            {
+              "code": "mixed-assignment",
+              "message": "Assigning `mixed` type to a variable may lead to unexpected behavior.",
+              "file": "cases/narrowing/catalog-mago-a46fe274608e52136bea/src/repro.php",
+              "line": 7,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.231,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-ac60f1cdd2c628cc61fc",
+      "domain": "narrowing",
+      "rule_class": "method.notFound",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-ac60f1cdd2c628cc61fc",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-ac60f1cdd2c628cc61fc",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-return-statement@7",
+          "missing": [],
+          "unexpected": [
+            "mixed-return-statement@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "non-existent-method",
+              "message": "Method `right` does not exist on type `Left`.",
+              "file": "cases/narrowing/catalog-mago-ac60f1cdd2c628cc61fc/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `probe`. Saw type `mixed`.",
+              "file": "cases/narrowing/catalog-mago-ac60f1cdd2c628cc61fc/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.208,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-e5b2d1e6e25c64063071",
+      "domain": "narrowing",
+      "rule_class": "possibly-undefined-variable",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-e5b2d1e6e25c64063071",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-e5b2d1e6e25c64063071",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.193,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-e65aa880dfdaf921f063",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-e65aa880dfdaf921f063",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-e65aa880dfdaf921f063",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.202,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-mago-ea8b8b0683bd66f27f4f",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-mago-ea8b8b0683bd66f27f4f",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-mago-ea8b8b0683bd66f27f4f",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.218,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0",
+      "domain": "narrowing",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): less-specific-return-statement@6",
+          "missing": [],
+          "unexpected": [
+            "less-specific-return-statement@6"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "less-specific-return-statement",
+              "message": "Returned type `Throwable` is less specific than the declared return type `Error|null` for function `remaining`.",
+              "file": "cases/narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0/src/repro.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.215,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-phpstan-2a3506b6815e78d94aa5",
+      "domain": "narrowing",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-phpstan-2a3506b6815e78d94aa5",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-phpstan-2a3506b6815e78d94aa5",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-return-statement@10",
+          "missing": [],
+          "unexpected": [
+            "mixed-return-statement@10"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `checked`. Saw type `mixed`.",
+              "file": "cases/narrowing/catalog-phpstan-2a3506b6815e78d94aa5/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.217,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-phpstan-51152d85f829e8534475",
+      "domain": "narrowing",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-phpstan-51152d85f829e8534475",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-phpstan-51152d85f829e8534475",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.204,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-phpstan-912f700441dc19e2b58b",
+      "domain": "narrowing",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-phpstan-912f700441dc19e2b58b",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-phpstan-912f700441dc19e2b58b",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.19,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-psalm-924aac46207f32ed8ed5",
+      "domain": "narrowing",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-psalm-924aac46207f32ed8ed5",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-psalm-924aac46207f32ed8ed5",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): invalid-return-statement@7",
+          "missing": [],
+          "unexpected": [
+            "invalid-return-statement@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `positive`: expected `positive-int`, but found `int`.",
+              "file": "cases/narrowing/catalog-psalm-924aac46207f32ed8ed5/src/fixture.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.19,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-psalm-cd294fcb8e014ab18e3e",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-psalm-cd294fcb8e014ab18e3e",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-psalm-cd294fcb8e014ab18e3e",
+          "tool": "mago",
+          "verdict": "mixed",
+          "detail": "missing impossible-condition; unexpected redundant-docblock-type@7",
+          "missing": [
+            "impossible-condition"
+          ],
+          "unexpected": [
+            "redundant-docblock-type@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-docblock-type",
+              "message": "Redundant docblock type for variable `$instance`.",
+              "file": "cases/narrowing/catalog-psalm-cd294fcb8e014ab18e3e/src/fixture.php",
+              "line": 7,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.189,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/catalog-psalm-de14e6754f8edfa65da8",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/catalog-psalm-de14e6754f8edfa65da8",
+      "results": {
+        "mago": {
+          "case": "narrowing/catalog-psalm-de14e6754f8edfa65da8",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): unknown-class-instantiation@5",
+          "missing": [],
+          "unexpected": [
+            "unknown-class-instantiation@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "unknown-class-instantiation",
+              "message": "Cannot determine the concrete class for instantiation.",
+              "file": "cases/narrowing/catalog-psalm-de14e6754f8edfa65da8/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.21,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-bool-guard-excludes-true",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-bool-guard-excludes-true",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-bool-guard-excludes-true",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.219,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 6 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-int-on-string",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-int-on-string",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-int-on-string",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "impossible-condition@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$value` of type `string` can never be `int`.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.202,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() stayed on the string path for 6 sample value(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-after-is-int",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-after-is-int",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-numeric-after-is-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "redundant-logical-operation@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-type-comparison",
+              "message": "Redundant type assertion: `$c` is already `int`.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is evaluated and right operand is always truthy.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.222,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_numeric() held for 7 int sample(s); classify() followed is_int() for 16 input(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-guard-excludes-int",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-guard-excludes-int",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-numeric-guard-excludes-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.215,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 14 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/negated-instanceof-unrelated-class",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/negated-instanceof-unrelated-class",
+      "results": {
+        "mago": {
+          "case": "narrowing/negated-instanceof-unrelated-class",
+          "tool": "mago",
+          "verdict": "divergence",
+          "detail": "Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately.",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.202,
+          "php": "8.4.26",
+          "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "Alpha's ancestors (none) exclude Beta; is_not_beta() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/object-is-always-truthy",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/object-is-always-truthy",
+      "results": {
+        "mago": {
+          "case": "narrowing/object-is-always-truthy",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.258,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "5 object shape(s) cast to true; is_falsy() stayed on the live path\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/redundant-instanceof-in-condition",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/redundant-instanceof-in-condition",
+      "results": {
+        "mago": {
+          "case": "narrowing/redundant-instanceof-in-condition",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/narrowing/redundant-instanceof-in-condition/src/repro.php",
+              "line": 9,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.269,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "The ancestor check takes the true branch for the declared class and a subclass\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/redundant-instanceof-on-declared-class",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/redundant-instanceof-on-declared-class",
+      "results": {
+        "mago": {
+          "case": "narrowing/redundant-instanceof-on-declared-class",
+          "tool": "mago",
+          "verdict": "divergence",
+          "detail": "Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning.",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.284,
+          "php": "8.4.26",
+          "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "RuntimeException's parents are Exception; is_exception() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-mago-099feb9408203b5d7167",
+      "domain": "nullability",
+      "rule_class": "possibly-null-method-call",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-mago-099feb9408203b5d7167",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-mago-099feb9408203b5d7167",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.235,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-mago-12192c3c16be73f35ba7",
+      "domain": "nullability",
+      "rule_class": "possibly-null-property-fetch",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-mago-12192c3c16be73f35ba7",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-mago-12192c3c16be73f35ba7",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.235,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-0f19731e70a569c020bd",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-0f19731e70a569c020bd",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-0f19731e70a569c020bd",
+          "tool": "mago",
+          "verdict": "skipped",
+          "detail": "case targets PHP <= 8.2.99, running 8.4.26",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": null,
+          "duration_s": null,
+          "php": "8.4.26"
+        }
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-306c280bb8a6ca46a961",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-306c280bb8a6ca46a961",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-306c280bb8a6ca46a961",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.228,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-3df7186a1b833d024d52",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-3df7186a1b833d024d52",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-3df7186a1b833d024d52",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): falsable-return-statement@5, invalid-return-statement@5",
+          "missing": [],
+          "unexpected": [
+            "falsable-return-statement@5",
+            "invalid-return-statement@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "falsable-return-statement",
+              "message": "Function `knownDate` is declared to return `DateTimeImmutable` but possibly returns 'false' (inferred as `DateTimeImmutable|false`).",
+              "file": "cases/nullability/catalog-phpstan-3df7186a1b833d024d52/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `knownDate`: expected `DateTimeImmutable`, but found `DateTimeImmutable|false`.",
+              "file": "cases/nullability/catalog-phpstan-3df7186a1b833d024d52/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.187,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-3ecb74a1fba6668eac61",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-3ecb74a1fba6668eac61",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-3ecb74a1fba6668eac61",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.244,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-5588ff8af852e7139b7d",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-5588ff8af852e7139b7d",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-5588ff8af852e7139b7d",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-null-property-access@6",
+          "missing": [],
+          "unexpected": [
+            "possibly-null-property-access@6"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-null-property-access",
+              "message": "Attempting static access on a possibly `null` value.",
+              "file": "cases/nullability/catalog-phpstan-5588ff8af852e7139b7d/src/repro.php",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.237,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-5d813bb8b104d0c619ca",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-5d813bb8b104d0c619ca",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-5d813bb8b104d0c619ca",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-assignment@5, mixed-property-access@7, mixed-return-statement@7, possible-method-access-on-null@5",
+          "missing": [],
+          "unexpected": [
+            "mixed-assignment@5",
+            "mixed-property-access@7",
+            "mixed-return-statement@7",
+            "possible-method-access-on-null@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possible-method-access-on-null",
+              "message": "Attempting to call a method on `null`.",
+              "file": "cases/nullability/catalog-phpstan-5d813bb8b104d0c619ca/src/repro.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-assignment",
+              "message": "Assigning `mixed` type to a variable may lead to unexpected behavior.",
+              "file": "cases/nullability/catalog-phpstan-5d813bb8b104d0c619ca/src/repro.php",
+              "line": 5,
+              "severity": "warning"
+            },
+            {
+              "code": "mixed-property-access",
+              "message": "Attempting to access a property on a non-object type (`nonnull`).",
+              "file": "cases/nullability/catalog-phpstan-5d813bb8b104d0c619ca/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `attribute`. Saw type `mixed`.",
+              "file": "cases/nullability/catalog-phpstan-5d813bb8b104d0c619ca/src/repro.php",
+              "line": 7,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.226,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-68486e793e9b077839dc",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-68486e793e9b077839dc",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-68486e793e9b077839dc",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.21,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-ccdd6746fb9cf55bd2d7",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-ccdd6746fb9cf55bd2d7",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-ccdd6746fb9cf55bd2d7",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.198,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-d1f39552939e65fa35c3",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-d1f39552939e65fa35c3",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-d1f39552939e65fa35c3",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): falsable-return-statement@4, invalid-return-statement@4",
+          "missing": [],
+          "unexpected": [
+            "falsable-return-statement@4",
+            "invalid-return-statement@4"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "falsable-return-statement",
+              "message": "Function `knownDate` is declared to return `DateTimeImmutable` but possibly returns 'false' (inferred as `DateTimeImmutable|false`).",
+              "file": "cases/nullability/catalog-phpstan-d1f39552939e65fa35c3/src/repro.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `knownDate`: expected `DateTimeImmutable`, but found `DateTimeImmutable|false`.",
+              "file": "cases/nullability/catalog-phpstan-d1f39552939e65fa35c3/src/repro.php",
+              "line": 4,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.201,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-phpstan-f1455a36807cc2badc75",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-phpstan-f1455a36807cc2badc75",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-phpstan-f1455a36807cc2badc75",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-null-property-access@10",
+          "missing": [],
+          "unexpected": [
+            "possibly-null-property-access@10"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-null-property-access",
+              "message": "Attempting to access a property on a possibly `null` value.",
+              "file": "cases/nullability/catalog-phpstan-f1455a36807cc2badc75/src/repro.php",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.215,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-psalm-b832ee21bb9a15b5e6bc",
+      "domain": "nullability",
+      "rule_class": "method.nonObject",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-psalm-b832ee21bb9a15b5e6bc",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-psalm-b832ee21bb9a15b5e6bc",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): mixed-return-statement@5",
+          "missing": [],
+          "unexpected": [
+            "mixed-return-statement@5"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possible-method-access-on-null",
+              "message": "Attempting to call a method on `null`.",
+              "file": "cases/nullability/catalog-psalm-b832ee21bb9a15b5e6bc/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "mixed-return-statement",
+              "message": "Could not infer a precise return type for function `unsafe`. Saw type `mixed`.",
+              "file": "cases/nullability/catalog-psalm-b832ee21bb9a15b5e6bc/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.215,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-psalm-c517a982a06f57ea084b",
+      "domain": "nullability",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-psalm-c517a982a06f57ea084b",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-psalm-c517a982a06f57ea084b",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): nullable-return-statement@4, redundant-comparison@7",
+          "missing": [],
+          "unexpected": [
+            "nullable-return-statement@4",
+            "redundant-comparison@7"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "nullable-return-statement",
+              "message": "Function `maybe` is declared to return `stdClass` but possibly returns a nullable value (inferred as `null|stdClass`).",
+              "file": "cases/nullability/catalog-psalm-c517a982a06f57ea084b/src/fixture.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-return-statement",
+              "message": "Invalid return type for function `maybe`: expected `stdClass`, but found `null|stdClass`.",
+              "file": "cases/nullability/catalog-psalm-c517a982a06f57ea084b/src/fixture.php",
+              "line": 4,
+              "severity": "error"
+            },
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `!==` comparison: left-hand side is always not identical to right-hand side.",
+              "file": "cases/nullability/catalog-psalm-c517a982a06f57ea084b/src/fixture.php",
+              "line": 7,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.241,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/catalog-psalm-fe044cea9130c52f9d28",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/catalog-psalm-fe044cea9130c52f9d28",
+      "results": {
+        "mago": {
+          "case": "nullability/catalog-psalm-fe044cea9130c52f9d28",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.209,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/elseif-else-return-keeps-possible-null",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/elseif-else-return-keeps-possible-null",
+      "results": {
+        "mago": {
+          "case": "nullability/elseif-else-return-keeps-possible-null",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-comparison@23",
+          "missing": [],
+          "unexpected": [
+            "redundant-comparison@23"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `===` comparison: left-hand side is never identical to right-hand side.",
+              "file": "cases/nullability/elseif-else-return-keeps-possible-null/src/repro.php",
+              "line": 23,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.222,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_null_after() reached the final check with null in 4 case(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/is-null-guard-narrows-away-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/is-null-guard-narrows-away-null",
+      "results": {
+        "mago": {
+          "case": "nullability/is-null-guard-narrows-away-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.218,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 4 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/loose-null-guard-keeps-empty-string",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/loose-null-guard-keeps-empty-string",
+      "results": {
+        "mago": {
+          "case": "nullability/loose-null-guard-keeps-empty-string",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-comparison@15, redundant-condition@15",
+          "missing": [],
+          "unexpected": [
+            "redundant-comparison@15",
+            "redundant-condition@15"
+          ],
+          "acknowledged": [
+            "possibly-null-operand@14",
+            "null-operand@14"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `==` comparison might be `null` (type `null|string`).",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "warning"
+            },
+            {
+              "code": "null-operand",
+              "message": "Right operand in `==` comparison is `null`.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "error"
+            },
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `===` comparison: left-hand side is always identical to right-hand side.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.226,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() distinguished null from '' on 4 sample(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/relational-comparison-excludes-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/relational-comparison-excludes-null",
+      "results": {
+        "mago": {
+          "case": "nullability/relational-comparison-excludes-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "possibly-null-operand@16"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `>` comparison might be `null` (type `int|null`).",
+              "file": "cases/nullability/relational-comparison-excludes-null/src/repro.php",
+              "line": 16,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.223,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "null > 0 is false; quacks() entered the branch for positive ints only\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c",
+      "domain": "phpdoc-extensions",
+      "rule_class": "invalid-docblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-docblock",
+          "missing": [
+            "invalid-docblock"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.206,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f",
+      "domain": "phpdoc-extensions",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.311,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-phpstan-e134f5937b2ca742f51c",
+      "domain": "phpdoc-extensions",
+      "rule_class": "return.type",
+      "basis": "runtime_proof",
+      "path": "cases/phpdoc-extensions/catalog-phpstan-e134f5937b2ca742f51c",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-phpstan-e134f5937b2ca742f51c",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.252,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-046e3c888eee140464f5",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-046e3c888eee140464f5",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-046e3c888eee140464f5",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.263,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-06716895300af389cfc9",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_test",
+      "path": "cases/phpdoc-extensions/catalog-psalm-06716895300af389cfc9",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-06716895300af389cfc9",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.352,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-docblock",
+          "missing": [
+            "invalid-docblock"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.332,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.391,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c",
+      "domain": "phpdoc-extensions",
+      "rule_class": "NamedArgumentNotAllowed",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "named-argument-not-allowed",
+              "message": "Named arguments are not allowed for `Customer::__construct`.",
+              "file": "cases/phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c/src/probe.php",
+              "line": 8,
+              "severity": "error"
+            },
+            {
+              "code": "named-argument-not-allowed",
+              "message": "Named arguments are not allowed for `Customer::__construct`.",
+              "file": "cases/phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c/src/probe.php",
+              "line": 8,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.31,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5",
+      "domain": "phpdoc-extensions",
+      "rule_class": "property.defaultValue",
+      "basis": "runtime_proof",
+      "path": "cases/phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.283,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-docblock",
+          "missing": [
+            "invalid-docblock"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.249,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-a02980c52843949bdecb",
+      "domain": "phpdoc-extensions",
+      "rule_class": "InvalidDocblock",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-a02980c52843949bdecb",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-a02980c52843949bdecb",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-docblock",
+          "missing": [
+            "invalid-docblock"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.212,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d",
+      "domain": "phpdoc-extensions",
+      "rule_class": "NamedArgumentNotAllowed",
+      "basis": "upstream_docs",
+      "path": "cases/phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d",
+      "results": {
+        "mago": {
+          "case": "phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "named-argument-not-allowed",
+              "message": "Named arguments are not allowed for `positional`.",
+              "file": "cases/phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            },
+            {
+              "code": "named-argument-not-allowed",
+              "message": "Named arguments are not allowed for `positional`.",
+              "file": "cases/phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d/src/fixture.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.218,
+          "php": "8.4.26"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    }
+  ],
+  "summary": {
+    "mago": {
+      "ok": 89,
+      "false_positive": 39,
+      "false_negative": 10,
+      "mixed": 1,
+      "divergence": 2,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 1,
+      "judged": 139,
+      "cases": 142,
+      "agreement": 64.0,
+      "defects": 50,
+      "by_domain": {
+        "arrays": {
+          "ok": 14,
+          "false_positive": 5,
+          "false_negative": 3,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "assignability": {
+          "ok": 15,
+          "false_positive": 5,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "callables": {
+          "ok": 6,
+          "false_positive": 6,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "dead-code": {
+          "ok": 5,
+          "false_positive": 0,
+          "false_negative": 1,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "enums": {
+          "ok": 3,
+          "false_positive": 3,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "generics": {
+          "ok": 9,
+          "false_positive": 2,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "legacy-patterns": {
+          "ok": 4,
+          "false_positive": 2,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "narrowing": {
+          "ok": 16,
+          "false_positive": 7,
+          "false_negative": 2,
+          "mixed": 1,
+          "divergence": 2,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "nullability": {
+          "ok": 9,
+          "false_positive": 9,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 1
+        },
+        "phpdoc-extensions": {
+          "ok": 8,
+          "false_positive": 0,
+          "false_negative": 4,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "divergences": [
+    {
+      "case": "narrowing/negated-instanceof-unrelated-class",
+      "tool": "mago",
+      "reason": "Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
+    },
+    {
+      "case": "narrowing/redundant-instanceof-on-declared-class",
+      "tool": "mago",
+      "reason": "Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
+    }
+  ]
+}

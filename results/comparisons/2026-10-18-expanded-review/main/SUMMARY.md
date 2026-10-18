@@ -1,0 +1,36 @@
+# Correctness summary
+
+- Run: `main`
+- Started: 2026-10-18T20:34:14Z (UTC)
+- mago: mago 1.57.0
+- PHP: 8.4.26
+- Cases: 142 (valid: 142)
+- Runtime checks passed: 141/142
+
+`agreement` = ok / judged, where judged = ok + false positives + false negatives + mixed. By-design divergences, tool errors, case errors and skips are excluded and listed separately.
+
+| Tool | Cases | Judged | ok | FP | FN | mixed | by-design | tool error | case error | skipped | agreement |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| mago | 142 | 139 | 104 | 25 | 8 | 2 | 2 | 0 | 0 | 1 | 74.8% |
+
+## Per domain
+
+| Domain | Tool | Cases | ok | FP | FN | by-design |
+| --- | --- | --- | --- | --- | --- | --- |
+| arrays | mago | 22 | 17 | 2 | 3 | 0 |
+| assignability | mago | 20 | 17 | 3 | 0 | 0 |
+| callables | mago | 12 | 9 | 3 | 0 | 0 |
+| dead-code | mago | 6 | 5 | 0 | 0 | 0 |
+| enums | mago | 6 | 4 | 2 | 0 | 0 |
+| generics | mago | 11 | 10 | 1 | 0 | 0 |
+| legacy-patterns | mago | 6 | 4 | 2 | 0 | 0 |
+| narrowing | mago | 28 | 19 | 6 | 0 | 2 |
+| nullability | mago | 19 | 11 | 6 | 1 | 0 |
+| phpdoc-extensions | mago | 12 | 8 | 0 | 4 | 0 |
+
+## Recorded by-design divergences
+
+| Case | Tool | Reason | Citation |
+| --- | --- | --- | --- |
+| `narrowing/negated-instanceof-unrelated-class` | mago | Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately. | https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106 |
+| `narrowing/redundant-instanceof-on-declared-class` | mago | Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning. | https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17 |
