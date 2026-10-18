@@ -56,7 +56,7 @@
 | `callables/catalog-psalm-f280033f57db8a07358a` | callables | InvalidDocblock | upstream_docs (runtime) | ok |
 | `callables/is-object-on-callable-parameter` | callables | argument.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): impossible-condition@24, impossible-type-co…</sub> |
 | `callables/negated-is-callable-removes-function-name` | callables | argument.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): possibly-invalid-argument@24</sub> |
-| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | dead-code | unreachable-code | runtime_proof (runtime) | **FN** <sub>missing required diagnostic(s): unreachable-code</sub> |
+| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | dead-code | unreachable-code | runtime_proof (runtime) | **FN** <sub>missing required diagnostic(s): unreachable-switch-default</sub> |
 | `dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04` | dead-code | unused-parameter | runtime_proof (runtime) | ok |
 | `dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3` | dead-code | unused-parameter | runtime_proof (runtime) | ok |
 | `dead-code/catalog-phpstan-958a009704557ee9b44f` | dead-code | unused-parameter | runtime_proof (runtime) | ok |

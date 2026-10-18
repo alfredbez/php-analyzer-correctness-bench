@@ -68,14 +68,6 @@ Each entry is a case file a maintainer (or their agent) can run directly; the ra
 - missing: `ParadoxicalCondition`
 - run it: `python3 harness/bench.py run --case dead-code/catalog-mago-c0e93f2edb2c2610c6e8 --tool psalm` (case directory: `cases/dead-code/catalog-mago-c0e93f2edb2c2610c6e8`)
 
-## `dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04` - false_positive
-
-- rule class: `unused-parameter`, domain: `dead-code`
-- ground truth basis: `runtime_proof`
-- what the tool did: unexpected diagnostic(s): MixedAssignment@8
-- reported but not justified: `MixedAssignment@8`
-- run it: `python3 harness/bench.py run --case dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04 --tool psalm` (case directory: `cases/dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04`)
-
 ## `enums/try-from-result-nullability` - false_positive
 
 - rule class: `argument.type`, domain: `enums`
@@ -147,14 +139,6 @@ Each entry is a case file a maintainer (or their agent) can run directly; the ra
 - what the tool did: unexpected diagnostic(s): MixedReturnStatement@10
 - reported but not justified: `MixedReturnStatement@10`
 - run it: `python3 harness/bench.py run --case narrowing/catalog-phpstan-2a3506b6815e78d94aa5 --tool psalm` (case directory: `cases/narrowing/catalog-phpstan-2a3506b6815e78d94aa5`)
-
-## `narrowing/catalog-psalm-924aac46207f32ed8ed5` - false_positive
-
-- rule class: `return.type`, domain: `narrowing`
-- ground truth basis: `runtime_proof`
-- what the tool did: unexpected diagnostic(s): RedundantCastGivenDocblockType@7
-- reported but not justified: `RedundantCastGivenDocblockType@7`
-- run it: `python3 harness/bench.py run --case narrowing/catalog-psalm-924aac46207f32ed8ed5 --tool psalm` (case directory: `cases/narrowing/catalog-psalm-924aac46207f32ed8ed5`)
 
 ## `narrowing/catalog-psalm-cd294fcb8e014ab18e3e` - mixed
 

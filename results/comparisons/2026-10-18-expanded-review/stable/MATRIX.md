@@ -56,8 +56,8 @@
 | `callables/catalog-psalm-f280033f57db8a07358a` | callables | InvalidDocblock | upstream_docs (runtime) | ok | ok | ok |
 | `callables/is-object-on-callable-parameter` | callables | argument.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): impossible-condition@24, impossible-type-co…</sub> | ok | ok |
 | `callables/negated-is-callable-removes-function-name` | callables | argument.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): possibly-invalid-argument@24</sub> | ok | ok |
-| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | dead-code | unreachable-code | runtime_proof (runtime) | **FN** <sub>missing required diagnostic(s): unreachable-code</sub> | **FN** <sub>missing required diagnostic(s): deadCode.unreachable</sub> | **FN** <sub>missing required diagnostic(s): ParadoxicalCondition</sub> |
-| `dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04` | dead-code | unused-parameter | runtime_proof (runtime) | ok | ok | **FP** <sub>unexpected diagnostic(s): MixedAssignment@8</sub> |
+| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | dead-code | unreachable-code | runtime_proof (runtime) | **FN** <sub>missing required diagnostic(s): unreachable-switch-default</sub> | **FN** <sub>missing required diagnostic(s): deadCode.unreachable</sub> | **FN** <sub>missing required diagnostic(s): ParadoxicalCondition</sub> |
+| `dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04` | dead-code | unused-parameter | runtime_proof (runtime) | ok | ok | ok |
 | `dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3` | dead-code | unused-parameter | runtime_proof (runtime) | ok | ok | ok |
 | `dead-code/catalog-phpstan-958a009704557ee9b44f` | dead-code | unused-parameter | runtime_proof (runtime) | ok | ok | ok |
 | `dead-code/catalog-psalm-2e01e321c4dcfa1729a2` | dead-code | RedundantCast | runtime_proof (runtime) | ok | **FN** <sub>missing required diagnostic(s): cast.useless</sub> | ok |
@@ -102,7 +102,7 @@
 | `narrowing/catalog-phpstan-2a3506b6815e78d94aa5` | narrowing | return.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): mixed-return-statement@10</sub> | **FP** <sub>unexpected diagnostic(s): return.type@10</sub> | **FP** <sub>unexpected diagnostic(s): MixedReturnStatement@10</sub> |
 | `narrowing/catalog-phpstan-51152d85f829e8534475` | narrowing | return.type | runtime_proof (runtime) | ok | ok | ok |
 | `narrowing/catalog-phpstan-912f700441dc19e2b58b` | narrowing | return.type | runtime_proof (runtime) | ok | ok | ok |
-| `narrowing/catalog-psalm-924aac46207f32ed8ed5` | narrowing | return.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): invalid-return-statement@7</sub> | ok | **FP** <sub>unexpected diagnostic(s): RedundantCastGivenDocblockType@7</sub> |
+| `narrowing/catalog-psalm-924aac46207f32ed8ed5` | narrowing | return.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): invalid-return-statement@7</sub> | ok | ok |
 | `narrowing/catalog-psalm-cd294fcb8e014ab18e3e` | narrowing | impossible-condition | runtime_proof (runtime) | **FP+FN** <sub>missing impossible-condition; unexpected redundant-docblock-type@7</sub> | **FN** <sub>missing required diagnostic(s): function.impossibleType</sub> | **FP+FN** <sub>missing TypeDoesNotContainType; unexpected UnsafeInstantiation@8</sub> |
 | `narrowing/catalog-psalm-de14e6754f8edfa65da8` | narrowing | argument.type | runtime_proof (runtime) | **FP** <sub>unexpected diagnostic(s): unknown-class-instantiation@5</sub> | ok | **FP** <sub>unexpected diagnostic(s): MixedMethodCall@5</sub> |
 | `narrowing/is-bool-guard-excludes-true` | narrowing | argument.type | runtime_proof (runtime) | ok | ok | ok |

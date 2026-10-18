@@ -92,15 +92,6 @@ Each entry is a case file a maintainer (or their agent) can run directly; the ra
 - reported but not justified: `mixed-argument@10`
 - run it: `python3 harness/bench.py run --case callables/catalog-phpstan-71ff2ec3ba7e1627cfa7 --tool mago` (case directory: `cases/callables/catalog-phpstan-71ff2ec3ba7e1627cfa7`)
 
-## `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` - mixed
-
-- rule class: `unreachable-code`, domain: `dead-code`
-- ground truth basis: `runtime_proof`
-- what the tool did: missing unreachable-code; unexpected unreachable-switch-default@8
-- missing: `unreachable-code`
-- reported but not justified: `unreachable-switch-default@8`
-- run it: `python3 harness/bench.py run --case dead-code/catalog-mago-c0e93f2edb2c2610c6e8 --tool mago` (case directory: `cases/dead-code/catalog-mago-c0e93f2edb2c2610c6e8`)
-
 ## `enums/catalog-psalm-c013f91ca882f9f18a36` - false_positive
 
 - rule class: `argument.type`, domain: `enums`

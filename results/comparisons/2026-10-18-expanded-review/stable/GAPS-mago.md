@@ -160,8 +160,8 @@ Each entry is a case file a maintainer (or their agent) can run directly; the ra
 
 - rule class: `unreachable-code`, domain: `dead-code`
 - ground truth basis: `runtime_proof`
-- what the tool did: missing required diagnostic(s): unreachable-code
-- missing: `unreachable-code`
+- what the tool did: missing required diagnostic(s): unreachable-switch-default
+- missing: `unreachable-switch-default`
 - run it: `python3 harness/bench.py run --case dead-code/catalog-mago-c0e93f2edb2c2610c6e8 --tool mago` (case directory: `cases/dead-code/catalog-mago-c0e93f2edb2c2610c6e8`)
 
 ## `enums/catalog-psalm-c013f91ca882f9f18a36` - false_positive

@@ -8,7 +8,7 @@ Not every expectation is desirable for every tool. FP/FN mean disagreement with 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Mago 1.54.0 | mago 1.54.0 | `1.54.0` | 89 / 139 | 39 | 10 | 1 | 3 |
 | Mago 1.57.0 · stable | mago 1.57.0 | `1.57.0` | 95 / 139 | 34 | 9 | 1 | 3 |
-| Mago main · bbabf3395981 | mago 1.57.0 | `bbabf3395981ace80b8043f9020c4f28d8a9a4b3` | 104 / 139 | 25 | 8 | 2 | 3 |
+| Mago main · bbabf3395981 | mago 1.57.0 | `bbabf3395981ace80b8043f9020c4f28d8a9a4b3` | 105 / 139 | 25 | 8 | 1 | 3 |
 
 ## historical → stable
 
@@ -91,7 +91,7 @@ Not every expectation is desirable for every tool. FP/FN mean disagreement with 
 | `callables/catalog-phpstan-71ff2ec3ba7e1627cfa7` | false_positive | false_positive | still_open |
 | `callables/is-object-on-callable-parameter` | false_positive | ok | fixed |
 | `callables/negated-is-callable-removes-function-name` | false_positive | ok | fixed |
-| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | false_negative | mixed | still_open |
+| `dead-code/catalog-mago-c0e93f2edb2c2610c6e8` | false_negative | ok | fixed |
 | `enums/catalog-psalm-c013f91ca882f9f18a36` | false_positive | false_positive | still_open |
 | `enums/try-from-result-nullability` | false_positive | false_positive | still_open |
 | `generics/catalog-phpstan-28d71ec402e5aaedb00e` | false_positive | false_positive | still_open |

@@ -1,7 +1,7 @@
 # Correctness summary
 
 - Run: `stable`
-- Started: 2026-10-18T20:46:32Z (UTC)
+- Started: 2026-10-18T21:05:39Z (UTC)
 - phpstan: PHPStan - PHP Static Analysis Tool 2.3.1
 - psalm: Psalm 6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c
 - mago: mago 1.57.0
@@ -15,7 +15,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | mago | 142 | 139 | 95 | 34 | 9 | 1 | 2 | 0 | 0 | 1 | 68.3% |
 | phpstan | 142 | 139 | 125 | 4 | 10 | 0 | 2 | 0 | 0 | 1 | 89.9% |
-| psalm | 142 | 140 | 112 | 20 | 7 | 1 | 1 | 0 | 0 | 1 | 80.0% |
+| psalm | 142 | 140 | 114 | 18 | 7 | 1 | 1 | 0 | 0 | 1 | 81.4% |
 
 ## Per domain
 
@@ -44,11 +44,11 @@
 | arrays | psalm | 22 | 19 | 1 | 2 | 0 |
 | assignability | psalm | 20 | 19 | 1 | 0 | 0 |
 | callables | psalm | 12 | 9 | 3 | 0 | 0 |
-| dead-code | psalm | 6 | 4 | 1 | 1 | 0 |
+| dead-code | psalm | 6 | 5 | 0 | 1 | 0 |
 | enums | psalm | 6 | 5 | 1 | 0 | 0 |
 | generics | psalm | 11 | 8 | 2 | 1 | 0 |
 | legacy-patterns | psalm | 6 | 3 | 1 | 2 | 0 |
-| narrowing | psalm | 28 | 22 | 4 | 0 | 1 |
+| narrowing | psalm | 28 | 23 | 3 | 0 | 1 |
 | nullability | psalm | 19 | 12 | 5 | 1 | 0 |
 | phpdoc-extensions | psalm | 12 | 11 | 1 | 0 | 0 |
 

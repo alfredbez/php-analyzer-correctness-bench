@@ -1,7 +1,7 @@
 # Correctness summary
 
 - Run: `historical`
-- Started: 2026-10-18T20:46:11Z (UTC)
+- Started: 2026-10-18T21:05:15Z (UTC)
 - mago: mago 1.54.0
 - PHP: 8.4.26
 - Cases: 142 (valid: 142)

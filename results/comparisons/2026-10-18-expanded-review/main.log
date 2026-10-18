@@ -1,7 +1,7 @@
 # Correctness summary
 
 - Run: `main`
-- Started: 2026-10-18T20:50:48Z (UTC)
+- Started: 2026-10-18T21:09:47Z (UTC)
 - mago: mago 1.57.0
 - PHP: 8.4.26
 - Cases: 142 (valid: 142)
@@ -11,7 +11,7 @@
 
 | Tool | Cases | Judged | ok | FP | FN | mixed | by-design | tool error | case error | skipped | agreement |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mago | 142 | 139 | 104 | 25 | 8 | 2 | 2 | 0 | 0 | 1 | 74.8% |
+| mago | 142 | 139 | 105 | 25 | 8 | 1 | 2 | 0 | 0 | 1 | 75.5% |
 
 ## Per domain
 
@@ -20,7 +20,7 @@
 | arrays | mago | 22 | 17 | 2 | 3 | 0 |
 | assignability | mago | 20 | 17 | 3 | 0 | 0 |
 | callables | mago | 12 | 9 | 3 | 0 | 0 |
-| dead-code | mago | 6 | 5 | 0 | 0 | 0 |
+| dead-code | mago | 6 | 6 | 0 | 0 | 0 |
 | enums | mago | 6 | 4 | 2 | 0 | 0 |
 | generics | mago | 11 | 10 | 1 | 0 | 0 |
 | legacy-patterns | mago | 6 | 4 | 2 | 0 | 0 |
