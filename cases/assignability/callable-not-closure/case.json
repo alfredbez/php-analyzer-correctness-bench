@@ -1,0 +1,61 @@
+{
+  "id": "assignability/callable-not-closure",
+  "title": "A callable is not assignable to Closure, although a Closure is a callable",
+  "domain": "assignability",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PHP's callable pseudo-type covers closures, strings and arrays, while \\Closure is one class. A value that is only known to be callable is therefore not assignable to a \\Closure parameter: 'phpversion' is callable but is not an instance of Closure, and both from_string_literal() and from_callable('strlen') throw a TypeError when they reach keep(). The asymmetric control is a real closure, which is accepted and returns.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.callable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "argument.type", "line": 14, "message_regex": "Closure" },
+        { "code": "argument.type", "line": 19, "message_regex": "Closure" }
+      ],
+      "forbidden": [
+        { "code": "argument.type", "line": 24 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "ArgumentTypeCoercion", "line": 14, "message_regex": "Closure" },
+        { "code": "ArgumentTypeCoercion", "line": 19, "message_regex": "Closure" }
+      ],
+      "forbidden": [
+        { "code": "ArgumentTypeCoercion", "line": 24 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "invalid-argument", "line": 14 },
+        { "code": "invalid-argument", "line": 19 }
+      ],
+      "forbidden": [
+        { "code": "invalid-argument", "line": 24 }
+      ]
+    }
+  },
+  "notes": "A green row kept as a regression guard: all three analyzers separate callable from Closure and report both the literal string (line 19, a definite violation) and the callable-typed parameter (line 14, where the value may be a string), while line 24 - an actual closure - stays silent for all three. The runtime script also shows that 'phpversion' really is usable as a callable (is_callable and call_user_func), so the case is about the class boundary, not about callability. Psalm calls the line-14 report ArgumentTypeCoercion rather than InvalidArgument, which is its own code for a coerced argument; that is a naming difference, not a disagreement about the fact.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "related_reproducer",
+        "path": "/home/abez/projects/mago-upstream-prep/repro/reconcile-callable/repro.php",
+        "note": "same callable-Must-be-reconciled-as-a-union theme; this fixture is a clean-room rewrite about the Closure boundary"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

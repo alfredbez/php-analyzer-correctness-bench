@@ -1,0 +1,26 @@
+{
+  "name": "bench/assignability-docblock-return-covariance",
+  "description": "An overriding method must not widen the inherited return type",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.3"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "2.3.1",
+    "vimeo/psalm": "6.20.0"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  },
+  "scripts": {
+    "analyze": [
+      "phpstan analyse --level=9 --no-progress src",
+      "psalm --no-progress --config=psalm.xml",
+      "mago analyze src"
+    ],
+    "runtime-check": "php runtime/check.php"
+  }
+}

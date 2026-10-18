@@ -1,0 +1,59 @@
+{
+  "id": "enums/try-from-result-nullability",
+  "title": "BackedEnum::tryFrom() is nullable, but not for a known backing literal",
+  "domain": "enums",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "BackedEnum::tryFrom() returns the case when the backing value is known and null otherwise. The fixture passes the literal 'active', which is Status::Active's backing value, so the result of that call is never null and passing it to the Status parameter is sound; passing the result of tryFrom($raw) for an arbitrary string is not, because that value can be null. The runtime script decides both directions: tryFrom('active') is Status::Active, tryFrom('nope') is null and label(null) throws a TypeError, while from('nope') throws ValueError instead of returning null.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/backedenum.tryfrom.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "argument.type", "line": 25, "message_regex": "Status\\|null" }
+      ],
+      "forbidden": [
+        { "code": "argument.type", "line": 20 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "PossiblyNullArgument", "line": 25 }
+      ],
+      "forbidden": [
+        { "code": "PossiblyNullArgument", "line": 20 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "possibly-null-argument", "line": 25 }
+      ],
+      "forbidden": [
+        { "code": "possibly-null-argument", "line": 20 }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 models tryFrom() conditionally on a literal argument and reports only the genuinely nullable call (line 25) - a correct row. Psalm 6.20.0 and Mago 1.57.0 report PossiblyNullArgument / possibly-null-argument on line 20 as well, where the runtime proof shows the value is Status::Active and can never be null; that report is the recorded false positive, and the forbidden predicate keeps the case honest instead of quietly widening the expectation. The line-20 claim is not a missing optional warning: the value is not merely usually non-null, it is decidable from the literal and the enum's backing values. PHPStan's own fixture tests/PHPStan/Analyser/nsrt/enums.php models the call with a variable subject as 'X|null', which is why the switch to a literal matters here.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_inference_fixture",
+        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enums.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "PHPStan asserts tryFrom() returns X|null for a variable subject"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

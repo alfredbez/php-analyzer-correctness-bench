@@ -1,0 +1,40 @@
+{
+  "id": "arrays/numeric-string-array-key",
+  "title": "A canonical numeric string offset addresses the integer array key, so both key guards are reachable",
+  "domain": "arrays",
+  "rule_class": "impossible-condition",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PHP casts an array key that is a canonical decimal integer string to int, so $data['10'] and $data[10] are one element. For [10 => 'kept'], array_key_exists('10', $data) and isset($data['10']) are both true and $data['10'] is 'kept'; neither guard is impossible and neither read is of type never. Non-canonical near misses ('10x', ' 10', '+10', '1.0') stay strings, so the claim is about canonical integers only.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.array.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "forbidden": [
+        { "code": "impossible-condition", "line": 12 },
+        { "code": "no-value", "line": 17 }
+      ]
+    }
+  },
+  "notes": "Mago 1.57.0 reports two diagnostics on code that demonstrably runs: impossible-condition on the array_key_exists('10', $data) guard and no-value on the guarded $data['10'] read, because its array-key reconciliation builds a string key where the shape carries the integer key 10. PHPStan 2.3.1 and Psalm 6.20.0 are silent. The runtime script is the neutral ground truth: it shows the string offset reaching the int key in both directions (read and write) and shows the non-canonical controls staying strings, so the guards are reachable and the reads are strings, not never. The pattern was taken from /home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php; the comments in that reproducer were treated as a lead, not as evidence, and the fixture here is a clean-room rewrite that only keeps the pattern.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "historical_reproducer",
+        "path": "/home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php",
+        "note": "pattern source only; re-derived from the language and the runtime"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

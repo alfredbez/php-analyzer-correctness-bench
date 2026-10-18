@@ -1,0 +1,56 @@
+{
+  "id": "assignability/docblock-return-covariance",
+  "title": "An overriding method must not widen the return type its parent documents",
+  "domain": "assignability",
+  "rule_class": "method.childReturnType",
+  "php": { "min": "8.3" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Shelter::adopt() documents @return Dog and BadShelter::adopt() documents @return Animal, returning a Cat. PHP enforces only the native signature (Animal -> Animal is legal), so the widening is silent until a caller that believes the parent's contract calls a Dog-only method: wake(new BadShelter()) throws Error because Cat has no bark(). The override is therefore not assignable to the parent contract it claims to implement.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.variance.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "unsupported",
+      "reason": "In this baseline configuration PHPStan deliberately suppresses maybe-compatible PHPDoc override checks: reportMaybesInMethodSignatures defaults to false. MethodSignatureRule emits method.childReturnType for this widening only with that optional flag enabled. This is an excluded configuration-scope difference, not evidence that PHPStan lacks the rule.",
+      "basis": "upstream_docs",
+      "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L115-L131"
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "LessSpecificImplementedReturnType", "line": 30, "line_tolerance": 4 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "incompatible-return-type", "line": 32, "line_tolerance": 4 }
+      ]
+    }
+  },
+  "notes": "Psalm 6.20.0 (LessSpecificImplementedReturnType) and Mago 1.57.0 (incompatible-return-type) report the widened override. PHPStan 2.3.1 is silent at the baseline level-9 configuration because reportMaybesInMethodSignatures is false (conf/config.neon:100). Its MethodSignatureRule explicitly gates maybe-compatible overrides on that option. Enabling the option yields method.childReturnType; therefore its baseline silence is a documented configuration-scope divergence, excluded from the defect denominator. The fixture and runtime consequence remain unchanged: wake(new BadShelter()) throws when the widened override breaks the parent's PHPDoc contract. The benchmark records both the concrete program defect and which configured checks promise to diagnose it.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_docs",
+        "path": "/home/abez/projects/psalm-src/docs/running_psalm/issues/LessSpecificImplementedReturnType.md",
+        "revision": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
+        "note": "Psalm documents the rule with an interface-implementation example"
+      },
+      {
+        "kind": "upstream_source",
+        "path": "/home/abez/projects/phpstan-src/src/Rules/Methods/OverridingMethodRule.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "OverridingMethodRule.php line 376 gates the PHPDoc signature rule; MethodSignatureRule.php reports a maybe compatibility only when reportMaybesInMethodSignatures is true, and conf/config.neon line 100 sets it false (conf/config.level3.neon line 9 turns checkPhpDocMethodSignatures on)"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "generics/template-bound-violation",
+  "title": "A template bound rejects an argument that does not satisfy the bound",
+  "domain": "generics",
+  "rule_class": "template-constraint-violation",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "count_all() declares @template T of \\Countable and @param T $value. \\Countable is a real interface, and the value passed in the fixture - the array [1, 2, 3] - is not an instance of it ([1,2,3] instanceof Countable is false), so the argument does not satisfy the declared bound. The bound-satisfying control, an ArrayObject, does. The function body itself is legal (count() accepts arrays), so only static analysis can catch the breach.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/class.countable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "argument.type", "line": 21, "message_regex": "Countable" }
+      ],
+      "forbidden": [
+        { "code": "argument.type", "line": 26 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "InvalidArgument", "line": 21, "message_regex": "Countable" }
+      ],
+      "forbidden": [
+        { "code": "InvalidArgument", "line": 26 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "template-constraint-violation", "line": 21 }
+      ],
+      "allowed": [
+        {
+          "code": "invalid-argument",
+          "line": 21,
+          "reason": "Same fact under the argument rule: Mago names the unsatisfied constraint and the rejected value. Verified to be the same line and the same root cause as template-constraint-violation, not a second defect."
+        }
+      ],
+      "forbidden": [
+        { "code": "invalid-argument", "line": 26 },
+        { "code": "template-constraint-violation", "line": 26 }
+      ]
+    }
+  },
+  "notes": "A green row with a per-tool code split rather than a defect: PHPStan reports argument.type ('expects Countable'), Psalm reports InvalidArgument, and Mago reports template-constraint-violation plus invalid-argument for the same call. The forbidden predicates on line 26 are the asymmetric control - an ArrayObject does implement Countable and must stay silent for all three, so the reports cannot come from the native signature alone. The bound is not a tool-specific annotation in the sense the contract excludes: \\Countable is a native interface and the runtime script decides the violation with instanceof. The pattern came from /home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php, which is a different program; the fixture here is clean-room.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "historical_reproducer",
+        "path": "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php",
+        "note": "pattern source for forwarded bounds; not copied"
+      },
+      {
+        "kind": "upstream_inference_fixture",
+        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/template-argument-bounds.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "PHPStan documents this bound check as intended behaviour"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

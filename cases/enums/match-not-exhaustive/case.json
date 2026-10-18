@@ -1,0 +1,65 @@
+{
+  "id": "enums/match-not-exhaustive",
+  "title": "A match expression over an enum case set must handle every case",
+  "domain": "enums",
+  "rule_class": "match.unhandled",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Suit has exactly two cases and label() has no default arm, so the subject Suit::Spades reaches no arm and the match throws UnhandledMatchError. The exhaustive sibling label_all() handles both cases and returns for each of them; that is the asymmetric control, and it shows the report belongs to the missing arm rather than to the construct.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/control-structures.match.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "match.unhandled", "line": 15, "message_regex": "Spades" }
+      ],
+      "forbidden": [
+        { "code": "match.unhandled", "line": 22 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "UnhandledMatchCondition", "line": 15, "message_regex": "Spades" }
+      ],
+      "forbidden": [
+        { "code": "UnhandledMatchCondition", "line": 22 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "match-not-exhaustive", "line": 15 }
+      ],
+      "forbidden": [
+        { "code": "match-not-exhaustive", "line": 22 }
+      ]
+    }
+  },
+  "notes": "A green row kept as a regression guard: the rule class is native (the language throws UnhandledMatchError), the tools report it under three different codes, and the runtime script decides which match is broken. The forbidden predicate on line 22 is what stops the case from being satisfied by a rule that fires on every match expression. Match exhaustiveness over enum cases is documented in each tool's own suite: Psalm's tests/MatchTest.php and PHPStan's tests/PHPStan/Rules/Comparison/MatchExpressionRuleTest.php expect a diagnostic for a partially covered match; the fixture here is an independent, smaller program.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_test",
+        "path": "/home/abez/projects/psalm-src/tests/MatchTest.php",
+        "revision": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
+        "note": "Psalm expects UnhandledMatchCondition for a partially covered match"
+      },
+      {
+        "kind": "upstream_test",
+        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Comparison/MatchExpressionRuleTest.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "PHPStan expects match.unhandled for the same shape"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}

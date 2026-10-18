@@ -1,0 +1,59 @@
+{
+  "id": "generics/template-inference-from-argument",
+  "title": "A template inferred from the argument carries the argument type back to the caller",
+  "domain": "generics",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "identity() is declared as @template T / @param T $value / @return T. The call identity(5) therefore has both the value 5 and the type int, and under declare(strict_types=1) an int is not accepted for strlen()'s string parameter. strlen(identity(5)) is unreachable and throws; strlen(identity('abc')) is the control that runs and returns 3.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.declarations.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "argument.type", "line": 21, "message_regex": "strlen" }
+      ],
+      "forbidden": [
+        { "code": "argument.type", "line": 26 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "InvalidScalarArgument", "line": 21, "message_regex": "strlen" }
+      ],
+      "forbidden": [
+        { "code": "InvalidScalarArgument", "line": 26 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "invalid-argument", "line": 21, "message_regex": "strlen" }
+      ],
+      "forbidden": [
+        { "code": "invalid-argument", "line": 26 }
+      ]
+    }
+  },
+  "notes": "A green row kept as a regression guard: all three analyzers resolve T from the argument and report that the int reaches strlen. The forbidden predicate on line 26 is the asymmetric control - the same generic call with a string argument must stay silent, so a tool cannot pass by reporting argument errors unconditionally. The runtime script proves the value identity (identity(5) is 5) and the strict-mode consequence (strlen(identity(5)) throws a TypeError) rather than relying on a tool's inference. The template identity pattern is the one PHPStan's own fixture documents in tests/PHPStan/Analyser/nsrt/generics.php (line 13-15 of that file, pinned commit in provenance); this fixture is not a copy of it.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "upstream_inference_fixture",
+        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/generics.php",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "note": "documents the @template T / @param T / @return T identity pattern; fixture rewritten"
+      }
+    ],
+    "tool_pins": { "mago": "1.57.0", "phpstan": "2.3.1", "psalm": "6.20.0" },
+    "source_checkouts": {
+      "phpstan": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "psalm": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6"
+    }
+  }
+}
