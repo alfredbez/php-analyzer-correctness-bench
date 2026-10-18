@@ -35,12 +35,23 @@ side stepping on the other's files.
 
 Workers may only add complete case directories in the assigned domain. Edits to
 existing cases, pins, or shared code block publication. Failed workers and
-rejected candidates remain in the worktree for inspection. The next round stops
-rather than overwriting them or combining them with another author's changes.
+rejected candidates are moved intact to timestamped quarantine worktrees and
+branches. Their paths are recorded in state. The next round starts from a fresh
+`origin/main`; it cannot publish or combine a rejected author's changes.
 Only one round can run at a time. Worker timeouts kill the process group.
 
-Targets are fixed in `TARGETS` and total 57 cases. The factory stops growing when
-all domain targets are met; it never silently raises its own target.
+Targets are fixed in `TARGETS` and total 120 semantic criteria across 14 domains.
+Variants sharing `criterion_id` do not increase coverage. An independent reviewer
+must check novelty as well as correctness. The factory stops growing when all
+domain targets are met; it never silently raises its own target.
+
+`python3 factory/catalog.py build` inventories pinned Psalm datasets, PHPStan
+fixtures and historical Mago probes. Its initial 120 candidates are unreviewed
+leads, not 120 finished criteria or confirmed defects. Rounds select unused
+candidates for their domain and record `source_candidate_id` in new manifests.
+Rejected leads are not silently retried; domains can also use the broader source
+checkouts when the initial inventory is exhausted. Extraction is not semantic
+review, and no claim is made that the entire upstream suites were reviewed.
 
 ## What the factory must never do
 
@@ -80,4 +91,4 @@ Each batch adds at most two cases. Each worker gets 30 minutes; the service
 allows five hours for all model fallbacks, setup, and a full corpus run.
 Unavailable model routes produce a failed round, not an accepted review. The
 timer retries later, subject to model cooldowns. Inspect `status` and the journal
-to distinguish quota blocks from unfinished candidates that require inspection.
+to distinguish quota blocks from quarantined candidates that require inspection.

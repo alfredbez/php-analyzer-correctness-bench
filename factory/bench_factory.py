@@ -47,9 +47,10 @@ PROMOTE_TARGET = "main"
 SUBAGENT_TIMEOUT = int(os.environ.get("BENCH_FACTORY_TIMEOUT", "1800"))
 RATE_LIMIT_COOLDOWN = 3600
 TARGETS = {
-    "narrowing": 8, "nullability": 5, "callables": 5, "assignability": 5,
-    "legacy-patterns": 6, "phpdoc-extensions": 4, "generics": 4, "arrays": 4,
-    "dead-code": 4, "enums": 4, "type-inference": 5, "phpstan-extensions": 3,
+    "narrowing": 12, "nullability": 8, "callables": 10, "assignability": 8,
+    "legacy-patterns": 10, "phpdoc-extensions": 4, "generics": 12, "arrays": 14,
+    "dead-code": 6, "enums": 6, "type-inference": 10, "phpstan-extensions": 4,
+    "exceptions": 6, "objects": 10,
 }
 
 # Free models only. The two lanes are deliberately different families: an
@@ -143,19 +144,31 @@ def unfinished_files(tree: str) -> list[str]:
 
 def ensure_worktree(state: dict) -> str:
     if os.path.exists(os.path.join(WORKTREE, ".git")):
-        if unfinished_files(WORKTREE):
-            raise RuntimeError("factory worktree has unfinished changes; preserving them for inspection")
         branch = run(["git", "branch", "--show-current"], cwd=WORKTREE)["stdout"].strip()
         if branch != BRANCH:
             raise RuntimeError(f"factory worktree is on unexpected branch {branch!r}")
         if run(["git", "fetch", "origin", "main"], cwd=WORKTREE, timeout=180)["code"]:
             raise RuntimeError("cannot fetch origin/main")
         ahead = run(["git", "rev-list", "--count", "origin/main..HEAD"], cwd=WORKTREE)
-        if ahead["code"] or ahead["stdout"].strip() != "0":
-            raise RuntimeError("unpublished factory commits need inspection before another round")
-        if run(["git", "merge", "--ff-only", "origin/main"], cwd=WORKTREE)["code"]:
-            raise RuntimeError("cannot fast-forward the factory worktree")
-        return WORKTREE
+        if ahead["code"]:
+            raise RuntimeError("cannot inspect unpublished factory commits")
+        if unfinished_files(WORKTREE) or ahead["stdout"].strip() != "0":
+            stamp = str(time.time_ns())
+            preserved_branch = f"{BRANCH}-quarantined-{stamp}"
+            preserved_path = f"{WORKTREE}-quarantined-{stamp}"
+            if run(["git", "branch", "-m", preserved_branch], cwd=WORKTREE)["code"]:
+                raise RuntimeError("cannot preserve the unfinished factory branch")
+            moved = run(["git", "worktree", "move", WORKTREE, preserved_path], cwd=ROOT)
+            if moved["code"]:
+                raise RuntimeError(f"cannot move unfinished worktree; files remain at {WORKTREE}")
+            state.setdefault("quarantines", []).append({"path": preserved_path,
+                                                       "branch": preserved_branch})
+            save_state(state)
+            log(f"[QUARANTINE] preserved failed candidate at {preserved_path}")
+        else:
+            if run(["git", "merge", "--ff-only", "origin/main"], cwd=WORKTREE)["code"]:
+                raise RuntimeError("cannot fast-forward the factory worktree")
+            return WORKTREE
     os.makedirs(os.path.dirname(WORKTREE), exist_ok=True)
     result = run(["git", "worktree", "add", "-b", BRANCH, WORKTREE, "origin/main"], cwd=ROOT, timeout=300)
     if result["code"]:
@@ -185,8 +198,14 @@ def corpus_domains(tree: str) -> dict:
     for domain in sorted(os.listdir(cases_dir)):
         path = os.path.join(cases_dir, domain)
         if os.path.isdir(path):
-            counts[domain] = len([d for d in os.listdir(path)
-                                  if os.path.isfile(os.path.join(path, d, "case.json"))])
+            criteria = set()
+            for slug in os.listdir(path):
+                manifest = os.path.join(path, slug, "case.json")
+                if os.path.isfile(manifest):
+                    with open(manifest, encoding="utf-8") as handle:
+                        data = json.load(handle)
+                    criteria.add(data.get("criterion_id", data.get("id", f"{domain}/{slug}")))
+            counts[domain] = len(criteria)
     return counts
 
 
@@ -206,6 +225,8 @@ Rules that decide whether your work is worth anything:
 - Where a tool deliberately does not implement a rule class, use `mode: "unsupported"` with a reason and a citation you actually read - do not invent one.
 - Never widen an expectation to make a tool look better or worse. A false positive or false negative that you find stays in the matrix.
 - Add new case directories only under `cases/{domain}/`. Do not modify existing cases or any other tracked file. If a harness bug blocks you, stop and report it in your final response.
+- Add genuinely different semantic criteria, not parameter variants of existing cases. Inspect that domain first. Set `criterion_id` to a stable `<domain>/<semantic-rule>`; variants of the same rule share it and do not increase coverage.
+- If the source material lists catalogue candidate IDs, record one in each new manifest as `source_candidate_id`, retaining its immutable source citation. Rewrite minimal examples; do not copy upstream test bodies.
 
 Verify before you commit: `python3 harness/bench.py validate` and `python3 harness/bench.py run --case <id>` for every case you added. Commit with `git -c commit.gpgsign=false commit`, one line, naming the rule class.
 
@@ -224,6 +245,7 @@ For every changed case, check and report:
 2. Expectations: are they specific (no empty predicates)? Was any expectation widened, or a diagnostic acknowledged under `allowed` without a real reason? An acknowledged diagnostic that is actually wrong must count as a false positive.
 3. Verdicts: reproduce at least two cases with `python3 harness/bench.py run --case <id>` and compare with what the files claim.
 4. Contract: `python3 harness/bench.py validate` passes; `composer.json` present; no `vendor/`, `.generated/` or scratch files committed.
+5. Novelty: compare against the existing domain. Reject superficial variants, a duplicate semantic criterion, or an unsupported claim of enterprise relevance. A catalogue candidate is a lead, not an independent truth oracle.
 
 Do not edit or commit any source file, switch branches, push, or launch other agents. Reject the batch if anything needs a correction or if a claim cannot be established.
 
@@ -280,12 +302,31 @@ def pick_task(tree: str, state: dict) -> dict | None:
     if not deficits:
         return None
     domain = max(deficits, key=lambda key: deficits[key])
-    return {
+    task = {
         "domain": domain,
         "source": source_by_domain.get(domain, "the sources listed in factory/SOURCES.md"),
-        "why": f"{counts.get(domain, 0)} of {TARGETS[domain]} planned cases exist",
+        "why": f"{counts.get(domain, 0)} of {TARGETS[domain]} planned semantic criteria exist",
         "count": min(deficits[domain], 2),
     }
+    catalog = os.path.join(tree, "factory/catalog.json")
+    if os.path.isfile(catalog):
+        used = set()
+        for previous in state.get("rounds", []):
+            if previous.get("status") not in ("rate_limited", "setup_failed"):
+                used.update(previous.get("task", {}).get("candidate_ids", []))
+        for parent, _, files in os.walk(os.path.join(tree, "cases")):
+            if "case.json" in files:
+                with open(os.path.join(parent, "case.json"), encoding="utf-8") as handle:
+                    used.add(json.load(handle).get("source_candidate_id"))
+        with open(catalog, encoding="utf-8") as handle:
+            candidates = [entry for entry in json.load(handle)["candidates"]
+                          if entry["domain"] == domain and entry["id"] not in used]
+        if candidates:
+            selected = candidates[:task["count"]]
+            task["candidate_ids"] = [entry["id"] for entry in selected]
+            task["source"] = json.dumps(selected, ensure_ascii=False)
+            task["count"] = len(selected)
+    return task
 
 
 def ensure_valid(tree: str) -> bool:
@@ -321,6 +362,23 @@ def candidate_cases(tree: str, base: str, task: dict) -> list[str]:
             raise RuntimeError(f"candidate contains a symlink: {path}")
     if not cases or cases != manifests or len(cases) > task["count"]:
         raise RuntimeError("candidate must contain complete new cases within the round's count limit")
+    new_criteria = set()
+    for case_id in cases:
+        with open(os.path.join(tree, "cases", case_id, "case.json"), encoding="utf-8") as handle:
+            data = json.load(handle)
+        if task.get("candidate_ids") and data.get("source_candidate_id") not in task["candidate_ids"]:
+            raise RuntimeError("candidate must record the selected source_candidate_id")
+        criterion = data.get("criterion_id", data.get("id", case_id))
+        if criterion in new_criteria:
+            raise RuntimeError("candidate batch repeats a semantic criterion")
+        new_criteria.add(criterion)
+    for parent, _, files in os.walk(os.path.join(tree, "cases")):
+        case_id = os.path.relpath(parent, os.path.join(tree, "cases"))
+        if "case.json" in files and case_id not in cases:
+            with open(os.path.join(parent, "case.json"), encoding="utf-8") as handle:
+                data = json.load(handle)
+            if data.get("criterion_id", data.get("id", case_id)) in new_criteria:
+                raise RuntimeError("candidate duplicates an existing semantic criterion")
     return sorted(cases)
 
 

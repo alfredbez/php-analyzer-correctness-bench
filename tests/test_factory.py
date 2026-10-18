@@ -117,7 +117,39 @@ class FactoryPublicationTest(unittest.TestCase):
         self.assertEqual(self.round(verdict='reject')['status'], 'rejected')
         self.assertEqual(self.remote_head(), self.base)
         self.assertTrue((self.tree / 'cases/narrowing/example/case.json').exists())
-        self.assertEqual(factory.round_once({})['status'], 'blocked')
+
+    def test_rejected_and_uncommitted_output_survives_a_successful_fresh_round(self):
+        self.assertEqual(self.round(verdict='reject')['status'], 'rejected')
+        (self.tree / 'unfinished.txt').write_text('Keep this failed experiment.\n')
+        rejected_head = self.git('rev-parse', 'HEAD', cwd=self.tree)
+        self.verdict, self.review_exit = 'accept', 0
+        state = {}
+        with patch.object(factory, 'dispatch', side_effect=self.dispatch), \
+                patch.object(factory, 'prepare_tooling', return_value=True):
+            result = factory.round_once(state)
+        self.assertEqual(result['status'], 'promoted')
+        archive = Path(state['quarantines'][0]['path'])
+        self.assertEqual((archive / 'unfinished.txt').read_text(), 'Keep this failed experiment.\n')
+        self.assertEqual(self.git('rev-parse', 'HEAD', cwd=archive), rejected_head)
+        published = self.git('--git-dir', str(self.remote), 'ls-tree', '-r', '--name-only', 'main')
+        self.assertNotIn('unfinished.txt', published)
+        self.assertFalse((self.tree / 'unfinished.txt').exists())
+
+    def test_variants_do_not_increase_semantic_coverage(self):
+        for slug in ('first', 'second'):
+            case = self.tree / 'cases/arrays' / slug
+            case.mkdir(parents=True)
+            (case / 'case.json').write_text(json.dumps({
+                'id': f'arrays/{slug}', 'criterion_id': 'arrays/key-preservation'}))
+        self.assertEqual(factory.corpus_domains(str(self.tree)), {'arrays': 1})
+
+    def test_catalogue_queue_skips_previously_rejected_candidates(self):
+        (self.tree / 'factory').mkdir()
+        entries = [{'id': f'psalm-{n}', 'domain': 'narrowing'} for n in range(3)]
+        (self.tree / 'factory/catalog.json').write_text(json.dumps({'candidates': entries}))
+        state = {'rounds': [{'status': 'rejected', 'task': {'candidate_ids': ['psalm-0']}}]}
+        task = factory.pick_task(str(self.tree), state)
+        self.assertEqual(task['candidate_ids'], ['psalm-1'])
 
     def test_pin_changes_are_not_published(self):
         original = self.dispatch
