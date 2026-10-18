@@ -76,7 +76,8 @@ systemctl --user daemon-reload
 systemctl --user enable --now bench-factory.timer
 ```
 
-The service allows four hours for model fallbacks, setup, and a full corpus run.
+Each batch adds at most two cases. Each worker gets 30 minutes; the service
+allows five hours for all model fallbacks, setup, and a full corpus run.
 Unavailable model routes produce a failed round, not an accepted review. The
 timer retries later, subject to model cooldowns. Inspect `status` and the journal
 to distinguish quota blocks from unfinished candidates that require inspection.

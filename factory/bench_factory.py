@@ -28,7 +28,6 @@ import argparse
 import fcntl
 import json
 import os
-import random
 import signal
 import subprocess
 import sys
@@ -44,7 +43,7 @@ WORKTREE = "/home/abez/projects/php-analyzer-bench-worktrees/factory"
 BRANCH = "factory/auto"
 PROMOTE_TARGET = "main"
 
-SUBAGENT_TIMEOUT = int(os.environ.get("BENCH_FACTORY_TIMEOUT", "900"))
+SUBAGENT_TIMEOUT = int(os.environ.get("BENCH_FACTORY_TIMEOUT", "1800"))
 RATE_LIMIT_COOLDOWN = 3600
 TARGETS = {
     "narrowing": 8, "nullability": 5, "callables": 5, "assignability": 5,
@@ -282,7 +281,7 @@ def pick_task(tree: str, state: dict) -> dict | None:
         "domain": domain,
         "source": source_by_domain.get(domain, "the sources listed in factory/SOURCES.md"),
         "why": f"{counts.get(domain, 0)} of {TARGETS[domain]} planned cases exist",
-        "count": min(deficits[domain], random.randint(2, 4)),
+        "count": min(deficits[domain], 2),
     }
 
 

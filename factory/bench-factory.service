@@ -9,7 +9,7 @@ Environment=HOME=/home/abez
 Environment=PATH=/home/abez/.local/bin:/home/abez/.opencode/bin:/usr/local/bin:/usr/bin:/bin
 WorkingDirectory=/home/abez/projects/php-analyzer-correctness-bench
 ExecStart=/usr/bin/python3 /home/abez/projects/php-analyzer-correctness-bench/factory/bench_factory.py round
-TimeoutStartSec=14400
+TimeoutStartSec=18000
 Nice=10
 IOSchedulingClass=idle
 StandardOutput=journal
