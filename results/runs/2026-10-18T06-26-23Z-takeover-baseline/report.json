@@ -1,0 +1,1235 @@
+{
+  "meta": {
+    "run_id": "2026-10-18T06-26-23Z-takeover-baseline",
+    "started": "2026-10-18T06:26:23Z",
+    "runner": "docker",
+    "image": "php:8.3-cli",
+    "php_version": "8.3.35",
+    "tools": {
+      "phpstan": "PHPStan - PHP Static Analysis Tool 2.3.1",
+      "psalm": "Psalm 6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c",
+      "mago": "mago 1.57.0"
+    },
+    "pins": {
+      "phpstan": {
+        "version": "2.3.1",
+        "url": "https://github.com/phpstan/phpstan/releases/download/{version}/phpstan.phar",
+        "binary": "tools/bin/phpstan.phar",
+        "invocation": "php {binary} analyse --no-progress --error-format=json --level={level} --autoload-file={autoload} {targets}",
+        "upstream": "phpstan/phpstan"
+      },
+      "psalm": {
+        "version": "6.20.0",
+        "url": "https://github.com/vimeo/psalm/releases/download/{version}/psalm.phar",
+        "binary": "tools/bin/psalm.phar",
+        "invocation": "php {binary} --no-cache --output-format=json --no-progress --config={config}",
+        "upstream": "vimeo/psalm"
+      },
+      "mago": {
+        "version": "1.57.0",
+        "url": "https://github.com/carthage-software/mago/releases/download/{version}/mago-{version}-x86_64-unknown-linux-gnu.tar.gz",
+        "binary": "tools/bin/mago",
+        "invocation": "{binary} analyze --format json {targets}",
+        "upstream": "carthage-software/mago"
+      }
+    },
+    "case_count": 14,
+    "valid_cases": 14,
+    "selected": [
+      "callables/is-object-on-callable-parameter",
+      "callables/negated-is-callable-removes-function-name",
+      "dead-code/finally-assignment-always-runs",
+      "narrowing/is-bool-guard-excludes-true",
+      "narrowing/is-int-on-string",
+      "narrowing/is-numeric-after-is-int",
+      "narrowing/is-numeric-guard-excludes-int",
+      "narrowing/negated-instanceof-unrelated-class",
+      "narrowing/object-is-always-truthy",
+      "narrowing/redundant-instanceof-on-declared-class",
+      "nullability/elseif-else-return-keeps-possible-null",
+      "nullability/is-null-guard-narrows-away-null",
+      "nullability/loose-null-guard-keeps-empty-string",
+      "nullability/relational-comparison-excludes-null"
+    ],
+    "runtime_proven": 14,
+    "runtime_proof_failed": []
+  },
+  "cases": [
+    {
+      "case": "callables/is-object-on-callable-parameter",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/is-object-on-callable-parameter",
+      "results": {
+        "phpstan": {
+          "case": "callables/is-object-on-callable-parameter",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.183,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "callables/is-object-on-callable-parameter",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.371,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "callables/is-object-on-callable-parameter",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): impossible-condition@24, impossible-type-comparison@24, no-value@25",
+          "missing": [],
+          "unexpected": [
+            "impossible-condition@24",
+            "impossible-type-comparison@24",
+            "no-value@25"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$fn` of type `(callable(...mixed=): mixed)` can never be `object`.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 24,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 24,
+              "severity": "warning"
+            },
+            {
+              "code": "no-value",
+              "message": "Argument #1 passed to function `Bench\\Callables\\IsObjectOnCallableParameter\\accept_object` has type `never`, meaning it cannot produce a value.",
+              "file": "cases/callables/is-object-on-callable-parameter/src/repro.php",
+              "line": 25,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.239,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_object() branch reached for 2 of 3 callable shape(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/negated-is-callable-removes-function-name",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/negated-is-callable-removes-function-name",
+      "results": {
+        "phpstan": {
+          "case": "callables/negated-is-callable-removes-function-name",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.148,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "callables/negated-is-callable-removes-function-name",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.421,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "callables/negated-is-callable-removes-function-name",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-invalid-argument@24",
+          "missing": [],
+          "unexpected": [
+            "possibly-invalid-argument@24"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\Callables\\NegatedIsCallableRemovesFunctionName\\accept_array`: expected `list<int>`, but possibly received `list{int(1)}|string('strlen')`.",
+              "file": "cases/callables/negated-is-callable-removes-function-name/src/repro.php",
+              "line": 24,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.246,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the guard removed the function name; [1] reached accept_array() without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/finally-assignment-always-runs",
+      "domain": "dead-code",
+      "rule_class": "constant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/finally-assignment-always-runs",
+      "results": {
+        "phpstan": {
+          "case": "dead-code/finally-assignment-always-runs",
+          "tool": "phpstan",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): ternary.alwaysFalse@25",
+          "missing": [],
+          "unexpected": [
+            "ternary.alwaysFalse@25"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "ternary.alwaysFalse",
+              "message": "Ternary operator condition is always false.",
+              "file": "cases/dead-code/finally-assignment-always-runs/src/repro.php",
+              "line": 25,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.164,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "dead-code/finally-assignment-always-runs",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.436,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "dead-code/finally-assignment-always-runs",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.229,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the finally assignment ran before the catch: cleaned_flag() === 1\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-bool-guard-excludes-true",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-bool-guard-excludes-true",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/is-bool-guard-excludes-true",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.03,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/is-bool-guard-excludes-true",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.424,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/is-bool-guard-excludes-true",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.31,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 6 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-int-on-string",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-int-on-string",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/is-int-on-string",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "function.impossibleType",
+              "message": "Call to function is_int() with string will always evaluate to false.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.327,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/is-int-on-string",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "TypeDoesNotContainType",
+              "message": "Type string for $value is never int",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.373,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/is-int-on-string",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "impossible-condition@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$value` of type `string` can never be `int`.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.255,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() stayed on the string path for 6 sample value(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-after-is-int",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-after-is-int",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/is-numeric-after-is-int",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "function.alreadyNarrowedType",
+              "message": "Call to function is_numeric() with int will always evaluate to true.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.098,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/is-numeric-after-is-int",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "RedundantCondition",
+              "message": "Type int for $c is always numeric",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            },
+            {
+              "code": "RedundantCondition",
+              "message": "Type int for $c is always numeric",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.508,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/is-numeric-after-is-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "redundant-logical-operation@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-type-comparison",
+              "message": "Redundant type assertion: `$c` is already `int`.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is evaluated and right operand is always truthy.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.262,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_numeric() held for 7 int sample(s); classify() followed is_int() for 16 input(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-guard-excludes-int",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-guard-excludes-int",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/is-numeric-guard-excludes-int",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.285,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/is-numeric-guard-excludes-int",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.537,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/is-numeric-guard-excludes-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.248,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 14 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/negated-instanceof-unrelated-class",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/negated-instanceof-unrelated-class",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/negated-instanceof-unrelated-class",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "instanceof.alwaysFalse",
+              "message": "Instanceof between Bench\\Narrowing\\NegatedInstanceofUnrelatedClass\\Alpha and Bench\\Narrowing\\NegatedInstanceofUnrelatedClass\\Beta will always evaluate to false.",
+              "file": "cases/narrowing/negated-instanceof-unrelated-class/src/repro.php",
+              "line": 18,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.039,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/negated-instanceof-unrelated-class",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "RedundantCondition",
+              "message": "Bench\\Narrowing\\NegatedInstanceofUnrelatedClass\\Alpha cannot be identical to Bench\\Narrowing\\NegatedInstanceofUnrelatedClass\\Beta",
+              "file": "cases/narrowing/negated-instanceof-unrelated-class/src/repro.php",
+              "line": 18,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.473,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/negated-instanceof-unrelated-class",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): impossible-type-comparison",
+          "missing": [
+            "impossible-type-comparison"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.378,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "Alpha's ancestors (none) exclude Beta; is_not_beta() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/object-is-always-truthy",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/object-is-always-truthy",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/object-is-always-truthy",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "booleanNot.alwaysFalse",
+              "message": "Negated boolean expression is always false.",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.321,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/object-is-always-truthy",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "TypeDoesNotContainType",
+              "message": "Operand of type false is always falsy",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "error"
+            },
+            {
+              "code": "TypeDoesNotContainType",
+              "message": "Type Bench\\Narrowing\\ObjectIsAlwaysTruthy\\Token for $token is never falsy",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.497,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/object-is-always-truthy",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.251,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "5 object shape(s) cast to true; is_falsy() stayed on the live path\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/redundant-instanceof-on-declared-class",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/redundant-instanceof-on-declared-class",
+      "results": {
+        "phpstan": {
+          "case": "narrowing/redundant-instanceof-on-declared-class",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "instanceof.alwaysTrue",
+              "message": "Instanceof between RuntimeException and Exception will always evaluate to true.",
+              "file": "cases/narrowing/redundant-instanceof-on-declared-class/src/repro.php",
+              "line": 14,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 2.151,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "narrowing/redundant-instanceof-on-declared-class",
+          "tool": "psalm",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): RedundantCondition",
+          "missing": [
+            "RedundantCondition"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.468,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "narrowing/redundant-instanceof-on-declared-class",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): redundant-condition",
+          "missing": [
+            "redundant-condition"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.317,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "RuntimeException's parents are Exception; is_exception() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/elseif-else-return-keeps-possible-null",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/elseif-else-return-keeps-possible-null",
+      "results": {
+        "phpstan": {
+          "case": "nullability/elseif-else-return-keeps-possible-null",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.237,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "nullability/elseif-else-return-keeps-possible-null",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.703,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "nullability/elseif-else-return-keeps-possible-null",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-comparison@23",
+          "missing": [],
+          "unexpected": [
+            "redundant-comparison@23"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `===` comparison: left-hand side is never identical to right-hand side.",
+              "file": "cases/nullability/elseif-else-return-keeps-possible-null/src/repro.php",
+              "line": 23,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.259,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_null_after() reached the final check with null in 4 case(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/is-null-guard-narrows-away-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/is-null-guard-narrows-away-null",
+      "results": {
+        "phpstan": {
+          "case": "nullability/is-null-guard-narrows-away-null",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.224,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "nullability/is-null-guard-narrows-away-null",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.725,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "nullability/is-null-guard-narrows-away-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.246,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 4 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/loose-null-guard-keeps-empty-string",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/loose-null-guard-keeps-empty-string",
+      "results": {
+        "phpstan": {
+          "case": "nullability/loose-null-guard-keeps-empty-string",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.182,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "nullability/loose-null-guard-keeps-empty-string",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.387,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "nullability/loose-null-guard-keeps-empty-string",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-comparison@15, redundant-condition@15",
+          "missing": [],
+          "unexpected": [
+            "redundant-comparison@15",
+            "redundant-condition@15"
+          ],
+          "acknowledged": [
+            "possibly-null-operand@14",
+            "null-operand@14"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `==` comparison might be `null` (type `null|string`).",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "warning"
+            },
+            {
+              "code": "null-operand",
+              "message": "Right operand in `==` comparison is `null`.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "error"
+            },
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `===` comparison: left-hand side is always identical to right-hand side.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            },
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.228,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() distinguished null from '' on 4 sample(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/relational-comparison-excludes-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/relational-comparison-excludes-null",
+      "results": {
+        "phpstan": {
+          "case": "nullability/relational-comparison-excludes-null",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 2.164,
+          "php": "8.3.35"
+        },
+        "psalm": {
+          "case": "nullability/relational-comparison-excludes-null",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 1.373,
+          "php": "8.3.35"
+        },
+        "mago": {
+          "case": "nullability/relational-comparison-excludes-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "possibly-null-operand@16"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `>` comparison might be `null` (type `int|null`).",
+              "file": "cases/nullability/relational-comparison-excludes-null/src/repro.php",
+              "line": 16,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.242,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "null > 0 is false; quacks() entered the branch for positive ints only\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    }
+  ],
+  "summary": {
+    "mago": {
+      "ok": 8,
+      "false_positive": 4,
+      "false_negative": 2,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 14,
+      "cases": 14,
+      "agreement": 57.1,
+      "defects": 6,
+      "by_domain": {
+        "callables": {
+          "ok": 0,
+          "false_positive": 2,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "dead-code": {
+          "ok": 1,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "narrowing": {
+          "ok": 5,
+          "false_positive": 0,
+          "false_negative": 2,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "nullability": {
+          "ok": 2,
+          "false_positive": 2,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "phpstan": {
+      "ok": 13,
+      "false_positive": 1,
+      "false_negative": 0,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 14,
+      "cases": 14,
+      "agreement": 92.9,
+      "defects": 1,
+      "by_domain": {
+        "callables": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "dead-code": {
+          "ok": 0,
+          "false_positive": 1,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "narrowing": {
+          "ok": 7,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "nullability": {
+          "ok": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "psalm": {
+      "ok": 13,
+      "false_positive": 0,
+      "false_negative": 1,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 14,
+      "cases": 14,
+      "agreement": 92.9,
+      "defects": 1,
+      "by_domain": {
+        "callables": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "dead-code": {
+          "ok": 1,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "narrowing": {
+          "ok": 6,
+          "false_positive": 0,
+          "false_negative": 1,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "nullability": {
+          "ok": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "divergences": []
+}
