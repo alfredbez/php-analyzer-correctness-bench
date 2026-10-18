@@ -25,11 +25,10 @@
       ]
     },
     "mago": {
-      "mode": "diagnostics",
-      "required": [
-        { "code": "impossible-type-comparison", "line": 18 }
-      ]
+      "mode": "unsupported",
+      "reason": "Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
     }
   },
-  "notes": "Ground truth from the language; the runtime script also proves the structural claim through class_parents()/class_implements() rather than only sampling instances. Psalm words the same fact as 'Alpha cannot be identical to Beta', which is its RedundantCondition; the first draft of the expectation named TypeDoesNotContainType. Mago 1.57.0 reports nothing for this fixture although it has an impossible-type-comparison rule and fires it for other impossible comparisons."
+  "notes": "The runtime establishes the constant result independently of warning policy. PHPStan and Psalm report it. The first benchmark draft incorrectly counted Mago silence as FN. Its return, instanceof, and unary Not analysis infer the value without invoking conditional diagnostics, so this narrowly scoped warning requirement is a cited divergence instead."
 }

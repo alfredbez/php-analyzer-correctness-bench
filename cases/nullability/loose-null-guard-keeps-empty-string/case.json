@@ -25,5 +25,5 @@
       ]
     }
   },
-  "notes": "The loose-null guard is a legacy defensive pattern. A tool that treats `== null` like `=== null` reports the inner check as redundant and the branch as dead; the runtime script shows both are alive. The '0' sample is a deliberate control: PHP 8 tightened string-to-null comparison, so '0' == null is false and must not enter the outer branch. The finding is independently corroborated by the still-open upstream report PR 2579 (https://github.com/carthage-software/mago/pull/2579), which describes the same root cause; the runtime proof here was derived from the fixture first."
+  "notes": "The loose-null guard is a legacy defensive pattern. A tool that treats `== null` like `=== null` reports the inner check as redundant and the branch as dead; the runtime script shows both are alive. The '0' sample is a deliberate control: '0' == null is false and must not enter the outer branch. This string/null rule is not a PHP 8 change. The finding is independently corroborated by upstream report PR 2579 (https://github.com/carthage-software/mago/pull/2579), which describes the same root cause; the runtime proof here was derived from the fixture first."
 }

@@ -1,0 +1,13 @@
+{
+  "name": "bench/narrowing-redundant-instanceof-in-condition",
+  "description": "An ancestor instanceof test in a conditional context",
+  "type": "project",
+  "license": "MIT",
+  "require": { "php": ">=8.0" },
+  "require-dev": {
+    "phpstan/phpstan": "2.3.1",
+    "vimeo/psalm": "6.20.0"
+  },
+  "autoload": { "files": ["src/repro.php"] },
+  "scripts": { "runtime-check": "php runtime/check.php" }
+}

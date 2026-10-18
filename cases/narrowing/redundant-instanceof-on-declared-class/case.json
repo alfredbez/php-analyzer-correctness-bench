@@ -19,17 +19,15 @@
       ]
     },
     "psalm": {
-      "mode": "diagnostics",
-      "required": [
-        { "code": "RedundantCondition", "line": 14 }
-      ]
+      "mode": "unsupported",
+      "reason": "Psalm 6.20.0 does not require RedundantCondition on a bare returned instanceof expression. Its standalone InstanceofAnalyzer assigns bool; conditional reconciliation is a separate reporting context. This exclusion concerns warning scope, not whether the expression is semantically always true.",
+      "citation": "https://github.com/vimeo/psalm/blob/6.20.0/src/Psalm/Internal/Analyzer/Statements/Expression/InstanceofAnalyzer.php#L25-L100"
     },
     "mago": {
-      "mode": "diagnostics",
-      "required": [
-        { "code": "redundant-condition", "line": 14 }
-      ]
+      "mode": "unsupported",
+      "reason": "Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
     }
   },
-  "notes": "Legacy pattern: a parameter typed with the subclass that the body re-checks against the parent class. PHPStan reports it; Psalm and Mago 1.57.0 are silent, although both have a redundant/impossible condition rule that fires for other always-true checks (see cases narrowing/is-numeric-after-is-int and narrowing/object-is-always-truthy for Mago and Psalm)."
+  "notes": "The first benchmark draft incorrectly counted Psalm and Mago silence as FN by requiring a warning on every constant Boolean expression. Version-pinned source and tests show different diagnostic scopes. Their rows are excluded from the denominator with citations. The companion redundant-instanceof-in-condition tests an actual conditional context separately."
 }

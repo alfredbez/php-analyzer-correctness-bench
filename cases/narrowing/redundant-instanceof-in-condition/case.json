@@ -1,0 +1,34 @@
+{
+  "id": "narrowing/redundant-instanceof-in-condition",
+  "title": "an ancestor instanceof test is always true in an if condition",
+  "domain": "narrowing",
+  "rule_class": "redundant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "RuntimeException extends Exception, so every permitted argument enters the true branch. The condition is always true and the false return is unreachable. Unlike the bare-return companion, this fixture tests a conditional reporting context.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.type.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [{ "code": "instanceof.alwaysTrue", "line": 9 }],
+      "allowed": [{
+        "code": "deadCode.unreachable",
+        "line": 13,
+        "reason": "Every argument takes the true branch and returns, so the final false return is unreachable. This is a correct consequence of the constant condition."
+      }]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [{ "code": "RedundantCondition", "line": 9 }]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [{ "code": "redundant-condition", "line": 9 }]
+    }
+  },
+  "notes": "This control separates conditional diagnostics from the optional choice to warn on bare returned Boolean expressions. The expected constant value comes from PHP inheritance, not tool output."
+}
