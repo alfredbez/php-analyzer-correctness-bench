@@ -35,13 +35,16 @@ def ensure_psalm_config(case: case_mod.Case) -> str:
     generated_dir = case.abs_path(".generated")
     os.makedirs(generated_dir, exist_ok=True)
     generated = os.path.join(generated_dir, "psalm.xml")
-    directories = "\n".join(f'        <directory name="{target}" />' for target in case.target_dirs)
+    directories = "\n".join(
+        f'        <directory name="{os.path.relpath(case.abs_path(target), generated_dir)}" />'
+        for target in case.target_dirs
+    )
     with open(generated, "w", encoding="utf-8") as handle:
         handle.write(
             '<?xml version="1.0"?>\n'
             '<psalm errorLevel="1" resolveFromConfigFile="true" '
             'findUnusedBaselineEntry="false" findUnusedCode="false" '
-            'cacheDirectory=".generated/psalm-cache">\n'
+            'cacheDirectory="psalm-cache">\n'
             "    <projectFiles>\n"
             f"{directories}\n"
             "    </projectFiles>\n"

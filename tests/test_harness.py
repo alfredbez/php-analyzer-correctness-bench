@@ -10,7 +10,9 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "harness"))
 
@@ -197,6 +199,24 @@ class ContractTest(unittest.TestCase):
         from bench import case as case_mod
         broken = {case.id: case.diagnostics for case in case_mod.discover() if case.diagnostics}
         self.assertEqual(broken, {})
+
+
+class PsalmConfigTest(unittest.TestCase):
+    def test_generated_config_resolves_targets_from_its_own_directory(self):
+        from bench import execute
+        with tempfile.TemporaryDirectory() as root:
+            targets = ["src", "lib/nested"]
+            for target in targets:
+                os.makedirs(os.path.join(root, target))
+            case = Case(path=root, data={"targets": targets})
+            config = execute.ensure_psalm_config(case)
+            xml = ET.parse(config).getroot()
+            base = os.path.dirname(config)
+            resolved = [os.path.normpath(os.path.join(base, node.attrib["name"]))
+                        for node in xml.findall("projectFiles/directory")]
+            self.assertEqual(resolved, [os.path.join(root, target) for target in targets])
+            self.assertEqual(os.path.normpath(os.path.join(base, xml.attrib["cacheDirectory"])),
+                             os.path.join(root, ".generated", "psalm-cache"))
 
 
 if __name__ == "__main__":
