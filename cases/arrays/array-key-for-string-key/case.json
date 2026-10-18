@@ -15,8 +15,10 @@
   },
   "expect": {
     "phpstan": {
-      "mode": "diagnostics",
-      "required": [{ "code": "argument.type", "line": 26 }]
+      "mode": "unsupported",
+      "basis": "upstream_docs",
+      "reason": "PHPStan explicitly defines array-key as a permissive benevolent union rather than a strictly checked int|string alias. ArrayType normalizes that key to implicit mixed, and this baseline level-9 configuration leaves checkImplicitMixed disabled. Silence is therefore an excluded documented configuration-scope difference. An independent check with checkImplicitMixed: true emits argument.type on the unchanged fixture; the rule is implemented.",
+      "citation": "https://phpstan.org/config-reference#checkbenevolentuniontypes"
     },
     "psalm": {
       "mode": "diagnostics",
@@ -27,7 +29,7 @@
       "required": [{ "code": "less-specific-argument", "line": 26 }]
     }
   },
-  "notes": "The rule under test is the key dimension of an array argument's type, which is a different contract from the element value type in arrays/scalar-array-for-string-array: array<string, int> constrains the keys, not the values. The runtime script is the neutral ground truth for all three tools: the argument's key set really contains the int key 0 and the callee really fails on it, so the report is required rather than optional. Psalm 6.20.0 (MixedArgumentTypeCoercion) and Mago 1.57.0 (less-specific-argument) both report the call. PHPStan 2.3.1 does not report it at the corpus's level 9, so its verdict is a recorded false negative. The reason is pinned down rather than guessed, and it is a spelling- and configuration-scope gap, not a missing rule: PHPStan resolves the argument's phpdoc type array<array-key, int> to an array whose key is the unspecified (implicitly mixed) key it renders as array<int> - verified with \\PHPStan\\dumpType, which dumps array<array-key, int> as array<int> and array<int|string, int> in full - and at level 9 it then treats that key as compatible with the parameter's string key. Verified siblings in the same level-9 run: the same call with the argument declared array<int|string, int> (the identical type, written without the array-key alias) DOES report argument.type, and a literal argument [0 => 1, 'users' => 2] also reports; and adding checkImplicitMixed: true on top of level 9 makes PHPStan report argument.type on this fixture ('expects array<string, int>, array<int> given'), which is the option conf/config.level10.neon sets for level max. The expectation is therefore not widened: the case requires the diagnostic and records that the pinned level-9 configuration does not produce it. No predicate is acknowledged away. Lead: catalogue candidate psalm:6e0079989da3fbda2530 (Psalm's tests/ArgTest.php:172, allowArrayIntScalarForArrayStringWithArgumentTypeCoercionIgnored); the candidate's distinguishing feature against psalm:0ee15c8f34d3836c9539 is the explicit int key type on its argument side (array<int, scalar>), so this fixture keeps the key-type dimension and re-derives the rule from PHP's key semantics and the runtime rather than from the upstream expectation, which uses an annotation to suppress Psalm's coercion.",
+  "notes": "This tests the array key contract, distinct from the element value contract. The runtime consequence remains real: an int key reaches strtoupper() under strict_types and throws. Psalm 6.20.0 and Mago 1.57.0 diagnose the call. The initial factory report counted PHPStan's level-9 silence as FN, but a later source and documentation audit corrected that classification without changing the fixture or its runtime result. PHPStan's configuration reference explicitly documents array-key as a benevolent union with deliberately lenient checking. In the pinned source, TypeNodeResolver.php:283-284 constructs that union; ArrayType.php:75-82 normalizes it to implicit mixed. The baseline checkImplicitMixed:false then deliberately accepts the key. An independent unchanged-source probe with checkImplicitMixed:true emits argument.type; an explicit int|string spelling also diagnoses. This is a documented dialect/configuration difference, not a missing implemented check, and is excluded consistently with the optional PHPDoc signature check. The older immutable factory reports retain the original FN for audit history; use the corrected cohort report for current claims. The Psalm candidate is a lead only: its suppressed upstream coercion is not the oracle for any tool.",
   "provenance": {
     "sources": [
       {
@@ -41,6 +43,18 @@
         "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
         "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L172",
         "note": "lead only; the explicit int key type on the argument side is the part that is kept, the rule was re-derived from the runtime"
+      },
+      {
+        "kind": "upstream_source",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/PhpDoc/TypeNodeResolver.php#L283-L284",
+        "note": "array-key deliberately resolves to a BenevolentUnionType, not a plain int|string union"
+      },
+      {
+        "kind": "upstream_source",
+        "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Type/ArrayType.php#L75-L85",
+        "note": "the benevolent int|string key normalizes to implicit mixed; StrictMixedType becomes a checked plain union"
       },
       {
         "kind": "upstream_source",
