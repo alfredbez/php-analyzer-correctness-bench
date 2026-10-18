@@ -1,0 +1,35 @@
+{
+  "id": "narrowing/redundant-instanceof-on-declared-class",
+  "title": "instanceof against an ancestor of the declared parameter type is always true",
+  "domain": "narrowing",
+  "rule_class": "redundant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Exception is in RuntimeException's parent chain and instanceof walks the chain, so `$e instanceof \\Exception` is true for every value the parameter can hold and the expression cannot distinguish any two inputs.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.type.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "instanceof.alwaysTrue", "line": 14 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "RedundantCondition", "line": 14 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "redundant-condition", "line": 14 }
+      ]
+    }
+  },
+  "notes": "Legacy pattern: a parameter typed with the subclass that the body re-checks against the parent class. PHPStan reports it; Psalm and Mago 1.57.0 are silent, although both have a redundant/impossible condition rule that fires for other always-true checks (see cases narrowing/is-numeric-after-is-int and narrowing/object-is-always-truthy for Mago and Psalm)."
+}

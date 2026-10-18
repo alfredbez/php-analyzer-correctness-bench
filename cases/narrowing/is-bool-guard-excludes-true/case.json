@@ -1,0 +1,20 @@
+{
+  "id": "narrowing/is-bool-guard-excludes-true",
+  "title": "an is_bool() guard makes the true literal of a string|true parameter unreachable",
+  "domain": "narrowing",
+  "rule_class": "argument.type",
+  "php": { "min": "8.2" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "true is a bool, so is_bool($value) is true for it and the literal takes the early return; the only value left for accept_string() is a string. The call is sound and the declared parameter type of accept_string() is the runtime witness.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-bool.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": { "mode": "clean" }
+  },
+  "notes": "Companion of narrowing/is-numeric-guard-excludes-int with a literal alternative instead of a primitive: the guard has to remove `true` specifically. PHP 8.2 is the floor because the fixture uses the standalone true type."
+}

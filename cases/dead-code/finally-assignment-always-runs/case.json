@@ -1,0 +1,49 @@
+{
+  "id": "dead-code/finally-assignment-always-runs",
+  "title": "PHPStan reads a finally assignment as if it never ran",
+  "domain": "dead-code",
+  "rule_class": "constant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A `finally` block runs while an exception unwinds towards an outer `catch`, so $cleaned is true when the ternary reads it: the condition is always true and cleaned_flag() always returns 1.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.exceptions.php#language.exceptions.finally"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "ternary.alwaysTrue",
+          "line": 25,
+          "reason": "The finally assignment makes the condition true. A warning that it is always true is correct; a warning that it is always false must still count as a false positive."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "RedundantCondition",
+          "line": 25,
+          "message_regex": "always.*(true|truthy)",
+          "reason": "A diagnostic correctly identifying the always-true condition is permitted; this case tests false claims about finally, not warning completeness."
+        }
+      ]
+    },
+    "mago": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "redundant-condition",
+          "line": 25,
+          "message_regex": "always.*(true|truthy)",
+          "reason": "A diagnostic correctly identifying the always-true condition is permitted; this case tests false claims about finally, not warning completeness."
+        }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 reports ternary.alwaysFalse (\"Ternary operator condition is always false.\") on the ternary, which contradicts the runtime. PHPStan's own rule (src/Rules/Comparison/TernaryOperatorConstantConditionRule.php) reports the constant value of the condition, so alwaysFalse is a semantic claim, not a style preference. Correct always-true diagnostics are allowed. Silence is not a false negative in this case, whose scope is avoiding incorrect claims about finally. Psalm and Mago are silent. The fixture derives from Mago's flow_finally_runs_after_throw.php; runtime/check.php supplies the neutral ground truth."
+}

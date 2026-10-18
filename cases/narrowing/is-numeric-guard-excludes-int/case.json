@@ -1,0 +1,20 @@
+{
+  "id": "narrowing/is-numeric-guard-excludes-int",
+  "title": "an is_numeric() guard makes the int half of a string|int parameter unreachable",
+  "domain": "narrowing",
+  "rule_class": "argument.type",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "is_numeric() is true for every int, so an int argument always takes the early return and the value that reaches accept_string() is a string. Passing the parameter to a string parameter after the guard is sound; the declared parameter type of accept_string() is the runtime witness.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-numeric.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": { "mode": "clean" }
+  },
+  "notes": "Sound-code case from the field: a legacy codebase guards `int|string` with is_numeric(). Every diagnostic here is a false positive; PHPStan and Psalm are expected to be silent because the int alternative is removed by the guard."
+}

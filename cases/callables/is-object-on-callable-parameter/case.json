@@ -1,0 +1,20 @@
+{
+  "id": "callables/is-object-on-callable-parameter",
+  "title": "A callable parameter can be an object or a function name",
+  "domain": "callables",
+  "rule_class": "argument.type",
+  "php": {"min": "8.0"},
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A Closure and an invokable Handler are objects and enter the true branch; the callable string strlen is not an object and enters the false branch. Both outcomes are reachable, and the is_object guard makes the object parameter call sound.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.callable.php"
+  },
+  "expect": {
+    "phpstan": {"mode": "clean"},
+    "psalm": {"mode": "clean"},
+    "mago": {"mode": "clean"}
+  },
+  "notes": "The runtime exercises both object forms and a non-object callable. No tool-specific extension is needed."
+}

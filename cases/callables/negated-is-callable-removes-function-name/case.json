@@ -1,0 +1,20 @@
+{
+  "id": "callables/negated-is-callable-removes-function-name",
+  "title": "An early callable return removes a known function name from a union",
+  "domain": "callables",
+  "rule_class": "argument.type",
+  "php": {"min": "8.0"},
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The local value has exactly two alternatives, strlen and [1]. strlen is callable and takes the early return. The one-element array is not callable and is the only alternative that reaches accept_array, so the call receives a list of integers.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-callable.php"
+  },
+  "expect": {
+    "phpstan": {"mode": "clean"},
+    "psalm": {"mode": "clean"},
+    "mago": {"mode": "clean"}
+  },
+  "notes": "The runtime exhausts both boolean inputs. The expected absence of an argument-type diagnostic follows from the two alternatives, not from another analyzer's output."
+}

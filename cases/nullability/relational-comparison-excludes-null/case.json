@@ -1,0 +1,29 @@
+{
+  "id": "nullability/relational-comparison-excludes-null",
+  "title": "a > comparison against 0 removes null from a nullable int",
+  "domain": "nullability",
+  "rule_class": "argument.type",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "When comparing null with an integer, PHP converts both operands to bool. Thus null > 0 compares false > false and is false. The input domain is {null} plus {int}, so null never enters the branch and the argument passed there is an int. The runtime control null > -1 is also false, distinguishing this rule from numeric conversion of null to zero.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "possibly-null-operand",
+          "line": 16,
+          "reason": "Mago warns on every comparison whose operand may be null, whatever the comparison is used for. That is its intended output: crates/analyzer/tests/cases/issue_2434.php in the Mago repository expects exactly `possibly-null-operand` for `if ($x > 0)` with a `?int $x` parameter, which is this line. The warning does not claim the branch can receive null, and Mago correctly reports nothing for the accept_int() call, which is what this case tests."
+        }
+      ]
+    }
+  },
+  "notes": "From the field: `if ($a > 0)` on a nullable int is a common legacy null guard. The null case is a single value, so the runtime check decides it rather than sampling it. Mago's null-operand warning is acknowledged above with the upstream test that documents it as intended (basis: upstream_test)."
+}

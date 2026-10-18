@@ -1,0 +1,35 @@
+{
+  "id": "narrowing/negated-instanceof-unrelated-class",
+  "title": "instanceof against an unrelated class is always false, so its negation is always true",
+  "domain": "narrowing",
+  "rule_class": "impossible-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PHP gives every object exactly one parent chain, and Beta is neither a parent nor an interface of Alpha, so no instance of Alpha (or of a subclass of Alpha) is an instance of Beta. `!($value instanceof Beta)` is true for every value the parameter can hold.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.type.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "instanceof.alwaysFalse", "line": 18 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "RedundantCondition", "line": 18 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "impossible-type-comparison", "line": 18 }
+      ]
+    }
+  },
+  "notes": "Ground truth from the language; the runtime script also proves the structural claim through class_parents()/class_implements() rather than only sampling instances. Psalm words the same fact as 'Alpha cannot be identical to Beta', which is its RedundantCondition; the first draft of the expectation named TypeDoesNotContainType. Mago 1.57.0 reports nothing for this fixture although it has an impossible-type-comparison rule and fires it for other impossible comparisons."
+}

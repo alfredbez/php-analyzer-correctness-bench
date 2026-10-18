@@ -1,0 +1,29 @@
+{
+  "id": "nullability/loose-null-guard-keeps-empty-string",
+  "title": "'' == null is true but '' === null is false, so the strict check inside the loose guard is not redundant",
+  "domain": "nullability",
+  "rule_class": "redundant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "In PHP 8, comparing null with a non-empty string is false and comparing it with '' is true, while '' === null is false. Inside the `$value == null` branch the value can therefore be '', so the inner `$value === null` has a reachable false outcome and the code behind it runs.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": ["null-operand", "possibly-null-operand"],
+          "line": 14,
+          "reason": "Mago reports these two codes for any loose comparison whose operand may be null, and its own test suite expects them: crates/analyzer/tests/cases/flow_loose_eq_null.php expects `possibly-null-operand` and `null-operand` for `if ($v == null)` on a `null|int` parameter, and issue_1757.php expects `possibly-null-operand` for `$i == 0` on `?int`. Intended output, not a claim about this fixture. The redundant-condition reports on line 15 are a different matter and stay counted."
+        }
+      ]
+    }
+  },
+  "notes": "The loose-null guard is a legacy defensive pattern. A tool that treats `== null` like `=== null` reports the inner check as redundant and the branch as dead; the runtime script shows both are alive. The '0' sample is a deliberate control: PHP 8 tightened string-to-null comparison, so '0' == null is false and must not enter the outer branch. The finding is independently corroborated by the still-open upstream report PR 2579 (https://github.com/carthage-software/mago/pull/2579), which describes the same root cause; the runtime proof here was derived from the fixture first."
+}

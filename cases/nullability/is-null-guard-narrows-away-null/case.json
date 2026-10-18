@@ -1,0 +1,20 @@
+{
+  "id": "nullability/is-null-guard-narrows-away-null",
+  "title": "an is_null() guard removes the null half of a nullable parameter",
+  "domain": "nullability",
+  "rule_class": "argument.type",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "is_null() is true for null and false for every string, so after `if (is_null($value)) return;` the value is a string and the call is sound.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-null.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": { "mode": "clean" }
+  },
+  "notes": "Regression guard: this is the plainest nullability narrowing there is, and all three analyzers are expected to be green. It exists so that the corpus can show a row where everyone agrees."
+}

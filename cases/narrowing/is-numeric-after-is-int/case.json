@@ -1,0 +1,42 @@
+{
+  "id": "narrowing/is-numeric-after-is-int",
+  "title": "is_numeric() cannot change the result after is_int() narrowed the same operand",
+  "domain": "narrowing",
+  "rule_class": "redundant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "is_int($c) is true for every int and is_numeric() is true for every int, so the right operand of the && never changes the value of the whole condition: classify() returns the same string as a version without the second call would, for every input.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-numeric.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "function.alreadyNarrowedType", "line": 15 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "RedundantCondition", "line": 15 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "redundant-type-comparison", "line": 15 }
+      ],
+      "allowed": [
+        {
+          "code": "redundant-logical-operation",
+          "line": 15,
+          "reason": "Same root cause reported under the && rule: left operand evaluates, right operand is always truthy. Correct, and Mago keeps the two rule classes apart."
+        }
+      ]
+    }
+  },
+  "notes": "The claim is the redundancy of the second operand. PHPStan and Psalm both report it as a redundant condition on the function call; Mago reports the same fact as redundant-type-comparison plus redundant-logical-operation. The first draft of this expectation guessed a mago code that does not exist in mago 1.57.0 (the vocabulary is in crates/analyzer/src/code.rs); the claim was not changed, only its spelling."
+}

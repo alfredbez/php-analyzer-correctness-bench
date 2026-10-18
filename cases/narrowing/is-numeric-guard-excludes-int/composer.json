@@ -1,0 +1,24 @@
+{
+  "name": "bench/narrowing-is-numeric-guard-excludes-int",
+  "description": "an is_numeric() guard makes the int half of a string|int parameter unreachable",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "2.3.1",
+    "vimeo/psalm": "6.20.0"
+  },
+  "autoload": {
+    "files": ["src/repro.php"]
+  },
+  "scripts": {
+    "analyze": [
+      "phpstan analyse --level=9 --no-progress src",
+      "psalm --no-progress --config=psalm.xml",
+      "mago analyze src"
+    ],
+    "runtime-check": "php runtime/check.php"
+  }
+}

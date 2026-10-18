@@ -1,0 +1,35 @@
+{
+  "id": "narrowing/object-is-always-truthy",
+  "title": "a negated Token condition is always false because Token instances are truthy",
+  "domain": "narrowing",
+  "rule_class": "impossible-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PHP has no userland __toBool(), and instances of the final user-defined class Token are truthy. Thus `!$token` is false for every permitted argument: the branch returning true is dead and is_falsy() always returns false. This does not claim that internal objects with custom bool casts are always truthy.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.boolean.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "booleanNot.alwaysFalse", "line": 22 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "TypeDoesNotContainType", "line": 22 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "impossible-condition", "line": 22 }
+      ]
+    }
+  },
+  "notes": "The fixture uses a final user-defined class. Some internal objects, such as GMP zero, can cast to false; they are outside this function's input domain. All three tools report the dead branch; Psalm words it as 'Type Token for $token is never falsy'."
+}

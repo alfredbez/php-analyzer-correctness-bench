@@ -1,0 +1,20 @@
+{
+  "id": "nullability/elseif-else-return-keeps-possible-null",
+  "title": "a variable tested only in an elseif branch stays nullable after the structure",
+  "domain": "nullability",
+  "rule_class": "redundant-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The elseif condition is only evaluated when the first condition was false. With $a non-null and $b null the first branch runs, $b is never tested and execution continues with $b still null, so the final `$b === null` is true on a reachable path.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/control-structures.elseif.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": { "mode": "clean" }
+  },
+  "notes": "A tool that assumes the post-structure state satisfies every branch condition removes null from $b and then calls the final check redundant and its body dead. The first runtime case decides the opposite. This is the same class of unsound branch merging as the open upstream report for Mago (COORDINATION.json R56 / repro/elseif-else-return-unsound-variable-narrowing), but the expectation here rests on the runtime proof only."
+}
