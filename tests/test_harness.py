@@ -76,6 +76,25 @@ class AdapterTest(unittest.TestCase):
         self.assertEqual(parsed["tool_error"], "Internal error")
 
 
+class AnalyzerExitStatusTest(unittest.TestCase):
+    def test_timeout_with_valid_partial_json_is_not_a_successful_measurement(self):
+        from bench import execute
+
+        class TimedOutRunner:
+            mode = "native"
+
+            def exec(self, argv, cwd, timeout):
+                return {"stdout": '{"issues": []}', "stderr": "timed out",
+                        "exit_code": 124, "duration_s": 0.1}
+
+        case = make_case({"mago": {"mode": "clean"}})
+        record = execute.run_case(case, TimedOutRunner(), tools=["mago"], php_version="8.3.35")
+        result = record["results"]["mago"]
+        self.assertEqual(result["verdict"], "tool_error")
+        self.assertIn("124", result["detail"])
+        self.assertEqual(result["exit_code"], 124)
+
+
 class ClassificationTest(unittest.TestCase):
     def _classify(self, expect: dict, diagnostics: list[dict], tool: str = "phpstan"):
         case = make_case(expect)
@@ -178,6 +197,18 @@ class RuntimeProofGateTest(unittest.TestCase):
         record = execute.run_case(self._case(), runner, tools=["mago"], php_version="8.3.35")
         self.assertEqual(runner.tool_calls, 1)
         self.assertNotEqual(record["results"]["mago"]["verdict"], "case_error")
+
+    def test_incompatible_php_skips_a_case_even_when_its_runtime_would_fail(self):
+        from bench import execute
+        for bounds in ({"min": "8.4"}, {"max": "8.2.99"}):
+            with self.subTest(bounds=bounds):
+                case = self._case()
+                case.data["php"] = bounds
+                runner = self.StubRunner(proof_exit_code=255)
+                record = execute.run_case(case, runner, php_version="8.3.35")
+                self.assertEqual({result["verdict"] for result in record["results"].values()},
+                                 {"skipped"})
+                self.assertNotIn("runtime_proof", record)
 
 
 class ContractTest(unittest.TestCase):

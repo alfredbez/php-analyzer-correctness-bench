@@ -11,7 +11,7 @@ For every case and every analyzer, exactly one verdict:
 | `false_negative` | yes, negative | stayed silent where the case requires a report |
 | `mixed` | yes, negative | both of the above in one fixture |
 | `divergence` | no | the rule class is not implemented by design; citation recorded |
-| `tool_error` | no | crash, timeout, unparseable output - a harness problem |
+| `tool_error` | no | crash, timeout, or unparseable output; the measurement failed |
 | `skipped` | no | the case does not apply to the running PHP version |
 | `case_error` | no | the case violates the contract; the corpus is broken, not the tool |
 
@@ -19,7 +19,9 @@ The published rate is `agreement = ok / (ok + false_positive + false_negative + 
 with the denominator printed next to it. Cases that are divergences, errors or
 skips are excluded from that denominator and shown separately, because folding
 "not implemented on purpose" into "wrong" would be the same error as folding a
-crash into a defect.
+crash into a semantic correctness verdict. A crash can be an analyzer defect;
+it remains visible as a tool error and makes the run command fail. It is not
+relabelled as a case error merely because every selected analyzer failed.
 
 ## Rules that keep the number honest
 

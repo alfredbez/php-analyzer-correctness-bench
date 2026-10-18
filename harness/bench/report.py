@@ -81,23 +81,23 @@ def render_summary(report: dict) -> str:
         lines.append(f"- {name}: {version}")
     lines.append(f"- PHP: {meta['php_version']}")
     lines.append(f"- Cases: {meta['case_count']} (valid: {meta['valid_cases']})")
-    lines.append(f"- Ground truth proven by running the fixture: "
+    lines.append(f"- Runtime checks passed: "
                  f"{meta.get('runtime_proven', 0)}/{meta['case_count']}")
     if meta.get("runtime_proof_failed"):
         lines.append(f"- **Runtime proofs that failed: {', '.join(meta['runtime_proof_failed'])}** - "
                      "those cases are excluded and must be repaired")
     lines.append("")
-    lines.append("`agreement` = ok / (ok + false positives + false negatives). Cases whose ground truth "
-                 "is a by-design divergence, a tool error or a skip are excluded and listed separately.")
+    lines.append("`agreement` = ok / judged, where judged = ok + false positives + false negatives + mixed. "
+                 "By-design divergences, tool errors, case errors and skips are excluded and listed separately.")
     lines.append("")
-    lines.append("| Tool | Cases | ok | false positive | false negative | mixed | by-design | tool error | agreement |")
-    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+    lines.append("| Tool | Cases | Judged | ok | FP | FN | mixed | by-design | tool error | case error | skipped | agreement |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
     for tool, summary in sorted(report["summary"].items()):
         agreement = "n/a" if summary["agreement"] is None else f"{summary['agreement']}%"
         lines.append(
-            f"| {tool} | {summary['cases']} | {summary['ok']} | {summary['false_positive']} | "
+            f"| {tool} | {summary['cases']} | {summary['judged']} | {summary['ok']} | {summary['false_positive']} | "
             f"{summary['false_negative']} | {summary['mixed']} | {summary['divergence']} | "
-            f"{summary['tool_error']} | {agreement} |")
+            f"{summary['tool_error']} | {summary['case_error']} | {summary['skipped']} | {agreement} |")
     lines.append("")
     lines.append("## Per domain")
     lines.append("")

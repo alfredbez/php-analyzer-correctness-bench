@@ -18,12 +18,13 @@ class ToolSpec:
     name: str
     binary: str          # repository-relative path of the analyzer
     needs_php: bool
+    measurement_exit_codes: tuple[int, ...]
 
 
 TOOLS = (
-    ToolSpec("phpstan", "tools/bin/phpstan.phar", True),
-    ToolSpec("psalm", "tools/bin/psalm.phar", True),
-    ToolSpec("mago", "tools/bin/mago", False),
+    ToolSpec("phpstan", "tools/bin/phpstan.phar", True, (0, 1)),
+    ToolSpec("psalm", "tools/bin/psalm.phar", True, (0, 2)),
+    ToolSpec("mago", "tools/bin/mago", False, (0, 1)),
 )
 
 
@@ -80,13 +81,16 @@ def ensure_autoload(case: case_mod.Case) -> None:
         )
 
 
-def _external_binary(path: str) -> str:
-    """Make a binary from outside the repository reachable.
+def tool_binary(spec: ToolSpec) -> str:
+    """Resolve the selected binary and make external overrides reachable.
 
     Only the repository root is mounted into the container, so a tool installed
     elsewhere is copied into a gitignored staging directory first.
     """
-    absolute = os.path.abspath(path)
+    override = os.environ.get(f"BENCH_TOOL_{spec.name.upper()}")
+    if not override:
+        return os.path.join(ROOT, spec.binary)
+    absolute = os.path.abspath(override)
     if absolute.startswith(ROOT + os.sep):
         return absolute
     staging = os.path.join(ROOT, ".tools-alt")
@@ -106,8 +110,7 @@ def build_argv(case: case_mod.Case, spec: ToolSpec) -> list[str]:
     which is how a drift check tries a newer release without touching the pins:
     ``BENCH_TOOL_PHPSTAN=/path/to/phpstan.phar``.
     """
-    override = os.environ.get(f"BENCH_TOOL_{spec.name.upper()}")
-    binary = _external_binary(override) if override else os.path.join(ROOT, spec.binary)
+    binary = tool_binary(spec)
     targets = [case.abs_path(target) for target in case.target_dirs]
     if spec.name == "phpstan":
         argv = [binary, "analyse", "--no-progress", "--error-format=json",
@@ -152,6 +155,9 @@ def run_tool(case: case_mod.Case, spec: ToolSpec, runner: Runner,
     else:
         output = runner.exec(argv, cwd=case.path, timeout=TOOL_TIMEOUT)
     parsed = adapters.ADAPTERS[spec.name](output["stdout"], output["stderr"])
+    if output["exit_code"] not in spec.measurement_exit_codes:
+        parsed["tool_error"] = (f"process exited {output['exit_code']}: "
+                                f"{(output['stderr'] or output['stdout']).strip()[:300]}")
     parsed.update({
         "exit_code": output["exit_code"],
         "duration_s": output["duration_s"],
@@ -194,6 +200,11 @@ def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
               "basis": case.data.get("ground_truth", {}).get("basis"),
               "path": os.path.relpath(case.path, ROOT), "results": {}}
 
+    if not case.diagnostics and classify_mod.version_skip_reason(case, php_version):
+        record["results"] = {spec.name: classify_mod.classify(case, spec.name, {}, php_version)
+                             for spec in selected}
+        return record
+
     if not case.diagnostics:
         ensure_autoload(case)
 
@@ -228,16 +239,4 @@ def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
                     json.dump(evidence, handle, indent=2)
         record["results"][spec.name] = result
 
-    # If not a single analyzer could produce a result, the fixture does not run
-    # in this environment (typically a syntax newer than the PHP version under
-    # test, or a missing php.min in case.json). That is a corpus problem, not
-    # three analyzer problems.
-    verdicts = [result["verdict"] for result in record["results"].values()]
-    if verdicts and all(verdict == "tool_error" for verdict in verdicts):
-        detail = (f"no analyzer produced a result under PHP {php_version}; "
-                  "check the case's php.min against the syntax it uses")
-        for result in record["results"].values():
-            result["verdict"] = "case_error"
-            result["detail"] = detail
-        record["environment_mismatch"] = True
     return record

@@ -26,15 +26,11 @@ from bench.runner import ROOT, Runner        # noqa: E402
 
 def tool_versions(runner: Runner) -> dict:
     versions = {}
-    phpstan = runner.php([runner.runtime_path(os.path.join(ROOT, "tools/bin/phpstan.phar")), "--version"],
-                         cwd=ROOT, timeout=120)
-    versions["phpstan"] = phpstan["stdout"].strip().splitlines()[0] if phpstan["exit_code"] == 0 else "unknown"
-    psalm = runner.php([runner.runtime_path(os.path.join(ROOT, "tools/bin/psalm.phar")), "--version"],
-                       cwd=ROOT, timeout=120)
-    versions["psalm"] = psalm["stdout"].strip().splitlines()[0] if psalm["exit_code"] == 0 else "unknown"
-    mago = runner.exec([runner.runtime_path(os.path.join(ROOT, "tools/bin/mago")), "--version"],
-                       cwd=ROOT, timeout=60)
-    versions["mago"] = mago["stdout"].strip().splitlines()[0] if mago["exit_code"] == 0 else "unknown"
+    for spec in execute.TOOLS:
+        argv = [runner.runtime_path(execute.tool_binary(spec)), "--version"]
+        output = (runner.php if spec.needs_php else runner.exec)(argv, cwd=ROOT, timeout=120)
+        lines = output["stdout"].strip().splitlines()
+        versions[spec.name] = lines[0] if output["exit_code"] == 0 and lines else "unknown"
     return versions
 
 
@@ -123,7 +119,8 @@ def cmd_run(args) -> int:
     print(report.render_summary(payload))
     if run_dir:
         print(f"Artifacts: {os.path.relpath(run_dir, ROOT)}")
-    return 0
+    return int(any(result["verdict"] in ("tool_error", "case_error")
+                   for record in records for result in record["results"].values()))
 
 
 def _print_progress(record: dict) -> None:

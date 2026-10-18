@@ -44,6 +44,14 @@ def _describe(predicate: dict) -> str:
     return f"/{predicate.get('message_regex')}/"
 
 
+def version_skip_reason(case: case_mod.Case, php_version: str | None) -> str | None:
+    if case.php_max and php_version and _version_tuple(php_version) > _version_tuple(case.php_max):
+        return f"case targets PHP <= {case.php_max}, running {php_version}"
+    if php_version and _version_tuple(php_version) < _version_tuple(case.php_min):
+        return f"case targets PHP >= {case.php_min}, running {php_version}"
+    return None
+
+
 def classify(case: case_mod.Case, tool: str, output: dict, php_version: str | None) -> dict:
     """Turn one tool run into a verdict record."""
     result = {
@@ -65,13 +73,10 @@ def classify(case: case_mod.Case, tool: str, output: dict, php_version: str | No
         result["detail"] = "; ".join(case.diagnostics)
         return result
 
-    if case.php_max and php_version and _version_tuple(php_version) > _version_tuple(case.php_max):
+    skip_reason = version_skip_reason(case, php_version)
+    if skip_reason:
         result["verdict"] = "skipped"
-        result["detail"] = f"case targets PHP <= {case.php_max}, running {php_version}"
-        return result
-    if php_version and _version_tuple(php_version) < _version_tuple(case.php_min):
-        result["verdict"] = "skipped"
-        result["detail"] = f"case targets PHP >= {case.php_min}, running {php_version}"
+        result["detail"] = skip_reason
         return result
 
     expectation = case.expectation(tool)

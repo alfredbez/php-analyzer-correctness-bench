@@ -22,18 +22,21 @@ having pinned the analyzers into `tools/bin/`.
 
 Running a newer release without touching the pins:
 `BENCH_TOOL_MAGO=/path/to/mago python3 harness/bench.py run --label drift`.
-The same override exists for `BENCH_TOOL_PHPSTAN` and `BENCH_TOOL_PSALM`; the
-nightly drift workflow uses `tools/install.sh --latest` with an out-of-tree
-`BENCH_TOOLS_DIR` for the same purpose.
+The same override exists for `BENCH_TOOL_PHPSTAN` and `BENCH_TOOL_PSALM`.
+The report probes the selected binary, so its recorded version matches the run.
+The nightly drift workflow uses `tools/install.sh --latest` in its fresh checkout.
+Locally, use an out-of-tree `BENCH_TOOLS_DIR` to preserve the pinned binaries.
 
 ## What a result means
 
-Only three judgements are counted:
+Four judgements enter the agreement denominator:
 
 * **false negative** - the case requires a diagnostic and the analyzer is silent.
 * **false positive** - the analyzer reports something the case forbids or that
   the case author did not acknowledge.
 * **ok** - the analyzer did what the case requires.
+* **mixed** - the analyzer both missed a required diagnostic and reported an
+  unjustified diagnostic in the same case.
 
 Two things are deliberately *not* counted:
 
@@ -42,8 +45,10 @@ Two things are deliberately *not* counted:
   in Mago. Such an expectation is recorded as `unsupported` with a citation and
   appears in the matrix as `n/a`. PHPStan-specific `@phpstan-*` and Psalm-specific
   `@psalm-*` extensions are handled the same way.
-* **tool errors and skips.** A crash, a timeout or a PHP version mismatch is an
-  error in the harness, not a verdict about the analyzer.
+* **tool errors, case errors, and skips.** Crashes and timeouts are failed
+  measurements, invalid fixtures are case errors, and incompatible PHP versions
+  are skipped. None enters the agreement denominator. Tool and case errors make
+  the run command fail, so CI and the factory cannot treat them as a valid run.
 
 The report always prints the denominator next to the rate, and lists every
 divergence with its citation. A single aggregate number would hide exactly the
