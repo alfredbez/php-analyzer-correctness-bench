@@ -14,10 +14,10 @@ One round of this program does three things:
 Design constraints, in order of importance:
 
 * Nothing lands unverified. A round that cannot run the corpus does not promote.
-* The factory writes only `cases/`, `docs/`, `harness/` and `factory/`. Results
-  are produced by measurement runs, which have a single writer.
+* Workers add new cases only. A read-only reviewer must accept the exact head.
+  The coordinator commits the full measurement before publishing.
 * No pull requests, ever. The upstream Mago freeze is respected; this program
-  never calls `gh pr create` and never pushes a branch other than its own.
+  never calls `gh pr create` and publishes only to this repository's origin/main.
 * Rate limits are a first-class state. A model that answers with a 429 is parked
   for a while and the next candidate takes over.
 """
@@ -25,26 +25,32 @@ Design constraints, in order of importance:
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
 import os
 import random
-import shlex
+import signal
 import subprocess
 import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-STATE_FILE = os.path.join(HERE, "STATE.json")
 PROMPT_DIR = os.path.join(HERE, "prompts")
 EVIDENCE_DIR = os.path.join(HERE, "evidence")
+STATE_FILE = os.path.join(EVIDENCE_DIR, "STATE.json")
 LOG_FILE = os.path.join(EVIDENCE_DIR, "factory.log")
 WORKTREE = "/home/abez/projects/php-analyzer-bench-worktrees/factory"
 BRANCH = "factory/auto"
 PROMOTE_TARGET = "main"
 
-SUBAGENT_TIMEOUT = int(os.environ.get("BENCH_FACTORY_TIMEOUT", "2400"))
+SUBAGENT_TIMEOUT = int(os.environ.get("BENCH_FACTORY_TIMEOUT", "900"))
 RATE_LIMIT_COOLDOWN = 3600
+TARGETS = {
+    "narrowing": 8, "nullability": 5, "callables": 5, "assignability": 5,
+    "legacy-patterns": 6, "phpdoc-extensions": 4, "generics": 4, "arrays": 4,
+    "dead-code": 4, "enums": 4, "type-inference": 5, "phpstan-extensions": 3,
+}
 
 # Free models only. The two lanes are deliberately different families: an
 # implementer and a reviewer from the same family share their blind spots.
@@ -69,16 +75,17 @@ def log(message: str) -> None:
         handle.write(line + "\n")
 
 
-def run(cmd: list[str] | str, cwd: str, timeout: int = 600, shell: bool = False) -> dict:
+def run(cmd: list[str], cwd: str, timeout: int = 600) -> dict:
     started = time.time()
+    proc = subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            text=True, start_new_session=True)
     try:
-        proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True,
-                              timeout=timeout, shell=shell)
-        code, out, err = proc.returncode, proc.stdout, proc.stderr
-    except subprocess.TimeoutExpired as exc:
+        out, err = proc.communicate(timeout=timeout)
+        code = proc.returncode
+    except subprocess.TimeoutExpired:
+        os.killpg(proc.pid, signal.SIGKILL)
+        out, err = proc.communicate()
         code = 124
-        out = (exc.stdout or "") if isinstance(exc.stdout, str) else ""
-        err = (exc.stderr or "") if isinstance(exc.stderr, str) else ""
         err += f"\n[factory] timeout after {timeout}s"
     return {"code": code, "stdout": out, "stderr": err,
             "seconds": round(time.time() - started, 1)}
@@ -94,6 +101,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
+    os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
     tmp = STATE_FILE + ".tmp"
     with open(tmp, "w", encoding="utf-8") as handle:
         json.dump(state, handle, indent=2)
@@ -122,22 +130,41 @@ def looks_rate_limited(text: str) -> bool:
 
 # ---------------------------------------------------------------- worktree
 
+def unfinished_files(tree: str) -> list[str]:
+    tracked = run(["git", "diff", "--name-only", "HEAD"], cwd=tree)
+    untracked = run(["git", "ls-files", "--others", "--exclude-standard"], cwd=tree)
+    if tracked["code"] or untracked["code"]:
+        raise RuntimeError("cannot inspect factory worktree")
+    return [path for path in (tracked["stdout"] + untracked["stdout"]).splitlines()
+            if not path.startswith("results/runs/")]
+
+
 def ensure_worktree(state: dict) -> str:
     if os.path.exists(os.path.join(WORKTREE, ".git")):
-        run(["git", "fetch", "origin", "main"], cwd=WORKTREE, timeout=180)
-        result = run(["git", "rebase", "origin/main"], cwd=WORKTREE, timeout=180)
-        if result["code"] != 0:
-            run(["git", "rebase", "--abort"], cwd=WORKTREE, timeout=60)
-            log("[WORKTREE] rebase failed, continuing on the existing base")
+        if unfinished_files(WORKTREE):
+            raise RuntimeError("factory worktree has unfinished changes; preserving them for inspection")
+        branch = run(["git", "branch", "--show-current"], cwd=WORKTREE)["stdout"].strip()
+        if branch != BRANCH:
+            raise RuntimeError(f"factory worktree is on unexpected branch {branch!r}")
+        if run(["git", "fetch", "origin", "main"], cwd=WORKTREE, timeout=180)["code"]:
+            raise RuntimeError("cannot fetch origin/main")
+        ahead = run(["git", "rev-list", "--count", "origin/main..HEAD"], cwd=WORKTREE)
+        if ahead["code"] or ahead["stdout"].strip() != "0":
+            raise RuntimeError("unpublished factory commits need inspection before another round")
+        if run(["git", "merge", "--ff-only", "origin/main"], cwd=WORKTREE)["code"]:
+            raise RuntimeError("cannot fast-forward the factory worktree")
         return WORKTREE
     os.makedirs(os.path.dirname(WORKTREE), exist_ok=True)
-    run(["git", "worktree", "add", "-B", BRANCH, WORKTREE, "origin/main"], cwd=ROOT, timeout=300)
+    result = run(["git", "worktree", "add", "-b", BRANCH, WORKTREE, "origin/main"], cwd=ROOT, timeout=300)
+    if result["code"]:
+        raise RuntimeError(f"cannot create factory worktree: {result['stderr'][:200]}")
     log(f"[WORKTREE] created {WORKTREE} on {BRANCH}")
     return WORKTREE
 
 
 def tooling_ready(tree: str) -> bool:
-    return os.path.exists(os.path.join(tree, "tools/bin/phpstan.phar"))
+    return all(os.path.exists(os.path.join(tree, "tools/bin", name))
+               for name in ("phpstan.phar", "psalm.phar", "mago"))
 
 
 def prepare_tooling(tree: str) -> bool:
@@ -157,7 +184,7 @@ def corpus_domains(tree: str) -> dict:
         path = os.path.join(cases_dir, domain)
         if os.path.isdir(path):
             counts[domain] = len([d for d in os.listdir(path)
-                                  if os.path.isdir(os.path.join(path, d))])
+                                  if os.path.isfile(os.path.join(path, d, "case.json"))])
     return counts
 
 
@@ -176,7 +203,7 @@ Rules that decide whether your work is worth anything:
 - A fixture harvested from one tool's own test suite judges that tool via `expect.<tool>.basis` + `citation`; the other two are judged against the case's neutral ground truth.
 - Where a tool deliberately does not implement a rule class, use `mode: "unsupported"` with a reason and a citation you actually read - do not invent one.
 - Never widen an expectation to make a tool look better or worse. A false positive or false negative that you find stays in the matrix.
-- Never modify files outside `cases/{domain}/`. If a harness bug blocks you, stop and write the problem into `factory/BLOCKED.md`.
+- Add new case directories only under `cases/{domain}/`. Do not modify existing cases or any other tracked file. If a harness bug blocks you, stop and report it in your final response.
 
 Verify before you commit: `python3 harness/bench.py validate` and `python3 harness/bench.py run --case <id>` for every case you added. Commit with `git -c commit.gpgsign=false commit`, one line, naming the rule class.
 
@@ -184,10 +211,11 @@ Finish with a short report: the case ids, the verdicts that came out, and anythi
 
 REVIEWER_TEMPLATE = """You are a reviewer session in the autonomous factory of the PHP analyzer correctness benchmark at {tree}.
 
-You did not write the code you are reviewing. Read AGENT-PROTOCOL.md, docs/case-contract.md and factory/SOURCES.md, then audit the cases changed by the last commit(s):
+You did not write the code you are reviewing. Read AGENT-PROTOCOL.md, docs/case-contract.md and factory/SOURCES.md, then audit the entire candidate:
 
-    git log --oneline -{commits} --name-status
-    git diff HEAD~{commits} -- cases/
+    git diff {base}..{head} -- cases/
+
+Review exactly these case ids: {cases}
 
 For every changed case, check and report:
 1. Ground truth: is the stated basis real? Run `runtime/check.php` where it exists. If the basis is `php_semantics`, is the argument correct? If the basis is a citation, does the citation exist and say what the case claims?
@@ -195,14 +223,15 @@ For every changed case, check and report:
 3. Verdicts: reproduce at least two cases with `python3 harness/bench.py run --case <id>` and compare with what the files claim.
 4. Contract: `python3 harness/bench.py validate` passes; `composer.json` present; no `vendor/`, `.generated/` or scratch files committed.
 
-Fix what is clearly broken (a wrong line number, a missing citation, a case that violates the contract). Do not rewrite the implementer's judgement about a tool's behaviour - if you disagree, write it into `factory/REVIEW.md` with the evidence.
+Do not edit or commit any source file, switch branches, push, or launch other agents. Reject the batch if anything needs a correction or if a claim cannot be established.
 
-Commit your fixes with `git -c commit.gpgsign=false commit` and answer with a short verdict per case: accept, fixed, or disagree (with reason)."""
+Write your review as JSON to this exact receipt path: {receipt}
+The object must contain `base` equal to "{base}", `head` equal to "{head}", `verdict` equal to "accept" or "reject", `cases` containing the exact case id list above, and `reason` explaining your verdict. Only accept when every case passes the review. A missing receipt or a rejected verdict blocks publication."""
 
 
 def write_prompt(name: str, content: str) -> str:
     os.makedirs(PROMPT_DIR, exist_ok=True)
-    path = os.path.join(PROMPT_DIR, f"{int(time.time())}-{name}.txt")
+    path = os.path.join(PROMPT_DIR, f"{time.time_ns()}-{name}.txt")
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(content)
     return path
@@ -210,29 +239,24 @@ def write_prompt(name: str, content: str) -> str:
 
 def dispatch(tree: str, model: str, prompt: str, label: str, state: dict) -> dict:
     prompt_file = write_prompt(label, prompt)
-    log_path = os.path.join(EVIDENCE_DIR, f"{int(time.time())}-{label}.log")
+    log_path = os.path.join(EVIDENCE_DIR, f"{time.time_ns()}-{label}.log")
     log(f"[DISPATCH] {label} with {model} (prompt: {os.path.basename(prompt_file)})")
-    command = (f"opencode run --auto --model {shlex.quote(model)} "
-               f"--title {shlex.quote('bench factory: ' + label)} "
-               f"{shlex.quote(prompt)}")
-    result = run(command, cwd=tree, timeout=SUBAGENT_TIMEOUT, shell=True)
+    command = ["opencode", "run", "--standalone", "--auto", "--model", model,
+               "--title", "bench factory: " + label, prompt]
+    result = run(command, cwd=tree, timeout=SUBAGENT_TIMEOUT)
     with open(log_path, "w", encoding="utf-8") as handle:
         handle.write(f"model: {model}\nprompt: {prompt_file}\nexit: {result['code']}\n")
         handle.write("=== stdout ===\n" + result["stdout"] + "\n=== stderr ===\n" + result["stderr"])
     if looks_rate_limited(result["stdout"] + result["stderr"]):
         park(state, model, result["stdout"] + result["stderr"])
+        result["code"] = result["code"] or 1
     return result
 
 
 # ---------------------------------------------------------------- round
 
-def pick_task(tree: str, state: dict) -> dict:
+def pick_task(tree: str, state: dict) -> dict | None:
     counts = corpus_domains(tree)
-    domains = state.get("domains") or {
-        "narrowing": 8, "nullability": 5, "callables": 5, "assignability": 5,
-        "legacy-patterns": 6, "phpdoc-extensions": 4, "generics": 4, "arrays": 4,
-        "dead-code": 4, "enums": 4, "type-inference": 5, "phpstan-extensions": 3,
-    }
     source_by_domain = {
         "narrowing": "/home/abez/projects/mago-upstream-prep/repro (field findings)",
         "nullability": "/home/abez/projects/mago-upstream-prep/repro (field findings)",
@@ -249,13 +273,16 @@ def pick_task(tree: str, state: dict) -> dict:
     }
     # The thinnest domain relative to its target wins, so the corpus fills in
     # rather than piling up in whichever area is easiest.
-    deficits = {domain: target - counts.get(domain, 0) for domain, target in domains.items()}
+    deficits = {domain: target - counts.get(domain, 0) for domain, target in TARGETS.items()
+                if counts.get(domain, 0) < target}
+    if not deficits:
+        return None
     domain = max(deficits, key=lambda key: deficits[key])
     return {
         "domain": domain,
         "source": source_by_domain.get(domain, "the sources listed in factory/SOURCES.md"),
-        "why": f"{counts.get(domain, 0)} of {domains[domain]} planned cases exist",
-        "count": random.randint(2, 4),
+        "why": f"{counts.get(domain, 0)} of {TARGETS[domain]} planned cases exist",
+        "count": min(deficits[domain], random.randint(2, 4)),
     }
 
 
@@ -264,8 +291,40 @@ def ensure_valid(tree: str) -> bool:
     return result["code"] == 0
 
 
-def promote(tree: str, state: dict, round_id: int) -> bool:
+def candidate_cases(tree: str, base: str, task: dict) -> list[str]:
+    if unfinished_files(tree):
+        raise RuntimeError("candidate has uncommitted changes outside measurement results")
+    branch = run(["git", "branch", "--show-current"], cwd=tree)["stdout"].strip()
+    if branch != BRANCH:
+        raise RuntimeError("worker switched branches")
+    changed = run(["git", "diff", "--no-renames", "--name-status", f"{base}..HEAD"], cwd=tree)
+    if changed["code"]:
+        raise RuntimeError("cannot inspect candidate diff")
+    cases = set()
+    manifests = set()
+    for line in changed["stdout"].splitlines():
+        status, path = line.split("\t", 1)
+        parts = path.split("/")
+        if (status != "A" or len(parts) < 4 or parts[:2] != ["cases", task["domain"]]
+                or any(part in ("vendor", ".generated") for part in parts)):
+            raise RuntimeError(f"worker changed a forbidden path: {status} {path}")
+        case_id = "/".join(parts[1:3])
+        existing = run(["git", "ls-tree", base, "--", "/".join(parts[:3])], cwd=tree)
+        if existing["code"] or existing["stdout"].strip():
+            raise RuntimeError(f"worker modified an existing case: {case_id}")
+        cases.add(case_id)
+        if parts[3:] == ["case.json"]:
+            manifests.add(case_id)
+        if os.path.islink(os.path.join(tree, path)):
+            raise RuntimeError(f"candidate contains a symlink: {path}")
+    if not cases or cases != manifests or len(cases) > task["count"]:
+        raise RuntimeError("candidate must contain complete new cases within the round's count limit")
+    return sorted(cases)
+
+
+def promote(tree: str, record: dict, review: dict) -> bool:
     """Publish the factory branch onto main when every gate is green."""
+    round_id = record["round"]
     if not ensure_valid(tree):
         log(f"[GATE] round {round_id} failed validation - not promoting")
         return False
@@ -281,18 +340,28 @@ def promote(tree: str, state: dict, round_id: int) -> bool:
         for line in audit["stdout"].splitlines()[:10]:
             log("  " + line.strip())
         return False
-    failures = [line for line in result["stdout"].splitlines()
-                if "=tool_error" in line or "=case_error" in line]
-    if failures:
-        log(f"[GATE] round {round_id} produced {len(failures)} tool/case errors - not promoting")
-        for line in failures[:10]:
-            log("  " + line.strip())
+    with open(os.path.join(tree, "results/latest/report.json"), encoding="utf-8") as handle:
+        report = json.load(handle)
+    expected = {f"{domain}/{slug}" for domain in corpus_domains(tree)
+                for slug in os.listdir(os.path.join(tree, "cases", domain))
+                if os.path.isfile(os.path.join(tree, "cases", domain, slug, "case.json"))}
+    if (not report["meta"]["run_id"].endswith(f"-factory-{round_id}")
+            or {row["case"] for row in report["cases"]} != expected
+            or any(set(row["results"]) != {"phpstan", "psalm", "mago"}
+                   for row in report["cases"])):
+        log(f"[GATE] round {round_id} did not measure the complete corpus with all three tools")
         return False
-    run(["git", "add", "cases", "docs", "harness", "factory"], cwd=tree, timeout=120)
-    staged = run(["git", "diff", "--cached", "--name-only"], cwd=tree, timeout=60)
-    if staged["stdout"].strip():
-        run(["git", "-c", "commit.gpgsign=false", "commit", "-m",
-             f"Factory round {round_id}: grow the corpus"], cwd=tree, timeout=120)
+    snapshot = os.path.join("results", "runs", report["meta"]["run_id"])
+    with open(os.path.join(tree, snapshot, "review.json"), "w", encoding="utf-8") as handle:
+        json.dump({**review, "implementer": record["implementer"],
+                   "reviewer": record["reviewer"]}, handle, indent=2)
+        handle.write("\n")
+    if run(["git", "add", "--", snapshot], cwd=tree)["code"]:
+        return False
+    commit = run(["git", "-c", "commit.gpgsign=false", "commit", "-m",
+                  f"Record verified factory round {round_id}"], cwd=tree, timeout=120)
+    if commit["code"]:
+        return False
     push = run(["git", "push", "origin", f"HEAD:{PROMOTE_TARGET}"], cwd=tree, timeout=300)
     if push["code"] != 0:
         log(f"[GATE] push to {PROMOTE_TARGET} rejected: {push['stderr'][:200]}")
@@ -301,61 +370,85 @@ def promote(tree: str, state: dict, round_id: int) -> bool:
     return True
 
 
+def finish_round(state: dict, record: dict, status: str, detail: str = "") -> dict:
+    record.update(status=status, detail=detail, finished=int(time.time()))
+    state.setdefault("rounds", []).append(record)
+    save_state(state)
+    log(f"[ROUND {record['round']}] {status}: {detail}")
+    return record
+
+
 def round_once(state: dict, dry_run: bool = False) -> dict:
     round_id = len(state.get("rounds", [])) + 1
-    tree = ensure_worktree(state)
-    if not prepare_tooling(tree):
-        log("[SETUP] analyzer binaries unavailable - round skipped")
-        return {"round": round_id, "status": "setup_failed"}
-
-    task = pick_task(tree, state)
-    record = {"round": round_id, "started": int(time.time()), "task": task, "status": "running"}
-
-    implementers = available(IMPLEMENTERS, state)
-    reviewers = available(REVIEWERS, state)
-    if not implementers or not reviewers:
-        log("[SKIP] no model available outside the rate-limit cooldown")
-        record["status"] = "rate_limited"
-        state.setdefault("rounds", []).append(record)
-        save_state(state)
-        return record
-
-    implementer = implementers[0]
-    reviewer = next((model for model in reviewers if model != implementer), reviewers[0])
-    record["implementer"], record["reviewer"] = implementer, reviewer
-
+    record = {"round": round_id, "started": int(time.time())}
     if dry_run:
-        log(f"[DRY RUN] would dispatch: domain={task['domain']} "
-            f"implementer={implementer} reviewer={reviewer}")
+        record["task"] = pick_task(ROOT, state)
+        record["implementers"] = available(IMPLEMENTERS, state)
+        record["reviewers"] = available(REVIEWERS, state)
         record["status"] = "dry_run"
-        state.setdefault("rounds", []).append(record)
-        save_state(state)
         return record
+    try:
+        tree = ensure_worktree(state)
+        task = pick_task(tree, state)
+        if not task:
+            return finish_round(state, record, "complete", "all domain targets reached")
+        record["task"] = task
+        implementers = available(IMPLEMENTERS, state)
+        reviewers = available(REVIEWERS, state)
+        if not implementers or not reviewers:
+            return finish_round(state, record, "rate_limited", "no model pair outside cooldown")
+        if not prepare_tooling(tree):
+            return finish_round(state, record, "setup_failed", "analyzer binaries unavailable")
+        before = run(["git", "rev-parse", "HEAD"], cwd=tree)["stdout"].strip()
+        record["base"] = before
+        for implementer in implementers:
+            result = dispatch(tree, implementer,
+                              IMPLEMENTER_TEMPLATE.format(tree=tree, branch=BRANCH, **task),
+                              f"grow-{task['domain']}", state)
+            if result["code"] == 0:
+                record["implementer"] = implementer
+                break
+            if (unfinished_files(tree)
+                    or run(["git", "rev-parse", "HEAD"], cwd=tree)["stdout"].strip() != before):
+                raise RuntimeError("failed implementer left changes; preserving them instead of reusing them")
+        else:
+            return finish_round(state, record, "implementation_failed", "all implementers failed")
 
-    before = run(["git", "rev-parse", "HEAD"], cwd=tree, timeout=60)["stdout"].strip()
-    dispatch(tree, implementer, IMPLEMENTER_TEMPLATE.format(tree=tree, branch=BRANCH, **task),
-             f"grow-{task['domain']}", state)
-
-    commits = run(["git", "rev-list", "--count", f"{before}..HEAD"], cwd=tree, timeout=60)
-    added = int(commits["stdout"].strip() or 0)
-    record["commits"] = added
-    if added == 0:
-        log(f"[ROUND {round_id}] implementer added no commit - nothing to review")
-        record["status"] = "no_change"
-        state.setdefault("rounds", []).append(record)
-        save_state(state)
-        return record
-
-    dispatch(tree, reviewer, REVIEWER_TEMPLATE.format(tree=tree, commits=min(added, 6)),
-             f"review-{task['domain']}", state)
-
-    record["status"] = "promoted" if promote(tree, state, round_id) else "gated"
-    record["finished"] = int(time.time())
-    state.setdefault("rounds", []).append(record)
-    state["domains"] = corpus_domains(tree)
-    save_state(state)
-    log(f"[ROUND {round_id}] {record['status']} ({record['commits']} commit(s) from the implementer)")
-    return record
+        cases = candidate_cases(tree, before, task)
+        head = run(["git", "rev-parse", "HEAD"], cwd=tree)["stdout"].strip()
+        record.update(head=head, cases=cases)
+        for index, reviewer in enumerate(reviewers):
+            if reviewer.split("/")[-1].split("-")[0] == implementer.split("/")[-1].split("-")[0]:
+                continue
+            receipt = os.path.join(EVIDENCE_DIR, f"review-{round_id}-{time.time_ns()}-{index}.json")
+            result = dispatch(tree, reviewer, REVIEWER_TEMPLATE.format(
+                tree=tree, base=before, head=head, cases=json.dumps(cases), receipt=receipt),
+                f"review-{task['domain']}", state)
+            if result["code"] or not os.path.isfile(receipt):
+                continue
+            try:
+                with open(receipt, encoding="utf-8") as handle:
+                    review = json.load(handle)
+            except (OSError, ValueError):
+                continue
+            if (not isinstance(review, dict)
+                    or review.get("base") != before or review.get("head") != head
+                    or review.get("cases") != cases
+                    or not isinstance(review.get("reason"), str) or not review["reason"].strip()):
+                continue
+            record.update(reviewer=reviewer, receipt=receipt)
+            if review.get("verdict") == "reject":
+                return finish_round(state, record, "rejected", review["reason"])
+            if review.get("verdict") != "accept":
+                continue
+            if (candidate_cases(tree, before, task) != cases
+                    or run(["git", "rev-parse", "HEAD"], cwd=tree)["stdout"].strip() != head):
+                raise RuntimeError("reviewer changed the candidate it was asked to review")
+            status = "promoted" if promote(tree, record, review) else "gated"
+            return finish_round(state, record, status, review["reason"])
+        return finish_round(state, record, "review_failed", "no valid independent acceptance receipt")
+    except (RuntimeError, OSError, ValueError) as exc:
+        return finish_round(state, record, "blocked", str(exc))
 
 
 def cmd_status(state: dict) -> int:
@@ -382,17 +475,28 @@ def main(argv=None) -> int:
     parser.add_argument("command", nargs="?", default="status",
                         choices=["status", "round", "dry-run", "prepare"])
     args = parser.parse_args(argv)
-    state = load_state()
     if args.command == "status":
-        return cmd_status(state)
-    if args.command == "prepare":
-        tree = ensure_worktree(state)
-        print(f"worktree: {tree}")
-        print(f"tooling: {'ready' if prepare_tooling(tree) else 'missing'}")
+        return cmd_status(load_state())
+    if args.command == "dry-run":
+        print(json.dumps(round_once(load_state(), dry_run=True), indent=2))
         return 0
-    result = round_once(state, dry_run=args.command == "dry-run")
-    print(json.dumps(result, indent=2))
-    return 0 if result.get("status") not in ("setup_failed", "rate_limited") else 1
+    os.makedirs(EVIDENCE_DIR, exist_ok=True)
+    with open(os.path.join(EVIDENCE_DIR, "factory.lock"), "w", encoding="utf-8") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            print("another factory round is already running", file=sys.stderr)
+            return 1
+        state = load_state()
+        if args.command == "prepare":
+            tree = ensure_worktree(state)
+            ready = prepare_tooling(tree)
+            print(f"worktree: {tree}")
+            print(f"tooling: {'ready' if ready else 'missing'}")
+            return 0 if ready else 1
+        result = round_once(state)
+        print(json.dumps(result, indent=2))
+        return 0 if result["status"] in ("promoted", "complete") else 1
 
 
 if __name__ == "__main__":

@@ -1,0 +1,200 @@
+"""Exercise publication gates against a disposable local Git remote."""
+
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+from unittest.mock import patch
+
+from factory import bench_factory as factory
+
+
+MEASUREMENT = '''import json, pathlib, sys
+root = pathlib.Path('.')
+if sys.argv[1] == 'run':
+    name = 'test-' + sys.argv[sys.argv.index('--label') + 1]
+    payload = {'meta': {'run_id': name}, 'cases': [
+        {'case': str(p.parent.relative_to('cases')), 'results': {
+            tool: {'verdict': 'ok'} for tool in ('phpstan', 'psalm', 'mago')}}
+        for p in sorted(root.glob('cases/*/*/case.json'))]}
+    for directory in (root / 'results/latest', root / 'results/runs' / name):
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / 'report.json').write_text(json.dumps(payload))
+'''
+
+
+class FactoryPublicationTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name) / 'repo'
+        self.root.mkdir()
+        self.remote = Path(self.temp.name) / 'remote.git'
+        self.tree = Path(self.temp.name) / 'worker'
+        self.git('init', '-b', 'main')
+        self.git('config', 'user.email', 'test@example.invalid')
+        self.git('config', 'user.name', 'Test')
+        (self.root / '.gitignore').write_text('factory/evidence/\nresults/latest/\n')
+        (self.root / 'harness').mkdir()
+        (self.root / 'harness/bench.py').write_text(MEASUREMENT)
+        (self.root / 'tools').mkdir()
+        (self.root / 'tools/versions.json').write_text('{"pinned": true}\n')
+        self.git('add', '.')
+        self.git('-c', 'commit.gpgsign=false', 'commit', '-m', 'baseline')
+        self.base = self.git('rev-parse', 'HEAD')
+        self.git('init', '--bare', str(self.remote))
+        self.git('remote', 'add', 'origin', str(self.remote))
+        self.git('push', 'origin', 'main')
+        self.git('worktree', 'add', '-b', 'factory/auto', str(self.tree))
+        binaries = self.tree / 'tools/bin'
+        binaries.mkdir()
+        for name in ('phpstan.phar', 'psalm.phar', 'mago'):
+            (binaries / name).touch()
+        with (self.root / '.git/info/exclude').open('a') as handle:
+            handle.write('\ntools/bin/\n')
+        evidence = self.root / 'factory/evidence'
+        evidence.mkdir(parents=True)
+        overrides = patch.multiple(factory, ROOT=str(self.root), WORKTREE=str(self.tree),
+                                   EVIDENCE_DIR=str(evidence), STATE_FILE=str(evidence / 'STATE.json'),
+                                   LOG_FILE=str(evidence / 'factory.log'),
+                                   TARGETS={'narrowing': 1},
+                                   IMPLEMENTERS=['test/author'], REVIEWERS=['test/reviewer'])
+        overrides.start()
+        self.addCleanup(overrides.stop)
+
+    def git(self, *args, cwd=None):
+        return subprocess.check_output(['git', *args], cwd=cwd or self.root,
+                                       stderr=subprocess.DEVNULL, text=True).strip()
+
+    def dispatch(self, tree, model, prompt, label, state):
+        if label.startswith('grow-'):
+            case = self.tree / 'cases/narrowing/example'
+            case.mkdir(parents=True)
+            (case / 'case.json').write_text('{}\n')
+            self.git('add', 'cases', cwd=tree)
+            self.git('-c', 'commit.gpgsign=false', 'commit', '-m', 'add candidate', cwd=tree)
+        else:
+            base, head = re.search(r'git diff ([a-f0-9]+)\.\.([a-f0-9]+)', prompt).groups()
+            receipt = re.search(r'receipt path: (.+)', prompt).group(1)
+            Path(receipt).write_text(json.dumps({
+                'base': base, 'head': head, 'verdict': self.verdict,
+                'cases': ['narrowing/example'], 'reason': 'Checked the candidate.'}))
+            return {'code': self.review_exit}
+        return {'code': 0}
+
+    def round(self, verdict='accept', review_exit=0):
+        self.verdict, self.review_exit = verdict, review_exit
+        with patch.object(factory, 'dispatch', side_effect=self.dispatch):
+            return factory.round_once({})
+
+    def remote_head(self):
+        return self.git('--git-dir', str(self.remote), 'rev-parse', 'main')
+
+    def test_accepted_candidate_publishes_source_and_full_measurement(self):
+        result = self.round()
+        self.assertEqual(result['status'], 'promoted')
+        files = self.git('--git-dir', str(self.remote), 'ls-tree', '-r', '--name-only', 'main')
+        self.assertIn('cases/narrowing/example/case.json', files)
+        self.assertIn('results/runs/test-factory-1/report.json', files)
+        receipt = json.loads(self.git('--git-dir', str(self.remote), 'show',
+                                      'main:results/runs/test-factory-1/review.json'))
+        self.assertEqual(receipt['verdict'], 'accept')
+        self.assertEqual(receipt['base'], self.base)
+        self.assertEqual(receipt['head'], result['head'])
+        self.assertEqual(receipt['reviewer'], 'test/reviewer')
+        self.assertNotEqual(self.remote_head(), self.base)
+
+    def test_failed_reviewer_cannot_publish_even_with_an_acceptance_receipt(self):
+        self.assertEqual(self.round(review_exit=1)['status'], 'review_failed')
+        self.assertEqual(self.remote_head(), self.base)
+
+    def test_rejection_blocks_publication_and_is_preserved_for_inspection(self):
+        self.assertEqual(self.round(verdict='reject')['status'], 'rejected')
+        self.assertEqual(self.remote_head(), self.base)
+        self.assertTrue((self.tree / 'cases/narrowing/example/case.json').exists())
+        self.assertEqual(factory.round_once({})['status'], 'blocked')
+
+    def test_pin_changes_are_not_published(self):
+        original = self.dispatch
+
+        def change_pin(tree, model, prompt, label, state):
+            result = original(tree, model, prompt, label, state)
+            if label.startswith('grow-'):
+                (self.tree / 'tools/versions.json').write_text('{"pinned": false}\n')
+                self.git('add', 'tools/versions.json', cwd=tree)
+                self.git('-c', 'commit.gpgsign=false', 'commit', '-m', 'change pin', cwd=tree)
+            return result
+
+        with patch.object(factory, 'dispatch', side_effect=change_pin):
+            result = factory.round_once({})
+        self.assertEqual(result['status'], 'blocked')
+        self.assertEqual(self.remote_head(), self.base)
+
+    def test_rate_limited_implementer_falls_back_to_another_model(self):
+        original = self.dispatch
+
+        def fail_first(tree, model, prompt, label, state):
+            if model == 'test/unavailable':
+                return {'code': 1}
+            return original(tree, model, prompt, label, state)
+
+        self.verdict, self.review_exit = 'accept', 0
+        with patch.object(factory, 'IMPLEMENTERS', ['test/unavailable', 'test/author']), \
+                patch.object(factory, 'dispatch', side_effect=fail_first):
+            result = factory.round_once({})
+        self.assertEqual(result['status'], 'promoted')
+        self.assertNotEqual(self.remote_head(), self.base)
+
+    def test_failed_author_changes_are_preserved_without_fallback_or_publication(self):
+        original = self.dispatch
+
+        def fail_after_writing(tree, model, prompt, label, state):
+            original(tree, model, prompt, label, state)
+            return {'code': 1}
+
+        with patch.object(factory, 'dispatch', side_effect=fail_after_writing):
+            result = factory.round_once({})
+        self.assertEqual(result['status'], 'blocked')
+        self.assertTrue((self.tree / 'cases/narrowing/example/case.json').exists())
+        self.assertEqual(self.remote_head(), self.base)
+
+    def test_non_object_receipt_cannot_publish(self):
+        original = self.dispatch
+
+        def malformed_receipt(tree, model, prompt, label, state):
+            result = original(tree, model, prompt, label, state)
+            if label.startswith('review-'):
+                receipt = re.search(r'receipt path: (.+)', prompt).group(1)
+                Path(receipt).write_text('[]')
+            return result
+
+        self.verdict, self.review_exit = 'accept', 0
+        with patch.object(factory, 'dispatch', side_effect=malformed_receipt):
+            result = factory.round_once({})
+        self.assertEqual(result['status'], 'review_failed')
+        self.assertEqual(self.remote_head(), self.base)
+
+    def test_dry_run_does_not_create_state_or_modify_git(self):
+        state = {}
+        result = factory.round_once(state, dry_run=True)
+        self.assertEqual(result['status'], 'dry_run')
+        self.assertEqual(state, {})
+        self.assertFalse(Path(factory.STATE_FILE).exists())
+        self.assertEqual(self.remote_head(), self.base)
+
+
+class WorkerTimeoutTest(unittest.TestCase):
+    def test_timeout_stops_descendants_before_they_can_write(self):
+        with tempfile.TemporaryDirectory() as directory:
+            marker = Path(directory) / 'late-write'
+            child = f"import time,pathlib; time.sleep(0.5); pathlib.Path({str(marker)!r}).touch()"
+            parent = ('import subprocess,sys,time; '
+                      f'subprocess.Popen([sys.executable, "-c", {child!r}]); time.sleep(5)')
+            result = factory.run([sys.executable, '-c', parent], cwd=directory, timeout=0.1)
+            self.assertEqual(result['code'], 124)
+            time.sleep(0.6)
+            self.assertFalse(marker.exists())

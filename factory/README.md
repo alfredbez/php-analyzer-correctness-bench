@@ -8,10 +8,13 @@
    truth, runs them and commits. Implementers never review their own work.
 3. **Review** - a session on a *different* model audits the new cases: is the
    stated basis real, did anything get widened, do the recorded verdicts
-   reproduce? It fixes contract violations and files disagreements in
-   `factory/REVIEW.md`.
+   reproduce? The reviewer is read-only and writes an explicit acceptance or
+   rejection receipt tied to the exact base, candidate commit, and case list.
+   Rejection or a failed review blocks publication.
 4. **Gate** - `validate` must pass, the whole corpus must run, and no case may
-   end in `tool_error` or `case_error`. Only then is the branch pushed to `main`.
+   end in `tool_error` or `case_error`. The report audit must pass and cover every
+   case with all three tools. The coordinator commits the measurement and review
+   receipt before pushing to `main`. Analyzer FP and FN findings do not block it.
 
 ```
 python3 factory/bench_factory.py status      # corpus size, rounds, parked models
@@ -20,13 +23,24 @@ python3 factory/bench_factory.py round       # do one round
 python3 factory/bench_factory.py prepare     # create the worktree and install the analyzers
 ```
 
-State lives in `factory/STATE.json`, logs in `factory/evidence/`, prompts in
-`factory/prompts/`. All three are local; the log is the audit trail.
+State lives in `factory/evidence/STATE.json`, logs in `factory/evidence/`, and
+prompts in `factory/prompts/`. These directories are local and ignored by Git.
+Each published snapshot includes `review.json` with the accepted candidate and
+both model names. `dry-run` neither writes state nor changes the worktree.
 
 The factory works in its own git worktree (`/home/abez/projects/php-analyzer-bench-worktrees/factory`)
 on branch `factory/auto` and pushes to `main` only after the gate. An interactive
 session can therefore work in the main checkout at the same time without either
 side stepping on the other's files.
+
+Workers may only add complete case directories in the assigned domain. Edits to
+existing cases, pins, or shared code block publication. Failed workers and
+rejected candidates remain in the worktree for inspection. The next round stops
+rather than overwriting them or combining them with another author's changes.
+Only one round can run at a time. Worker timeouts kill the process group.
+
+Targets are fixed in `TARGETS` and total 57 cases. The factory stops growing when
+all domain targets are met; it never silently raises its own target.
 
 ## What the factory must never do
 
@@ -53,8 +67,8 @@ looks the same as a factory that has nothing to do.
 
 ## Timer
 
-`factory/bench-factory.service` + `.timer` run one round every 30 minutes,
-persisted across reboots. Install:
+`factory/bench-factory.service` and `.timer` start a round 30 minutes after the
+previous round finishes, and 10 minutes after boot. Install:
 
 ```
 cp factory/bench-factory.{service,timer} ~/.config/systemd/user/
@@ -62,6 +76,7 @@ systemctl --user daemon-reload
 systemctl --user enable --now bench-factory.timer
 ```
 
-The timer is intentionally slow. A round costs a model session and a full corpus
-run; a faster cadence produces unread churn, which is exactly the failure mode
-that made the upstream pull requests unwelcome in the first place.
+The service allows four hours for model fallbacks, setup, and a full corpus run.
+Unavailable model routes produce a failed round, not an accepted review. The
+timer retries later, subject to model cooldowns. Inspect `status` and the journal
+to distinguish quota blocks from unfinished candidates that require inspection.
