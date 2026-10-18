@@ -1,6 +1,7 @@
 """Version comparisons must not manufacture improvements from incomparable data."""
 
 import copy
+from html.parser import HTMLParser
 import importlib.util
 import json
 from pathlib import Path
@@ -72,6 +73,30 @@ class ComparisonTest(unittest.TestCase):
 
 
 class EvidenceTest(unittest.TestCase):
+    def test_report_controls_remain_offline_and_secondary_content_starts_closed(self):
+        class ReportElements(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.elements = []
+
+            def handle_starttag(self, tag, attrs):
+                self.elements.append((tag, dict(attrs)))
+
+        parser = ReportElements()
+        parser.feed(benchmark_site.render({'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': []}))
+        ids = [attrs['id'] for _, attrs in parser.elements if 'id' in attrs]
+        for control in ('search', 'domain', 'finding', 'pair', 'reset', 'download',
+                        'matrix', 'case-detail', 'report-data', 'catalog'):
+            self.assertEqual(ids.count(control), 1)
+        details = [attrs for tag, attrs in parser.elements if tag == 'details']
+        self.assertTrue(details)
+        self.assertTrue(all('open' not in attrs for attrs in details))
+        for tag, attrs in parser.elements:
+            if tag in ('script', 'img', 'iframe', 'link'):
+                self.assertNotIn('src', attrs)
+                self.assertNotIn('href', attrs)
+        self.assertIn(('html', {'lang': 'en'}), parser.elements)
+
     def test_source_fingerprint_is_portable_but_changes_with_case_semantics(self):
         with tempfile.TemporaryDirectory() as temporary:
             cases = []

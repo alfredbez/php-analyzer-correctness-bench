@@ -1,56 +1,56 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <title>PHP Analyzer · Korrektheit</title>
+  <title>PHP analyzer comparison</title>
   <style>/* REPORT_CSS */</style>
 </head>
 <body>
   <main>
     <header class="page-header">
-      <div><p class="eyebrow">PHP ANALYZER CORRECTNESS BENCHMARK</p><h1>Was erkennen die Analyzer?</h1>
-      <p class="muted">Gemeinsame PHP-Kriterien, dokumentierte Erwartungen und nachprüfbare Befunde.</p></div>
-      <div class="header-actions"><span class="private-label">Privater Arbeitsstand</span><button id="download">Rohdaten speichern ↓</button></div>
+      <div><p class="eyebrow">PHP ANALYZER CORRECTNESS BENCHMARK</p><h1>Tool behavior</h1></div>
+      <div class="header-actions"><span class="private-label">Private draft</span><button id="download">Download JSON ↓</button></div>
     </header>
-    <section class="notice" aria-label="Einordnung"><strong>Kein allgemeines Qualitätsranking.</strong> Der gezielt ausgewählte Korpus misst konkrete Verhaltensweisen, keine Fehlerhäufigkeit in beliebigen Projekten. Die Erwartungen sind noch nicht mit den Maintainern abgestimmt.</section>
-    <section id="coverage" class="coverage" aria-label="Abdeckung"></section>
-    <section id="versions" class="versions" aria-label="Gemessene Versionen"></section>
+    <section class="notice" aria-label="Context">A low-cost, broad comparison of tool behavior. Not every benchmark expectation is desirable for every tool.</section>
+    <details class="method"><summary>Coverage and source candidates</summary><section id="coverage" class="coverage" aria-label="Coverage"></section></details>
+    <section id="versions" class="versions" aria-label="Measured versions"></section>
     <section class="workspace">
-      <aside class="filters" aria-label="Filter">
-        <h2>Fälle eingrenzen</h2>
-        <label for="search">Kriterium suchen</label><input id="search" type="search" placeholder="z. B. callable, null, count">
-        <label for="domain">Bereich</label><select id="domain"><option value="all">Alle Bereiche</option></select>
-        <label for="finding">Befund / Verlauf</label><select id="finding">
-          <option value="all">Alle Fälle</option><option value="defects">FP oder FN · alle Analyzer</option>
-          <option value="false_positive">False Positive · alle Analyzer</option><option value="false_negative">False Negative · alle Analyzer</option>
-          <option value="divergence">Dokumentierte Abweichung</option><option value="fixed">Mago · behoben</option>
-          <option value="regressed">Mago · Regression</option><option value="still_open">Mago · weiterhin offen</option>
-          <option value="not_comparable">Mago · nicht vergleichbar</option>
+      <aside class="filters" aria-label="Filters">
+        <h2>Filter cases</h2>
+        <label for="search">Search</label><input id="search" type="search" placeholder="e.g. callable, null, count">
+        <label for="domain">Domain</label><select id="domain"><option value="all">All domains</option></select>
+        <label for="finding">Finding / change</label><select id="finding">
+          <option value="all">All cases</option><option value="defects">FP or FN · any tool</option>
+          <option value="false_positive">False positive · any tool</option><option value="false_negative">False negative · any tool</option>
+          <option value="divergence">Documented divergence</option><option value="fixed">Mago · fixed</option>
+          <option value="regressed">Mago · regressed</option><option value="still_open">Mago · still open</option>
+          <option value="not_comparable">Mago · not comparable</option>
         </select>
-        <label for="pair">Mago-Versionen vergleichen</label><select id="pair"></select>
-        <button id="reset" class="reset">Filter zurücksetzen</button>
-        <div class="legend"><h3>So liest du die Matrix</h3><p><b class="ok">OK</b> Erwartung erfüllt</p><p><b class="false_positive">FP</b> Unberechtigte Meldung</p><p><b class="false_negative">FN</b> Erwartete Meldung fehlt</p><p><b class="divergence">Abw.</b> Belegter Unterschied, ausgeschlossen</p><p><b class="tool_error">ERR</b> Messfehler, kein Qualitätsurteil</p><p>FP und FN zählen Fälle, nicht einzelne Meldungen.</p></div>
+        <label for="pair">Compare Mago versions</label><select id="pair"></select>
+        <button id="reset" class="reset">Reset filters</button>
+        <details class="legend"><summary>Badge guide</summary><p><b class="ok">OK</b> Expectation met</p><p><b class="false_positive">FP</b> Unexpected diagnostic</p><p><b class="false_negative">FN</b> Missing diagnostic</p><p><b class="mixed">FP+FN</b> Both</p><p><b class="divergence">DIV</b> Documented divergence</p><p><b class="tool_error">ERR</b> Measurement error</p><p><b class="case_error">BAD</b> Invalid case</p><p><b class="skipped">skip</b> Skipped</p><p>FP and FN count cases, not diagnostics. Divergences, errors and skipped cases are excluded from scores.</p></details>
       </aside>
       <div class="results">
-        <div class="section-heading"><div><h2>Gemessene Fälle</h2><p id="result-count" class="muted" aria-live="polite"></p></div><span class="quiet-label">Klicke ein Kriterium für die Evidenz</span></div>
+        <div class="section-heading"><div><h2>Measured cases</h2><p id="result-count" class="muted" aria-live="polite"></p></div><span class="quiet-label">Select a case for evidence</span></div>
         <div id="compatibility"></div>
-        <p class="table-hint">Weitere Zeilen und Versionen: innerhalb der Tabelle nach unten oder seitwärts scrollen. Ein Kriterium öffnet seine Evidenz.</p>
+        <p class="table-hint">Scroll the matrix for more cases and versions.</p>
         <div class="table-scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div>
-        <div id="empty" hidden>Kein gemessener Fall passt zu diesen Filtern.</div>
+        <div id="empty" hidden>No measured cases match these filters.</div>
         <section id="case-detail" class="detail" hidden aria-labelledby="detail-title" tabindex="-1"></section>
       </div>
     </section>
-    <details class="method"><summary>Methodik, Vergleichbarkeit und Freigabe</summary><div class="method-body">
-      <p>Ein Fall prüft eine konkrete semantische Aussage. Mehrere Werte oder Varianten derselben Aussage sind zusätzliche Kontrollen, keine neuen Kriterien. Ein Quellkandidat ist noch kein geprüftes Kriterium.</p>
-      <p>OK / gewertet = erfüllte Erwartungen / (OK + FP + FN + FP+FN). Dokumentierte Abweichungen, Messfehler, ungültige Fälle und übersprungene Fälle bleiben außerhalb dieses Nenners. Ein grüner CI-Lauf besagt, dass die Messung funktioniert, nicht dass alle Analyzer jede Erwartung erfüllen.</p>
-      <p>Ein Versionswechsel gilt nur bei gleichem Korpus-Fingerprint und gleicher PHP-Laufzeit als vergleichbar. Eine fehlgeschlagene oder ausgeschlossene Messung zählt weder als Behebung noch als Regression. Die main-Version ist auf einen vollständigen Commit festgelegt. Dieser Bericht misst keine Geschwindigkeit.</p>
-      <p>Ziel vor einer Veröffentlichung: mindestens 120 unabhängige, geprüfte Kriterien, nachvollziehbare Quellen und Alfreds ausdrückliches Abnicken der Fälle und dieser Oberfläche. Bis dahin bleiben Repository und Bericht privat. Es werden keine Upstream-PRs oder Issues erstellt und keine Maintainer automatisch kontaktiert.</p>
+    <details class="method"><summary>Method and discussion</summary><div class="method-body">
+      <p>Expectations invite discussion and corrections, not a prescribed feature roadmap or maintainer endorsement. External reproducers, corrections and contributions are welcome.</p>
+      <p>Cases are small semantic probes, not exhaustive upstream tests. Variants share a criterion ID. FP and FN mean disagreement with the stated baseline, including disputed warning policies, not necessarily implementation defects.</p>
+      <p>OK / judged = OK / (OK + FP + FN + FP+FN). Documented divergences, measurement errors, invalid cases and skipped cases are excluded. Passing CI confirms the measurement works, not that every expectation is met.</p>
+      <p>Version changes require the same corpus fingerprint and PHP runtime. Failed or excluded measurements count as neither fixes nor regressions. The main build uses a full commit hash. Speed is not measured.</p>
+      <p>This selected corpus is not an overall ranking or a real-project defect rate. The repository and report remain private until Alfred approves publication. No automatic upstream issues, pull requests or maintainer contact.</p>
       <p id="environment" class="mono muted"></p>
     </div></details>
-    <details class="method"><summary id="catalog-heading">Quellkandidaten · noch nicht bewertet</summary><div class="method-body"><p>Diese Einträge dienen als Arbeitsvorrat. Sie erhöhen weder die gemessene Abdeckung noch einen Qualitätszähler. Überschneidungen, Test-Harness-Abhängigkeiten und strittige Erwartungen müssen vor der Übernahme geprüft werden.</p><div class="table-scroll"><table id="catalog"><thead><tr><th>Quelle</th><th>Kandidat</th><th>Bereich</th><th>Herkunft</th></tr></thead><tbody></tbody></table></div></div></details>
-    <footer><span>Eigenständige Composer-Reproducer · kein Speed-Benchmark</span><span id="timestamp"></span></footer>
+    <details class="method"><summary id="catalog-heading">Source coverage</summary><div class="method-body"><p>Each lead maps to a reduced probe, an existing case or a reason for deferral. Coverage does not mean every upstream assertion was reproduced.</p><div class="table-scroll"><table id="catalog"><thead><tr><th>Source</th><th>Candidate</th><th>Outcome</th><th>Evidence</th><th>Origin</th></tr></thead><tbody></tbody></table></div></div></details>
+    <footer><a href="https://github.com/alfredbez/php-analyzer-correctness-bench#contributing" target="_blank" rel="noopener noreferrer">Contributions welcome</a><span id="timestamp"></span></footer>
   </main>
   <script id="report-data" type="application/json">REPORT_DATA</script>
   <script>/* REPORT_JS */</script>

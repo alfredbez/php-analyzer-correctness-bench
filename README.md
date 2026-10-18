@@ -1,13 +1,13 @@
 # PHP analyzer correctness benchmark
 
-Speed benchmarks for PHP analyzers are easy to produce and hard to interpret.
-This repository measures the other axis: **is the analyzer right?**
+A low-cost, broad comparison of PHPStan, Psalm and Mago behavior.
+**Not every benchmark expectation is desirable for every tool.** Warning policy,
+legacy compatibility and annotation dialects are legitimate discussion points.
 
-Every case is a small, self-contained PHP fixture with a stated ground truth and
-a stated expectation for PHPStan, Psalm and Mago. The harness runs all three
-analyzers over the fixture and records what each one actually reported. The
-result is a matrix of defects - false positives and false negatives - instead of
-a stopwatch.
+Each case is a small Composer project with an explicit baseline, sources and
+runtime controls where applicable. FP and FN record disagreements with that
+baseline, not necessarily implementation defects. This is not an overall ranking,
+a real-project defect rate or a prescribed feature roadmap.
 
 ```
 python3 harness/bench.py doctor            # which environment and tool versions
@@ -19,6 +19,9 @@ python3 harness/bench.py run --case narrowing/is-int-on-string
 
 Requirements: Docker (or a host PHP 8.2+), Python 3.10+, `tools/install.sh`
 having pinned the analyzers into `tools/bin/`.
+Dependency-backed cases also need PHP ZIP support or `unzip` in that runtime.
+The installer prepares their locked Composer dependencies; lock files are part
+of the corpus fingerprint.
 
 Running a newer release without touching the pins:
 `BENCH_TOOL_MAGO=/path/to/mago python3 harness/bench.py run --label drift`.
@@ -33,18 +36,19 @@ This is a private working repository. Publication, maintainer contact and public
 hosting require Alfred's explicit approval after he reviews the criteria and
 report. No upstream issues or pull requests are created here.
 
-The target is **120 independently reviewed semantic criteria**, not 120 files or
-120 parameter variants. `factory/catalog.json` is an unreviewed source inventory
-from Psalm, PHPStan and historical Mago probes; it contributes nothing to a
-tool's score. The report distinguishes that inventory, measured criteria and the
-release target. No claim is made that entire upstream suites have been reviewed.
+The initial target is 120 semantic criteria, not 120 parameter variants.
+`factory/catalog.json` lists 120 selected leads from Psalm, PHPStan and historical
+Mago probes. `factory/assessment.json` accounts for every lead: a measured reduced
+probe, coverage by an existing case, or an explicit deferral. Neither inventory
+nor assessment implies exhaustive review of the upstream suites. Run
+`python3 factory/catalog.py check` to verify the source-to-case mappings.
 
 To compare an older release, current stable and an immutable main commit on
 identical source bytes and PHP, without modifying the ordinary analyzer pins:
 
 ```
 python3 tools/prepare-mago.py --config tools/mago-matrix.json
-python3 harness/compare.py --out results/comparisons/my-review
+BENCH_PHP_IMAGE=php:8.4-cli python3 harness/compare.py --out results/comparisons/my-review
 python3 harness/site.py --comparison results/comparisons/my-review/comparison.json --out results/comparisons/my-review/index.html
 ```
 
@@ -59,11 +63,15 @@ expectations and measured diagnostics. It makes no external resource requests.
 `comparison.json` is the machine-readable evidence bundle. Failed measurements,
 changed corpora and policy exclusions cannot become fixes or regressions.
 
-The [2026-10-18 review snapshot](results/comparisons/2026-10-18-private-review-30/COMPARISON.md)
-contains 30 criteria; its adjacent `index.html` is the offline review surface.
-Later accepted case batches generate fresh private GitHub Actions artifacts.
-Older snapshots are retained, including the original classification of the
-`array-key` case before its documented PHPStan scope exclusion was established.
+The [expanded review snapshot](results/comparisons/2026-10-18-expanded-review/index.html)
+contains 142 runnable cases covering 127 declared semantic criteria. Of the 120
+source candidates, 112 have new reduced probes and 7 map to existing cases.
+One memory/performance candidate is deferred because its available fixture cannot
+reproduce the resource defect. The snapshot measures Mago 1.54.0, 1.57.0 and pinned
+main, plus PHPStan and Psalm, on PHP 8.4. Download the HTML to use it offline.
+Earlier snapshots remain available for audit, including classifications corrected
+after additional source or configuration evidence. Private GitHub Actions runs
+also produce downloadable offline reports.
 
 ## What a result means
 
@@ -111,7 +119,7 @@ disagreements it refuses to make.
 
 ## For analyzer maintainers
 
-The report is not an accusation; it is a work list. Everything needed to check a
+The report is a starting point for discussion. Everything needed to check a
 finding is in the repository:
 
 ```
@@ -124,10 +132,10 @@ Every case directory is self-contained: `composer.json`, fixtures, and a
 of every analyzer for every case is written to `results/runs/<run>/raw/<case>/`
 during a run, so "the tool did not say that" can be checked instead of argued.
 
-If a case's ground truth is wrong, that is a bug in the benchmark and the most
-welcome kind of issue. If the ground truth is right and the tool disagrees, the
-case stays as it is - that is what the repository is for. Nothing here is ever
-sent to a maintainer as a pull request.
+If a case's baseline is wrong or outside a tool's intended scope, contribute a
+counterexample, citation or alternative configuration. A semantic fact and a
+desirable diagnostic policy are separate questions. Nothing here is automatically
+sent to an upstream maintainer.
 
 ## Layout
 
@@ -162,15 +170,17 @@ nothing depends on a mutable "latest" pointer that two writers could fight over.
 ## Relation to the speed benchmark
 
 `alfredbez/php-toolchain-benchmarks` (a fork of `carthage-software/php-toolchain-benchmarks`)
-measures how fast the analyzers are. This repository measures how right they are.
-Both are needed to decide what to adopt, and neither substitutes for the other.
+measures speed. This repository compares behavior against explicit baselines.
+Neither substitutes for evaluating the tools on your own project.
 
 ## Contributing
 
-Issues with a counter-example are the most valuable input: a fixture where the
-recorded ground truth is wrong. Add the fixture under `cases/`, state the basis
-and cite the evidence. Pull requests that only relax an expectation are not
-accepted - change the ground truth or change nothing.
+External contributions are welcome: new reproducers, corrected expectations,
+source citations, configuration comparisons and report improvements. Small,
+independently runnable cases are easiest to discuss. Add cases under `cases/`,
+explain the expected behavior, cite the evidence and run `validate` plus the case.
+When proposing a different expectation, explain the semantic or policy reason;
+a disagreement with this benchmark is not automatically a defect in the tool.
 
 ## License
 

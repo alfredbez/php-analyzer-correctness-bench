@@ -89,6 +89,8 @@ def compare_reports(profiles: list[dict]) -> dict:
 def render_markdown(payload: dict) -> str:
     lines = ['# Mago version comparison', '',
              'Same-case correctness measurements, not a speed benchmark or general quality ranking.', '',
+             'Not every expectation is desirable for every tool. FP/FN mean disagreement with the declared baseline, '
+             'including warning-policy differences. External reproducers and corrections are welcome.', '',
              '| Profile | Observed version | Source | ok / judged | FP | FN | mixed | excluded |',
              '| --- | --- | --- | --- | --- | --- | --- | --- |']
     for profile in payload['profiles']:
@@ -155,14 +157,16 @@ def main(argv=None) -> int:
         root = Path(case.path)
         files = {str(path.relative_to(root)): path.read_text()
                  for path in sorted(root.rglob('*')) if path.is_file()
-                 and not set(path.relative_to(root).parts) & {'vendor', '.generated', '__pycache__'}
-                 and path.name != 'composer.lock'}
+                 and not set(path.relative_to(root).parts) & {'vendor', '.generated', '__pycache__'}}
         payload['cases'].append({'id': case.id, 'manifest': case.data, 'files': files})
     catalog = Path(ROOT) / 'factory/catalog.json'
     if catalog.is_file():
         payload['catalog'] = json.loads(catalog.read_text())
     else:
         payload['catalog'] = {'target_criteria': 120, 'candidates': []}
+    assessment = Path(ROOT) / 'factory/assessment.json'
+    if assessment.is_file():
+        payload['catalog_assessment'] = json.loads(assessment.read_text())
     (destination / 'comparison.json').write_text(json.dumps(payload, indent=2) + '\n')
     markdown = render_markdown(payload)
     (destination / 'COMPARISON.md').write_text(markdown)
