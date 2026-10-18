@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_id": "stable",
-    "started": "2026-10-18T20:30:03Z",
+    "started": "2026-10-18T20:46:32Z",
     "runner": "docker",
     "image": "php:8.4-cli",
     "php_version": "8.4.26",
@@ -15,7 +15,7 @@
       "psalm": "9fe3cb206275b360dc5f131d04d62152009afe697e89659ebd7bce92cd9f500b",
       "mago": "1d44d6dec1a26e37574d8f29cad41dac571376b00bfba6d2bace0260f1142b8e"
     },
-    "corpus_fingerprint": "e5fb43c8cec1d68870a5879b3d85e9793045ab2b96f6fcdb92df763438fb6f70",
+    "corpus_fingerprint": "11884aa83520544f03268f018cc0fde2854e4c440c87f01776797eddadf81840",
     "pins": {
       "phpstan": {
         "version": "2.3.1",
@@ -207,7 +207,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.248,
+          "duration_s": 3.669,
           "php": "8.4.26",
           "citation": "https://phpstan.org/config-reference#checkbenevolentuniontypes"
         },
@@ -229,7 +229,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.51,
+          "duration_s": 1.95,
           "php": "8.4.26"
         },
         "mago": {
@@ -250,7 +250,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.207,
+          "duration_s": 0.326,
           "php": "8.4.26"
         }
       },
@@ -289,7 +289,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.971,
+          "duration_s": 3.609,
           "php": "8.4.26"
         },
         "psalm": {
@@ -302,7 +302,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.499,
+          "duration_s": 1.586,
           "php": "8.4.26"
         },
         "mago": {
@@ -315,7 +315,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.358,
+          "duration_s": 0.362,
           "php": "8.4.26"
         }
       },
@@ -344,7 +344,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.146,
+          "duration_s": 3.753,
           "php": "8.4.26"
         },
         "psalm": {
@@ -357,7 +357,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.52,
+          "duration_s": 1.999,
           "php": "8.4.26"
         },
         "mago": {
@@ -370,7 +370,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.218,
+          "duration_s": 0.365,
           "php": "8.4.26"
         }
       },
@@ -399,7 +399,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.034,
+          "duration_s": 3.767,
           "php": "8.4.26"
         },
         "psalm": {
@@ -412,7 +412,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.549,
+          "duration_s": 1.722,
           "php": "8.4.26"
         },
         "mago": {
@@ -425,7 +425,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.24,
+          "duration_s": 0.218,
           "php": "8.4.26"
         }
       },
@@ -454,7 +454,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.953,
+          "duration_s": 3.95,
           "php": "8.4.26"
         },
         "psalm": {
@@ -467,7 +467,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.601,
+          "duration_s": 1.746,
           "php": "8.4.26"
         },
         "mago": {
@@ -490,7 +490,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.253,
+          "duration_s": 0.284,
           "php": "8.4.26"
         }
       },
@@ -543,7 +543,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.886,
+          "duration_s": 4.073,
           "php": "8.4.26"
         },
         "psalm": {
@@ -571,7 +571,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.531,
+          "duration_s": 1.691,
           "php": "8.4.26"
         },
         "mago": {
@@ -608,7 +608,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.267,
+          "duration_s": 0.358,
           "php": "8.4.26"
         }
       },
@@ -645,7 +645,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.247,
+          "duration_s": 3.541,
           "php": "8.4.26"
         },
         "psalm": {
@@ -666,7 +666,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.73,
+          "duration_s": 1.676,
           "php": "8.4.26"
         },
         "mago": {
@@ -687,7 +687,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.303,
+          "duration_s": 0.371,
           "php": "8.4.26"
         }
       },
@@ -716,7 +716,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.127,
+          "duration_s": 3.393,
           "php": "8.4.26"
         },
         "psalm": {
@@ -763,7 +763,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.793,
+          "duration_s": 1.752,
           "php": "8.4.26"
         },
         "mago": {
@@ -776,7 +776,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.298,
+          "duration_s": 0.288,
           "php": "8.4.26"
         }
       },
@@ -805,7 +805,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.39,
+          "duration_s": 3.338,
           "php": "8.4.26"
         },
         "psalm": {
@@ -818,7 +818,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.739,
+          "duration_s": 1.721,
           "php": "8.4.26"
         },
         "mago": {
@@ -831,7 +831,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.262,
+          "duration_s": 0.396,
           "php": "8.4.26"
         }
       },
@@ -860,7 +860,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.005,
+          "duration_s": 3.633,
           "php": "8.4.26"
         },
         "psalm": {
@@ -891,7 +891,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.507,
+          "duration_s": 1.774,
           "php": "8.4.26"
         },
         "mago": {
@@ -922,7 +922,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.242,
+          "duration_s": 0.262,
           "php": "8.4.26"
         }
       },
@@ -951,7 +951,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.299,
+          "duration_s": 3.407,
           "php": "8.4.26"
         },
         "psalm": {
@@ -964,7 +964,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.551,
+          "duration_s": 1.722,
           "php": "8.4.26"
         },
         "mago": {
@@ -977,7 +977,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.304,
+          "duration_s": 0.436,
           "php": "8.4.26"
         }
       },
@@ -1006,7 +1006,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.329,
+          "duration_s": 3.378,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1019,7 +1019,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.562,
+          "duration_s": 1.981,
           "php": "8.4.26"
         },
         "mago": {
@@ -1042,7 +1042,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.214,
+          "duration_s": 0.325,
           "php": "8.4.26"
         }
       },
@@ -1071,7 +1071,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.423,
+          "duration_s": 3.918,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1084,7 +1084,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.547,
+          "duration_s": 2.342,
           "php": "8.4.26"
         },
         "mago": {
@@ -1097,7 +1097,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.215,
+          "duration_s": 0.251,
           "php": "8.4.26"
         }
       },
@@ -1141,7 +1141,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.045,
+          "duration_s": 3.518,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1169,7 +1169,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.495,
+          "duration_s": 1.966,
           "php": "8.4.26"
         },
         "mago": {
@@ -1184,7 +1184,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.241,
+          "duration_s": 0.387,
           "php": "8.4.26"
         }
       },
@@ -1213,7 +1213,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.05,
+          "duration_s": 3.928,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1226,7 +1226,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.565,
+          "duration_s": 1.98,
           "php": "8.4.26"
         },
         "mago": {
@@ -1239,7 +1239,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.196,
+          "duration_s": 0.267,
           "php": "8.4.26"
         }
       },
@@ -1276,7 +1276,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.181,
+          "duration_s": 3.243,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1291,7 +1291,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.526,
+          "duration_s": 1.767,
           "php": "8.4.26"
         },
         "mago": {
@@ -1316,7 +1316,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.289,
+          "duration_s": 0.324,
           "php": "8.4.26"
         }
       },
@@ -1347,7 +1347,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.996,
+          "duration_s": 3.398,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1362,7 +1362,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.605,
+          "duration_s": 1.874,
           "php": "8.4.26"
         },
         "mago": {
@@ -1377,7 +1377,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.322,
+          "duration_s": 0.28,
           "php": "8.4.26"
         }
       },
@@ -1414,7 +1414,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.98,
+          "duration_s": 3.343,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1435,7 +1435,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.505,
+          "duration_s": 1.909,
           "php": "8.4.26"
         },
         "mago": {
@@ -1456,7 +1456,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.267,
+          "duration_s": 0.297,
           "php": "8.4.26"
         }
       },
@@ -1485,7 +1485,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.348,
+          "duration_s": 3.44,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1498,7 +1498,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.593,
+          "duration_s": 1.716,
           "php": "8.4.26"
         },
         "mago": {
@@ -1511,7 +1511,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.241,
+          "duration_s": 0.22,
           "php": "8.4.26"
         }
       },
@@ -1540,7 +1540,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.284,
+          "duration_s": 3.407,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1553,7 +1553,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.586,
+          "duration_s": 1.662,
           "php": "8.4.26"
         },
         "mago": {
@@ -1584,7 +1584,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.309,
+          "duration_s": 0.336,
           "php": "8.4.26"
         }
       },
@@ -1621,7 +1621,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.43,
+          "duration_s": 3.381,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1642,7 +1642,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.551,
+          "duration_s": 1.654,
           "php": "8.4.26"
         },
         "mago": {
@@ -1663,7 +1663,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.267,
+          "duration_s": 0.254,
           "php": "8.4.26"
         }
       },
@@ -1692,7 +1692,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.124,
+          "duration_s": 3.396,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1705,7 +1705,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.416,
+          "duration_s": 1.576,
           "php": "8.4.26"
         },
         "mago": {
@@ -1728,7 +1728,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.331,
+          "duration_s": 0.333,
           "php": "8.4.26"
         }
       },
@@ -1772,7 +1772,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.092,
+          "duration_s": 3.719,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1800,7 +1800,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.545,
+          "duration_s": 1.717,
           "php": "8.4.26"
         },
         "mago": {
@@ -1828,7 +1828,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.246,
+          "duration_s": 0.288,
           "php": "8.4.26"
         }
       },
@@ -1857,7 +1857,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.037,
+          "duration_s": 3.377,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1870,7 +1870,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.554,
+          "duration_s": 1.747,
           "php": "8.4.26"
         },
         "mago": {
@@ -1901,7 +1901,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.249,
+          "duration_s": 0.276,
           "php": "8.4.26"
         }
       },
@@ -1938,7 +1938,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.485,
+          "duration_s": 3.333,
           "php": "8.4.26"
         },
         "psalm": {
@@ -1968,7 +1968,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.539,
+          "duration_s": 1.659,
           "php": "8.4.26"
         },
         "mago": {
@@ -1998,7 +1998,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.242,
+          "duration_s": 0.307,
           "php": "8.4.26"
         }
       },
@@ -2027,7 +2027,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.279,
+          "duration_s": 3.336,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2040,7 +2040,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.546,
+          "duration_s": 1.72,
           "php": "8.4.26"
         },
         "mago": {
@@ -2063,7 +2063,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.263,
+          "duration_s": 0.209,
           "php": "8.4.26"
         }
       },
@@ -2092,7 +2092,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.032,
+          "duration_s": 2.885,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2105,7 +2105,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.545,
+          "duration_s": 1.595,
           "php": "8.4.26"
         },
         "mago": {
@@ -2118,7 +2118,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.244,
+          "duration_s": 0.242,
           "php": "8.4.26"
         }
       },
@@ -2147,7 +2147,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.823,
+          "duration_s": 3.344,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2160,7 +2160,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.511,
+          "duration_s": 1.592,
           "php": "8.4.26"
         },
         "mago": {
@@ -2173,7 +2173,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.19,
+          "duration_s": 0.343,
           "php": "8.4.26"
         }
       },
@@ -2202,7 +2202,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.842,
+          "duration_s": 3.241,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2215,7 +2215,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.555,
+          "duration_s": 1.588,
           "php": "8.4.26"
         },
         "mago": {
@@ -2228,7 +2228,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.273,
+          "duration_s": 0.231,
           "php": "8.4.26"
         }
       },
@@ -2267,7 +2267,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.035,
+          "duration_s": 3.102,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2290,7 +2290,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.641,
+          "duration_s": 1.664,
           "php": "8.4.26"
         },
         "mago": {
@@ -2303,7 +2303,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.288,
+          "duration_s": 0.296,
           "php": "8.4.26"
         }
       },
@@ -2332,7 +2332,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.984,
+          "duration_s": 3.079,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2345,7 +2345,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.634,
+          "duration_s": 1.545,
           "php": "8.4.26"
         },
         "mago": {
@@ -2368,7 +2368,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.322,
+          "duration_s": 0.24,
           "php": "8.4.26"
         }
       },
@@ -2397,7 +2397,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.152,
+          "duration_s": 2.944,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2428,7 +2428,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.8,
+          "duration_s": 1.548,
           "php": "8.4.26"
         },
         "mago": {
@@ -2441,7 +2441,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.238,
+          "duration_s": 0.34,
           "php": "8.4.26"
         }
       },
@@ -2470,7 +2470,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.82,
+          "duration_s": 2.878,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2483,7 +2483,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.712,
+          "duration_s": 1.686,
           "php": "8.4.26"
         },
         "mago": {
@@ -2514,7 +2514,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.279,
+          "duration_s": 0.222,
           "php": "8.4.26"
         }
       },
@@ -2551,7 +2551,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.079,
+          "duration_s": 3.355,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2572,7 +2572,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.513,
+          "duration_s": 1.514,
           "php": "8.4.26"
         },
         "mago": {
@@ -2593,7 +2593,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.246,
+          "duration_s": 0.251,
           "php": "8.4.26"
         }
       },
@@ -2622,7 +2622,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.829,
+          "duration_s": 3.106,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2635,7 +2635,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.537,
+          "duration_s": 1.535,
           "php": "8.4.26"
         },
         "mago": {
@@ -2658,7 +2658,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.279,
+          "duration_s": 0.251,
           "php": "8.4.26"
         }
       },
@@ -2689,7 +2689,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.834,
+          "duration_s": 3.002,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2710,7 +2710,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.536,
+          "duration_s": 1.653,
           "php": "8.4.26"
         },
         "mago": {
@@ -2731,7 +2731,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.308,
+          "duration_s": 0.203,
           "php": "8.4.26"
         }
       },
@@ -2768,7 +2768,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.134,
+          "duration_s": 2.785,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2789,7 +2789,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.522,
+          "duration_s": 1.584,
           "php": "8.4.26"
         },
         "mago": {
@@ -2810,7 +2810,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.219,
+          "duration_s": 0.289,
           "php": "8.4.26"
         }
       },
@@ -2847,7 +2847,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.08,
+          "duration_s": 3.116,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2868,7 +2868,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.578,
+          "duration_s": 1.65,
           "php": "8.4.26"
         },
         "mago": {
@@ -2889,7 +2889,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.272,
+          "duration_s": 0.286,
           "php": "8.4.26"
         }
       },
@@ -2918,7 +2918,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.967,
+          "duration_s": 3.132,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2931,7 +2931,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.578,
+          "duration_s": 1.644,
           "php": "8.4.26"
         },
         "mago": {
@@ -2944,7 +2944,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.247,
+          "duration_s": 0.321,
           "php": "8.4.26"
         }
       },
@@ -2973,7 +2973,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.083,
+          "duration_s": 3.251,
           "php": "8.4.26"
         },
         "psalm": {
@@ -2986,7 +2986,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.5,
+          "duration_s": 1.69,
           "php": "8.4.26"
         },
         "mago": {
@@ -2999,7 +2999,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.28,
+          "duration_s": 0.238,
           "php": "8.4.26"
         }
       },
@@ -3028,7 +3028,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.16,
+          "duration_s": 2.903,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3041,7 +3041,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.633,
+          "duration_s": 1.782,
           "php": "8.4.26"
         },
         "mago": {
@@ -3054,7 +3054,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.281,
+          "duration_s": 0.291,
           "php": "8.4.26"
         }
       },
@@ -3083,7 +3083,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.223,
+          "duration_s": 2.916,
           "php": "8.4.26",
           "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L115-L131"
         },
@@ -3105,7 +3105,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.613,
+          "duration_s": 1.699,
           "php": "8.4.26"
         },
         "mago": {
@@ -3126,7 +3126,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.226,
+          "duration_s": 0.272,
           "php": "8.4.26"
         }
       },
@@ -3155,7 +3155,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.247,
+          "duration_s": 3.465,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3168,7 +3168,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.56,
+          "duration_s": 1.633,
           "php": "8.4.26"
         },
         "mago": {
@@ -3215,7 +3215,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.242,
+          "duration_s": 0.346,
           "php": "8.4.26"
         }
       },
@@ -3244,7 +3244,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.907,
+          "duration_s": 3.083,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3257,7 +3257,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.522,
+          "duration_s": 1.553,
           "php": "8.4.26"
         },
         "mago": {
@@ -3270,7 +3270,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.274,
+          "duration_s": 0.365,
           "php": "8.4.26"
         }
       },
@@ -3307,7 +3307,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.124,
+          "duration_s": 3.037,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3328,7 +3328,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.555,
+          "duration_s": 1.673,
           "php": "8.4.26"
         },
         "mago": {
@@ -3349,7 +3349,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.309,
+          "duration_s": 0.357,
           "php": "8.4.26"
         }
       },
@@ -3378,7 +3378,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.208,
+          "duration_s": 3.504,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3416,7 +3416,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.485,
+          "duration_s": 1.654,
           "php": "8.4.26"
         },
         "mago": {
@@ -3439,7 +3439,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.294,
+          "duration_s": 0.402,
           "php": "8.4.26"
         }
       },
@@ -3468,7 +3468,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.986,
+          "duration_s": 3.287,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3499,7 +3499,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.464,
+          "duration_s": 1.571,
           "php": "8.4.26"
         },
         "mago": {
@@ -3529,7 +3529,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.217,
+          "duration_s": 0.21,
           "php": "8.4.26"
         }
       },
@@ -3558,7 +3558,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.041,
+          "duration_s": 3.551,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3589,7 +3589,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.623,
+          "duration_s": 1.801,
           "php": "8.4.26"
         },
         "mago": {
@@ -3612,7 +3612,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.184,
+          "duration_s": 0.206,
           "php": "8.4.26"
         }
       },
@@ -3641,7 +3641,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.25,
+          "duration_s": 3.298,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3654,7 +3654,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.456,
+          "duration_s": 1.645,
           "php": "8.4.26"
         },
         "mago": {
@@ -3667,7 +3667,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.364,
+          "duration_s": 0.28,
           "php": "8.4.26"
         }
       },
@@ -3696,7 +3696,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.199,
+          "duration_s": 3.181,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3709,7 +3709,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.615,
+          "duration_s": 1.643,
           "php": "8.4.26"
         },
         "mago": {
@@ -3722,7 +3722,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.192,
+          "duration_s": 0.258,
           "php": "8.4.26"
         }
       },
@@ -3751,7 +3751,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.991,
+          "duration_s": 3.044,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3764,7 +3764,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.543,
+          "duration_s": 1.658,
           "php": "8.4.26"
         },
         "mago": {
@@ -3777,7 +3777,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.239,
+          "duration_s": 0.282,
           "php": "8.4.26"
         }
       },
@@ -3814,7 +3814,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.149,
+          "duration_s": 3.189,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3835,7 +3835,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.436,
+          "duration_s": 1.565,
           "php": "8.4.26"
         },
         "mago": {
@@ -3865,7 +3865,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.264,
+          "duration_s": 0.174,
           "php": "8.4.26"
         }
       },
@@ -3894,7 +3894,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.108,
+          "duration_s": 3.188,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3907,7 +3907,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.403,
+          "duration_s": 1.535,
           "php": "8.4.26"
         },
         "mago": {
@@ -3946,7 +3946,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.229,
+          "duration_s": 0.323,
           "php": "8.4.26"
         }
       },
@@ -3975,7 +3975,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.02,
+          "duration_s": 3.193,
           "php": "8.4.26"
         },
         "psalm": {
@@ -3988,7 +3988,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.668,
+          "duration_s": 1.648,
           "php": "8.4.26"
         },
         "mago": {
@@ -4011,7 +4011,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.291,
+          "duration_s": 0.24,
           "php": "8.4.26"
         }
       },
@@ -4042,7 +4042,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.363,
+          "duration_s": 3.297,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4057,7 +4057,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.592,
+          "duration_s": 1.582,
           "php": "8.4.26"
         },
         "mago": {
@@ -4072,7 +4072,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.328,
+          "duration_s": 0.209,
           "php": "8.4.26"
         }
       },
@@ -4101,7 +4101,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.024,
+          "duration_s": 3.048,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4124,7 +4124,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.541,
+          "duration_s": 1.56,
           "php": "8.4.26"
         },
         "mago": {
@@ -4137,7 +4137,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.255,
+          "duration_s": 0.227,
           "php": "8.4.26"
         }
       },
@@ -4166,7 +4166,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.072,
+          "duration_s": 3.131,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4179,7 +4179,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.615,
+          "duration_s": 1.73,
           "php": "8.4.26"
         },
         "mago": {
@@ -4192,7 +4192,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.213,
+          "duration_s": 0.236,
           "php": "8.4.26"
         }
       },
@@ -4221,7 +4221,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.021,
+          "duration_s": 3.154,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4234,7 +4234,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.558,
+          "duration_s": 1.608,
           "php": "8.4.26"
         },
         "mago": {
@@ -4247,7 +4247,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.29,
+          "duration_s": 0.253,
           "php": "8.4.26"
         }
       },
@@ -4278,7 +4278,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.787,
+          "duration_s": 3.118,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4299,7 +4299,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.62,
+          "duration_s": 1.641,
           "php": "8.4.26"
         },
         "mago": {
@@ -4320,7 +4320,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.336,
+          "duration_s": 0.24,
           "php": "8.4.26"
         }
       },
@@ -4359,7 +4359,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.074,
+          "duration_s": 3.156,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4372,7 +4372,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.753,
+          "duration_s": 1.754,
           "php": "8.4.26"
         },
         "mago": {
@@ -4385,7 +4385,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.205,
+          "duration_s": 0.195,
           "php": "8.4.26"
         }
       },
@@ -4414,7 +4414,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.089,
+          "duration_s": 3.309,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4427,7 +4427,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.422,
+          "duration_s": 1.551,
           "php": "8.4.26"
         },
         "mago": {
@@ -4440,7 +4440,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.257,
+          "duration_s": 0.239,
           "php": "8.4.26"
         }
       },
@@ -4469,7 +4469,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.986,
+          "duration_s": 3.299,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4482,7 +4482,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.261,
+          "duration_s": 3.431,
           "php": "8.4.26"
         },
         "mago": {
@@ -4495,7 +4495,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.386,
+          "duration_s": 0.372,
           "php": "8.4.26"
         }
       },
@@ -4524,7 +4524,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.868,
+          "duration_s": 3.132,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4537,7 +4537,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.633,
+          "duration_s": 1.644,
           "php": "8.4.26"
         },
         "mago": {
@@ -4550,7 +4550,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.25,
+          "duration_s": 0.242,
           "php": "8.4.26"
         }
       },
@@ -4579,7 +4579,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.214,
+          "duration_s": 3.458,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4592,7 +4592,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.554,
+          "duration_s": 1.594,
           "php": "8.4.26"
         },
         "mago": {
@@ -4615,7 +4615,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.352,
+          "duration_s": 0.211,
           "php": "8.4.26"
         }
       },
@@ -4652,7 +4652,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.936,
+          "duration_s": 3.174,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4673,7 +4673,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.75,
+          "duration_s": 1.575,
           "php": "8.4.26"
         },
         "mago": {
@@ -4694,7 +4694,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.248,
+          "duration_s": 0.188,
           "php": "8.4.26"
         }
       },
@@ -4731,7 +4731,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.23,
+          "duration_s": 3.074,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4761,7 +4761,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.479,
+          "duration_s": 1.661,
           "php": "8.4.26"
         },
         "mago": {
@@ -4791,7 +4791,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.293,
+          "duration_s": 0.275,
           "php": "8.4.26"
         }
       },
@@ -4835,7 +4835,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.564,
+          "duration_s": 3.242,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4863,7 +4863,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.663,
+          "duration_s": 1.533,
           "php": "8.4.26"
         },
         "mago": {
@@ -4891,7 +4891,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.309,
+          "duration_s": 0.23,
           "php": "8.4.26"
         }
       },
@@ -4920,7 +4920,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.373,
+          "duration_s": 3.361,
           "php": "8.4.26"
         },
         "psalm": {
@@ -4933,7 +4933,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.934,
+          "duration_s": 1.535,
           "php": "8.4.26"
         },
         "mago": {
@@ -4946,7 +4946,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.3,
+          "duration_s": 0.219,
           "php": "8.4.26"
         }
       },
@@ -4975,7 +4975,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.798,
+          "duration_s": 3.064,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5022,7 +5022,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.555,
+          "duration_s": 1.564,
           "php": "8.4.26"
         },
         "mago": {
@@ -5061,7 +5061,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.219,
+          "duration_s": 0.382,
           "php": "8.4.26"
         }
       },
@@ -5090,7 +5090,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.312,
+          "duration_s": 3.339,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5113,7 +5113,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.619,
+          "duration_s": 1.551,
           "php": "8.4.26"
         },
         "mago": {
@@ -5126,7 +5126,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.241,
+          "duration_s": 0.261,
           "php": "8.4.26"
         }
       },
@@ -5155,7 +5155,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.121,
+          "duration_s": 3.233,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5168,7 +5168,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.51,
+          "duration_s": 1.704,
           "php": "8.4.26"
         },
         "mago": {
@@ -5181,7 +5181,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.242,
+          "duration_s": 0.283,
           "php": "8.4.26"
         }
       },
@@ -5218,7 +5218,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.944,
+          "duration_s": 3.058,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5233,7 +5233,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.597,
+          "duration_s": 1.865,
           "php": "8.4.26"
         },
         "mago": {
@@ -5263,7 +5263,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.253,
+          "duration_s": 0.403,
           "php": "8.4.26"
         }
       },
@@ -5292,7 +5292,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.003,
+          "duration_s": 3.554,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5305,7 +5305,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.679,
+          "duration_s": 1.514,
           "php": "8.4.26"
         },
         "mago": {
@@ -5318,7 +5318,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.25,
+          "duration_s": 0.173,
           "php": "8.4.26"
         }
       },
@@ -5355,7 +5355,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.166,
+          "duration_s": 3.511,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5376,7 +5376,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.541,
+          "duration_s": 1.534,
           "php": "8.4.26"
         },
         "mago": {
@@ -5397,7 +5397,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.238,
+          "duration_s": 0.186,
           "php": "8.4.26"
         }
       },
@@ -5434,7 +5434,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.078,
+          "duration_s": 3.084,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5455,7 +5455,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.568,
+          "duration_s": 1.561,
           "php": "8.4.26"
         },
         "mago": {
@@ -5476,7 +5476,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.359,
+          "duration_s": 0.318,
           "php": "8.4.26"
         }
       },
@@ -5513,7 +5513,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.164,
+          "duration_s": 3.225,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5534,7 +5534,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.627,
+          "duration_s": 1.51,
           "php": "8.4.26"
         },
         "mago": {
@@ -5564,7 +5564,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.326,
+          "duration_s": 0.233,
           "php": "8.4.26"
         }
       },
@@ -5601,7 +5601,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.184,
+          "duration_s": 3.101,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5622,7 +5622,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.76,
+          "duration_s": 1.603,
           "php": "8.4.26"
         },
         "mago": {
@@ -5643,7 +5643,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.254,
+          "duration_s": 0.198,
           "php": "8.4.26"
         }
       },
@@ -5680,7 +5680,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.434,
+          "duration_s": 3.164,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5701,7 +5701,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.622,
+          "duration_s": 1.545,
           "php": "8.4.26"
         },
         "mago": {
@@ -5722,7 +5722,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.302,
+          "duration_s": 0.189,
           "php": "8.4.26"
         }
       },
@@ -5751,7 +5751,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.419,
+          "duration_s": 3.263,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5764,7 +5764,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.63,
+          "duration_s": 1.913,
           "php": "8.4.26"
         },
         "mago": {
@@ -5819,7 +5819,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.278,
+          "duration_s": 0.305,
           "php": "8.4.26"
         }
       },
@@ -5848,7 +5848,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.164,
+          "duration_s": 3.054,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5861,7 +5861,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.516,
+          "duration_s": 1.943,
           "php": "8.4.26"
         },
         "mago": {
@@ -5874,7 +5874,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.28,
+          "duration_s": 0.31,
           "php": "8.4.26"
         }
       },
@@ -5913,7 +5913,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.113,
+          "duration_s": 3.354,
           "php": "8.4.26"
         },
         "psalm": {
@@ -5936,7 +5936,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.538,
+          "duration_s": 1.92,
           "php": "8.4.26"
         },
         "mago": {
@@ -5959,7 +5959,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.254,
+          "duration_s": 0.195,
           "php": "8.4.26"
         }
       },
@@ -5996,7 +5996,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.274,
+          "duration_s": 3.206,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6011,7 +6011,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.722,
+          "duration_s": 1.52,
           "php": "8.4.26"
         },
         "mago": {
@@ -6032,7 +6032,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.264,
+          "duration_s": 0.224,
           "php": "8.4.26"
         }
       },
@@ -6069,7 +6069,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.096,
+          "duration_s": 3.005,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6084,7 +6084,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.621,
+          "duration_s": 1.638,
           "php": "8.4.26"
         },
         "mago": {
@@ -6114,7 +6114,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.236,
+          "duration_s": 0.216,
           "php": "8.4.26"
         }
       },
@@ -6151,7 +6151,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.136,
+          "duration_s": 2.934,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6181,7 +6181,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.6,
+          "duration_s": 1.719,
           "php": "8.4.26"
         },
         "mago": {
@@ -6211,7 +6211,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.307,
+          "duration_s": 0.204,
           "php": "8.4.26"
         }
       },
@@ -6257,7 +6257,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.338,
+          "duration_s": 3.406,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6278,7 +6278,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.574,
+          "duration_s": 1.624,
           "php": "8.4.26"
         },
         "mago": {
@@ -6299,7 +6299,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.289,
+          "duration_s": 0.258,
           "php": "8.4.26"
         }
       },
@@ -6338,7 +6338,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.278,
+          "duration_s": 3.467,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6351,7 +6351,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.61,
+          "duration_s": 1.656,
           "php": "8.4.26"
         },
         "mago": {
@@ -6382,7 +6382,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.205,
+          "duration_s": 0.198,
           "php": "8.4.26"
         }
       },
@@ -6419,7 +6419,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.062,
+          "duration_s": 3.085,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6440,7 +6440,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.566,
+          "duration_s": 1.596,
           "php": "8.4.26"
         },
         "mago": {
@@ -6470,7 +6470,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.293,
+          "duration_s": 0.228,
           "php": "8.4.26"
         }
       },
@@ -6501,7 +6501,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.293,
+          "duration_s": 3.177,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6522,7 +6522,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.703,
+          "duration_s": 1.701,
           "php": "8.4.26"
         },
         "mago": {
@@ -6543,7 +6543,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.245,
+          "duration_s": 0.238,
           "php": "8.4.26"
         }
       },
@@ -6619,7 +6619,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.975,
+          "duration_s": 2.978,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6668,7 +6668,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.637,
+          "duration_s": 1.57,
           "php": "8.4.26"
         },
         "mago": {
@@ -6744,7 +6744,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.3,
+          "duration_s": 0.397,
           "php": "8.4.26"
         }
       },
@@ -6773,7 +6773,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.985,
+          "duration_s": 3.038,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6786,7 +6786,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.699,
+          "duration_s": 1.665,
           "php": "8.4.26"
         },
         "mago": {
@@ -6816,7 +6816,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.255,
+          "duration_s": 0.202,
           "php": "8.4.26"
         }
       },
@@ -6869,7 +6869,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.124,
+          "duration_s": 3.112,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6906,7 +6906,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.595,
+          "duration_s": 1.521,
           "php": "8.4.26"
         },
         "mago": {
@@ -6934,7 +6934,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.305,
+          "duration_s": 0.207,
           "php": "8.4.26"
         }
       },
@@ -6963,7 +6963,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.208,
+          "duration_s": 3.044,
           "php": "8.4.26"
         },
         "psalm": {
@@ -6994,7 +6994,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.623,
+          "duration_s": 1.517,
           "php": "8.4.26"
         },
         "mago": {
@@ -7025,7 +7025,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.246,
+          "duration_s": 0.202,
           "php": "8.4.26"
         }
       },
@@ -7062,7 +7062,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.069,
+          "duration_s": 3.252,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7092,7 +7092,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.715,
+          "duration_s": 1.756,
           "php": "8.4.26"
         },
         "mago": {
@@ -7113,7 +7113,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.311,
+          "duration_s": 0.218,
           "php": "8.4.26"
         }
       },
@@ -7142,7 +7142,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.188,
+          "duration_s": 2.872,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7155,7 +7155,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.574,
+          "duration_s": 1.477,
           "php": "8.4.26"
         },
         "mago": {
@@ -7168,7 +7168,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.321,
+          "duration_s": 0.297,
           "php": "8.4.26"
         }
       },
@@ -7197,7 +7197,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.386,
+          "duration_s": 3.148,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7220,7 +7220,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.692,
+          "duration_s": 1.625,
           "php": "8.4.26"
         },
         "mago": {
@@ -7233,7 +7233,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.227,
+          "duration_s": 0.161,
           "php": "8.4.26"
         }
       },
@@ -7262,7 +7262,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.4,
+          "duration_s": 2.824,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7275,7 +7275,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.678,
+          "duration_s": 1.809,
           "php": "8.4.26"
         },
         "mago": {
@@ -7288,7 +7288,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.251,
+          "duration_s": 0.241,
           "php": "8.4.26"
         }
       },
@@ -7317,7 +7317,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.044,
+          "duration_s": 3.031,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7348,7 +7348,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.513,
+          "duration_s": 1.48,
           "php": "8.4.26"
         },
         "mago": {
@@ -7371,7 +7371,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.279,
+          "duration_s": 0.283,
           "php": "8.4.26"
         }
       },
@@ -7410,7 +7410,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.055,
+          "duration_s": 3.141,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7433,7 +7433,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.566,
+          "duration_s": 1.594,
           "php": "8.4.26"
         },
         "mago": {
@@ -7456,7 +7456,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.213,
+          "duration_s": 0.158,
           "php": "8.4.26"
         }
       },
@@ -7485,7 +7485,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.943,
+          "duration_s": 2.97,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7498,7 +7498,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.606,
+          "duration_s": 1.692,
           "php": "8.4.26"
         },
         "mago": {
@@ -7511,7 +7511,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.286,
+          "duration_s": 0.188,
           "php": "8.4.26"
         }
       },
@@ -7540,7 +7540,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.326,
+          "duration_s": 3.085,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7553,7 +7553,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.796,
+          "duration_s": 1.649,
           "php": "8.4.26"
         },
         "mago": {
@@ -7566,7 +7566,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.336,
+          "duration_s": 0.194,
           "php": "8.4.26"
         }
       },
@@ -7595,7 +7595,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.055,
+          "duration_s": 2.945,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7618,7 +7618,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.869,
+          "duration_s": 1.618,
           "php": "8.4.26"
         },
         "mago": {
@@ -7641,7 +7641,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.336,
+          "duration_s": 0.178,
           "php": "8.4.26"
         }
       },
@@ -7672,7 +7672,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.24,
+          "duration_s": 3.083,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7697,7 +7697,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.81,
+          "duration_s": 1.606,
           "php": "8.4.26"
         },
         "mago": {
@@ -7722,7 +7722,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.294,
+          "duration_s": 0.182,
           "php": "8.4.26"
         }
       },
@@ -7751,7 +7751,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.076,
+          "duration_s": 3.059,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7774,7 +7774,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.613,
+          "duration_s": 1.571,
           "php": "8.4.26"
         },
         "mago": {
@@ -7797,7 +7797,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.31,
+          "duration_s": 0.219,
           "php": "8.4.26"
         }
       },
@@ -7826,7 +7826,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.188,
+          "duration_s": 3.013,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7839,7 +7839,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.57,
+          "duration_s": 1.512,
           "php": "8.4.26"
         },
         "mago": {
@@ -7852,7 +7852,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.291,
+          "duration_s": 0.192,
           "php": "8.4.26"
         }
       },
@@ -7889,7 +7889,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.099,
+          "duration_s": 3.019,
           "php": "8.4.26"
         },
         "psalm": {
@@ -7910,7 +7910,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.707,
+          "duration_s": 1.59,
           "php": "8.4.26"
         },
         "mago": {
@@ -7940,7 +7940,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.351,
+          "duration_s": 0.235,
           "php": "8.4.26"
         }
       },
@@ -7977,7 +7977,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.195,
+          "duration_s": 3.115,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8005,7 +8005,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.611,
+          "duration_s": 1.695,
           "php": "8.4.26"
         },
         "mago": {
@@ -8035,7 +8035,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.245,
+          "duration_s": 0.193,
           "php": "8.4.26"
         }
       },
@@ -8064,7 +8064,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.303,
+          "duration_s": 2.995,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8077,7 +8077,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.685,
+          "duration_s": 1.729,
           "php": "8.4.26"
         },
         "mago": {
@@ -8090,7 +8090,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.221,
+          "duration_s": 0.208,
           "php": "8.4.26"
         }
       },
@@ -8127,7 +8127,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.052,
+          "duration_s": 3.128,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8148,7 +8148,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.611,
+          "duration_s": 1.504,
           "php": "8.4.26"
         },
         "mago": {
@@ -8161,7 +8161,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.339,
+          "duration_s": 0.274,
           "php": "8.4.26",
           "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
         }
@@ -8199,7 +8199,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.308,
+          "duration_s": 3.219,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8227,7 +8227,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.59,
+          "duration_s": 1.51,
           "php": "8.4.26"
         },
         "mago": {
@@ -8248,7 +8248,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.34,
+          "duration_s": 0.218,
           "php": "8.4.26"
         }
       },
@@ -8294,7 +8294,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.224,
+          "duration_s": 2.974,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8315,7 +8315,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.891,
+          "duration_s": 1.522,
           "php": "8.4.26"
         },
         "mago": {
@@ -8336,7 +8336,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.292,
+          "duration_s": 0.164,
           "php": "8.4.26"
         }
       },
@@ -8373,7 +8373,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.239,
+          "duration_s": 3.356,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8386,7 +8386,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.791,
+          "duration_s": 1.624,
           "php": "8.4.26",
           "citation": "https://github.com/vimeo/psalm/blob/6.20.0/src/Psalm/Internal/Analyzer/Statements/Expression/InstanceofAnalyzer.php#L25-L100"
         },
@@ -8400,7 +8400,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.238,
+          "duration_s": 0.154,
           "php": "8.4.26",
           "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
         }
@@ -8430,7 +8430,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.241,
+          "duration_s": 3.132,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8443,7 +8443,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.495,
+          "duration_s": 1.629,
           "php": "8.4.26"
         },
         "mago": {
@@ -8456,7 +8456,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.218,
+          "duration_s": 0.198,
           "php": "8.4.26"
         }
       },
@@ -8485,7 +8485,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.993,
+          "duration_s": 3.151,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8508,7 +8508,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.832,
+          "duration_s": 1.635,
           "php": "8.4.26"
         },
         "mago": {
@@ -8521,7 +8521,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.221,
+          "duration_s": 0.208,
           "php": "8.4.26"
         }
       },
@@ -8598,7 +8598,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.404,
+          "duration_s": 3.3,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8629,7 +8629,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.598,
+          "duration_s": 1.508,
           "php": "8.4.26"
         },
         "mago": {
@@ -8642,7 +8642,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.342,
+          "duration_s": 0.189,
           "php": "8.4.26"
         }
       },
@@ -8681,7 +8681,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.257,
+          "duration_s": 3.5,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8712,7 +8712,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.828,
+          "duration_s": 1.531,
           "php": "8.4.26"
         },
         "mago": {
@@ -8743,7 +8743,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.301,
+          "duration_s": 0.265,
           "php": "8.4.26"
         }
       },
@@ -8772,7 +8772,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.244,
+          "duration_s": 3.834,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8803,7 +8803,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.906,
+          "duration_s": 1.621,
           "php": "8.4.26"
         },
         "mago": {
@@ -8816,7 +8816,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.283,
+          "duration_s": 0.214,
           "php": "8.4.26"
         }
       },
@@ -8845,7 +8845,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.129,
+          "duration_s": 3.567,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8858,7 +8858,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.793,
+          "duration_s": 1.568,
           "php": "8.4.26"
         },
         "mago": {
@@ -8881,7 +8881,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.21,
+          "duration_s": 0.246,
           "php": "8.4.26"
         }
       },
@@ -8910,7 +8910,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.371,
+          "duration_s": 3.383,
           "php": "8.4.26"
         },
         "psalm": {
@@ -8949,7 +8949,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.55,
+          "duration_s": 1.805,
           "php": "8.4.26"
         },
         "mago": {
@@ -8972,7 +8972,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.297,
+          "duration_s": 0.208,
           "php": "8.4.26"
         }
       },
@@ -9001,7 +9001,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.104,
+          "duration_s": 3.471,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9014,7 +9014,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.581,
+          "duration_s": 1.704,
           "php": "8.4.26"
         },
         "mago": {
@@ -9027,7 +9027,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.194,
+          "duration_s": 0.206,
           "php": "8.4.26"
         }
       },
@@ -9056,7 +9056,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.983,
+          "duration_s": 3.263,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9069,7 +9069,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.581,
+          "duration_s": 1.695,
           "php": "8.4.26"
         },
         "mago": {
@@ -9082,7 +9082,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.309,
+          "duration_s": 0.177,
           "php": "8.4.26"
         }
       },
@@ -9111,7 +9111,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.265,
+          "duration_s": 3.435,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9142,7 +9142,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.669,
+          "duration_s": 1.558,
           "php": "8.4.26"
         },
         "mago": {
@@ -9173,7 +9173,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.297,
+          "duration_s": 0.286,
           "php": "8.4.26"
         }
       },
@@ -9202,7 +9202,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.25,
+          "duration_s": 3.245,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9215,7 +9215,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.545,
+          "duration_s": 1.787,
           "php": "8.4.26"
         },
         "mago": {
@@ -9238,7 +9238,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.285,
+          "duration_s": 0.228,
           "php": "8.4.26"
         }
       },
@@ -9275,7 +9275,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.004,
+          "duration_s": 3.17,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9296,7 +9296,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.711,
+          "duration_s": 1.618,
           "php": "8.4.26"
         },
         "mago": {
@@ -9317,7 +9317,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.238,
+          "duration_s": 0.171,
           "php": "8.4.26"
         }
       },
@@ -9348,7 +9348,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.298,
+          "duration_s": 3.432,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9363,7 +9363,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.781,
+          "duration_s": 1.659,
           "php": "8.4.26"
         },
         "mago": {
@@ -9378,7 +9378,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.5,
+          "duration_s": 0.267,
           "php": "8.4.26"
         }
       },
@@ -9407,7 +9407,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.283,
+          "duration_s": 3.186,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9420,7 +9420,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.768,
+          "duration_s": 1.581,
           "php": "8.4.26"
         },
         "mago": {
@@ -9433,7 +9433,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.338,
+          "duration_s": 0.226,
           "php": "8.4.26"
         }
       },
@@ -9462,7 +9462,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.143,
+          "duration_s": 3.421,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9475,7 +9475,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 2.132,
+          "duration_s": 1.697,
           "php": "8.4.26"
         },
         "mago": {
@@ -9498,7 +9498,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.362,
+          "duration_s": 0.182,
           "php": "8.4.26"
         }
       },
@@ -9527,7 +9527,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.918,
+          "duration_s": 3.32,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9540,7 +9540,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.547,
+          "duration_s": 1.634,
           "php": "8.4.26"
         },
         "mago": {
@@ -9553,7 +9553,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.255,
+          "duration_s": 0.265,
           "php": "8.4.26"
         }
       },
@@ -9582,7 +9582,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.632,
+          "duration_s": 3.143,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9595,7 +9595,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.503,
+          "duration_s": 1.694,
           "php": "8.4.26"
         },
         "mago": {
@@ -9643,7 +9643,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.339,
+          "duration_s": 0.37,
           "php": "8.4.26"
         }
       },
@@ -9672,7 +9672,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.393,
+          "duration_s": 3.038,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9685,7 +9685,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.752,
+          "duration_s": 1.675,
           "php": "8.4.26"
         },
         "mago": {
@@ -9708,7 +9708,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 0.243,
+          "duration_s": 0.154,
           "php": "8.4.26"
         }
       },
@@ -9754,7 +9754,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.284,
+          "duration_s": 3.269,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9775,7 +9775,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.556,
+          "duration_s": 1.522,
           "php": "8.4.26"
         },
         "mago": {
@@ -9790,7 +9790,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.305,
+          "duration_s": 0.248,
           "php": "8.4.26"
         }
       },
@@ -9819,7 +9819,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.029,
+          "duration_s": 3.141,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9832,7 +9832,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.577,
+          "duration_s": 1.561,
           "php": "8.4.26"
         },
         "mago": {
@@ -9845,7 +9845,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.292,
+          "duration_s": 0.209,
           "php": "8.4.26"
         }
       },
@@ -9874,7 +9874,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.023,
+          "duration_s": 3.243,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9887,7 +9887,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.7,
+          "duration_s": 1.77,
           "php": "8.4.26"
         },
         "mago": {
@@ -9900,7 +9900,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.275,
+          "duration_s": 0.149,
           "php": "8.4.26"
         }
       },
@@ -9929,7 +9929,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.413,
+          "duration_s": 3.021,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9942,7 +9942,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.868,
+          "duration_s": 1.459,
           "php": "8.4.26"
         },
         "mago": {
@@ -9955,7 +9955,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.245,
+          "duration_s": 0.146,
           "php": "8.4.26"
         }
       },
@@ -9984,7 +9984,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.185,
+          "duration_s": 2.887,
           "php": "8.4.26"
         },
         "psalm": {
@@ -9997,7 +9997,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.848,
+          "duration_s": 1.609,
           "php": "8.4.26"
         },
         "mago": {
@@ -10010,7 +10010,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.438,
+          "duration_s": 0.215,
           "php": "8.4.26"
         }
       },
@@ -10041,7 +10041,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.376,
+          "duration_s": 2.81,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10062,7 +10062,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.982,
+          "duration_s": 1.593,
           "php": "8.4.26"
         },
         "mago": {
@@ -10077,7 +10077,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.263,
+          "duration_s": 0.197,
           "php": "8.4.26"
         }
       },
@@ -10106,7 +10106,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.259,
+          "duration_s": 3.056,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10119,7 +10119,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.571,
+          "duration_s": 1.499,
           "php": "8.4.26"
         },
         "mago": {
@@ -10132,7 +10132,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.354,
+          "duration_s": 0.218,
           "php": "8.4.26"
         }
       },
@@ -10176,7 +10176,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 3.126,
+          "duration_s": 3.041,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10220,7 +10220,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.626,
+          "duration_s": 1.652,
           "php": "8.4.26"
         },
         "mago": {
@@ -10248,7 +10248,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.292,
+          "duration_s": 0.174,
           "php": "8.4.26"
         }
       },
@@ -10277,7 +10277,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.237,
+          "duration_s": 3.188,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10290,7 +10290,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.805,
+          "duration_s": 1.617,
           "php": "8.4.26"
         },
         "mago": {
@@ -10303,7 +10303,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.272,
+          "duration_s": 0.192,
           "php": "8.4.26"
         }
       },
@@ -10334,7 +10334,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.038,
+          "duration_s": 2.907,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10355,7 +10355,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.539,
+          "duration_s": 1.463,
           "php": "8.4.26"
         },
         "mago": {
@@ -10370,7 +10370,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.242,
+          "duration_s": 0.225,
           "php": "8.4.26"
         }
       },
@@ -10401,7 +10401,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 3.34,
+          "duration_s": 3.058,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10422,7 +10422,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.659,
+          "duration_s": 1.46,
           "php": "8.4.26"
         },
         "mago": {
@@ -10437,7 +10437,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 0.277,
+          "duration_s": 0.209,
           "php": "8.4.26"
         }
       },
@@ -10481,7 +10481,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 2.979,
+          "duration_s": 2.925,
           "php": "8.4.26"
         },
         "psalm": {
@@ -10509,7 +10509,7 @@
             }
           ],
           "exit_code": 2,
-          "duration_s": 1.605,
+          "duration_s": 1.499,
           "php": "8.4.26"
         },
         "mago": {
@@ -10537,7 +10537,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.194,
+          "duration_s": 0.144,
           "php": "8.4.26"
         }
       },

@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_id": "main",
-    "started": "2026-10-18T20:34:14Z",
+    "started": "2026-10-18T20:50:48Z",
     "runner": "docker",
     "image": "php:8.4-cli",
     "php_version": "8.4.26",
@@ -11,7 +11,7 @@
     "tool_sha256": {
       "mago": "f3db6cd04a56e8fc0d9f3a5e32b62935ad45c2c06923d02689478ceda406e5ba"
     },
-    "corpus_fingerprint": "e5fb43c8cec1d68870a5879b3d85e9793045ab2b96f6fcdb92df763438fb6f70",
+    "corpus_fingerprint": "11884aa83520544f03268f018cc0fde2854e4c440c87f01776797eddadf81840",
     "pins": {
       "phpstan": {
         "version": "2.3.1",
@@ -211,7 +211,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.173,
+          "duration_s": 1.113,
           "php": "8.4.26"
         }
       },
@@ -240,7 +240,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.147,
+          "duration_s": 1.087,
           "php": "8.4.26"
         }
       },
@@ -269,7 +269,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.175,
+          "duration_s": 1.064,
           "php": "8.4.26"
         }
       },
@@ -298,7 +298,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.07,
+          "duration_s": 1.007,
           "php": "8.4.26"
         }
       },
@@ -327,7 +327,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.081,
+          "duration_s": 1.084,
           "php": "8.4.26"
         }
       },
@@ -380,7 +380,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.055,
+          "duration_s": 1.072,
           "php": "8.4.26"
         }
       },
@@ -417,7 +417,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.181,
+          "duration_s": 1.015,
           "php": "8.4.26"
         }
       },
@@ -446,7 +446,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.092,
+          "duration_s": 1.051,
           "php": "8.4.26"
         }
       },
@@ -475,7 +475,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.065,
+          "duration_s": 1.056,
           "php": "8.4.26"
         }
       },
@@ -522,7 +522,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.223,
+          "duration_s": 1.01,
           "php": "8.4.26"
         }
       },
@@ -551,7 +551,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.241,
+          "duration_s": 1.002,
           "php": "8.4.26"
         }
       },
@@ -590,7 +590,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.181,
+          "duration_s": 1.079,
           "php": "8.4.26"
         }
       },
@@ -619,7 +619,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.215,
+          "duration_s": 1.136,
           "php": "8.4.26"
         }
       },
@@ -650,7 +650,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.256,
+          "duration_s": 1.093,
           "php": "8.4.26"
         }
       },
@@ -679,7 +679,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.163,
+          "duration_s": 1.168,
           "php": "8.4.26"
         }
       },
@@ -720,7 +720,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.102,
+          "duration_s": 1.036,
           "php": "8.4.26"
         }
       },
@@ -751,7 +751,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.068,
+          "duration_s": 1.093,
           "php": "8.4.26"
         }
       },
@@ -788,7 +788,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.212,
+          "duration_s": 1.106,
           "php": "8.4.26"
         }
       },
@@ -817,7 +817,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.264,
+          "duration_s": 1.046,
           "php": "8.4.26"
         }
       },
@@ -846,7 +846,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.154,
+          "duration_s": 1.096,
           "php": "8.4.26"
         }
       },
@@ -883,7 +883,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.176,
+          "duration_s": 1.145,
           "php": "8.4.26"
         }
       },
@@ -912,7 +912,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.303,
+          "duration_s": 1.19,
           "php": "8.4.26"
         }
       },
@@ -956,7 +956,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.228,
+          "duration_s": 1.161,
           "php": "8.4.26"
         }
       },
@@ -985,7 +985,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.228,
+          "duration_s": 1.097,
           "php": "8.4.26"
         }
       },
@@ -1031,7 +1031,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.324,
+          "duration_s": 1.101,
           "php": "8.4.26"
         }
       },
@@ -1060,7 +1060,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.462,
+          "duration_s": 1.075,
           "php": "8.4.26"
         }
       },
@@ -1089,7 +1089,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.173,
+          "duration_s": 1.076,
           "php": "8.4.26"
         }
       },
@@ -1118,7 +1118,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.183,
+          "duration_s": 1.129,
           "php": "8.4.26"
         }
       },
@@ -1147,7 +1147,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.282,
+          "duration_s": 1.159,
           "php": "8.4.26"
         }
       },
@@ -1176,7 +1176,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.147,
+          "duration_s": 1.09,
           "php": "8.4.26"
         }
       },
@@ -1215,7 +1215,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.455,
+          "duration_s": 1.437,
           "php": "8.4.26"
         }
       },
@@ -1244,7 +1244,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.251,
+          "duration_s": 1.422,
           "php": "8.4.26"
         }
       },
@@ -1291,7 +1291,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.266,
+          "duration_s": 1.22,
           "php": "8.4.26"
         }
       },
@@ -1328,7 +1328,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.248,
+          "duration_s": 1.242,
           "php": "8.4.26"
         }
       },
@@ -1367,7 +1367,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.137,
+          "duration_s": 1.215,
           "php": "8.4.26"
         }
       },
@@ -1404,7 +1404,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.292,
+          "duration_s": 1.245,
           "php": "8.4.26"
         }
       },
@@ -1441,7 +1441,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.316,
+          "duration_s": 1.022,
           "php": "8.4.26"
         }
       },
@@ -1478,7 +1478,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.131,
+          "duration_s": 1.127,
           "php": "8.4.26"
         }
       },
@@ -1507,7 +1507,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.287,
+          "duration_s": 1.217,
           "php": "8.4.26"
         }
       },
@@ -1536,7 +1536,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.463,
+          "duration_s": 1.054,
           "php": "8.4.26"
         }
       },
@@ -1565,7 +1565,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.23,
+          "duration_s": 1.055,
           "php": "8.4.26"
         }
       },
@@ -1602,7 +1602,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.329,
+          "duration_s": 1.025,
           "php": "8.4.26"
         }
       },
@@ -1631,7 +1631,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.103,
+          "duration_s": 1.157,
           "php": "8.4.26"
         }
       },
@@ -1660,7 +1660,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.309,
+          "duration_s": 1.125,
           "php": "8.4.26"
         }
       },
@@ -1697,7 +1697,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.284,
+          "duration_s": 1.031,
           "php": "8.4.26"
         }
       },
@@ -1736,7 +1736,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.227,
+          "duration_s": 1.069,
           "php": "8.4.26"
         }
       },
@@ -1782,7 +1782,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.137,
+          "duration_s": 1.191,
           "php": "8.4.26"
         }
       },
@@ -1821,7 +1821,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.27,
+          "duration_s": 1.133,
           "php": "8.4.26"
         }
       },
@@ -1850,7 +1850,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.345,
+          "duration_s": 1.125,
           "php": "8.4.26"
         }
       },
@@ -1879,7 +1879,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.324,
+          "duration_s": 1.156,
           "php": "8.4.26"
         }
       },
@@ -1908,7 +1908,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.119,
+          "duration_s": 1.052,
           "php": "8.4.26"
         }
       },
@@ -1954,7 +1954,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.101,
+          "duration_s": 1.056,
           "php": "8.4.26"
         }
       },
@@ -1983,7 +1983,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.143,
+          "duration_s": 1.024,
           "php": "8.4.26"
         }
       },
@@ -2012,7 +2012,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.077,
+          "duration_s": 1.076,
           "php": "8.4.26"
         }
       },
@@ -2053,7 +2053,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.169,
+          "duration_s": 1.058,
           "php": "8.4.26"
         }
       },
@@ -2082,7 +2082,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.114,
+          "duration_s": 1.086,
           "php": "8.4.26"
         }
       },
@@ -2111,7 +2111,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.204,
+          "duration_s": 1.028,
           "php": "8.4.26"
         }
       },
@@ -2140,7 +2140,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.184,
+          "duration_s": 1.001,
           "php": "8.4.26"
         }
       },
@@ -2177,7 +2177,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.161,
+          "duration_s": 1.183,
           "php": "8.4.26"
         }
       },
@@ -2206,7 +2206,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.207,
+          "duration_s": 1.124,
           "php": "8.4.26"
         }
       },
@@ -2235,7 +2235,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.254,
+          "duration_s": 1.024,
           "php": "8.4.26"
         }
       },
@@ -2264,7 +2264,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.821,
+          "duration_s": 1.38,
           "php": "8.4.26"
         }
       },
@@ -2293,7 +2293,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.454,
+          "duration_s": 0.967,
           "php": "8.4.26"
         }
       },
@@ -2332,7 +2332,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.346,
+          "duration_s": 1.124,
           "php": "8.4.26"
         }
       },
@@ -2369,7 +2369,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.143,
+          "duration_s": 1.152,
           "php": "8.4.26"
         }
       },
@@ -2415,7 +2415,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.088,
+          "duration_s": 1.008,
           "php": "8.4.26"
         }
       },
@@ -2459,7 +2459,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.485,
+          "duration_s": 1.092,
           "php": "8.4.26"
         }
       },
@@ -2488,7 +2488,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.397,
+          "duration_s": 1.072,
           "php": "8.4.26"
         }
       },
@@ -2543,7 +2543,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.315,
+          "duration_s": 1.115,
           "php": "8.4.26"
         }
       },
@@ -2572,7 +2572,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.094,
+          "duration_s": 1.019,
           "php": "8.4.26"
         }
       },
@@ -2601,7 +2601,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.355,
+          "duration_s": 1.067,
           "php": "8.4.26"
         }
       },
@@ -2647,7 +2647,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.131,
+          "duration_s": 0.973,
           "php": "8.4.26"
         }
       },
@@ -2676,7 +2676,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.102,
+          "duration_s": 1.04,
           "php": "8.4.26"
         }
       },
@@ -2713,7 +2713,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.058,
+          "duration_s": 1.025,
           "php": "8.4.26"
         }
       },
@@ -2750,7 +2750,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.17,
+          "duration_s": 1.002,
           "php": "8.4.26"
         }
       },
@@ -2796,7 +2796,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.199,
+          "duration_s": 1.003,
           "php": "8.4.26"
         }
       },
@@ -2833,7 +2833,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.168,
+          "duration_s": 0.984,
           "php": "8.4.26"
         }
       },
@@ -2870,7 +2870,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.136,
+          "duration_s": 1.004,
           "php": "8.4.26"
         }
       },
@@ -2941,7 +2941,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.383,
+          "duration_s": 1.021,
           "php": "8.4.26"
         }
       },
@@ -2970,7 +2970,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.171,
+          "duration_s": 1.108,
           "php": "8.4.26"
         }
       },
@@ -3009,7 +3009,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.124,
+          "duration_s": 1.059,
           "php": "8.4.26"
         }
       },
@@ -3046,7 +3046,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.072,
+          "duration_s": 0.994,
           "php": "8.4.26"
         }
       },
@@ -3092,7 +3092,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.238,
+          "duration_s": 1.016,
           "php": "8.4.26"
         }
       },
@@ -3138,7 +3138,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.026,
+          "duration_s": 1.023,
           "php": "8.4.26"
         }
       },
@@ -3175,7 +3175,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.18,
+          "duration_s": 0.969,
           "php": "8.4.26"
         }
       },
@@ -3204,7 +3204,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.125,
+          "duration_s": 0.993,
           "php": "8.4.26"
         }
       },
@@ -3250,7 +3250,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.131,
+          "duration_s": 1.012,
           "php": "8.4.26"
         }
       },
@@ -3287,7 +3287,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.003,
+          "duration_s": 0.96,
           "php": "8.4.26"
         }
       },
@@ -3379,7 +3379,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.055,
+          "duration_s": 1.026,
           "php": "8.4.26"
         }
       },
@@ -3425,7 +3425,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.124,
+          "duration_s": 1.013,
           "php": "8.4.26"
         }
       },
@@ -3469,7 +3469,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.327,
+          "duration_s": 0.988,
           "php": "8.4.26"
         }
       },
@@ -3516,7 +3516,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.146,
+          "duration_s": 1.095,
           "php": "8.4.26"
         }
       },
@@ -3562,7 +3562,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.282,
+          "duration_s": 1.219,
           "php": "8.4.26"
         }
       },
@@ -3591,7 +3591,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.118,
+          "duration_s": 1.229,
           "php": "8.4.26"
         }
       },
@@ -3620,7 +3620,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.383,
+          "duration_s": 1.231,
           "php": "8.4.26"
         }
       },
@@ -3649,7 +3649,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.15,
+          "duration_s": 1.087,
           "php": "8.4.26"
         }
       },
@@ -3688,7 +3688,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.222,
+          "duration_s": 0.988,
           "php": "8.4.26"
         }
       },
@@ -3727,7 +3727,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.634,
+          "duration_s": 1.031,
           "php": "8.4.26"
         }
       },
@@ -3756,7 +3756,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.538,
+          "duration_s": 1.093,
           "php": "8.4.26"
         }
       },
@@ -3785,7 +3785,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.481,
+          "duration_s": 1.002,
           "php": "8.4.26"
         }
       },
@@ -3824,7 +3824,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.34,
+          "duration_s": 1.017,
           "php": "8.4.26"
         }
       },
@@ -3865,7 +3865,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.325,
+          "duration_s": 1.033,
           "php": "8.4.26"
         }
       },
@@ -3904,7 +3904,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.079,
+          "duration_s": 1.036,
           "php": "8.4.26"
         }
       },
@@ -3933,7 +3933,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.149,
+          "duration_s": 1.024,
           "php": "8.4.26"
         }
       },
@@ -3979,7 +3979,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.15,
+          "duration_s": 1.024,
           "php": "8.4.26"
         }
       },
@@ -4025,7 +4025,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.155,
+          "duration_s": 1.009,
           "php": "8.4.26"
         }
       },
@@ -4054,7 +4054,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.232,
+          "duration_s": 1.054,
           "php": "8.4.26"
         }
       },
@@ -4083,7 +4083,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.42,
+          "duration_s": 1.122,
           "php": "8.4.26",
           "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
         }
@@ -4121,7 +4121,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.317,
+          "duration_s": 1.081,
           "php": "8.4.26"
         }
       },
@@ -4158,7 +4158,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.198,
+          "duration_s": 1.096,
           "php": "8.4.26"
         }
       },
@@ -4187,7 +4187,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.366,
+          "duration_s": 0.903,
           "php": "8.4.26",
           "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
         }
@@ -4217,7 +4217,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.306,
+          "duration_s": 1.009,
           "php": "8.4.26"
         }
       },
@@ -4246,7 +4246,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.219,
+          "duration_s": 1.068,
           "php": "8.4.26"
         }
       },
@@ -4297,7 +4297,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.251,
+          "duration_s": 1.11,
           "php": "8.4.26"
         }
       },
@@ -4344,7 +4344,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.25,
+          "duration_s": 1.07,
           "php": "8.4.26"
         }
       },
@@ -4373,7 +4373,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.242,
+          "duration_s": 1.11,
           "php": "8.4.26"
         }
       },
@@ -4412,7 +4412,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.268,
+          "duration_s": 1.08,
           "php": "8.4.26"
         }
       },
@@ -4451,7 +4451,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.137,
+          "duration_s": 1.047,
           "php": "8.4.26"
         }
       },
@@ -4480,7 +4480,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.184,
+          "duration_s": 1.222,
           "php": "8.4.26"
         }
       },
@@ -4509,7 +4509,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.212,
+          "duration_s": 1.159,
           "php": "8.4.26"
         }
       },
@@ -4556,7 +4556,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.087,
+          "duration_s": 1.149,
           "php": "8.4.26"
         }
       },
@@ -4595,7 +4595,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.093,
+          "duration_s": 1.069,
           "php": "8.4.26"
         }
       },
@@ -4632,7 +4632,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.101,
+          "duration_s": 1.183,
           "php": "8.4.26"
         }
       },
@@ -4663,7 +4663,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.113,
+          "duration_s": 1.17,
           "php": "8.4.26"
         }
       },
@@ -4692,7 +4692,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.043,
+          "duration_s": 0.952,
           "php": "8.4.26"
         }
       },
@@ -4731,7 +4731,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.188,
+          "duration_s": 0.993,
           "php": "8.4.26"
         }
       },
@@ -4760,7 +4760,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.174,
+          "duration_s": 1.032,
           "php": "8.4.26"
         }
       },
@@ -4807,7 +4807,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.205,
+          "duration_s": 1.017,
           "php": "8.4.26"
         }
       },
@@ -4846,7 +4846,7 @@
             }
           ],
           "exit_code": 0,
-          "duration_s": 1.212,
+          "duration_s": 1.154,
           "php": "8.4.26"
         }
       },
@@ -4877,7 +4877,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.147,
+          "duration_s": 1.112,
           "php": "8.4.26"
         }
       },
@@ -4906,7 +4906,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.101,
+          "duration_s": 1.03,
           "php": "8.4.26"
         }
       },
@@ -4935,7 +4935,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.182,
+          "duration_s": 1.014,
           "php": "8.4.26"
         }
       },
@@ -4964,7 +4964,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.259,
+          "duration_s": 1.039,
           "php": "8.4.26"
         }
       },
@@ -4993,7 +4993,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.481,
+          "duration_s": 1.014,
           "php": "8.4.26"
         }
       },
@@ -5024,7 +5024,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.194,
+          "duration_s": 0.991,
           "php": "8.4.26"
         }
       },
@@ -5053,7 +5053,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.139,
+          "duration_s": 0.945,
           "php": "8.4.26"
         }
       },
@@ -5097,7 +5097,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 1.074,
+          "duration_s": 0.992,
           "php": "8.4.26"
         }
       },
@@ -5126,7 +5126,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.208,
+          "duration_s": 0.954,
           "php": "8.4.26"
         }
       },
@@ -5157,7 +5157,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.228,
+          "duration_s": 0.922,
           "php": "8.4.26"
         }
       },
@@ -5188,7 +5188,7 @@
           "acknowledged": [],
           "diagnostics": [],
           "exit_code": 0,
-          "duration_s": 1.079,
+          "duration_s": 0.866,
           "php": "8.4.26"
         }
       },
@@ -5232,7 +5232,7 @@
             }
           ],
           "exit_code": 1,
-          "duration_s": 0.957,
+          "duration_s": 0.869,
           "php": "8.4.26"
         }
       },
