@@ -1,0 +1,56 @@
+{
+  "id": "narrowing/catalog-phpstan-2a3506b6815e78d94aa5",
+  "title": "A checked equality assertion ties an unknown value to the requested boolean",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/conditional-boolean-assertion",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:2a3506b6815e78d94aa5",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A checked equality assertion ties an unknown value to the requested boolean. After it returns the matching true or false consumer is safe.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. The relational assertion is implemented with an executable equality guard instead of a vendor-specific assertion annotation. Cross-function inference is the measured contract; no claim is made that competitor annotation parsing is required. Pinned-tool observations retained without widening expectations: phpstan: return.type@10; psalm: MixedReturnStatement@10; mago: mixed-return-statement@10. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:2a3506b6815e78d94aa5",
+        "family": "phpstan",
+        "domain": "narrowing",
+        "title": "assert-conditional",
+        "path": "tests/PHPStan/Analyser/nsrt/assert-conditional.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
+        "probe_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-conditional.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-conditional.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

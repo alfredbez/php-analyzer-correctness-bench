@@ -1,0 +1,87 @@
+{
+  "id": "generics/catalog-mago-5fcd56c1b41c11a4f222",
+  "title": "template-bounds (clean-room semantics)",
+  "domain": "generics",
+  "criterion_id": "generics/omitted-template-arguments",
+  "rule_class": "missing-template-parameter",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:5fcd56c1b41c11a4f222",
+  "ground_truth": {
+    "basis": "upstream_docs",
+    "statement": "Direct and indirect children omit required generic parent arguments. This annotation-completeness concern does not make passing Product to the Entity-bounded store unsafe. Intermediate explicitly propagates its Entity bound. The runtime rejects an unrelated stdClass and accepts Product through both inheritance depths.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "missingType.generics",
+          "line": 13,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "missingType.generics",
+          "line": 16,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "MissingTemplateParam",
+          "line": 13,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "MissingTemplateParam",
+          "line": 16,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "missing-template-parameter",
+          "line": 13,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "missing-template-parameter",
+          "line": 16,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Runtime proves native-bound compatibility only, not annotation completeness. The documentation defines supplying generic parent arguments via @extends. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation. Both direct and intermediate subclasses accept Product without a bound-compatibility error in this run. All three diagnose only the genuinely omitted generic arguments.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:5fcd56c1b41c11a4f222",
+        "family": "mago",
+        "domain": "generics",
+        "title": "template-bounds",
+        "path": "template-bounds/repro.php",
+        "line": 1,
+        "source_ref": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
+        "source_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
+        "probe_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

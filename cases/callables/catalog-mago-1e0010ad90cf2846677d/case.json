@@ -1,0 +1,59 @@
+{
+  "id": "callables/catalog-mago-1e0010ad90cf2846677d",
+  "title": "callable-type-assertions (clean-room semantics)",
+  "domain": "callables",
+  "criterion_id": "callables/is-object-on-callable-parameter",
+  "rule_class": "impossible-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:1e0010ad90cf2846677d",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Callable includes both object and string representations. is_string and is_object each have reachable outcomes and safely narrow the value.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.callable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Shares the existing semantic criterion. The new fixture adds assignment-context or callable-string controls; it is not a new criterion. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): impossible-condition@5, impossible-type-comparison@5, no-value@4, no-value@5.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:1e0010ad90cf2846677d",
+        "family": "mago",
+        "domain": "callables",
+        "title": "callable-type-assertions",
+        "path": "callable-type-assertions/repro.php",
+        "line": 1,
+        "source_ref": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
+        "source_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
+        "probe_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-type-assertions/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R30",
+          "status": "completed_merged",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2552"
+        }
+      }
+    ]
+  },
+  "covered_by": [
+    "callables/is-object-on-callable-parameter"
+  ]
+}

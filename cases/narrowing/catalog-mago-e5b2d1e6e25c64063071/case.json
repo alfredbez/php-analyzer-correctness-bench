@@ -1,0 +1,51 @@
+{
+  "id": "narrowing/catalog-mago-e5b2d1e6e25c64063071",
+  "title": "all-switches-met (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/exhaustive-switch-assignment",
+  "rule_class": "possibly-undefined-variable",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:e5b2d1e6e25c64063071",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Both declared literal alternatives assign the local before break, so the subsequent read is defined.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/control-structures.switch.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:e5b2d1e6e25c64063071",
+        "family": "mago",
+        "domain": "type-inference",
+        "title": "all-switches-met",
+        "path": "all-switches-met/repro.php",
+        "line": 1,
+        "source_ref": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
+        "source_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
+        "probe_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/all-switches-met/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "callables/catalog-psalm-9e4f5a27653ddc7273ca",
+  "title": "Unspaced closure signatures inside an array shape",
+  "domain": "callables", "criterion_id": "callables/catalog-nested-closure-shape-syntax", "rule_class": "phpDoc.parseError",
+  "source_candidate_id": "psalm:9e4f5a27653ddc7273ca",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "Removing spaces between shape keys and closure signatures does not change the callable shape. Required callback a can return an integer map or null.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L457", "provider": "providerValidCodeParse", "note": "Full dataset read. Removed the false [] @var initializer; kept nested optional closure syntax in a real parameter contract."},
+  "notes": "Same criterion as the spaced variant; two parser fixtures do not count as two semantic criteria."
+}

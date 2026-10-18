@@ -1,0 +1,2 @@
+[source]
+includes = ["vendor/ondrejmirtes/better-reflection/src", "vendor/nikic/php-parser/lib"]

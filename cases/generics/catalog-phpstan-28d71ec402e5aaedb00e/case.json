@@ -1,0 +1,56 @@
+{
+  "id": "generics/catalog-phpstan-28d71ec402e5aaedb00e",
+  "title": "A template shape key instantiated with slot denotes the slot offset, not the literal spelling TKey",
+  "domain": "generics",
+  "criterion_id": "generics/template-array-shape-key",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:28d71ec402e5aaedb00e",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A template shape key instantiated with slot denotes the slot offset, not the literal spelling TKey. The native integer consumer reads that offset.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/writing-php-code/phpdoc-types#array-shapes"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: psalm: InvalidArrayOffset@10, LessSpecificReturnStatement@9, MixedReturnStatement@10, MoreSpecificReturnType@7; mago: invalid-return-statement@10, invalid-return-statement@9, undefined-string-array-index@10. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:28d71ec402e5aaedb00e",
+        "family": "phpstan",
+        "domain": "generics",
+        "title": "array-shape-template-key",
+        "path": "tests/PHPStan/Analyser/nsrt/array-shape-template-key.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "9f10373f53f806a7d0ada430c660ce89480ebb15d5ec9b814231aa72a0f59a1a",
+        "probe_sha256": "9f10373f53f806a7d0ada430c660ce89480ebb15d5ec9b814231aa72a0f59a1a",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

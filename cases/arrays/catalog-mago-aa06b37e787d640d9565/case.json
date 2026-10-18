@@ -1,0 +1,56 @@
+{
+  "id": "arrays/catalog-mago-aa06b37e787d640d9565",
+  "title": "nested-generic-array-isset-shape-narrowing (clean-room semantics)",
+  "domain": "arrays",
+  "criterion_id": "arrays/nested-isset-preserves-required-key",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:aa06b37e787d640d9565",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Successful nested isset guarantees that key b exists and is non-null in the inner string-to-int map.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.isset.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): invalid-return-statement@7.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:aa06b37e787d640d9565",
+        "family": "mago",
+        "domain": "generics",
+        "title": "nested-generic-array-isset-shape-narrowing",
+        "path": "nested-generic-array-isset-shape-narrowing/repro.php",
+        "line": 1,
+        "source_ref": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
+        "source_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
+        "probe_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/nested-generic-array-isset-shape-narrowing/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R51",
+          "status": "completed_upstream_declined",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2577"
+        }
+      }
+    ]
+  }
+}

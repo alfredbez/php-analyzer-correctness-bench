@@ -1,0 +1,56 @@
+{
+  "id": "nullability/catalog-phpstan-3ecb74a1fba6668eac61",
+  "title": "PDOStatement::fetchObject may return false at exhaustion",
+  "domain": "nullability",
+  "criterion_id": "nullability/pdo-fetch-object-false-guard",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:3ecb74a1fba6668eac61",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "PDOStatement::fetchObject may return false at exhaustion. After excluding false the requested row class can satisfy its native return contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/pdostatement.fetchobject.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: psalm: LessSpecificReturnStatement@7, MoreSpecificReturnType@5. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:3ecb74a1fba6668eac61",
+        "family": "phpstan",
+        "domain": "type-inference",
+        "title": "PDOStatement",
+        "path": "tests/PHPStan/Analyser/nsrt/PDOStatement.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "37f59139cf8777e8e0c4930dadae2c59bdf63788462692c9666d8fab59ba9457",
+        "probe_sha256": "37f59139cf8777e8e0c4930dadae2c59bdf63788462692c9666d8fab59ba9457",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/PDOStatement.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/PDOStatement.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

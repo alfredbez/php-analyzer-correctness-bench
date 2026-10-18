@@ -1,0 +1,79 @@
+{
+  "id": "narrowing/catalog-mago-a46fe274608e52136bea",
+  "title": "no-redundant-condition-after-empty-mixed (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/loop-reassignment-invalidates-falsy",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:a46fe274608e52136bea",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An initially empty mixed value can become truthy in the loop. The repeated empty test is not constant across iterations.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "MixedAssignment",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "The explicitly mixed list elements cannot give the assigned variable a more precise type. This documented precision warning is independent of loop reachability. https://psalm.dev/docs/running_psalm/issues/MixedAssignment/"
+        },
+        {
+          "code": "MixedAssignment",
+          "line": 7,
+          "file": "src/repro.php",
+          "reason": "The explicitly mixed list elements cannot give the assigned variable a more precise type. This documented precision warning is independent of loop reachability. https://psalm.dev/docs/running_psalm/issues/MixedAssignment/"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "mixed-assignment",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "The list elements are explicitly mixed, so assignment has no more precise type; acknowledge this precision warning only at these assignments, not any redundant-condition report."
+        },
+        {
+          "code": "mixed-assignment",
+          "line": 7,
+          "file": "src/repro.php",
+          "reason": "The list elements are explicitly mixed, so assignment has no more precise type; acknowledge this precision warning only at these assignments, not any redundant-condition report."
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:a46fe274608e52136bea",
+        "family": "mago",
+        "domain": "dead-code",
+        "title": "no-redundant-condition-after-empty-mixed",
+        "path": "no-redundant-condition-after-empty-mixed/repro.php",
+        "line": 1,
+        "source_ref": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
+        "source_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
+        "probe_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-empty-mixed/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

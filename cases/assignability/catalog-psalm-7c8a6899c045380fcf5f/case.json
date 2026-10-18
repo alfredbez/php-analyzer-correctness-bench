@@ -1,0 +1,15 @@
+{
+  "id": "assignability/catalog-psalm-7c8a6899c045380fcf5f",
+  "title": "An integer outside a literal union violates the parameter contract",
+  "domain": "assignability", "criterion_id": "assignability/catalog-literal-scalar-union", "rule_class": "argument.type",
+  "source_candidate_id": "psalm:7c8a6899c045380fcf5f",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "The declared finite set contains 3 but not 4. PHP erases the annotation; the runtime checks strict set membership independently, not whether PHP throws.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/scalar_types/"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "argument.type", "line": 5}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidArgument", "line": 5}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-argument", "line": 5}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L131", "provider": "providerInvalidCodeParse", "note": "Read full dataset. Clean-room finite scalar union, using portable @param rather than @psalm-param. These are literal types, not native backed enums."},
+  "notes": "The good call at line 6 is an asymmetric control. Shared criterion with the valid quoted-literal variant. Static annotation contracts are measured, not imposed on PHP runtime semantics. No diagnostic is allowed away."
+}

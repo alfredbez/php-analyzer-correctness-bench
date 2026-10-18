@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-59b1c78bfa12967fb1ac",
+  "title": "Optional column keys can make array_multisort inputs differ in length",
+  "domain": "arrays", "criterion_id": "arrays/multisort-optional-column-length",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:59b1c78bfa12967fb1ac",
+  "ground_truth": {"basis": "runtime_proof", "statement": "array_column omits rows missing the requested y field. Sorting that column together with all original rows can therefore give arrays of different lengths; array_multisort throws ValueError for that legal parameter value. Fully populated controls sort correctly.", "citation": "https://www.php.net/manual/en/function.array-column.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "argument.type", "line": 8}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidArgument", "line": 8}]}, "mago": {"mode": "diagnostics", "required": [{"code": "invalid-argument", "line": 8}]}},
+  "provenance": {"candidate_id": "psalm:59b1c78bfa12967fb1ac", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayFunctionCallTest.php#L2759", "derivation": "Kept optional y and the two-array sort; removed irrelevant fields and proved the omitted-key failure."},
+  "notes": "A valid-provider parsing example is not a correctness oracle. All three pinned tools are silent, retained as FN for the proven optional-column length hazard. No claim is made that their documented scope promises relational length analysis."
+}

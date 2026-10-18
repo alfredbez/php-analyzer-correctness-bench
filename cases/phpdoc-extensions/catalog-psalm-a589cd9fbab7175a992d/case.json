@@ -1,0 +1,15 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d",
+  "title": "A no-named-arguments contract rejects an otherwise executable named call",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/no-named-arguments-policy", "rule_class": "NamedArgumentNotAllowed",
+  "source_candidate_id": "psalm:a589cd9fbab7175a992d",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "upstream_docs", "statement": "The @no-named-arguments policy disallows named calls to the annotated function. PHP itself permits them, as the runtime control establishes. This is a measured optional API policy, not a claim of runtime unsafety.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/supported_annotations/#no-named-arguments"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "argument.named", "line": 5}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "NamedArgumentNotAllowed", "line": 5}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "named-argument-not-allowed", "line": 5}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L673", "provider": "providerInvalidCodeParse", "note": "Removed unrelated UnusedParam suppression, used both arguments, retained the unprefixed policy tag."},
+  "notes": "Positional call line 6 is the control. Tool silence remains a measured policy difference rather than being relabelled unsupported. Shares the constructor annotation's criterion: function versus constructor calls are variants of the same optional no-named-arguments policy, not independent coverage."
+}

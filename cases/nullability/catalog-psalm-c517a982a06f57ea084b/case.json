@@ -1,0 +1,13 @@
+{
+  "id": "nullability/catalog-psalm-c517a982a06f57ea084b", "title": "A nonnullable PHPDoc return contradicts an actually nullable return",
+  "domain": "nullability", "criterion_id": "nullability/catalog-doc-native-nullable-conflict", "rule_class": "return.type",
+  "source_candidate_id": "psalm:c517a982a06f57ea084b", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "The native nullable signature permits null, and the false branch actually returns it. The @return stdClass annotation is therefore too narrow. The caller's null check is necessary, not a redundant condition.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.types.declarations.php"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "return.type", "line": 4}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "NullableReturnStatement", "line": 4}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-return-statement", "line": 4}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L608", "provider": "providerValidCodeParse", "note": "Read actual valid-provider dataset. Preserved the conflicting PHPDoc/native signatures but replaced randomness with a bool parameter. Upstream validity is not used as truth for the contradictory annotation."},
+  "notes": "All three tools emit no diagnostics. Retained as FN against the literal nonnullable PHPDoc contract, not advertised as three runtime-safety defects: the native signature is correct and tools may deliberately merge native null into the documented type. No affirmative non-support policy was established, so none is marked unsupported. Runtime proves guarded() can return both true and false."
+}

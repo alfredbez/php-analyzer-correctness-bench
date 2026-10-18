@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-mago-ddd6d489f1173eabbd99",
+  "title": "chained-logical-or-assignment-subsequent-operand (clean-room semantics)",
+  "domain": "assignability",
+  "criterion_id": "assignability/logical-or-reassignment-order",
+  "rule_class": "invalid-method-access",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:ddd6d489f1173eabbd99",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Short-circuit OR tests the reassigned value for null before accessing its method. The final operand sees Service, not the previous string.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.logical.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): invalid-method-access@11.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:ddd6d489f1173eabbd99",
+        "family": "mago",
+        "domain": "assignability",
+        "title": "chained-logical-or-assignment-subsequent-operand",
+        "path": "chained-logical-or-assignment-subsequent-operand/repro.php",
+        "line": 1,
+        "source_ref": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
+        "source_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
+        "probe_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/chained-logical-or-assignment-subsequent-operand/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R40",
+          "status": "completed_merged",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2571"
+        }
+      }
+    ]
+  }
+}

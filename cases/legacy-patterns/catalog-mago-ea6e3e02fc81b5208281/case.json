@@ -1,0 +1,51 @@
+{
+  "id": "legacy-patterns/catalog-mago-ea6e3e02fc81b5208281",
+  "title": "allow-numeric-empty (clean-room semantics)",
+  "domain": "legacy-patterns",
+  "criterion_id": "legacy-patterns/numeric-empty-zero",
+  "rule_class": "impossible-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:ea6e3e02fc81b5208281",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Integer and floating zero are empty; positive and negative nonzero numbers are not. Neither numeric empty branch is constant.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:ea6e3e02fc81b5208281",
+        "family": "mago",
+        "domain": "legacy-patterns",
+        "title": "allow-numeric-empty",
+        "path": "allow-numeric-empty/repro.php",
+        "line": 1,
+        "source_ref": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
+        "source_sha256": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
+        "probe_sha256": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-numeric-empty/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

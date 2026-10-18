@@ -1,0 +1,51 @@
+{
+  "id": "arrays/catalog-mago-3cb66fa76d0fbac8d0a6",
+  "title": "array-equality-narrowing (clean-room semantics)",
+  "domain": "arrays",
+  "criterion_id": "arrays/equal-arrays-preserve-element-type",
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:3cb66fa76d0fbac8d0a6",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Strict equality of two string lists is reachable, including empty lists, and preserves the string element contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation. The source is not runnable PHP: array<int,string> is not native parameter syntax. The re-derivation uses standard PHPDoc with native array. Its historical claim that differently typed arrays can never be identical is also false because empty arrays intersect. Runtime explicitly covers empty equality.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:3cb66fa76d0fbac8d0a6",
+        "family": "mago",
+        "domain": "arrays",
+        "title": "array-equality-narrowing",
+        "path": "array-equality-narrowing/repro.php",
+        "line": 1,
+        "source_ref": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
+        "source_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
+        "probe_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/array-equality-narrowing/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

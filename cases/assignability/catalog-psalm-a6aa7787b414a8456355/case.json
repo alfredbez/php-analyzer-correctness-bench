@@ -1,0 +1,11 @@
+{
+  "id": "assignability/catalog-psalm-a6aa7787b414a8456355",
+  "title": "A throws self annotation resolves to the declaring exception class",
+  "domain": "assignability", "criterion_id": "assignability/catalog-throws-self", "rule_class": "throws.type",
+  "source_candidate_id": "psalm:a6aa7787b414a8456355",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "self in LocalFailure names LocalFailure, a subclass of Exception. fail throws exactly that exception, matching @throws self, and the runtime catches that exact class.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1127", "provider": "providerValidCodeParse", "note": "Exception namespace and class renamed. Kept static factory that always throws new self."},
+  "notes": "Assigned to existing assignability domain instead of adding an exceptions taxonomy for one case."
+}

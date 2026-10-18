@@ -30,6 +30,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate the corpus
         run: python3 harness/bench.py validate
+      - name: Check every source candidate has an outcome
+        run: python3 factory/catalog.py check
       - name: Harness self-test
         run: python3 -m unittest discover -s tests -t . -v
 

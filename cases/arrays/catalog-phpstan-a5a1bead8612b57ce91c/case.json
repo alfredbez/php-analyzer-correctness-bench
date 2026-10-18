@@ -1,0 +1,56 @@
+{
+  "id": "arrays/catalog-phpstan-a5a1bead8612b57ce91c",
+  "title": "A closure using is_string filters out integer values and preserves keys, so the resulting array satisfies its string element contract.",
+  "domain": "arrays",
+  "criterion_id": "arrays/filter-string-value-contract",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:a5a1bead8612b57ce91c",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A closure using is_string filters out integer values and preserves keys, so the resulting array satisfies its string element contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.array-filter.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:a5a1bead8612b57ce91c",
+        "family": "phpstan",
+        "domain": "callables",
+        "title": "array-filter-callables",
+        "path": "tests/PHPStan/Analyser/nsrt/array-filter-callables.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "9138a34130a0ad1b6cae2e86c7eed3a404d1f5c89921f690c53d60fd15e136df",
+        "probe_sha256": "9138a34130a0ad1b6cae2e86c7eed3a404d1f5c89921f690c53d60fd15e136df",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-callables.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-callables.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

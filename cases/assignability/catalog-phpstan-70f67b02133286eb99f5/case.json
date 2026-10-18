@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-phpstan-70f67b02133286eb99f5",
+  "title": "An anonymous class created in a trait has its own integer method; the using class can return that result without confusing anonymous identity with the trait host.",
+  "domain": "assignability",
+  "criterion_id": "assignability/anonymous-class-member-contract",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:70f67b02133286eb99f5",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An anonymous class created in a trait has its own integer method; the using class can return that result without confusing anonymous identity with the trait host.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.anonymous.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:70f67b02133286eb99f5",
+        "family": "phpstan",
+        "domain": "objects",
+        "title": "anonymous-class-name-in-trait",
+        "path": "tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "1ec46e777802a49c1766bb1321e3ca7d4b97b5dd222fba42533f4c886425fb11",
+        "probe_sha256": "1ec46e777802a49c1766bb1321e3ca7d4b97b5dd222fba42533f4c886425fb11",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

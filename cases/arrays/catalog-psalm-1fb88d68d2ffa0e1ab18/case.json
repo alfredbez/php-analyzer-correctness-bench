@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-1fb88d68d2ffa0e1ab18",
+  "title": "A matching array shape satisfies a required string field",
+  "domain": "arrays", "criterion_id": "arrays/sealed-shape-acceptance",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:1fb88d68d2ffa0e1ab18",
+  "ground_truth": {"basis": "runtime_proof", "statement": "The supplied array contains the required test key with a string value, so reading it as a string is sound. A nonstring control fails the native return type.", "citation": "https://www.php.net/manual/en/language.types.array.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:1fb88d68d2ffa0e1ab18", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L321", "derivation": "Minimal shape consumer and explicit matching call."},
+  "notes": "A positive acceptance control, not a claim PHP natively enforces PHPDoc shapes."
+}

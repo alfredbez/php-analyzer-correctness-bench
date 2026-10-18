@@ -1,0 +1,15 @@
+{
+  "name": "bench/catalog-phpstan-935b22d9e63374f594a3",
+  "type": "project",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  },
+  "scripts": {
+    "runtime-check": "php runtime/check.php"
+  }
+}

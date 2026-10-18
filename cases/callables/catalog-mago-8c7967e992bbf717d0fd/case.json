@@ -1,0 +1,51 @@
+{
+  "id": "callables/catalog-mago-8c7967e992bbf717d0fd",
+  "title": "callable-array-assignable (clean-room semantics)",
+  "domain": "callables",
+  "criterion_id": "callables/object-method-array-callable",
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:8c7967e992bbf717d0fd",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An array of an object and a public method name is callable. The same object with a missing method is not callable.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.callable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:8c7967e992bbf717d0fd",
+        "family": "mago",
+        "domain": "callables",
+        "title": "callable-array-assignable",
+        "path": "callable-array-assignable/repro.php",
+        "line": 1,
+        "source_ref": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
+        "source_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
+        "probe_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-array-assignable/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

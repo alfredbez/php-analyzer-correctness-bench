@@ -1,0 +1,9 @@
+{
+  "id": "generics/catalog-psalm-af4807bea53ac80a15c3", "title": "Multiline list of array shapes preserves its element fields",
+  "domain": "generics", "criterion_id": "generics/catalog-multiline-list-shape", "rule_class": "return.type",
+  "source_candidate_id": "psalm:af4807bea53ac80a15c3", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "links returns a list of records with string href and lang. A multiline generic argument does not change the shape, and indexing the returned lang produces the string en.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/array_types/#lists"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L528", "provider": "providerValidCodeParse", "note": "Re-derived the multiline generic list shape. Inlined the source's Psalm-specific local alias to compare the common type grammar; used a nonempty implementation so field inference is exercised."},
+  "notes": "This portable fixture measures multiline type parsing and field inference, not alias-name scoping. A successful runtime is not by itself proof that an analyzer parsed the annotation; the string consumer constrains its inferred output."
+}

@@ -1,0 +1,56 @@
+{
+  "id": "nullability/catalog-phpstan-5588ff8af852e7139b7d",
+  "title": "A nullsafe chain short-circuits a static method access through a property when the initial receiver is null, and otherwise returns the static method string.",
+  "domain": "nullability",
+  "criterion_id": "nullability/nullsafe-static-member-chain",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:5588ff8af852e7139b7d",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A nullsafe chain short-circuits a static method access through a property when the initial receiver is null, and otherwise returns the static method string.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: mago: possibly-null-property-access@6. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:5588ff8af852e7139b7d",
+        "family": "phpstan",
+        "domain": "nullability",
+        "title": "bug-nullsafe-prop-static-access",
+        "path": "tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "2717ea7208eda235f0fe8fe025e4517f5930c7a349ee3cc435214c07089a55db",
+        "probe_sha256": "2717ea7208eda235f0fe8fe025e4517f5930c7a349ee3cc435214c07089a55db",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "narrowing/catalog-mago-1b312aa116cfe2b77850",
+  "title": "always-true-assign (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/object-is-always-truthy",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:1b312aa116cfe2b77850",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An assigned stdClass is truthy and retains its object type inside the condition. A nullable assignment has both outcomes, and its true branch also safely accesses the object.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.boolean.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "if.alwaysTrue",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "deadCode.unreachable",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "The condition always returns through the truthy branch; this return is genuinely unreachable."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "RedundantCondition",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-condition",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Shares the existing semantic criterion. The new fixture adds assignment-context or callable-string controls; it is not a new criterion. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:1b312aa116cfe2b77850",
+        "family": "mago",
+        "domain": "assignability",
+        "title": "always-true-assign",
+        "path": "always-true-assign/repro.php",
+        "line": 1,
+        "source_ref": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
+        "source_sha256": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
+        "probe_sha256": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/always-true-assign/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  },
+  "covered_by": [
+    "narrowing/object-is-always-truthy"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "assignability/catalog-psalm-fbe59540f6b89bde9139", "title": "Quoted literal scalar unions accept every declared member",
+  "domain": "assignability", "criterion_id": "assignability/catalog-literal-scalar-union", "rule_class": "argument.type",
+  "source_candidate_id": "psalm:fbe59540f6b89bde9139", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "Every supplied scalar is a member of the finite declared union, including a string containing a quote. The function returns each argument unchanged and the runtime checks every member.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/scalar_types/"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L23", "provider": "providerValidCodeParse", "note": "Source's enum name describes scalar literal unions, not native enums. Re-derived portable @param with a quoted string and three integers, retaining parenthesized syntax."},
+  "notes": "Same criterion as the invalid-int candidate. Extra redundant-comparison policy diagnostics remain observable rather than being broadly allowed."
+}

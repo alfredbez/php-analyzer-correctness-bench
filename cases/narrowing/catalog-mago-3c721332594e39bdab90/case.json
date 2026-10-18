@@ -1,0 +1,80 @@
+{
+  "id": "narrowing/catalog-mago-3c721332594e39bdab90",
+  "title": "class-string-not-empty (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/get-class-truthy",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:3c721332594e39bdab90",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "get_class returns a valid nonempty class name, never the falsy strings empty or zero, so its truthiness test is constant.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.get-class.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "if.alwaysTrue",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "deadCode.unreachable",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "The condition always returns through the truthy branch; this return is genuinely unreachable."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "RedundantCondition",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-condition",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan false_negative: missing required diagnostic(s): if.alwaysTrue; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:3c721332594e39bdab90",
+        "family": "mago",
+        "domain": "legacy-patterns",
+        "title": "class-string-not-empty",
+        "path": "class-string-not-empty/repro.php",
+        "line": 1,
+        "source_ref": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
+        "source_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
+        "probe_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/class-string-not-empty/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "narrowing/catalog-psalm-924aac46207f32ed8ed5",
+  "title": "Casting a positive integer to int preserves positivity",
+  "domain": "narrowing", "criterion_id": "narrowing/catalog-positive-int-cast", "rule_class": "return.type",
+  "source_candidate_id": "psalm:924aac46207f32ed8ed5",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "For an int, an int cast is the identity, so a positive-int remains positive. The controls include 1 and PHP_INT_MAX.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.types.integer.php#language.types.integer.casting"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L529", "provider": "providerValidCodeParse", "note": "The source suppresses RedundantCast. Suppression removed intentionally; this measures both refinement preservation and any redundant-cast diagnostic policy."},
+  "notes": "PHPStan is clean. Mago reports invalid-return-statement at line 7, widening the positive input to int across an identity cast; runtime and integer-cast semantics contradict that report. Psalm reports RedundantCastGivenDocblockType at line 7, which confirms it retains the positive range but objects to redundant syntax. That is a policy disagreement against the clean semantic baseline, not evidence the cast loses positivity. Both FP labels remain visible, with their different meanings documented."
+}

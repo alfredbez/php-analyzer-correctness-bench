@@ -1,0 +1,51 @@
+{
+  "id": "legacy-patterns/catalog-mago-af46b0f735b875e1a546",
+  "title": "dont-bleed-empty-after-extract (clean-room semantics)",
+  "domain": "legacy-patterns",
+  "criterion_id": "legacy-patterns/extract-disjunctive-empty-guard",
+  "rule_class": "undefined-variable",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:af46b0f735b875e1a546",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "extract creates the named locals. Negation of the conjunction of empty checks does not imply that arr is empty; nonempty string elements can reach the loop.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.extract.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): invalid-iterator@10, mixed-argument@10, mixed-assignment@10, undefined-variable@10, undefined-variable@7.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:af46b0f735b875e1a546",
+        "family": "mago",
+        "domain": "legacy-patterns",
+        "title": "dont-bleed-empty-after-extract",
+        "path": "dont-bleed-empty-after-extract/repro.php",
+        "line": 1,
+        "source_ref": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
+        "source_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
+        "probe_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/dont-bleed-empty-after-extract/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

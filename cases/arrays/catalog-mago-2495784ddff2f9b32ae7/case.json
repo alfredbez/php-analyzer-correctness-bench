@@ -1,0 +1,59 @@
+{
+  "id": "arrays/catalog-mago-2495784ddff2f9b32ae7",
+  "title": "no-redundant-condition-on-mixed (clean-room semantics)",
+  "domain": "arrays",
+  "criterion_id": "arrays/empty-mixed-nested-offset",
+  "rule_class": "impossible-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:2495784ddff2f9b32ae7",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Independent nested empty checks can both pass or either fail; neither guard is constant for mixed shape values. This is not a claim that arbitrary mixed receivers support offsets: an ordinary object is a failing runtime control.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "offsetAccess.nonOffsetAccessible",
+          "line": 5,
+          "file": "src/repro.php",
+          "reason": "mixed includes objects without ArrayAccess, which fail even under empty; the runtime object control independently proves this concern. This does not claim either empty test is constant."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:2495784ddff2f9b32ae7",
+        "family": "mago",
+        "domain": "dead-code",
+        "title": "no-redundant-condition-on-mixed",
+        "path": "no-redundant-condition-on-mixed/repro.php",
+        "line": 1,
+        "source_ref": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
+        "source_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
+        "probe_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-on-mixed/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

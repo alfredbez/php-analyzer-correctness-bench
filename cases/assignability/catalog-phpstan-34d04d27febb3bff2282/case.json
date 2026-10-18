@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-phpstan-34d04d27febb3bff2282",
+  "title": "An anonymous object retains the declared type of its initialized property and the result of its method",
+  "domain": "assignability",
+  "criterion_id": "assignability/anonymous-class-member-contract",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:34d04d27febb3bff2282",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An anonymous object retains the declared type of its initialized property and the result of its method. Both can satisfy an integer consumer.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.anonymous.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:34d04d27febb3bff2282",
+        "family": "phpstan",
+        "domain": "objects",
+        "title": "anonymous-class-name",
+        "path": "tests/PHPStan/Analyser/nsrt/anonymous-class-name.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "cc70904ace489f1d2d952d26ac3c8e13852fa6965f85b3cd9170e350eddc03b2",
+        "probe_sha256": "cc70904ace489f1d2d952d26ac3c8e13852fa6965f85b3cd9170e350eddc03b2",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

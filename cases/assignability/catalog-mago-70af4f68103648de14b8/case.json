@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-mago-70af4f68103648de14b8",
+  "title": "conditional-reanalysis-assigned-var-pollution (clean-room semantics)",
+  "domain": "assignability",
+  "criterion_id": "assignability/conditional-assignment-input-order",
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:70af4f68103648de14b8",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The converter receives the original string before assignment changes the variable to Item|null; a null or invalid result throws.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.assignment.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): invalid-argument@11, possibly-null-argument@11.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:70af4f68103648de14b8",
+        "family": "mago",
+        "domain": "assignability",
+        "title": "conditional-reanalysis-assigned-var-pollution",
+        "path": "conditional-reanalysis-assigned-var-pollution/repro.php",
+        "line": 1,
+        "source_ref": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
+        "source_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
+        "probe_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/conditional-reanalysis-assigned-var-pollution/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R38",
+          "status": "completed_merged",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2561"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-phpstan-23edd0555732c08f1948",
+  "title": "A documented integer parameter supports a native integer return without coercion",
+  "domain": "assignability",
+  "criterion_id": "assignability/documented-parameter-consumer",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:23edd0555732c08f1948",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A documented integer parameter supports a native integer return without coercion. This isolates the type contract from the upstream prefix parsing matrix.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/writing-php-code/phpdoc-types"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Only the documented parameter contract is retained; proprietary prefix precedence, invalid type spellings and unrelated upstream classes are intentionally not reproduced. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:23edd0555732c08f1948",
+        "family": "phpstan",
+        "domain": "phpstan-extensions",
+        "title": "functionPhpDocs-phpstanPrefix",
+        "path": "tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
+        "probe_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

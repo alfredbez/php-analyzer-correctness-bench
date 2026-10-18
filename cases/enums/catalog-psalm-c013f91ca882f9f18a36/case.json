@@ -1,0 +1,9 @@
+{
+  "id": "enums/catalog-psalm-c013f91ca882f9f18a36", "title": "A real backed-enum value guard narrows a string to value-of",
+  "domain": "enums", "criterion_id": "enums/catalog-value-of-narrowing", "rule_class": "argument.type",
+  "source_candidate_id": "psalm:c013f91ca882f9f18a36", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "The guard rejects every string except the two backing values. Thus the subsequent fromValue call satisfies value-of<Color>, and runtime checks both enum cases and a rejected string.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.enumerations.backed.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L2306", "provider": "providerValidCodeParse", "note": "The full source has empty asserting functions and null values disguised by @var annotations. Replaced those assumptions with a runtime-enforced guard and a real backed enum; retained the value-of consumer."},
+  "notes": "Portable semantic reduction measures backing-value narrowing, not Psalm-specific assertion-tag recognition. No empty assertion is trusted as proof. PHPStan and Psalm are clean. Mago reports possibly-invalid-argument at line 8 despite the guard proving that the input is one of the two backing values. That FP is retained."
+}

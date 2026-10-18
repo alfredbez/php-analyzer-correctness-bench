@@ -1,0 +1,59 @@
+{
+  "id": "narrowing/catalog-mago-213d169182afe4bafef8",
+  "title": "get-class-const-arg (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/get-class-switch-method",
+  "rule_class": "method.notFound",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:213d169182afe4bafef8",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "get_class selects the actual class, so each switch branch calls a method present on its receiver.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.get-class.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "deadCode.unreachable",
+          "line": 10,
+          "file": "src/repro.php",
+          "reason": "Both final-class alternatives return in the switch. The fallback throw is genuinely unreachable."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago false_positive: unexpected diagnostic(s): non-existent-method@7, non-existent-method@8.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:213d169182afe4bafef8",
+        "family": "mago",
+        "domain": "objects",
+        "title": "get-class-const-arg",
+        "path": "get-class-const-arg/repro.php",
+        "line": 1,
+        "source_ref": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
+        "source_sha256": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
+        "probe_sha256": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/get-class-const-arg/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

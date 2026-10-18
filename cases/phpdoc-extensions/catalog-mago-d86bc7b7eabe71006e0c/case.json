@@ -1,0 +1,85 @@
+{
+  "id": "phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c",
+  "title": "fn-malformed-phpdoc (clean-room semantics)",
+  "domain": "phpdoc-extensions",
+  "criterion_id": "phpdoc-extensions/malformed-param-union",
+  "rule_class": "invalid-docblock",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:d86bc7b7eabe71006e0c",
+  "ground_truth": {
+    "basis": "upstream_docs",
+    "statement": "Under the PHP-FIG proposed PHPDoc grammar, type-expression = type *(\"|\" type) *(\"&\" type), so a trailing union separator without another type is malformed. PHP itself ignores the comment; the valid array<int, Group> annotation is the control.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#appendix-a-types"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "phpDoc.parseError",
+          "line": 4,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "missingType.iterableValue",
+          "line": 5,
+          "file": "src/repro.php",
+          "reason": "Ignoring the malformed annotation leaves a bare native array parameter without an element type. This is a correct secondary completeness diagnostic."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "InvalidDocblock",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "invalid-docblock",
+          "line": 4,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. The neutral grammar is proposed PSR-5 Appendix A, not a ratified PHP standard. It requires a type after every union separator. phpDocumentor's permissive ABNF admits a trailing separator and cannot establish this stricter criterion. Runtime proves only that PHP ignores the comment. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. PHPStan and Psalm diagnose the malformed annotation; Mago omits invalid-docblock. Missing syntax diagnostics are measured as broad behavior gaps, not a claim that Mago promises rejection of every malformed function annotation. The source has three malformed forms; this minimal fixture isolates the dangling union form.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:d86bc7b7eabe71006e0c",
+        "family": "mago",
+        "domain": "phpdoc-extensions",
+        "title": "fn-malformed-phpdoc",
+        "path": "fn-malformed-phpdoc/repro.php",
+        "line": 1,
+        "source_ref": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
+        "source_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
+        "probe_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-malformed-phpdoc/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R15",
+          "status": "merged",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2493"
+        }
+      }
+    ]
+  }
+}

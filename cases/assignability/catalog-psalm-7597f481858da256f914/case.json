@@ -1,0 +1,11 @@
+{
+  "id": "assignability/catalog-psalm-7597f481858da256f914",
+  "title": "An overriding property may not narrow inherited set visibility",
+  "domain": "assignability", "criterion_id": "assignability/asymmetric-property-override",
+  "rule_class": "OverriddenPropertyAccess", "php": {"min": "8.4"}, "targets": ["src"],
+  "source_candidate_id": "psalm:7597f481858da256f914",
+  "ground_truth": {"basis": "runtime_proof", "statement": "The inherited property allows writes from protected scope. Redeclaring it private(set) narrows that access and violates PHP 8.4 property inheritance visibility rules. PHP rejects the class declaration; a subprocess control with unchanged protected(set) succeeds.", "citation": "https://www.php.net/manual/en/language.oop5.visibility.php#language.oop5.visibility.asymmetric", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "property.visibility", "line": 6}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "OverriddenPropertyAccess", "line": 6}]}, "mago": {"mode": "diagnostics", "required": [{"code": "incompatible-property-access", "line": 6}]}},
+  "provenance": {"candidate_id": "psalm:7597f481858da256f914", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L430", "derivation": "Two declarations isolate protected(set) to private(set) override, with PHP minimum 8.4."},
+  "notes": "Measured on PHP 8.4.26. PHP rejects the fixture with a must-be-protected(set) fatal error. Psalm and Mago diagnose the override, but PHPStan 2.3.1 is silent, retained as FN. The fixture intentionally cannot be loaded successfully; runtime/check.php isolates the fatal in a subprocess."
+}

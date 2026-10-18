@@ -1,0 +1,59 @@
+{
+  "id": "nullability/catalog-mago-12192c3c16be73f35ba7",
+  "title": "allow-empty-null-property (clean-room semantics)",
+  "domain": "nullability",
+  "criterion_id": "nullability/empty-nullable-property",
+  "rule_class": "possibly-null-property-fetch",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:12192c3c16be73f35ba7",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "empty safely reads a property on a null receiver. Its negation guarantees a nonempty string property on this unmodified object.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "RiskyTruthyFalsyComparison",
+          "line": 5,
+          "file": "src/repro.php",
+          "reason": "Documented Psalm policy warns when falsy null or an object-only-truthy alternative is combined with strings that can be both truthy and falsy. This does not claim the guard is impossible. https://psalm.dev/docs/running_psalm/issues/RiskyTruthyFalsyComparison/"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:12192c3c16be73f35ba7",
+        "family": "mago",
+        "domain": "nullability",
+        "title": "allow-empty-null-property",
+        "path": "allow-empty-null-property/repro.php",
+        "line": 1,
+        "source_ref": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
+        "source_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
+        "probe_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-empty-null-property/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

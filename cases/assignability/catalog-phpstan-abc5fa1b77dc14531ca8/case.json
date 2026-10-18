@@ -1,0 +1,56 @@
+{
+  "id": "assignability/catalog-phpstan-abc5fa1b77dc14531ca8",
+  "title": "Distinct anonymous class expressions retain distinct members even in the same lexical scope",
+  "domain": "assignability",
+  "criterion_id": "assignability/anonymous-class-distinct-identities",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:abc5fa1b77dc14531ca8",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Distinct anonymous class expressions retain distinct members even in the same lexical scope. Reading each member satisfies its own native consumer.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.anonymous.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: mago: possibly-invalid-argument@6. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:abc5fa1b77dc14531ca8",
+        "family": "phpstan",
+        "domain": "objects",
+        "title": "anonymous-class-name-same-line",
+        "path": "tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "e8763585650a7c327c0e84fb47d478a830c009b3ab8870be1c4f868f08922712",
+        "probe_sha256": "e8763585650a7c327c0e84fb47d478a830c009b3ab8870be1c4f868f08922712",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

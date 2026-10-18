@@ -1,0 +1,13 @@
+{
+  "name": "bench/catalog-phpstan-50e5714f7332b2d3a4ff",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "ondrejmirtes/better-reflection": "6.73.0.6",
+    "nikic/php-parser": "5.9.0",
+    "jetbrains/phpstorm-stubs": "dev-master#2049ca3cfa1feabf52db074108fe776a5713cf02"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {"runtime-check": "php runtime/check.php"}
+}

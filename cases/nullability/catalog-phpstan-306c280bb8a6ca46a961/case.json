@@ -1,0 +1,56 @@
+{
+  "id": "nullability/catalog-phpstan-306c280bb8a6ca46a961",
+  "title": "Replacing a null array element with a string makes the element string in the subsequent read of that same offset.",
+  "domain": "nullability",
+  "criterion_id": "nullability/foreach-offset-null-replacement",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:306c280bb8a6ca46a961",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Replacing a null array element with a string makes the element string in the subsequent read of that same offset.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.type-juggling.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: psalm: InvalidReturnStatement@13, InvalidReturnType@6. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:306c280bb8a6ca46a961",
+        "family": "phpstan",
+        "domain": "phpdoc-extensions",
+        "title": "composer-treatPhpDocTypesAsCertainBug",
+        "path": "tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "1c95ff6e5a087f7eb5198c59113cdf84a7a1a66485d7e87f7963b4763a86bfc5",
+        "probe_sha256": "1c95ff6e5a087f7eb5198c59113cdf84a7a1a66485d7e87f7963b4763a86bfc5",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

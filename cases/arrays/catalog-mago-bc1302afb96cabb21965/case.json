@@ -1,0 +1,72 @@
+{
+  "id": "arrays/catalog-mago-bc1302afb96cabb21965",
+  "title": "can-be-non-empty-array (clean-room semantics)",
+  "domain": "arrays",
+  "criterion_id": "arrays/negated-array-and-nonempty",
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:bc1302afb96cabb21965",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The branch requiring both not-array and nonempty can contain a string or object but cannot contain an array; passing it to an array parameter is unsafe.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "argument.type",
+          "line": 7,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "MixedArgument",
+          "line": 7,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "mixed-argument",
+          "line": 7,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:bc1302afb96cabb21965",
+        "family": "mago",
+        "domain": "arrays",
+        "title": "can-be-non-empty-array",
+        "path": "can-be-non-empty-array/repro.php",
+        "line": 1,
+        "source_ref": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
+        "source_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
+        "probe_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/can-be-non-empty-array/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

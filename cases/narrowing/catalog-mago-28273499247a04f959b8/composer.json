@@ -1,0 +1,20 @@
+{
+  "name": "bench/catalog-mago-28273499247a04f959b8",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "2.3.1",
+    "vimeo/psalm": "6.20.0"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  },
+  "scripts": {
+    "runtime-check": "php runtime/check.php"
+  }
+}

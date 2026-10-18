@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-6e0079989da3fbda2530",
+  "title": "Scalar array elements do not all satisfy array-key value contracts",
+  "domain": "arrays", "criterion_id": "arrays/element-value-type-contract",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:6e0079989da3fbda2530",
+  "ground_truth": {"basis": "runtime_proof", "statement": "In array<array-key>, the one type argument describes values, not keys. The allowed values are int|string. A scalar array may contain false, violating that value contract and failing the string branch of the consumer under strict_types. Integer values are handled separately and are valid.", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/array_types/", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "argument.type", "line": 11}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "ArgumentTypeCoercion", "line": 11}]}, "mago": {"mode": "diagnostics", "required": [{"code": "possibly-invalid-argument", "line": 11}]}},
+  "provenance": {"candidate_id": "psalm:6e0079989da3fbda2530", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L172", "derivation": "Removed suppression; real producer returns a bool on one branch. Retained the actual one-argument array<array-key> value contract."},
+  "notes": "Existing arrays/array-key-for-string-key cites this lead but measures a different key-dimension contract. This faithful value variant shares arrays/element-value-type-contract with scalar-array-for-string-array rather than claiming extra criterion coverage."
+}

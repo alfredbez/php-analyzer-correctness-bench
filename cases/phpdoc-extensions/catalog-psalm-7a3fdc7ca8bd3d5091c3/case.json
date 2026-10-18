@@ -1,0 +1,11 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3",
+  "title": "Duplicate identical return tags violate the single-return-tag documentation policy",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/duplicate-return-tag",
+  "rule_class": "InvalidDocblock", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:7a3fdc7ca8bd3d5091c3",
+  "ground_truth": {"basis": "upstream_docs", "statement": "phpDocumentor specifies that a return tag MUST NOT occur more than once in a docblock. Two identical tags violate that documentation rule even though the PHP function executes correctly. The runtime control confirms the native return value.", "citation": "https://docs.phpdoc.org/guide/references/phpdoc/tags/return.html", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"message_regex": "(?i)(duplicat.*@return|@return.*(duplicat|more than once|multiple))", "line": 7}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidDocblock", "line": 7}], "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2011"}, "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 7}]}},
+  "provenance": {"candidate_id": "psalm:7a3fdc7ca8bd3d5091c3", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2011", "derivation": "Removed the unrelated untyped array parameter; identical int tags isolate the duplicate policy."},
+  "notes": "Psalm reports InvalidDocblock. PHPStan and Mago are silent, retained as policy-comparison FN. The PHPStan predicate uses a distinctive duplicate-return message rather than inventing an identifier for a rule it does not currently emit. This is not a claim PHP execution is unsafe or that every analyzer must enforce all phpDocumentor constraints."
+}

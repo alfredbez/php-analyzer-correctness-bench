@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-13be39b2d9591fa1a9e5",
+  "title": "An absent key in one array says nothing about another array",
+  "domain": "arrays", "criterion_id": "arrays/independent-array-key-guards",
+  "rule_class": "MixedArrayOffset", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:13be39b2d9591fa1a9e5",
+  "ground_truth": {"basis": "runtime_proof", "statement": "The nested isset can be either true or false, independently of the preceding array's missing key. However nonempty mixed values are not necessarily valid array offsets: a nonempty array reaches the offset operation and throws. Redundancy reports are wrong; mixed-offset safety reports are correct.", "citation": "https://www.php.net/manual/en/language.types.array.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "offsetAccess.invalidOffset", "line": 9}, {"code": "offsetAccess.invalidOffset", "line": 10}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "MixedArrayOffset", "line": 9}, {"code": "MixedArrayOffset", "line": 10}]}, "mago": {"mode": "diagnostics", "required": [{"code": "mixed-array-index", "line": 9}, {"code": "mixed-array-index", "line": 10}]}},
+  "provenance": {"candidate_id": "psalm:13be39b2d9591fa1a9e5", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAccessTest.php#L750", "derivation": "Upstream ignores MixedArrayOffset. Kept the mixed input, removed that suppression, and added both guard outcomes plus an invalid-offset control."},
+  "notes": "Valid-provider status is not a clean oracle because the upstream harness ignores a genuine offset hazard. PHPStan and Psalm diagnose the mixed offsets on lines 9 and 10. Mago is silent, retained as FN. No tool reports a spurious redundant guard."
+}

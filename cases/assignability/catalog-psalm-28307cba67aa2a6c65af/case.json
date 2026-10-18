@@ -1,0 +1,11 @@
+{
+  "id": "assignability/catalog-psalm-28307cba67aa2a6c65af",
+  "title": "An arbitrary object does not promise an object-shape property",
+  "domain": "assignability", "criterion_id": "assignability/object-shape-required-property",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:28307cba67aa2a6c65af",
+  "ground_truth": {"basis": "runtime_proof", "statement": "An object return type alone cannot guarantee the hmm property. The concrete object lacks it and the consumer's read raises an undefined-property warning. A matching float-property object succeeds.", "citation": "https://www.php.net/manual/en/language.oop5.properties.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "argument.type", "line": 6}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "ArgumentTypeCoercion", "line": 6}]}, "mago": {"mode": "diagnostics", "required": [{"code": "possibly-invalid-argument", "line": 6}]}},
+  "provenance": {"candidate_id": "psalm:28307cba67aa2a6c65af", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L747", "derivation": "Consumer actually reads the required property; runtime proves the mismatch independently."},
+  "notes": "No upstream expected-error comment is used as ground truth."
+}

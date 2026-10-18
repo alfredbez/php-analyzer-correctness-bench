@@ -1,0 +1,56 @@
+{
+  "id": "generics/catalog-phpstan-23069a8fe555fc224d34",
+  "title": "The trait promises an integer result when instantiated with int; the implementing method and the integer consumer satisfy that substituted contract.",
+  "domain": "generics",
+  "criterion_id": "generics/trait-abstract-template-inheritance",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.3"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:23069a8fe555fc224d34",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The trait promises an integer result when instantiated with int; the implementing method and the integer consumer satisfy that substituted contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Override attributes satisfy the pinned Psalm style policy and are not part of the semantic criterion. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:23069a8fe555fc224d34",
+        "family": "phpstan",
+        "domain": "generics",
+        "title": "abstract-generic-trait-method-implicit-phpdoc-inheritance",
+        "path": "tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
+        "probe_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

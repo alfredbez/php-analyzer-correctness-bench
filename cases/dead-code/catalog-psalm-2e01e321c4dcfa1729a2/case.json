@@ -1,0 +1,11 @@
+{
+  "id": "dead-code/catalog-psalm-2e01e321c4dcfa1729a2",
+  "title": "Casting an object to object preserves its identity",
+  "domain": "dead-code", "criterion_id": "dead-code/redundant-object-cast",
+  "rule_class": "RedundantCast", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:2e01e321c4dcfa1729a2",
+  "ground_truth": {"basis": "runtime_proof", "statement": "Casting an existing object to object returns the same object without changing its identity or state. The cast is redundant, though legal. This case measures a redundant-operation diagnostic policy, not a runtime bug.", "citation": "https://www.php.net/manual/en/language.types.object.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "cast.useless", "line": 4}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "RedundantCast", "line": 4}], "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L761"}, "mago": {"mode": "diagnostics", "required": [{"code": "redundant-cast", "line": 4}]}},
+  "provenance": {"candidate_id": "psalm:2e01e321c4dcfa1729a2", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L761", "derivation": "Direct object parameter isolates identity-preserving cast."},
+  "notes": "Psalm and Mago report the redundant cast. PHPStan is silent, retained as a policy-comparison FN. Missing a redundancy diagnostic does not imply the legal cast should be forbidden."
+}

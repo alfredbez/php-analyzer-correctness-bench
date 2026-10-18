@@ -1,0 +1,11 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c",
+  "title": "Named arguments violate an explicit no-named-arguments API policy",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/no-named-arguments-policy",
+  "rule_class": "NamedArgumentNotAllowed", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:53ae3931e59580d6f84c",
+  "ground_truth": {"basis": "upstream_docs", "statement": "The no-named-arguments tag prohibits named calls so parameter names are not part of the public API. PHP itself accepts the call and runtime verifies its values. This is an opt-in API policy, not a language violation.", "citation": "https://psalm.dev/docs/annotating_code/supported_annotations/#no-named-arguments", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "argument.named", "line": 8}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "NamedArgumentNotAllowed", "line": 8}]}, "mago": {"mode": "diagnostics", "required": [{"code": "named-argument-not-allowed", "line": 8}]}},
+  "provenance": {"candidate_id": "psalm:53ae3931e59580d6f84c", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L511", "derivation": "Two promoted properties and a reordered named constructor call isolate the annotation policy."},
+  "notes": "All three tools correctly report the named-argument policy. Psalm additionally emits two InvalidArgument diagnostics as if the reordered arguments were positional. Runtime proves the actual bindings, so these additional type errors remain FPs rather than being allowed. The policy diagnostic itself is correct."
+}

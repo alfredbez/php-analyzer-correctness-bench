@@ -1,0 +1,88 @@
+{
+  "id": "assignability/catalog-mago-af4d2483259287749e40",
+  "title": "clear-dependent-type-when-assigning (clean-room semantics)",
+  "domain": "assignability",
+  "criterion_id": "assignability/assignment-invalidates-get-class-dependency",
+  "rule_class": "method.notFound",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:af4d2483259287749e40",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A saved get_class result describes the old object. Reassigning the receiver to Other must not give Other a method from the old class.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.assignment.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "method.notFound",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "UndefinedMethod",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "MixedReturnStatement",
+          "line": 10,
+          "file": "src/repro.php",
+          "reason": "The required nonexistent method has no return signature; this is a secondary consequence, not an additional type error on a sound return."
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "non-existent-method",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "mixed-return-statement",
+          "line": 10,
+          "file": "src/repro.php",
+          "reason": "The required nonexistent method has no return signature; secondary consequence of the primary method error."
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:af4d2483259287749e40",
+        "family": "mago",
+        "domain": "assignability",
+        "title": "clear-dependent-type-when-assigning",
+        "path": "clear-dependent-type-when-assigning/repro.php",
+        "line": 1,
+        "source_ref": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
+        "source_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
+        "probe_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/clear-dependent-type-when-assigning/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

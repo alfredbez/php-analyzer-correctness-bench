@@ -1,0 +1,11 @@
+{
+  "id": "callables/catalog-psalm-7d2ccd7549c78392118c",
+  "title": "Spaced closure signatures inside a multiline array shape",
+  "domain": "callables", "criterion_id": "callables/catalog-nested-closure-shape-syntax", "rule_class": "phpDoc.parseError",
+  "source_candidate_id": "psalm:7d2ccd7549c78392118c",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "A shape with required callable a and optional callable b permits invoking a. Its declared result is an array of integer values or null; both runtime controls exercise those branches.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L464", "provider": "providerValidCodeParse", "note": "Re-derived two nested signatures from the full mega-annotation. Upstream assigns [] under a lying @var annotation; this fixture takes a real parameter satisfying the shape instead."},
+  "notes": "Whitespace variant shares its criterion with the unspaced candidate. This is a parse and invocation comparison, not a promise of compatibility with every optional key in the original large shape."
+}

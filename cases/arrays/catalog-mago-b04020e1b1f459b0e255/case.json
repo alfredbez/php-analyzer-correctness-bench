@@ -1,0 +1,104 @@
+{
+  "id": "arrays/catalog-mago-b04020e1b1f459b0e255",
+  "title": "psalm-harvest-array-redundant (clean-room semantics)",
+  "domain": "arrays",
+  "criterion_id": "arrays/element-value-type-contract",
+  "covered_by": ["arrays/scalar-array-for-string-array"],
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:b04020e1b1f459b0e255",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "is_array on an array is redundant and does not change its mixed element types to int; a string element violates the callee contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.is-array.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "function.alreadyNarrowedType",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "argument.type",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "deadCode.unreachable",
+          "line": 12,
+          "file": "src/repro.php",
+          "reason": "The native array parameter always satisfies is_array and the true branch returns; the fallback return is unreachable."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "RedundantCondition",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "MixedArgumentTypeCoercion",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-type-comparison",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "less-specific-nested-argument-type",
+          "line": 10,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "redundant-condition",
+          "line": 9,
+          "file": "src/repro.php",
+          "reason": "The native array parameter makes the entire is_array condition true, duplicating the required redundant-type-comparison."
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:b04020e1b1f459b0e255",
+        "family": "mago",
+        "domain": "dead-code",
+        "title": "psalm-harvest-array-redundant",
+        "path": "psalm-harvest-array-redundant/repro.php",
+        "line": 1,
+        "source_ref": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
+        "source_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
+        "probe_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-redundant/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

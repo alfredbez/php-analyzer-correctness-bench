@@ -1,0 +1,56 @@
+{
+  "id": "narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0",
+  "title": "Every PHP Throwable is an Exception or an Error",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/throwable-exception-complement",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:13d11cb24c0ac0aec4c0",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Every PHP Throwable is an Exception or an Error. Removing Exception leaves Error and makes the Error return contract sound.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/class.throwable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: psalm: LessSpecificReturnStatement@6, MoreSpecificReturnType@4; mago: less-specific-return-statement@6. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:13d11cb24c0ac0aec4c0",
+        "family": "phpstan",
+        "domain": "exceptions",
+        "title": "allowed-subtypes-throwable",
+        "path": "tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "e55dbfb1b225e5cfe01b48eb23b70d7b4f8c6bd4b736e181287167562b2e7b82",
+        "probe_sha256": "e55dbfb1b225e5cfe01b48eb23b70d7b4f8c6bd4b736e181287167562b2e7b82",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

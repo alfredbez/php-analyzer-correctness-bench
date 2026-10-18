@@ -1,0 +1,54 @@
+{
+  "id": "enums/catalog-phpstan-50e5714f7332b2d3a4ff",
+  "title": "BetterReflection enum adapter backing type wrapper",
+  "domain": "enums",
+  "criterion_id": "enums/reflection-adapter-backing-type",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "composer": {
+    "install": true
+  },
+  "source_candidate_id": "phpstan:50e5714f7332b2d3a4ff",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The BetterReflection enum adapter returns its own ReflectionNamedType wrapper for a backed enum, and null for a unit enum. The library-specific wrapper satisfies the native consumer contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/reflectionenum.getbackingtype.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "This candidate requires the actual adapter library. composer.lock pins the direct and transitive dependencies. Run tools/install.sh on a fresh checkout; missing declared dependencies are a case error, not an analyzer finding. The runtime checks both backed and unit enums using the installed adapter, not a mock or copied adapter stub. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass. Mago must index the actual library through source.includes; missing-class reports from the initial unindexed run were configuration errors and disappear with the committed configuration. composer.json pins transitive parser and stub versions as well as the adapter.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:50e5714f7332b2d3a4ff",
+        "family": "phpstan",
+        "domain": "enums",
+        "title": "adapter-reflection-enum-return-types",
+        "path": "tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "86b2f6dcb0cabd400875348bb54c2bfe95b87bbee063fea6a527996409bb345e",
+        "probe_sha256": "86b2f6dcb0cabd400875348bb54c2bfe95b87bbee063fea6a527996409bb345e",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

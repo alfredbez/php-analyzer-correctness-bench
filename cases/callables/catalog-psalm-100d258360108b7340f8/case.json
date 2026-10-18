@@ -1,0 +1,11 @@
+{
+  "id": "callables/catalog-psalm-100d258360108b7340f8",
+  "title": "ReflectionMethod invoke accepts a null receiver for a static method and variadic arguments",
+  "domain": "callables", "criterion_id": "callables/reflection-static-invoke",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:100d258360108b7340f8",
+  "ground_truth": {"basis": "runtime_proof", "statement": "ReflectionMethod::invoke accepts null for the object when invoking a static method. Arguments after the receiver are passed to that method. Both explicit and omitted optional arguments work.", "citation": "https://www.php.net/manual/en/reflectionmethod.invoke.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:100d258360108b7340f8", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L113", "derivation": "Upstream reflects a nonexistent method. Here a real static method permits a meaningful independent runtime check."},
+  "notes": "A mixed native return avoids adding an unrelated narrowing check. The initial version checked is_string before returning, which Mago correctly recognized as redundant because it resolves this reflection target. That scaffolding was removed rather than counting a correct report as FP."
+}

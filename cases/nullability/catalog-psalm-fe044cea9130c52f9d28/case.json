@@ -1,0 +1,9 @@
+{
+  "id": "nullability/catalog-psalm-fe044cea9130c52f9d28", "title": "An object|string|null union accepts null",
+  "domain": "nullability", "criterion_id": "nullability/catalog-null-in-object-union", "rule_class": "argument.type",
+  "source_candidate_id": "psalm:fe044cea9130c52f9d28", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "The explicit null member permits null independently of the object and string members. Controls cover null, a string and an object with identity preserved.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.composite.union"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L164", "provider": "providerValidCodeParse", "note": "Re-derived the object/string/null union as a native signature to anchor the same membership fact directly in PHP."},
+  "notes": "No broad predicate, suppression, or policy non-support assumption is needed."
+}

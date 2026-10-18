@@ -1,0 +1,56 @@
+{
+  "id": "dead-code/catalog-phpstan-958a009704557ee9b44f",
+  "title": "Constructor property promotion consumes the parameter through implicit assignment, even without an explicit read in the body.",
+  "domain": "dead-code",
+  "criterion_id": "dead-code/constructor-promotion-consumes-parameter",
+  "rule_class": "unused-parameter",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:958a009704557ee9b44f",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Constructor property promotion consumes the parameter through implicit assignment, even without an explicit read in the body.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:958a009704557ee9b44f",
+        "family": "phpstan",
+        "domain": "dead-code",
+        "title": "unused-constructor-parameters-promoted-properties",
+        "path": "tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "cae7dd42280122f2955837d9be05a54b9f3fef578842bc7e43799b3942c3a068",
+        "probe_sha256": "cae7dd42280122f2955837d9be05a54b9f3fef578842bc7e43799b3942c3a068",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

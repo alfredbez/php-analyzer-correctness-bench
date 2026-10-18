@@ -1,0 +1,15 @@
+{
+  "id": "assignability/catalog-psalm-969cef3e55d9ffe925f9",
+  "title": "Named arguments cannot skip a required middle parameter",
+  "domain": "assignability", "criterion_id": "assignability/catalog-named-required-argument", "rule_class": "argument.count",
+  "source_candidate_id": "psalm:969cef3e55d9ffe925f9",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "Supplying name and id does not supply required. The bad call throws ArgumentCountError naming the omitted argument. Reordering all three named arguments succeeds.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "argument.missing", "line": 4}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "TooFewArguments", "line": 4}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "too-few-arguments", "line": 4}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L774", "provider": "providerInvalidCodeParse", "note": "Constructor reduced to a pure function with the same required-middle/optional-last signature and omitted middle argument."},
+  "notes": "Good named-call control is line 5; no broad allowed predicates."
+}

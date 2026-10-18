@@ -1,0 +1,11 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e",
+  "title": "Multiline generic aliases can be nested inside a shape alias",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/local-alias-parsing",
+  "rule_class": "InvalidDocblock", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:3cb038acaec155a5e87e",
+  "ground_truth": {"basis": "upstream_docs", "statement": "Type aliases expand to their type expressions, including nested array generics and optional shape fields. Line breaks in docblocks do not make those valid expressions malformed. Runtime controls use both the absent and present optional middleware field.", "citation": "https://psalm.dev/docs/annotating_code/supported_annotations/#psalm-type", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean", "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L507"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:3cb038acaec155a5e87e", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L507", "derivation": "Removed irrelevant shape fields; added a consumer so the alias is used."},
+  "notes": "Shares the local-alias parsing criterion rather than counting a formatting variant as new semantic coverage. The consumer is a method inside the alias's declaring class, respecting PHPStan's documented class-scoped local aliases. An initial global consumer measured an unrelated scope difference and was corrected before the final run."
+}

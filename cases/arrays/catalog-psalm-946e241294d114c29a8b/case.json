@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-946e241294d114c29a8b",
+  "title": "A by-reference array argument can later be replaced with a different element type",
+  "domain": "arrays", "criterion_id": "arrays/catalog-byref-reassignment", "rule_class": "return.type",
+  "source_candidate_id": "psalm:946e241294d114c29a8b",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "sort modifies the array by reference but does not bind the variable permanently to strings. Replacing it with [0,1] returns exactly that integer list.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/function.sort.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L146", "provider": "providerValidCodeParse", "note": "Replaced nondeterministic shuffle with deterministic sort, another by-reference mutator; retained string array then integer array reassignment."},
+  "notes": "The return contract makes stale element-type inference observable."
+}

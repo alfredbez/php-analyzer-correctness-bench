@@ -1,0 +1,56 @@
+{
+  "id": "generics/catalog-phpstan-d88a0707d9479f04b2ed",
+  "title": "A generic first-or-default method returns the stored item or the supplied default",
+  "domain": "generics",
+  "criterion_id": "generics/generic-default-return-union",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:d88a0707d9479f04b2ed",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A generic first-or-default method returns the stored item or the supplied default. An omitted default permits null; a string default must remain a possible string result.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. The reduced criterion retains the generic first-or-default result and non-null default alternative; proprietary argless-call assertion parsing is not claimed. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:d88a0707d9479f04b2ed",
+        "family": "phpstan",
+        "domain": "generics",
+        "title": "assert-argless-call-template-default",
+        "path": "tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "9909d6029181ab32630888e0853c79a8fa167d846e52ff6a44cfe18575d5d0fa",
+        "probe_sha256": "9909d6029181ab32630888e0853c79a8fa167d846e52ff6a44cfe18575d5d0fa",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

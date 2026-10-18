@@ -1,0 +1,11 @@
+{
+  "id": "assignability/catalog-psalm-5489e87365002fea3494",
+  "title": "Concatenating two nonempty strings cannot produce a falsey string",
+  "domain": "assignability", "criterion_id": "assignability/nonempty-concatenation-truthiness",
+  "rule_class": "return.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:5489e87365002fea3494",
+  "ground_truth": {"basis": "runtime_proof", "statement": "Each operand contains at least one byte, so concatenation has at least two bytes. Neither falsey PHP string, '' or '0', has that length; the non-falsy-string return is sound.", "citation": "https://www.php.net/manual/en/language.types.boolean.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:5489e87365002fea3494", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1143", "derivation": "Upstream repeats the s1 annotation for s2. Real parameter contracts remove that typo and make the invariant general."},
+  "notes": "The numeric-string variant shares this criterion; neither uses inferred-type assertions as the oracle. PHPStan and Psalm accept the return. Mago reports invalid-return-statement on line 9, a genuine FP because a concatenation of length at least two cannot be falsey."
+}

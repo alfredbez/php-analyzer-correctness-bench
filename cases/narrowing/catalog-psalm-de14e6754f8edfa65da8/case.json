@@ -1,0 +1,9 @@
+{
+  "id": "narrowing/catalog-psalm-de14e6754f8edfa65da8", "title": "Equality with a known class name narrows a string to class-string",
+  "domain": "narrowing", "criterion_id": "narrowing/catalog-class-string-equality", "rule_class": "argument.type",
+  "source_candidate_id": "psalm:de14e6754f8edfa65da8", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "The equality branch contains exactly Known::class, which names the declared constructible class Known. Passing that value to a class-string consumer is sound. A different arbitrary string does not reach construction.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L325", "provider": "providerValidCodeParse", "note": "Re-derived the known-class equality guard and class-string consumer. Source ignored MixedMethodCall; this clean-room fixture has no suppression and returns the constructed object for a runtime observation."},
+  "notes": "PHPStan is clean. Psalm reports MixedMethodCall and Mago reports unknown-class-instantiation at line 5 in the general class-string consumer, not at the narrowed call on line 7. Those are dynamic-constructor precision policies rather than failed equality narrowing, retained as FP against the executable clean baseline. The fixture only exercises an instantiable class; it does not claim every arbitrary class-string names an instantiable class. No unsupported classification is inferred from those diagnostics."
+}

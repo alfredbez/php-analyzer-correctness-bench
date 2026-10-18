@@ -1,0 +1,11 @@
+{
+  "id": "legacy-patterns/catalog-psalm-6c129980869ba963c7aa",
+  "title": "AllowDynamicProperties permits creating a dynamic property without deprecation",
+  "domain": "legacy-patterns", "criterion_id": "legacy-patterns/allow-dynamic-properties-attribute",
+  "rule_class": "property.notFound", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:6c129980869ba963c7aa",
+  "ground_truth": {"basis": "runtime_proof", "statement": "The built-in AllowDynamicProperties attribute exempts this class from the dynamic-property creation deprecation introduced in PHP 8.2. The property write is legal and warning-free, while the unannotated control triggers a deprecation.", "citation": "https://www.php.net/manual/en/class.allowdynamicproperties.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:6c129980869ba963c7aa", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AttributeTest.php#L288", "derivation": "Upstream only declares an empty attributed class. Added real property creation and an unannotated negative control."},
+  "notes": "This compares permissive language behavior with static property policies. All three tools flag line 7: PHPStan property.notFound, Psalm UndefinedPropertyAssignment, and Mago non-existent-property. These remain FP against the explicitly permissive runtime baseline, not automatically implementation bugs: AllowDynamicProperties suppresses PHP's deprecation, not necessarily an analyzer's stricter property-declaration policy."
+}

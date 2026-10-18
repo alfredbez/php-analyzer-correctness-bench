@@ -1,0 +1,11 @@
+{
+  "id": "arrays/catalog-psalm-540e6672f974be8ec019",
+  "title": "An array-or-object union cannot always be unpacked into arguments",
+  "domain": "arrays", "criterion_id": "arrays/nontraversable-argument-unpack",
+  "rule_class": "argument.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:540e6672f974be8ec019",
+  "ground_truth": {"basis": "runtime_proof", "statement": "Argument unpacking accepts arrays and Traversable objects, not arbitrary objects. The two-int array control succeeds while stdClass, a valid object union member, raises an Error at the unpack.", "citation": "https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "diagnostics", "required": [{"code": "argument.unpackNonIterable", "line": 6}]}, "psalm": {"mode": "diagnostics", "required": [{"code": "PossiblyInvalidArgument", "line": 6}]}, "mago": {"mode": "diagnostics", "required": [{"code": "invalid-argument", "line": 6}], "allowed": [{"code": "too-few-arguments", "line": 6, "reason": "The object alternative includes an empty Traversable, which unpacks successfully but supplies no arguments. The runtime ArrayIterator control proves this independent arity hazard."}]}},
+  "provenance": {"candidate_id": "psalm:540e6672f974be8ec019", "provider": "providerInvalidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L663", "derivation": "Upstream SKIPPED means a known bug, per InvalidCodeAnalysisTestTrait. A real union parameter replaces an asserted array local; exact tuple avoids unrelated arity issues."},
+  "notes": "Upstream skips this dataset, but a deterministic runtime hazard is measurable, so it is not deferred or disabled here. PHPStan reports the noniterable unpack. Psalm is silent. Mago reports only too-few-arguments, which is correct for the empty Traversable alternative and specifically acknowledged; it still misses the distinct nontraversable hazard."
+}

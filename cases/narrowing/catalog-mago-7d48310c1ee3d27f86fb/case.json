@@ -1,0 +1,108 @@
+{
+  "id": "narrowing/catalog-mago-7d48310c1ee3d27f86fb",
+  "title": "fn-possibly-undefined-switch-finally (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/switch-partial-assignment",
+  "rule_class": "possibly-undefined-variable",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:7d48310c1ee3d27f86fb",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A nonexhaustive switch may leave its local undefined. A finally block also runs when an Error bypasses catch(Exception), before result is assigned.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/control-structures.switch.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "variable.undefined",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "variable.undefined",
+          "line": 15,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "booleanNot.alwaysTrue",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "When part is min and the first case failed, micro is false. The second conjunct is redundant in that case evaluation context."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "PossiblyUndefinedVariable",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "PossiblyUndefinedVariable",
+          "line": 15,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "MixedReturnStatement",
+          "line": 9,
+          "file": "src/repro.php",
+          "reason": "The undefined local also prevents a proven string return type; secondary consequence of the required variable diagnostic."
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "possibly-undefined-variable",
+          "line": 9,
+          "file": "src/repro.php"
+        },
+        {
+          "code": "possibly-undefined-variable",
+          "line": 15,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:7d48310c1ee3d27f86fb",
+        "family": "mago",
+        "domain": "exceptions",
+        "title": "fn-possibly-undefined-switch-finally",
+        "path": "fn-possibly-undefined-switch-finally/repro.php",
+        "line": 1,
+        "source_ref": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
+        "source_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
+        "probe_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-possibly-undefined-switch-finally/repro.php",
+        "citation": null,
+        "status": "candidate",
+        "historical_context": {
+          "id": "R14",
+          "status": "merged",
+          "pr_url": "https://github.com/carthage-software/mago/pull/2497"
+        }
+      }
+    ]
+  }
+}

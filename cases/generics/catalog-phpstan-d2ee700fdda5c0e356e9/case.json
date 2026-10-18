@@ -1,0 +1,56 @@
+{
+  "id": "generics/catalog-phpstan-d2ee700fdda5c0e356e9",
+  "title": "A generic holder can check equality against its stored value and return the same value with its template type",
+  "domain": "generics",
+  "criterion_id": "generics/class-template-checked-assertion",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:d2ee700fdda5c0e356e9",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A generic holder can check equality against its stored value and return the same value with its template type. The integer instantiation satisfies the integer consumer.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. The checked generic value is returned to an observable typed consumer rather than communicated by a vendor-specific assertion. This measures generic substitution and equality refinement, not competitor annotation support. Pinned-tool observations retained without widening expectations: psalm: MixedReturnStatement@11. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:d2ee700fdda5c0e356e9",
+        "family": "phpstan",
+        "domain": "narrowing",
+        "title": "assert-class-type",
+        "path": "tests/PHPStan/Analyser/nsrt/assert-class-type.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
+        "probe_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-class-type.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-class-type.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5",
+  "title": "A nullable intersection property can hold null despite disjoint class alternatives",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/nullable-intersection-initializer",
+  "rule_class": "property.defaultValue", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:604771ba27ab94845cc5",
+  "ground_truth": {"basis": "runtime_proof", "statement": "The null union member explicitly permits the null initializer, regardless of whether the DateTime and DateTimeImmutable intersection is inhabitable. No property initialization type error follows from this annotation.", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/intersection_types/", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:604771ba27ab94845cc5", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L995", "derivation": "Public observable property avoids unrelated unused-private-property diagnostics."},
+  "notes": "Uses PHPDoc intersection syntax, not a native DNF declaration. Parentheses explicitly group the intersection so this measures null initialization rather than cross-dialect precedence parsing; the initial unparenthesized spelling caused PHPStan parse errors. An advisory about the impossible intersection is a separate policy from whether null is a valid default."
+}

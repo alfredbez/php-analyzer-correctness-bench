@@ -1,0 +1,13 @@
+{
+  "id": "narrowing/catalog-psalm-cd294fcb8e014ab18e3e", "title": "A final class cannot pass an is_subclass_of guard",
+  "domain": "narrowing", "criterion_id": "narrowing/catalog-final-class-subclass-guard", "rule_class": "impossible-condition",
+  "source_candidate_id": "psalm:cd294fcb8e014ab18e3e", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "FinalItem has no subclasses; is_subclass_of also excludes the class itself. Therefore construct always throws before the annotated new expression. The control checks the class itself and unrelated classes; finality supplies the universal argument.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.oop5.final.php"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "function.impossibleType", "line": 6}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "TypeDoesNotContainType", "line": 6}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "impossible-condition", "line": 6}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1289", "provider": "providerValidCodeParse", "note": "Source suppresses UnnecessaryVarAnnotation and annotates consistent construction. Removed suppressions, retained final class, subclass guard, local @var and dynamic new. The important hidden fact is that the success branch is unreachable."},
+  "notes": "No tool reports the impossible subclass condition. PHPStan is silent; Mago reports redundant-docblock-type at line 7; Psalm reports UnsafeInstantiation at line 8, claiming child constructors might change even though the class is final and this branch is unreachable. The latter two remain mixed against the impossible-condition baseline, not hidden by allowed predicates. Mago's redundant annotation warning is a policy difference, not a claim of a runtime defect. This cannot demonstrate successful dynamic construction."
+}

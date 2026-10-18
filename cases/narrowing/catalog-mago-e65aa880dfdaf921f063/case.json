@@ -1,0 +1,59 @@
+{
+  "id": "narrowing/catalog-mago-e65aa880dfdaf921f063",
+  "title": "empty-string-reconciliation-then-if (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/array-empty-string-exception-exits",
+  "rule_class": "impossible-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:e65aa880dfdaf921f063",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "After array and empty paths exit, a nonempty string or exception remains; the subsequent string check has both reachable outcomes.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "RiskyTruthyFalsyComparison",
+          "line": 6,
+          "file": "src/repro.php",
+          "reason": "Documented Psalm policy warns when falsy null or an object-only-truthy alternative is combined with strings that can be both truthy and falsy. This does not claim the guard is impossible. https://psalm.dev/docs/running_psalm/issues/RiskyTruthyFalsyComparison/"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:e65aa880dfdaf921f063",
+        "family": "mago",
+        "domain": "narrowing",
+        "title": "empty-string-reconciliation-then-if",
+        "path": "empty-string-reconciliation-then-if/repro.php",
+        "line": 1,
+        "source_ref": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
+        "source_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
+        "probe_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/empty-string-reconciliation-then-if/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

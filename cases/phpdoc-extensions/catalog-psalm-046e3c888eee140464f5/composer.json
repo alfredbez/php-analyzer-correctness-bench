@@ -1,0 +1,1 @@
+{"name":"bench/catalog-psalm-046e3c888eee140464f5","require":{"php":">=8.2"},"autoload":{"classmap":["src/"]}}

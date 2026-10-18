@@ -92,6 +92,28 @@ class CatalogueTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'tracked changes'):
             catalog.build(self.psalm, self.phpstan, self.repro, limit=3)
 
+    def test_assessment_accounts_for_every_lead_without_inventing_criteria(self):
+        inventory = {'candidates': [{'id': 'source:new'}, {'id': 'source:covered'}, {'id': 'source:deferred'}]}
+        cases = {'arrays/new': {'criterion_id': 'arrays/shared', 'source_candidate_id': 'source:new'},
+                 'arrays/existing': {'criterion_id': 'arrays/shared'}}
+        entries = [{'candidate_id': 'source:' + name, 'status': status, 'case_ids': ids,
+                    'semantic_statement': 'A stated contract', 'reason': 'A source-backed explanation',
+                    'citations': ['https://www.php.net/']}
+                   for name, status, ids in [('new', 'measured', ['arrays/new']),
+                                            ('covered', 'covered', ['arrays/existing']),
+                                            ('deferred', 'deferred', [])]]
+        result = catalog.assess([entries], inventory, cases)
+        self.assertEqual([entry['criterion_ids'] for entry in result['entries']],
+                         [['arrays/shared'], [], ['arrays/shared']])
+        for bad_entries in (entries[:-1], entries + [entries[0]],
+                            [dict(entries[0], case_ids=['arrays/absent']), *entries[1:]],
+                            [dict(entries[0], status='deferred'), *entries[1:]]):
+            with self.subTest(entries=bad_entries), self.assertRaises((ValueError, KeyError)):
+                catalog.assess([bad_entries], inventory, cases)
+        result['entries'][0]['criterion_ids'] = ['arrays/invented']
+        with self.assertRaisesRegex(ValueError, 'criterion IDs disagree'):
+            catalog.check_assessment(result, inventory, cases)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,7 +2,7 @@
 """Inventory source leads without executing or importing upstream test code."""
 
 import argparse
-from collections import defaultdict, deque
+from collections import Counter, defaultdict, deque
 import hashlib
 import json
 from pathlib import Path
@@ -172,19 +172,84 @@ def build(psalm, phpstan, repro, limit=40):
             'candidates': [entry for name in roots for entry in select(entries[name], limit)]}
 
 
+def check_assessment(payload, inventory, cases):
+    """Require an explicit, traceable outcome for every selected source lead."""
+    entries = payload['entries']
+    expected = {entry['id'] for entry in inventory['candidates']}
+    actual = [entry['candidate_id'] for entry in entries]
+    if len(actual) != len(set(actual)) or set(actual) != expected:
+        raise ValueError('assessment must account for every candidate exactly once')
+    for entry in entries:
+        status = entry['status']
+        if status not in ('measured', 'covered', 'deferred', 'disabled'):
+            raise ValueError(f'unknown assessment status: {status}')
+        if not entry['semantic_statement'] or not entry['reason'] or not entry['citations']:
+            raise ValueError(f"assessment needs a statement, reason and sources: {entry['candidate_id']}")
+        ids = entry['case_ids']
+        if bool(ids) != (status in ('measured', 'covered')):
+            raise ValueError('measured/covered candidates need cases; deferred/disabled candidates do not')
+        if any(case_id not in cases for case_id in ids):
+            raise ValueError(f"assessment references an unknown case: {entry['candidate_id']}")
+        criteria = sorted({cases[case_id].get('criterion_id', case_id) for case_id in ids})
+        if entry['criterion_ids'] != criteria:
+            raise ValueError(f"assessment criterion IDs disagree with cases: {entry['candidate_id']}")
+        if status == 'measured' and any(cases[case_id].get('source_candidate_id') != entry['candidate_id']
+                                        for case_id in ids):
+            raise ValueError('measured cases must link back to their source candidate')
+
+
+def assess(receipts, inventory, cases):
+    entries = []
+    for receipt in receipts:
+        rows = receipt if isinstance(receipt, list) else receipt.get('entries', receipt.get('records'))
+        for row in rows:
+            entry = {key: row[key] for key in ('candidate_id', 'status', 'case_ids',
+                                               'semantic_statement', 'reason', 'citations')}
+            entry['criterion_ids'] = sorted({cases[case_id].get('criterion_id', case_id)
+                                             for case_id in entry['case_ids']})
+            entries.append(entry)
+    payload = {'schema_version': 1,
+               'scope': 'Minimal semantic reductions of selected source leads, not exhaustive upstream-suite coverage. '
+                        'Measured means executed, not maintainer-approved or universally desirable.',
+               'entries': sorted(entries, key=lambda entry: entry['candidate_id'])}
+    check_assessment(payload, inventory, cases)
+    return payload
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['build'])
+    parser.add_argument('command', choices=['build', 'assess', 'check'])
     parser.add_argument('--psalm', default='/home/abez/projects/psalm-src')
     parser.add_argument('--phpstan', default='/home/abez/projects/phpstan-src')
     parser.add_argument('--repro', default='/home/abez/projects/mago-upstream-prep/repro')
-    parser.add_argument('--out', type=Path, default=ROOT / 'factory/catalog.json')
+    parser.add_argument('--out', type=Path)
     parser.add_argument('--limit-per-family', type=int, default=40)
+    parser.add_argument('--receipts', type=Path, nargs='+')
+    parser.add_argument('--inventory', type=Path, default=ROOT / 'factory/catalog.json')
+    parser.add_argument('--assessment', type=Path, default=ROOT / 'factory/assessment.json')
     args = parser.parse_args()
-    payload = build(args.psalm, args.phpstan, args.repro, args.limit_per_family)
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n')
-    print(f'{len(payload["candidates"])} unreviewed source candidates written to {args.out}')
+    if args.command == 'build':
+        payload = build(args.psalm, args.phpstan, args.repro, args.limit_per_family)
+        destination = args.out or args.inventory
+        message = f'{len(payload["candidates"])} unreviewed source candidates'
+    else:
+        inventory = json.loads(args.inventory.read_text())
+        cases = {case['id']: case for path in (ROOT / 'cases').glob('*/*/case.json')
+                 for case in [json.loads(path.read_text())]}
+        if args.command == 'check':
+            payload = json.loads(args.assessment.read_text())
+            check_assessment(payload, inventory, cases)
+            print(f"{len(payload['entries'])} candidate outcomes checked: "
+                  f"{dict(Counter(entry['status'] for entry in payload['entries']))}")
+            return
+        if not args.receipts:
+            parser.error('assess requires --receipts')
+        payload = assess([json.loads(path.read_text()) for path in args.receipts], inventory, cases)
+        destination = args.out or args.assessment
+        message = f"{len(payload['entries'])} assessed source candidates"
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n')
+    print(f'{message} written to {destination}')
 
 
 if __name__ == '__main__':

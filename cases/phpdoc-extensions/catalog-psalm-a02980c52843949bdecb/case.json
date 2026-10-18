@@ -1,0 +1,15 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-a02980c52843949bdecb",
+  "title": "Repeated parameter tags are a documentation-policy violation",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/catalog-duplicate-param", "rule_class": "InvalidDocblock",
+  "source_candidate_id": "psalm:a02980c52843949bdecb",
+  "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "upstream_docs", "statement": "phpDocumentor specifies at most one @param per argument. The repeated tag violates that policy even though both tags agree and PHP executes the body unchanged. Runtime only establishes comment erasure, not the policy.", "runtime_script": "runtime/check.php", "citation": "https://docs.phpdoc.org/guide/references/phpdoc/tags/param.html"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "phpDoc.duplicateTag", "line": 7}]},
+    "psalm": {"mode": "diagnostics", "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2002", "required": [{"code": "InvalidDocblock", "line": 7}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 7}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2002", "provider": "providerInvalidCodeParse", "note": "Duplicate prefixed tags normalized to standard @param, preserving the independently documented duplicate-tag policy."},
+  "notes": "This compares documentation validation policy, not PHP safety. An absent diagnostic does not establish unsupported status. Single-tag control is line 9."
+}

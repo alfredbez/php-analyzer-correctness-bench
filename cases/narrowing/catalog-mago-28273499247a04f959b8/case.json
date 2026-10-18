@@ -1,0 +1,80 @@
+{
+  "id": "narrowing/catalog-mago-28273499247a04f959b8",
+  "title": "always-true-binary-op (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/truthy-left-logical-and",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:28273499247a04f959b8",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "After a falsy early return the left operand is truthy, but the AND result still depends on the right operand.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.logical.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "booleanAnd.leftAlwaysTrue",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "RedundantCondition",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-logical-operation",
+          "line": 5,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "mixed-operand",
+          "line": 5,
+          "file": "src/repro.php",
+          "reason": "The operand is explicitly mixed. This is a precision-policy diagnostic, not an assertion that its truthiness is unknown. PHP permits boolean conversion of mixed values; only the separate redundant-logical-operation is scored as the semantic criterion."
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:28273499247a04f959b8",
+        "family": "mago",
+        "domain": "type-inference",
+        "title": "always-true-binary-op",
+        "path": "always-true-binary-op/repro.php",
+        "line": 1,
+        "source_ref": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
+        "source_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
+        "probe_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/always-true-binary-op/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

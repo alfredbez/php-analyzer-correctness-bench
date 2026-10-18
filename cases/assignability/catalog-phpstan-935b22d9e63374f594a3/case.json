@@ -1,0 +1,72 @@
+{
+  "id": "assignability/catalog-phpstan-935b22d9e63374f594a3",
+  "title": "Class names and imported class aliases are case-insensitive",
+  "domain": "assignability",
+  "criterion_id": "assignability/case-insensitive-phpdoc-class",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:935b22d9e63374f594a3",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Class names and imported class aliases are case-insensitive. A differently cased PHPDoc name still identifies the class consumed by a native return.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.basic.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "class.nameCase",
+          "file": "src/repro.php",
+          "line": 6,
+          "reason": "Correct casing-style observation. The criterion tests class resolution and return assignability, not whether the deliberate alternate spelling follows project style."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "InvalidClass",
+          "file": "src/repro.php",
+          "line": 5,
+          "reason": "Correct casing-style observation. The criterion tests class resolution and return assignability, not whether the deliberate alternate spelling follows project style."
+        }
+      ]
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Casing-only style reports at the deliberate spelling are acknowledged exactly; any failure to resolve the class or satisfy the return contract remains unexpected. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:935b22d9e63374f594a3",
+        "family": "phpstan",
+        "domain": "phpdoc-extensions",
+        "title": "case-insensitive-phpdocs",
+        "path": "tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "9135e7825f203f7aeab02a8c371b4e4c41ac3bf776d3e5830ebe9b1cd604b571",
+        "probe_sha256": "9135e7825f203f7aeab02a8c371b4e4c41ac3bf776d3e5830ebe9b1cd604b571",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

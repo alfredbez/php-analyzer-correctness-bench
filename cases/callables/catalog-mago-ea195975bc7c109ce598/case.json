@@ -1,0 +1,72 @@
+{
+  "id": "callables/catalog-mago-ea195975bc7c109ce598",
+  "title": "psalm-harvest-callable-array-keyed (clean-room semantics)",
+  "domain": "callables",
+  "criterion_id": "callables/array-callable-not-keyed-shape",
+  "rule_class": "argument.type",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:ea195975bc7c109ce598",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An array callable has numeric receiver and method offsets, not a guaranteed test key. is_array alone does not establish an unrelated keyed shape.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.callable.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "argument.type",
+          "line": 6,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "InvalidArgument",
+          "line": 6,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "possibly-invalid-argument",
+          "line": 6,
+          "file": "src/repro.php"
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:ea195975bc7c109ce598",
+        "family": "mago",
+        "domain": "callables",
+        "title": "psalm-harvest-callable-array-keyed",
+        "path": "psalm-harvest-callable-array-keyed/repro.php",
+        "line": 1,
+        "source_ref": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
+        "source_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
+        "probe_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-callable-array-keyed/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

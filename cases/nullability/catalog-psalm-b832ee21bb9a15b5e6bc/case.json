@@ -1,0 +1,13 @@
+{
+  "id": "nullability/catalog-psalm-b832ee21bb9a15b5e6bc", "title": "Ignoring a nullable return cannot make a null dereference safe",
+  "domain": "nullability", "criterion_id": "nullability/catalog-nullable-method-call", "rule_class": "method.nonObject",
+  "source_candidate_id": "psalm:b832ee21bb9a15b5e6bc", "php": {"min": "8.1"}, "targets": ["src"],
+  "ground_truth": {"basis": "runtime_proof", "statement": "maybe(false) returns null and its unguarded value() call throws Error. The true branch returns 7. Nullsafe calls cover both outcomes without throwing.", "runtime_script": "runtime/check.php", "citation": "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe"},
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "method.nonObject", "line": 5}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "PossiblyNullReference", "line": 5}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "possible-method-access-on-null", "line": 5}]}
+  },
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271", "provider": "providerValidCodeParse", "note": "The source uses @psalm-ignore-nullable-return and random selection. Removed that analyzer-only override, used an explicit bool for deterministic controls, and retained the nullable factory followed by a method call."},
+  "notes": "Measures the underlying nullable operation rather than suppression portability. All three tools diagnose the unsafe call at line 5 and leave the nullsafe control clean. Mago's measured code is possible-method-access-on-null. The source being accepted under an explicit ignore annotation is not an oracle of runtime safety."
+}

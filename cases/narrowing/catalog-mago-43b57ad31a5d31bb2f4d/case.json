@@ -1,0 +1,100 @@
+{
+  "id": "narrowing/catalog-mago-43b57ad31a5d31bb2f4d",
+  "title": "int-not-null-true-false (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/int-disjoint-null-bool",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:43b57ad31a5d31bb2f4d",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "An integer is never strictly identical to null, true, or false. Integer-to-integer inequality is not constant.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "notIdentical.alwaysTrue",
+          "line": 4,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "booleanAnd.alwaysTrue",
+          "line": 4,
+          "file": "src/repro.php",
+          "reason": "Each strict inequality is true, so both conjunction nodes are constant as well."
+        },
+        {
+          "code": "deadCode.unreachable",
+          "line": 7,
+          "file": "src/repro.php",
+          "reason": "All integer arguments return inside the true branch; this false return is unreachable."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "RedundantCondition",
+          "line": 4,
+          "file": "src/repro.php"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-comparison",
+          "line": 4,
+          "file": "src/repro.php"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "redundant-logical-operation",
+          "line": 4,
+          "file": "src/repro.php",
+          "reason": "Conjoining three true comparisons is redundant, the same established integer-disjointness fact."
+        },
+        {
+          "code": "redundant-condition",
+          "line": 4,
+          "file": "src/repro.php",
+          "reason": "The combined condition is true for every integer, the same established disjointness fact."
+        }
+      ]
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:43b57ad31a5d31bb2f4d",
+        "family": "mago",
+        "domain": "nullability",
+        "title": "int-not-null-true-false",
+        "path": "int-not-null-true-false/repro.php",
+        "line": 1,
+        "source_ref": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
+        "source_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
+        "probe_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/int-not-null-true-false/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

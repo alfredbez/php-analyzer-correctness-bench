@@ -1,0 +1,56 @@
+{
+  "id": "phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f",
+  "title": "A documented magic method returning string is implemented by __call and can feed a native string return consumer.",
+  "domain": "phpdoc-extensions",
+  "criterion_id": "phpdoc-extensions/magic-method-contract",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:7009f55abd4d6861610f",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A documented magic method returning string is implemented by __call and can feed a native string return consumer.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://phpstan.org/writing-php-code/phpdocs-basics#magic-methods"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Only the documented magic method return contract is retained; competing vendor-specific override precedence is not claimed as neutral semantics. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:7009f55abd4d6861610f",
+        "family": "phpstan",
+        "domain": "phpdoc-extensions",
+        "title": "classPhpDocs",
+        "path": "tests/PHPStan/Analyser/nsrt/classPhpDocs.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "de5477894994fe3c7f8abc7e45095c9632eb9830c749d6a64995bad9a2c876c4",
+        "probe_sha256": "de5477894994fe3c7f8abc7e45095c9632eb9830c749d6a64995bad9a2c876c4",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/classPhpDocs.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/classPhpDocs.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}

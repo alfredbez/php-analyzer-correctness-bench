@@ -1,0 +1,200 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f9d00450d05c39ef510e338c02c4e07d",
+    "packages": [
+        {
+            "name": "jetbrains/phpstorm-stubs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JetBrains/phpstorm-stubs.git",
+                "reference": "2049ca3cfa1feabf52db074108fe776a5713cf02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/2049ca3cfa1feabf52db074108fe776a5713cf02",
+                "reference": "2049ca3cfa1feabf52db074108fe776a5713cf02",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v3.86",
+                "nikic/php-parser": "^v5.6",
+                "phpdocumentor/reflection-docblock": "^6.0",
+                "phpunit/phpunit": "^13.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "PhpStormStubsMap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP runtime & extensions header files for PhpStorm",
+            "homepage": "https://www.jetbrains.com/phpstorm",
+            "keywords": [
+                "autocomplete",
+                "code",
+                "inference",
+                "inspection",
+                "jetbrains",
+                "phpstorm",
+                "stubs",
+                "type"
+            ],
+            "support": {
+                "source": "https://github.com/JetBrains/phpstorm-stubs/tree/master"
+            },
+            "time": "2026-10-11T19:20:52+00:00"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v5.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "9e33da9553fe7786f0962b35f4e4ecf01be89def"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9e33da9553fe7786f0962b35f4e4ecf01be89def",
+                "reference": "9e33da9553fe7786f0962b35f4e4ecf01be89def",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-tokenizer": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "ircmaxell/php-yacc": "^0.0.7",
+                "phpunit/phpunit": "^9.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/nikic/PHP-Parser/issues",
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.9.0"
+            },
+            "time": "2026-09-13T18:51:52+00:00"
+        },
+        {
+            "name": "ondrejmirtes/better-reflection",
+            "version": "6.73.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ondrejmirtes/BetterReflection.git",
+                "reference": "b79afc9c50ddf06e06b838132e4cdef09e3cff03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ondrejmirtes/BetterReflection/zipball/b79afc9c50ddf06e06b838132e4cdef09e3cff03",
+                "reference": "b79afc9c50ddf06e06b838132e4cdef09e3cff03",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "jetbrains/phpstorm-stubs": "dev-master#dfcad4524db603bd20bdec3aab1a31c5f5128ea3",
+                "nikic/php-parser": "^5.8.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "conflict": {
+                "thecodingmachine/safe": "<1.1.3"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0.0",
+                "phpbench/phpbench": "^1.7.0",
+                "phpstan/phpstan": "^2.1.46",
+                "phpstan/phpstan-phpunit": "^2.0.16",
+                "phpunit/phpunit": "^13.3.2",
+                "rector/rector": "2.6.7"
+            },
+            "suggest": {
+                "composer/composer": "Required to use the ComposerSourceLocator"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\BetterReflection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Titcumb",
+                    "email": "james@asgrim.com",
+                    "homepage": "https://github.com/asgrim"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "https://ocramius.github.io/"
+                },
+                {
+                    "name": "Gary Hockin",
+                    "email": "gary@roave.com",
+                    "homepage": "https://github.com/geeh"
+                },
+                {
+                    "name": "Jaroslav Hanslík",
+                    "email": "kukulich@kukulich.cz",
+                    "homepage": "https://github.com/kukulich"
+                }
+            ],
+            "description": "Better Reflection - an improved code reflection API",
+            "support": {
+                "source": "https://github.com/ondrejmirtes/BetterReflection/tree/6.73.0.6"
+            },
+            "time": "2026-10-08T18:30:53+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "jetbrains/phpstorm-stubs": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=8.2"
+    },
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+}

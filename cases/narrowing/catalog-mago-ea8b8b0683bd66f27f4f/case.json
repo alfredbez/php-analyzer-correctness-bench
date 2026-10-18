@@ -1,0 +1,51 @@
+{
+  "id": "narrowing/catalog-mago-ea8b8b0683bd66f27f4f",
+  "title": "no-redundant-condition-after-falsy-int-checks (clean-room semantics)",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/loop-reassignment-invalidates-falsy",
+  "rule_class": "redundant-condition",
+  "php": {
+    "min": "8.2"
+  },
+  "targets": [
+    "src"
+  ],
+  "source_candidate_id": "mago:ea8b8b0683bd66f27f4f",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The integer initially narrowed to zero can become nonzero during iteration; the inner falsy check is not always true.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.empty.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "mago:ea8b8b0683bd66f27f4f",
+        "family": "mago",
+        "domain": "dead-code",
+        "title": "no-redundant-condition-after-falsy-int-checks",
+        "path": "no-redundant-condition-after-falsy-int-checks/repro.php",
+        "line": 1,
+        "source_ref": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
+        "source_sha256": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
+        "probe_sha256": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
+        "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-falsy-int-checks/repro.php",
+        "citation": null,
+        "status": "candidate"
+      }
+    ]
+  }
+}

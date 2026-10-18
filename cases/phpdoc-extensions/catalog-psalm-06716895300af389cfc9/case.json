@@ -1,0 +1,11 @@
+{
+  "id": "phpdoc-extensions/catalog-psalm-06716895300af389cfc9",
+  "title": "A type alias preceding a declaration survives intervening comments",
+  "domain": "phpdoc-extensions", "criterion_id": "phpdoc-extensions/local-alias-parsing",
+  "rule_class": "InvalidDocblock", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:06716895300af389cfc9",
+  "ground_truth": {"basis": "upstream_test", "statement": "Psalm promises to accept an alias separated from its declaration by blank lines and a comment. Its union has two object alternatives and null, all independently exercised at runtime. This is a dialect parsing policy comparison, not a language error.", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L759", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean", "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L759"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:06716895300af389cfc9", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L759", "derivation": "Replaced random selection with deterministic input and native union return."},
+  "notes": "The alias uses a Psalm spelling also recognized by other analyzers. The consumer stays inside its declaring class: PHPStan documents local aliases as class-scoped at https://phpstan.org/writing-php-code/phpdoc-types#local-type-aliases. An initial global consumer accidentally measured dialect scoping instead of comment separation and was corrected. Shares the local-alias parsing criterion with the multiline variant."
+}

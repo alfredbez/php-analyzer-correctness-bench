@@ -1,0 +1,11 @@
+{
+  "id": "assignability/catalog-psalm-0e66d52886bd21db7846",
+  "title": "Concatenating a numeric string with a nonempty string is truthy in either order",
+  "domain": "assignability", "criterion_id": "assignability/nonempty-concatenation-truthiness",
+  "rule_class": "return.type", "php": {"min": "8.2"}, "targets": ["src"],
+  "source_candidate_id": "psalm:0e66d52886bd21db7846",
+  "ground_truth": {"basis": "runtime_proof", "statement": "A numeric string has at least one byte. Concatenation with another nonempty string has length at least two, hence is neither the empty string nor the one-byte string '0', the only falsey strings in PHP. The non-falsy-string return contract is sound in both orders.", "citation": "https://www.php.net/manual/en/language.types.boolean.php", "runtime_script": "runtime/check.php"},
+  "expect": {"phpstan": {"mode": "clean"}, "psalm": {"mode": "clean"}, "mago": {"mode": "clean"}},
+  "provenance": {"candidate_id": "psalm:0e66d52886bd21db7846", "provider": "providerValidCodeParse", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1155", "derivation": "General parameter contracts replace asserted local variable types."},
+  "notes": "A return contract exposes inference through diagnostics without using an analyzer's inferred type as the oracle. Shares criterion with the two-nonempty-string variant. PHPStan and Psalm accept both returns. Mago reports invalid-return-statement on lines 9 and 17 because it retains only non-empty-string; those are genuine FPs against the length proof."
+}

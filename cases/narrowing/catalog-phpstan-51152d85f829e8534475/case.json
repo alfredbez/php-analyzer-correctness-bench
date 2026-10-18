@@ -1,0 +1,56 @@
+{
+  "id": "narrowing/catalog-phpstan-51152d85f829e8534475",
+  "title": "A broad catch can be entered by an earlier implicit exception while the later condition is false",
+  "domain": "narrowing",
+  "criterion_id": "narrowing/broad-catch-condition-not-refined",
+  "rule_class": "return.type",
+  "php": {
+    "min": "8.1"
+  },
+  "targets": [
+    "src"
+  ],
+  "config": {
+    "phpstan": {
+      "level": 9
+    }
+  },
+  "source_candidate_id": "phpstan:51152d85f829e8534475",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "A broad catch can be entered by an earlier implicit exception while the later condition is false. Catching an exception does not establish that condition.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.exceptions.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "clean"
+    },
+    "psalm": {
+      "mode": "clean"
+    },
+    "mago": {
+      "mode": "clean"
+    }
+  },
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. All three pinned analyzers accept this reduced semantic contract; its independent runtime controls pass.",
+  "provenance": {
+    "sources": [
+      {
+        "kind": "catalogue_candidate",
+        "id": "phpstan:51152d85f829e8534475",
+        "family": "phpstan",
+        "domain": "exceptions",
+        "title": "broad-catch-implicit-throws",
+        "path": "tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
+        "line": 1,
+        "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+        "source_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
+        "probe_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
+        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
+        "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php#L1",
+        "status": "candidate"
+      }
+    ]
+  }
+}
