@@ -320,7 +320,8 @@ def pick_task(tree: str, state: dict) -> dict | None:
                     used.add(json.load(handle).get("source_candidate_id"))
         with open(catalog, encoding="utf-8") as handle:
             candidates = [entry for entry in json.load(handle)["candidates"]
-                          if entry["domain"] == domain and entry["id"] not in used]
+                          if entry["domain"] == domain and entry["id"] not in used
+                          and 'SKIPPED-' not in entry.get("title", "")]
         if candidates:
             selected = candidates[:task["count"]]
             task["candidate_ids"] = [entry["id"] for entry in selected]

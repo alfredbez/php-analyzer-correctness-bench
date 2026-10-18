@@ -143,9 +143,10 @@ class FactoryPublicationTest(unittest.TestCase):
                 'id': f'arrays/{slug}', 'criterion_id': 'arrays/key-preservation'}))
         self.assertEqual(factory.corpus_domains(str(self.tree)), {'arrays': 1})
 
-    def test_catalogue_queue_skips_previously_rejected_candidates(self):
+    def test_catalogue_queue_skips_rejected_and_upstream_disabled_candidates(self):
         (self.tree / 'factory').mkdir()
         entries = [{'id': f'psalm-{n}', 'domain': 'narrowing'} for n in range(3)]
+        entries.insert(0, {'id': 'disabled', 'domain': 'narrowing', 'title': 'SKIPPED-disabled'})
         (self.tree / 'factory/catalog.json').write_text(json.dumps({'candidates': entries}))
         state = {'rounds': [{'status': 'rejected', 'task': {'candidate_ids': ['psalm-0']}}]}
         task = factory.pick_task(str(self.tree), state)
