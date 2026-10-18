@@ -1,0 +1,26 @@
+{
+  "base": "be1f3d7ded080b2aa1be9bad450baeb9163365c8",
+  "head": "95099dbbf71d17fa759468315d2d91e1d6738cfc",
+  "verdict": "accept",
+  "cases": [
+    "arrays/array-key-for-string-key",
+    "arrays/scalar-array-for-string-array"
+  ],
+  "reason": "Both cases pass every review axis. (1) Ground truth: both basis runtime_proof; both runtime/check.php scripts exit 0 and print exactly what the statements claim (case 1: the argument's key set really contains int key 0 and strtoupper() really throws TypeError on it under strict_types; case 2: the argument really carries a float element and strlen() really throws TypeError). Both citations exist and say what the cases claim: php.net/language.types.array.php documents that keys are int|string and that canonical decimal-integer strings are cast to int; the functions.arguments.php strict-types section documents the TypeError under strict_types. (2) Expectations: all six required predicates are specific (code + line 26), no empty predicates, no allowed/forbidden entries, no widening - case 1 keeps phpstan's required argument.type even though phpstan does not produce it, so the divergence is recorded as a false negative rather than acknowledged away, which is exactly what the notes claim and what the protocol demands. (3) Verdicts reproduced: arrays/array-key-for-string-key run 2026-10-18T12-00-49Z gives mago=ok (less-specific-argument line 26), psalm=ok (MixedArgumentTypeCoercion line 26), phpstan=false_negative (silent at level 9, raw output confirms zero diagnostics) - identical to the case file's claims, including the pinned mechanism, which I corroborated independently: the same call with the argument written array<int|string, int> does make PHPStan 2.3.1 report argument.type at level 9. arrays/scalar-array-for-string-array run 2026-10-18T12-00-35Z gives all three tools ok with exactly the claimed codes at line 26 (argument.type, ArgumentTypeCoercion, possibly-invalid-argument), confirming the documented green row. (4) Contract: python3 harness/bench.py validate reports 28 cases checked, 0 invalid, including both new cases; composer.json present in both; the commit adds exactly 10 files, all case files - no vendor/, .generated/, composer.lock or scratch files. (5) Novelty: criterion ids arrays/element-key-type-contract and arrays/element-value-type-contract appear nowhere else in the corpus; the key dimension and the value dimension of an array argument's type are distinct semantic criteria, not superficial variants; neither duplicates any of the 14 existing argument.type cases (callable/Closure, iterable/Countable, guards, templates, list-ness, etc.) nor arrays/numeric-string-array-key (impossible-condition, different rule class). Both catalogue leads were verified to exist at the cited revision 62e52cd9fe3ab4429debc0eb0306057419b0a9d6 (Psalm tests/ArgTest.php:172 and :186, names matching), are correctly demoted to leads only, and the fixtures are clean-room rewrites whose ground truth rests on the runtime proof. The notes' claim that Psalm's upstream fixture suppresses ArgumentTypeCoercion with an annotation is confirmed in the cited source, and Psalm 6.20.0 indeed emits the coercion as an error by default (severity error in the run). No correction needed for either case.",
+  "per_case": {
+    "arrays/array-key-for-string-key": {
+      "ground_truth": "verified - runtime/check.php exit 0; citation https://www.php.net/manual/en/language.types.array.php confirmed (keys are int|string; canonical decimal-int strings cast to int)",
+      "expectations": "specific and unwidened - 3 required predicates (code+line 26), no allowed/forbidden; phpstan divergence recorded as false negative",
+      "verdicts": "reproduced 2026-10-18T12-00-49Z - mago=ok, psalm=ok, phpstan=false_negative; matches case.json claims exactly",
+      "novelty": "criterion arrays/element-key-type-contract is new; lead psalm:6e0079989da3fbda2530 verified at ArgTest.php:172"
+    },
+    "arrays/scalar-array-for-string-array": {
+      "ground_truth": "verified - runtime/check.php exit 0; strict-types TypeError citation confirmed; runtime output matches statement",
+      "expectations": "specific and unwidened - 3 required predicates (code+line 26), no allowed/forbidden",
+      "verdicts": "reproduced 2026-10-18T12-00-35Z - all three tools ok with claimed codes at line 26; matches green-row claim",
+      "novelty": "criterion arrays/element-value-type-contract is new; lead psalm:0ee15c8f34d3836c9539 verified at ArgTest.php:186"
+    }
+  },
+  "implementer": "opencode/deepseek-v4.1-flash-free",
+  "reviewer": "opencode/longcat-2.5-preview-free"
+}
