@@ -1,0 +1,46 @@
+{
+  "case": "arrays/array-key-for-string-key",
+  "php_version": "8.3.35",
+  "phpstan_sha256": "85157dba3d95d77ca603d2b7303aa78a538f9e3b56ccad07dd794c53aa96d1ae",
+  "source_sha256": "9530d19b8d2225ee70ccefadf79d57311f5775ab922db23635986401e0a27e02",
+  "level": 9,
+  "strict_additional_parameters": {
+    "checkImplicitMixed": true
+  },
+  "baseline": {
+    "exit_code": 0,
+    "stdout": "/bench/cases/arrays/array-key-for-string-key/src/repro.php\n{\"totals\":{\"errors\":0,\"file_errors\":0},\"files\":{},\"errors\":[]}",
+    "stderr": "",
+    "duration_s": 1.213,
+    "argv": [
+      "php",
+      "/bench/tools/bin/phpstan.phar",
+      "analyse",
+      "--no-progress",
+      "--error-format=json",
+      "--level=9",
+      "--debug",
+      "/bench/cases/arrays/array-key-for-string-key/src"
+    ],
+    "cwd": "/home/abez/projects/php-analyzer-correctness-bench"
+  },
+  "strict": {
+    "exit_code": 1,
+    "stdout": "/bench/cases/arrays/array-key-for-string-key/src/repro.php\n{\"totals\":{\"errors\":0,\"file_errors\":1},\"files\":{\"/bench/cases/arrays/array-key-for-string-key/src/repro.php\":{\"errors\":1,\"messages\":[{\"message\":\"Parameter #1 $counts of function Bench\\\\Arrays\\\\ArrayKeyForStringKey\\\\render expects array<string, int>, array<int> given.\",\"line\":26,\"ignorable\":true,\"identifier\":\"argument.type\"}]}},\"errors\":[]}",
+    "stderr": "",
+    "duration_s": 1.204,
+    "argv": [
+      "php",
+      "/bench/tools/bin/phpstan.phar",
+      "analyse",
+      "--no-progress",
+      "--error-format=json",
+      "--level=9",
+      "--debug",
+      "-c",
+      "/bench/.amp/in/key-scope.neon",
+      "/bench/cases/arrays/array-key-for-string-key/src"
+    ],
+    "cwd": "/home/abez/projects/php-analyzer-correctness-bench"
+  }
+}

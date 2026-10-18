@@ -1,0 +1,1298 @@
+{
+  "meta": {
+    "run_id": "main",
+    "started": "2026-10-18T16:20:03Z",
+    "runner": "docker",
+    "image": "php:8.3-cli",
+    "php_version": "8.3.35",
+    "tools": {
+      "mago": "mago 1.57.0"
+    },
+    "tool_sha256": {
+      "mago": "f3db6cd04a56e8fc0d9f3a5e32b62935ad45c2c06923d02689478ceda406e5ba"
+    },
+    "corpus_fingerprint": "5feb92917323e40038b1406b806734c9d84b23991d70d8e046d9972a0520741a",
+    "pins": {
+      "phpstan": {
+        "version": "2.3.1",
+        "url": "https://github.com/phpstan/phpstan/releases/download/{version}/phpstan.phar",
+        "binary": "tools/bin/phpstan.phar",
+        "invocation": "php {binary} analyse --no-progress --error-format=json --level={level} --autoload-file={autoload} {targets}",
+        "upstream": "phpstan/phpstan"
+      },
+      "psalm": {
+        "version": "6.20.0",
+        "url": "https://github.com/vimeo/psalm/releases/download/{version}/psalm.phar",
+        "binary": "tools/bin/psalm.phar",
+        "invocation": "php {binary} --no-cache --output-format=json --no-progress --config={config}",
+        "upstream": "vimeo/psalm"
+      },
+      "mago": {
+        "version": "1.57.0",
+        "url": "https://github.com/carthage-software/mago/releases/download/{version}/mago-{version}-x86_64-unknown-linux-gnu.tar.gz",
+        "binary": "tools/bin/mago",
+        "invocation": "{binary} analyze --format json {targets}",
+        "upstream": "carthage-software/mago"
+      }
+    },
+    "case_count": 30,
+    "criterion_count": 30,
+    "valid_cases": 30,
+    "selected": [
+      "arrays/array-key-for-string-key",
+      "arrays/numeric-string-array-key",
+      "arrays/scalar-array-for-string-array",
+      "arrays/strict-in-array-narrowing",
+      "assignability/callable-not-closure",
+      "assignability/docblock-return-covariance",
+      "callables/is-object-on-callable-parameter",
+      "callables/negated-is-callable-removes-function-name",
+      "dead-code/finally-assignment-always-runs",
+      "enums/match-not-exhaustive",
+      "enums/try-from-result-nullability",
+      "generics/class-template-substitution-member-type",
+      "generics/covariant-template-in-write-position",
+      "generics/template-bound-violation",
+      "generics/template-inference-from-argument",
+      "legacy-patterns/array-filter-string-callable-loses-list",
+      "legacy-patterns/count-on-iterable",
+      "legacy-patterns/loose-comparison-with-zero",
+      "narrowing/is-bool-guard-excludes-true",
+      "narrowing/is-int-on-string",
+      "narrowing/is-numeric-after-is-int",
+      "narrowing/is-numeric-guard-excludes-int",
+      "narrowing/negated-instanceof-unrelated-class",
+      "narrowing/object-is-always-truthy",
+      "narrowing/redundant-instanceof-in-condition",
+      "narrowing/redundant-instanceof-on-declared-class",
+      "nullability/elseif-else-return-keeps-possible-null",
+      "nullability/is-null-guard-narrows-away-null",
+      "nullability/loose-null-guard-keeps-empty-string",
+      "nullability/relational-comparison-excludes-null"
+    ],
+    "runtime_proven": 30,
+    "runtime_proof_failed": []
+  },
+  "cases": [
+    {
+      "case": "arrays/array-key-for-string-key",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/array-key-for-string-key",
+      "results": {
+        "mago": {
+          "case": "arrays/array-key-for-string-key",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "less-specific-argument",
+              "message": "Argument type mismatch for argument #1 of `Bench\\Arrays\\ArrayKeyForStringKey\\render`: expected `array<string, int>`, but provided type `array<array-key, int>` is less specific.",
+              "file": "cases/arrays/array-key-for-string-key/src/repro.php",
+              "line": 26,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.871,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array<array-key, int> argument keys include int 0; the array<string, int> callee fails: strtoupper(): Argument #1 ($string) must be of type string, int given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/numeric-string-array-key",
+      "domain": "arrays",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/numeric-string-array-key",
+      "results": {
+        "mago": {
+          "case": "arrays/numeric-string-array-key",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.838,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "key 10 is reachable as '10' (array_key_exists, isset, read, write); 4 near miss(es) stayed strings\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/scalar-array-for-string-array",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/scalar-array-for-string-array",
+      "results": {
+        "mago": {
+          "case": "arrays/scalar-array-for-string-array",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\Arrays\\ScalarArrayForStringArray\\total_length`: expected `array<array-key, string>`, but possibly received `array<int, scalar>`.",
+              "file": "cases/arrays/scalar-array-for-string-array/src/repro.php",
+              "line": 26,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.953,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array<int, scalar> argument carries 1 non-string element(s); the array<string> callee fails: strlen(): Argument #1 ($string) must be of type string, float given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "arrays/strict-in-array-narrowing",
+      "domain": "arrays",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/arrays/strict-in-array-narrowing",
+      "results": {
+        "mago": {
+          "case": "arrays/strict-in-array-narrowing",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.931,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "6 strict match(es) over 45 needle/haystack pair(s), all 'a'/'b'\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/callable-not-closure",
+      "domain": "assignability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/callable-not-closure",
+      "results": {
+        "mago": {
+          "case": "assignability/callable-not-closure",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Assignability\\CallableNotClosure\\keep`: expected `(closure(...mixed=): mixed)`, but found `(callable(...mixed=): mixed)`.",
+              "file": "cases/assignability/callable-not-closure/src/repro.php",
+              "line": 14,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Assignability\\CallableNotClosure\\keep`: expected `(closure(...mixed=): mixed)`, but found `string('phpversion')`.",
+              "file": "cases/assignability/callable-not-closure/src/repro.php",
+              "line": 19,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.908,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "'phpversion' is callable but not a Closure; the closure control was accepted\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/docblock-return-covariance",
+      "domain": "assignability",
+      "rule_class": "method.childReturnType",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/docblock-return-covariance",
+      "results": {
+        "mago": {
+          "case": "assignability/docblock-return-covariance",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "incompatible-return-type",
+              "message": "Return type `Bench\\Assignability\\DocblockReturnCovariance\\Animal` of `Bench\\Assignability\\DocblockReturnCovariance\\BadShelter::adopt()` is incompatible with parent return type `Bench\\Assignability\\DocblockReturnCovariance\\Dog` of `Bench\\Assignability\\DocblockReturnCovariance\\Shelter::adopt()`",
+              "file": "cases/assignability/docblock-return-covariance/src/repro.php",
+              "line": 32,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.909,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "BadShelter::adopt() returns a Cat, so wake() throws: Call to undefined method Bench\\Assignability\\DocblockReturnCovariance\\Cat::bark()\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/is-object-on-callable-parameter",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/is-object-on-callable-parameter",
+      "results": {
+        "mago": {
+          "case": "callables/is-object-on-callable-parameter",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.858,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_object() branch reached for 2 of 3 callable shape(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "callables/negated-is-callable-removes-function-name",
+      "domain": "callables",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/callables/negated-is-callable-removes-function-name",
+      "results": {
+        "mago": {
+          "case": "callables/negated-is-callable-removes-function-name",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.92,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the guard removed the function name; [1] reached accept_array() without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "dead-code/finally-assignment-always-runs",
+      "domain": "dead-code",
+      "rule_class": "constant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/dead-code/finally-assignment-always-runs",
+      "results": {
+        "mago": {
+          "case": "dead-code/finally-assignment-always-runs",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.912,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "the finally assignment ran before the catch: cleaned_flag() === 1\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/match-not-exhaustive",
+      "domain": "enums",
+      "rule_class": "match.unhandled",
+      "basis": "runtime_proof",
+      "path": "cases/enums/match-not-exhaustive",
+      "results": {
+        "mago": {
+          "case": "enums/match-not-exhaustive",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "match-not-exhaustive",
+              "message": "Non-exhaustive `match` expression: subject of type `enum(Bench\\Enums\\MatchNotExhaustive\\Suit)` is not fully handled.",
+              "file": "cases/enums/match-not-exhaustive/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.91,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "label(Suit::Spades) threw UnhandledMatchError; label_all() handled it\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "enums/try-from-result-nullability",
+      "domain": "enums",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/enums/try-from-result-nullability",
+      "results": {
+        "mago": {
+          "case": "enums/try-from-result-nullability",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): possibly-null-argument@20",
+          "missing": [],
+          "unexpected": [
+            "possibly-null-argument@20"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-null-argument",
+              "message": "Argument #1 of function `Bench\\Enums\\TryFromResultNullability\\label` is possibly `null`, but parameter type `enum(Bench\\Enums\\TryFromResultNullability\\Status)` does not accept it.",
+              "file": "cases/enums/try-from-result-nullability/src/repro.php",
+              "line": 20,
+              "severity": "error"
+            },
+            {
+              "code": "possibly-null-argument",
+              "message": "Argument #1 of function `Bench\\Enums\\TryFromResultNullability\\label` is possibly `null`, but parameter type `enum(Bench\\Enums\\TryFromResultNullability\\Status)` does not accept it.",
+              "file": "cases/enums/try-from-result-nullability/src/repro.php",
+              "line": 25,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.852,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "tryFrom('active') = Status::Active, tryFrom('nope') = null and label(null) is a TypeError; from('nope') throws ValueError instead\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/class-template-substitution-member-type",
+      "domain": "generics",
+      "rule_class": "undefined-method",
+      "basis": "runtime_proof",
+      "path": "cases/generics/class-template-substitution-member-type",
+      "results": {
+        "mago": {
+          "case": "generics/class-template-substitution-member-type",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "non-existent-method",
+              "message": "Method `bark` does not exist on type `Bench\\Generics\\ClassTemplateSubstitutionMemberType\\Cat`.",
+              "file": "cases/generics/class-template-substitution-member-type/src/repro.php",
+              "line": 47,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.853,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "Box<Cat>::get() returns a Cat, which has no bark(): Call to undefined method Bench\\Generics\\ClassTemplateSubstitutionMemberType\\Cat::bark()\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/covariant-template-in-write-position",
+      "domain": "generics",
+      "rule_class": "template-variance-violation",
+      "basis": "runtime_proof",
+      "path": "cases/generics/covariant-template-in-write-position",
+      "results": {
+        "mago": {
+          "case": "generics/covariant-template-in-write-position",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-template-parameter",
+              "message": "Covariant template parameter `T` cannot appear in a parameter position.",
+              "file": "cases/generics/covariant-template-in-write-position/src/repro.php",
+              "line": 30,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.918,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "put_cat() stored a Cat in a Bag<Dog> through the covariant widening; adopt() failed on its Dog return type: Bench\\Generics\\CovariantTemplateInWritePosition\\adopt(): Return value must be of type Bench\\Generics\\CovariantTemplateInWritePosition\\Dog, Bench\\Generics\\CovariantTemplateInWritePosition\\Cat returned\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/template-bound-violation",
+      "domain": "generics",
+      "rule_class": "template-constraint-violation",
+      "basis": "runtime_proof",
+      "path": "cases/generics/template-bound-violation",
+      "results": {
+        "mago": {
+          "case": "generics/template-bound-violation",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "invalid-argument@21"
+          ],
+          "diagnostics": [
+            {
+              "code": "template-constraint-violation",
+              "message": "Argument type mismatch for template `T`.",
+              "file": "cases/generics/template-bound-violation/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            },
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `Bench\\Generics\\TemplateBoundViolation\\count_all`: expected `('T.bench\\generics\\templateboundviolation\\count_all() extends Countable)`, but found `list{int(1), int(2), int(3)}`.",
+              "file": "cases/generics/template-bound-violation/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.93,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "[1,2,3] instanceof Countable is false while count_all([1,2,3]) = 3: the bound is violated, not the body\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "generics/template-inference-from-argument",
+      "domain": "generics",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/generics/template-inference-from-argument",
+      "results": {
+        "mago": {
+          "case": "generics/template-inference-from-argument",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-argument",
+              "message": "Invalid argument type for argument #1 of `strlen`: expected `string`, but found `int(5)`.",
+              "file": "cases/generics/template-inference-from-argument/src/repro.php",
+              "line": 21,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.89,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "strlen(identity('abc')) = 3; strlen(identity(5)) throws: strlen(): Argument #1 ($string) must be of type string, int given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/array-filter-string-callable-loses-list",
+      "domain": "legacy-patterns",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/array-filter-string-callable-loses-list",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/array-filter-string-callable-loses-list",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `Bench\\LegacyPatterns\\ArrayFilterStringCallableLosesList\\accept_list_of_ints`: expected `list<int>`, but possibly received `array<non-negative-int, int>`.",
+              "file": "cases/legacy-patterns/array-filter-string-callable-loses-list/src/repro.php",
+              "line": 22,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.906,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "array_filter() kept key 1 and produced a non-list: array (\n  1 => 1,\n)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/count-on-iterable",
+      "domain": "legacy-patterns",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/count-on-iterable",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/count-on-iterable",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "possibly-invalid-argument",
+              "message": "Possible argument type mismatch for argument #1 of `count`: expected `Countable|array<array-key, mixed>`, but possibly received `iterable<int, string>`.",
+              "file": "cases/legacy-patterns/count-on-iterable/src/repro.php",
+              "line": 17,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.894,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "count() rejected a Generator: count(): Argument #1 ($value) must be of type Countable|array, Generator given\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "legacy-patterns/loose-comparison-with-zero",
+      "domain": "legacy-patterns",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/legacy-patterns/loose-comparison-with-zero",
+      "results": {
+        "mago": {
+          "case": "legacy-patterns/loose-comparison-with-zero",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "impossible-condition@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `==` comparison: left-hand side is never equal to right-hand side.",
+              "file": "cases/legacy-patterns/loose-comparison-with-zero/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/legacy-patterns/loose-comparison-with-zero/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.866,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "'abc' == 0 evaluated to false and legacy_flag_is_set() returned false\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-bool-guard-excludes-true",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-bool-guard-excludes-true",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-bool-guard-excludes-true",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.869,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 6 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-int-on-string",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-int-on-string",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-int-on-string",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "impossible-condition@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "impossible-type-comparison",
+              "message": "Impossible type assertion: `$value` of type `string` can never be `int`.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "error"
+            },
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/is-int-on-string/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.896,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() stayed on the string path for 6 sample value(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-after-is-int",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-after-is-int",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-numeric-after-is-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "redundant-logical-operation@15"
+          ],
+          "diagnostics": [
+            {
+              "code": "redundant-type-comparison",
+              "message": "Redundant type assertion: `$c` is already `int`.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "warning"
+            },
+            {
+              "code": "redundant-logical-operation",
+              "message": "Redundant `&&` operation: left operand is evaluated and right operand is always truthy.",
+              "file": "cases/narrowing/is-numeric-after-is-int/src/repro.php",
+              "line": 15,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.875,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_numeric() held for 7 int sample(s); classify() followed is_int() for 16 input(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/is-numeric-guard-excludes-int",
+      "domain": "narrowing",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/is-numeric-guard-excludes-int",
+      "results": {
+        "mago": {
+          "case": "narrowing/is-numeric-guard-excludes-int",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.888,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 14 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/negated-instanceof-unrelated-class",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/negated-instanceof-unrelated-class",
+      "results": {
+        "mago": {
+          "case": "narrowing/negated-instanceof-unrelated-class",
+          "tool": "mago",
+          "verdict": "divergence",
+          "detail": "Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately.",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.909,
+          "php": "8.3.35",
+          "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "Alpha's ancestors (none) exclude Beta; is_not_beta() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/object-is-always-truthy",
+      "domain": "narrowing",
+      "rule_class": "impossible-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/object-is-always-truthy",
+      "results": {
+        "mago": {
+          "case": "narrowing/object-is-always-truthy",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "impossible-condition",
+              "message": "This condition (type `false`) will always evaluate to false.",
+              "file": "cases/narrowing/object-is-always-truthy/src/repro.php",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.873,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "5 object shape(s) cast to true; is_falsy() stayed on the live path\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/redundant-instanceof-in-condition",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/redundant-instanceof-in-condition",
+      "results": {
+        "mago": {
+          "case": "narrowing/redundant-instanceof-in-condition",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-condition",
+              "message": "This condition (type `true`) will always evaluate to true.",
+              "file": "cases/narrowing/redundant-instanceof-in-condition/src/repro.php",
+              "line": 9,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.835,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "The ancestor check takes the true branch for the declared class and a subclass\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "narrowing/redundant-instanceof-on-declared-class",
+      "domain": "narrowing",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/narrowing/redundant-instanceof-on-declared-class",
+      "results": {
+        "mago": {
+          "case": "narrowing/redundant-instanceof-on-declared-class",
+          "tool": "mago",
+          "verdict": "divergence",
+          "detail": "Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning.",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.917,
+          "php": "8.3.35",
+          "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "RuntimeException's parents are Exception; is_exception() held for 2 instance(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/elseif-else-return-keeps-possible-null",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/elseif-else-return-keeps-possible-null",
+      "results": {
+        "mago": {
+          "case": "nullability/elseif-else-return-keeps-possible-null",
+          "tool": "mago",
+          "verdict": "false_positive",
+          "detail": "unexpected diagnostic(s): redundant-comparison@23",
+          "missing": [],
+          "unexpected": [
+            "redundant-comparison@23"
+          ],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "redundant-comparison",
+              "message": "Redundant `===` comparison: left-hand side is never identical to right-hand side.",
+              "file": "cases/nullability/elseif-else-return-keeps-possible-null/src/repro.php",
+              "line": 23,
+              "severity": "help"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.945,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "is_null_after() reached the final check with null in 4 case(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/is-null-guard-narrows-away-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/is-null-guard-narrows-away-null",
+      "results": {
+        "mago": {
+          "case": "nullability/is-null-guard-narrows-away-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.977,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "quacks() accepted 4 sample(s) without a TypeError\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/loose-null-guard-keeps-empty-string",
+      "domain": "nullability",
+      "rule_class": "redundant-condition",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/loose-null-guard-keeps-empty-string",
+      "results": {
+        "mago": {
+          "case": "nullability/loose-null-guard-keeps-empty-string",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "possibly-null-operand@14",
+            "null-operand@14"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `==` comparison might be `null` (type `null|string`).",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "warning"
+            },
+            {
+              "code": "null-operand",
+              "message": "Right operand in `==` comparison is `null`.",
+              "file": "cases/nullability/loose-null-guard-keeps-empty-string/src/repro.php",
+              "line": 14,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.832,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "classify() distinguished null from '' on 4 sample(s)\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "nullability/relational-comparison-excludes-null",
+      "domain": "nullability",
+      "rule_class": "argument.type",
+      "basis": "runtime_proof",
+      "path": "cases/nullability/relational-comparison-excludes-null",
+      "results": {
+        "mago": {
+          "case": "nullability/relational-comparison-excludes-null",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [
+            "possibly-null-operand@16"
+          ],
+          "diagnostics": [
+            {
+              "code": "possibly-null-operand",
+              "message": "Left operand in `>` comparison might be `null` (type `int|null`).",
+              "file": "cases/nullability/relational-comparison-excludes-null/src/repro.php",
+              "line": 16,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 0,
+          "duration_s": 0.827,
+          "php": "8.3.35"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "null > 0 is false; quacks() entered the branch for positive ints only\n",
+        "stderr": "",
+        "confirmed": true
+      }
+    }
+  ],
+  "summary": {
+    "mago": {
+      "ok": 26,
+      "false_positive": 2,
+      "false_negative": 0,
+      "mixed": 0,
+      "divergence": 2,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 28,
+      "cases": 30,
+      "agreement": 92.9,
+      "defects": 2,
+      "by_domain": {
+        "arrays": {
+          "ok": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "assignability": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "callables": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "dead-code": {
+          "ok": 1,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "enums": {
+          "ok": 1,
+          "false_positive": 1,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "generics": {
+          "ok": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "legacy-patterns": {
+          "ok": 3,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "narrowing": {
+          "ok": 6,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 2,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        },
+        "nullability": {
+          "ok": 3,
+          "false_positive": 1,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "divergences": [
+    {
+      "case": "narrowing/negated-instanceof-unrelated-class",
+      "tool": "mago",
+      "reason": "Mago 1.57.0 analyzes a bare return as an expression. Unary Not negates the inferred instanceof result but does not invoke conditional diagnostics or assertion reconciliation. Its silence here is outside this warning's reporting scope; impossible instanceof conditions remain supported and must be tested separately.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
+    },
+    {
+      "case": "narrowing/redundant-instanceof-on-declared-class",
+      "tool": "mago",
+      "reason": "Mago 1.57.0 infers literal true for this subtype test but does not emit redundant-condition on a bare returned instanceof. Its own parent-class fixture permits this expression without a diagnostic. Missing a warning here is a reporting-scope divergence, not failed subtype reasoning.",
+      "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
+    }
+  ]
+}

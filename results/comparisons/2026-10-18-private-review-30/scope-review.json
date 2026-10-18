@@ -1,0 +1,62 @@
+{
+  "decision": "accept",
+  "case": "arrays/array-key-for-string-key",
+  "scope": "Accept the PHPStan-only reclassification as an excluded documented configuration-scope divergence, not a clean result or proof of runtime safety.",
+  "findings": [
+    {
+      "severity": "none",
+      "finding": "The correction has affirmative documentation and source support. It is not justified merely by the existence of an optional flag or by silence. PHPStan explicitly gives array-key a lenient dialect meaning that differs from plain int|string."
+    },
+    {
+      "severity": "informational",
+      "finding": "The contract describes unsupported as a rule not implemented by design, whereas this check is implemented but disabled in the measured configuration. The reason explicitly discloses this distinction and the existing docblock-return-covariance case already uses the same configuration-scope convention. Accept under that established convention; do not publish this as missing PHPStan capability."
+    },
+    {
+      "severity": "informational",
+      "finding": "The documentation's checkBenevolentUnionTypes example concerns scalar array-key arguments, not this nested array key. The pinned ArrayType normalization and the checkImplicitMixed differential probe supply the otherwise missing concrete link. The two flags must not be conflated."
+    }
+  ],
+  "evidence": [
+    {
+      "source": "AGENT-PROTOCOL.md; docs/case-contract.md",
+      "observation": "Read both. Ground truth must remain independent of analyzer output, and corrections require justification rather than score-driven predicate relaxation. The current diff preserves runtime ground truth, fixture and Psalm/Mago required predicates, and changes PHPStan expectation plus explanatory notes/provenance. git diff --name-only listed only this case.json during review."
+    },
+    {
+      "source": "https://phpstan.org/config-reference#checkbenevolentuniontypes",
+      "observation": "Official documentation says: PHPStan defines benevolent union types, such as array-key. Benevolent unions aren't checked strictly even at the highest level. Its example marks both requireInt($value1) and requireString($value1) as No error for array-key, while the corresponding int|string calls are Error. checkBenevolentUnionTypes defaults false and requires level 7 or higher."
+    },
+    {
+      "source": "/home/abez/projects/phpstan-src at 2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "observation": "Verified HEAD and no local diff in inspected source files. src/PhpDoc/TypeNodeResolver.php:283-284 maps array-key to new BenevolentUnionType([new IntegerType(), new StringType()]). src/Type/ArrayType.php:75-85 converts this benevolent key to new MixedType(), and converts StrictMixedType back to a plain string/int union. src/Rules/RuleLevelHelper.php:85-118 traverses nested types and converts implicit mixed only when checkImplicitMixed is true. conf/config.neon:73 sets it false; level9 sets checkExplicitMixed true, not checkImplicitMixed; level10 enables checkImplicitMixed."
+    },
+    {
+      "source": ".amp/in/artifacts/key-scope-False.json; .amp/in/artifacts/key-scope-True.json; .amp/in/key-scope.neon",
+      "observation": "Read both complete probe records. False exits 0 with zero diagnostics; True exits 1 with one argument.type at repro.php:26, expecting array<string, int>, array<int> given. Both use /bench/tools/bin/phpstan.phar, level 9, --debug and the unchanged source directory. The only probe config parameter is checkImplicitMixed: true."
+    },
+    {
+      "source": "Independent docker exec -w /bench bench-php reproduction",
+      "observation": "Verified PHP 8.3.35 and PHPStan 2.3.1. Independently repeated php tools/bin/phpstan.phar analyse --no-progress --error-format=json --level=9 --debug cases/arrays/array-key-for-string-key/src, then the same command with -c .amp/in/key-scope.neon. Reproduced zero diagnostics and exactly one argument.type at line 26 respectively. No fixture changes were made."
+    },
+    {
+      "source": "docker exec bench-php php /bench/cases/arrays/array-key-for-string-key/runtime/check.php",
+      "observation": "Runtime proof exited 0 and reported strtoupper(): Argument #1 ($string) must be of type string, int given. Read fixture and runtime controls. This preserves the concrete unsafe program independently of the configured diagnostic promise."
+    },
+    {
+      "source": "cases/assignability/docblock-return-covariance/case.json; official reportMaybesInMethodSignatures documentation",
+      "observation": "Existing case excludes deliberately suppressed maybe-compatible PHPDoc signature checking and explicitly says the rule exists. Official documentation confirms that option defaults false. This is consistent with the correction's configuration-aware interpretation, though the mechanism differs."
+    }
+  ],
+  "contradictory_evidence": [
+    "The runtime defect is real and a soundness-only benchmark could legitimately record default-configuration silence as a miss. This acceptance applies to the repository's documented-promise/configuration-scope benchmark convention, not an assertion that default PHPStan catches the defect.",
+    "The unchanged ground_truth statement calls array-key int|string and says a diagnostic belongs on the call. That is correct for the neutral key-set/runtime contract, but not a statement that PHPStan promises strict alias equivalence. The per-tool reason and notes explicitly disclose the dialect exception.",
+    "Enabling a stricter option alone would not justify exclusion. Here affirmative array-key leniency documentation, the pinned normalization mechanism and the same-fixture differential probe jointly justify it.",
+    "The docs say benevolent unions remain lenient even at the highest level, while level10's implicit-mixed check catches this fixture. This is not a contradiction in the tested mechanism: ArrayType has already normalized the benevolent key into implicit mixed, so the nested key is governed by the mixed setting."
+  ],
+  "limitations": [
+    "Did not independently reproduce the plain int|string sibling claim because creating or modifying fixture files was outside the permitted write scope. Official documentation independently confirms the scalar spelling distinction.",
+    "Did not rerun Psalm/Mago, all 30 cases, or harness validation during the parent's concurrent measurement. Their predicates are unchanged in the reviewed diff.",
+    "Did not audit historical immutable report contents or the forthcoming corrected aggregate. Publication must retain the old FN history, identify this exclusion, and exclude it from the applicable denominator rather than count it as a pass.",
+    "The probe records do not embed PHP or phar hashes. Independent reproduction verified local versions but cannot retrospectively establish their container identity from those JSON files alone.",
+    "No general rule that optional flags excuse missing diagnostics follows from this review."
+  ]
+}
