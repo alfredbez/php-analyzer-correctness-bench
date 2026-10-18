@@ -28,6 +28,7 @@ import argparse
 import fcntl
 import json
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -118,13 +119,15 @@ def park(state: dict, model: str, reason: str) -> None:
     log(f"[RATE LIMIT] parking {model}: {reason[:160]}")
 
 
-RATE_LIMIT_MARKERS = ("rate limit", "429", "too many requests", "quota exceeded",
+RATE_LIMIT_MARKERS = ("rate limit", "too many requests", "quota exceeded",
                       "insufficient credit", "credit balance", "overloaded")
 
 
 def looks_rate_limited(text: str) -> bool:
     lowered = text.lower()
-    return any(marker in lowered for marker in RATE_LIMIT_MARKERS)
+    return (any(marker in lowered for marker in RATE_LIMIT_MARKERS)
+            or re.search(r"\b(?:http(?:/\d(?:\.\d)?)?|error|status(?: code)?)\s*[:=]?\s*429\b",
+                         lowered) is not None)
 
 
 # ---------------------------------------------------------------- worktree

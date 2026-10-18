@@ -61,6 +61,7 @@ class FactoryPublicationTest(unittest.TestCase):
         overrides = patch.multiple(factory, ROOT=str(self.root), WORKTREE=str(self.tree),
                                    EVIDENCE_DIR=str(evidence), STATE_FILE=str(evidence / 'STATE.json'),
                                    LOG_FILE=str(evidence / 'factory.log'),
+                                   PROMPT_DIR=str(self.root / 'factory/prompts'),
                                    TARGETS={'narrowing': 1},
                                    IMPLEMENTERS=['test/author'], REVIEWERS=['test/reviewer'])
         overrides.start()
@@ -148,6 +149,31 @@ class FactoryPublicationTest(unittest.TestCase):
             result = factory.round_once({})
         self.assertEqual(result['status'], 'promoted')
         self.assertNotEqual(self.remote_head(), self.base)
+
+    def test_only_rate_limit_failures_cool_down_the_next_author_round(self):
+        original_run = factory.run
+        responses = [
+            ('62e52cd9fe3ab4429debc0eb0306057419b0a9d6 Merge pull request', False),
+            ('src/repro.php:429: comparison always false', False),
+            ('Error: HTTP 429', True),
+            ('HTTP/1.1 429', True),
+            ('status code: 429', True),
+            ('Error: Rate limit exceeded. Please try again later.', True),
+        ]
+        for output, limited in responses:
+            with self.subTest(output=output):
+                def run_worker(cmd, cwd, timeout=600):
+                    if cmd[0] == 'opencode':
+                        return {'code': 1, 'stdout': output, 'stderr': '', 'seconds': 0}
+                    return original_run(cmd, cwd, timeout)
+
+                state = {}
+                with patch.object(factory, 'run', side_effect=run_worker):
+                    result = factory.round_once(state)
+                self.assertEqual(result['status'], 'implementation_failed')
+                next_round = factory.round_once(state, dry_run=True)
+                self.assertEqual(next_round['implementers'], [] if limited else ['test/author'])
+                self.assertEqual(self.remote_head(), self.base)
 
     def test_failed_author_changes_are_preserved_without_fallback_or_publication(self):
         original = self.dispatch
