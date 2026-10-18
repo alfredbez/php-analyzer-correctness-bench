@@ -1,0 +1,59 @@
+{
+  "verdict": "accept",
+  "reviewed_at": "2026-10-18",
+  "summary": "Accept all eight cases with the existing diagnostic expectations. Both runtime-control omissions from the preserved rejected receipt are fixed. Independent Docker execution with assertions disabled passes, and an isolated public-harness rerun reproduces the expected analyzer verdicts. No remaining actionable findings.",
+  "cases": [
+    "arrays/numeric-string-array-key",
+    "arrays/strict-in-array-narrowing",
+    "assignability/callable-not-closure",
+    "assignability/docblock-return-covariance",
+    "enums/match-not-exhaustive",
+    "enums/try-from-result-nullability",
+    "generics/template-bound-violation",
+    "generics/template-inference-from-argument"
+  ],
+  "prior_review": {
+    "evidence": ".amp/in/artifacts/expansion-review-rejected.json",
+    "status": "Preserved unchanged. Its diagnostic-expectation assessment is accepted; its two runtime findings are resolved by this follow-up.",
+    "results": [
+      "The prior review inspected all eight manifests, fixtures, runtime scripts and configurations, found eight distinct semantic criteria, and validated 26 cases with zero invalid.",
+      "Its independent stable eight-case run passed runtime 8/8. PHPStan 2.3.1 had seven ok and one excluded divergence; Psalm 6.20.0 had seven ok and one false positive; Mago 1.57.0 had five ok and three false positives. No false negatives, tool errors or case errors. Evidence: .amp/in/artifacts/review-run-eight/report.json.",
+      "The prior review accepted PHPStan's optional PHPDoc widening exclusion from pinned implementation and default configuration. It justified enum literal nullable reports at line 20 as false positives, variable-input nullable reports at line 25 as required, and the duplicate Mago invalid-argument at template-bound line 21 as an allowed report of the same violation.",
+      "The prior receipt records inspection of historical/stable/main raw outputs, pinned upstream source and reproducer leads. Those are prior-review evidence, not newly inspected comparison results in this follow-up."
+    ]
+  },
+  "checks": [
+    {
+      "check": "Re-read both changed runtime/check.php files and their src/repro.php, plus both case.json manifests.",
+      "result": "The enum runtime now calls label_of_unknown('active') and checks 'active', and calls label_of_unknown('nope') inside the TypeError check. The literal wrapper and separate from()/tryFrom() contrast remain. The template runtime now calls count_object() and requires 3; array Countable/Traversable rejection, ArrayObject Countable confirmation and count_three() remain. These are the actual fixture wrappers, not reconstructed substitutes. No expectation change is needed or made."
+    },
+    {
+      "check": "Executed both scripts via harness.bench.runner.Runner(mode='docker').php(['-d', 'zend.assertions=-1', runtime_path], cwd=ROOT).",
+      "result": "PHP 8.3.35, container bench-php-8.3-cli-585dbbe9. Both exit 0 with empty stderr. Enum stdout confirms active identity, invalid-value null/TypeError and from() ValueError. Template stdout confirms arrays do not implement Countable while count() accepts them. Explicit conditional checks execute even with PHP assertions disabled.",
+      "argv": [
+        "php -d zend.assertions=-1 /bench/cases/enums/try-from-result-nullability/runtime/check.php",
+        "php -d zend.assertions=-1 /bench/cases/generics/template-bound-violation/runtime/check.php"
+      ]
+    },
+    {
+      "check": "BENCH_PHP=docker python3 harness/bench.py run --case enums/try-from-result-nullability --case generics/template-bound-violation --output .amp/in/artifacts/review-fixed",
+      "result": "Exit 0; two valid cases, runtime 2/2, no tool or case errors. Enum: PHPStan ok, Psalm false_positive, Mago false_positive. Template bound: all three ok. Read report.json and all eight raw JSON artifacts. PHPStan enum argument.type occurs only at 25; Psalm/Mago nullable diagnostics occur at 20 and 25. Template diagnostics occur only at 21, including Mago's justified duplicate; the positive wrapper at 26 stays silent.",
+      "evidence": ".amp/in/artifacts/review-fixed/{report.json,raw/}",
+      "started": "2026-10-18T11:29:55Z",
+      "corpus_fingerprint": "8d7c07d31908d8163676bafaa9f173999319b1fe565f613d6712790a59bf53b0",
+      "versions": {
+        "php": "8.3.35",
+        "phpstan": "2.3.1",
+        "psalm": "6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c",
+        "mago": "1.57.0"
+      }
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "This is a targeted follow-up of the two rejected controls, not a fresh independent review or rerun of all eight cases. The other six retain the evidence and assessment in the preserved prior receipt.",
+    "The fresh historical/stable/main comparison is concurrently owned. This follow-up did not modify or assess its current results under results/comparisons/2026-10-18-private-review. Earlier comparison observations belong to the prior receipt and do not certify the new bytes. The isolated two-case fingerprint is not a full-corpus fingerprint.",
+    "The PHPStan optional flag was previously verified from source/defaults, not by a separate enabled-flag experiment. The prior Psalm source-checkout versus release-build revision relationship remains unestablished.",
+    "Only this receipt was manually changed. The public harness generated isolated review-fixed artifacts. No cases, expectations, source, catalogue or comparison directory were modified by this reviewer; no threads, agents, commits, pushes or upstream contact."
+  ]
+}
