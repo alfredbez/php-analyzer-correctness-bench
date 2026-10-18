@@ -42,14 +42,14 @@
       "mode": "diagnostics",
       "required": [
         {
-          "code": "unreachable-code",
+          "code": "unreachable-switch-default",
           "line": 8,
           "file": "src/repro.php"
         }
       ]
     }
   },
-  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan false_negative: missing required diagnostic(s): deadCode.unreachable; psalm false_negative: missing required diagnostic(s): ParadoxicalCondition; mago false_negative: missing required diagnostic(s): unreachable-code. All three tools omit the unreachable-default diagnostic. This is a deliberate broad reachability criterion, not a recommendation to warn on defensive throws. Psalm implementation only checks impossible defaults in handleNonReturningCase; that explains its silence here but is not substituted for a documented unsupported policy. The required codes are existing tool diagnostic codes, not invented switch-specific identifiers.",
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. This broad reachability criterion is not a recommendation to warn on defensive throws. PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0 omit the unreachable-default diagnostic. Pinned Mago main bbabf3395981 reports the actual fact as unreachable-switch-default at line 8. Independent review replaced the initially assumed generic unreachable-code identifier with that observed switch-specific code, so the comparison records the improvement rather than a spurious mixed result. The unreachable-default expectation itself is unchanged. Psalm's implementation only checks impossible defaults in handleNonReturningCase; that explains its silence here but does not establish a documented unsupported policy.",
   "provenance": {
     "sources": [
       {

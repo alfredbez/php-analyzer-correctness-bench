@@ -1639,7 +1639,7 @@
         "narrowing/catalog-psalm-924aac46207f32ed8ed5"
       ],
       "semantic_statement": "An int cast of a positive integer is an identity and cannot lose positivity.",
-      "reason": "Suppression removed. Controls include 1, 2 and PHP_INT_MAX. Mago invalid-return-statement line 7 loses the range, a semantic FP. Psalm RedundantCastGivenDocblockType line 7 retains the range but objects to redundancy, a warning-policy FP against the clean baseline. PHPStan is clean.",
+      "reason": "Controls include 1, 2 and PHP_INT_MAX. Mago invalid-return-statement at line 7 loses the range, a semantic FP. Independent review corrected the initial Psalm FP label: RedundantCastGivenDocblockType at line 7 is a correct redundancy warning, acknowledged separately from the return-type preservation criterion. PHPStan is clean.",
       "citations": [
         "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L529",
         "https://www.php.net/manual/en/language.types.integer.php#language.types.integer.casting"

@@ -27,13 +27,21 @@
       "mode": "clean"
     },
     "psalm": {
-      "mode": "clean"
+      "mode": "clean",
+      "allowed": [
+        {
+          "code": "MixedAssignment",
+          "file": "src/repro.php",
+          "line": 8,
+          "reason": "Psalm cannot resolve the variable-variable assignment precisely. This precision warning is independent of whether the constructor parameter is consumed, which the runtime demonstrates. https://psalm.dev/docs/running_psalm/issues/MixedAssignment/"
+        }
+      ]
     },
     "mago": {
       "mode": "clean"
     }
   },
-  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Runtime controls distinguish successful values from rejected or absent alternatives. This is a behavior comparison, not a recommendation that every precision limitation is product policy. Pinned-tool observations retained without widening expectations: psalm: MixedAssignment@8. Runtime controls pass. These are measured precision or contract-interpretation disagreements, not assertions that the tool should adopt every tested policy.",
+  "notes": "Clean-room semantic contract derived from the catalog lead, not a copy of its test harness. Changing the constructor argument changes the public result. Independent review corrected the initial FP label for Psalm's MixedAssignment at line 8: the diagnostic reports a dynamic-assignment precision limitation, not an unused constructor parameter. It remains visible as an acknowledged diagnostic at that exact file and line. All three tools satisfy the parameter-consumption criterion. Runtime controls pass.",
   "provenance": {
     "sources": [
       {
