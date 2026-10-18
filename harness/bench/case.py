@@ -223,8 +223,7 @@ def fingerprint(cases: list[Case]) -> str:
         for path in sorted(root.rglob('*')):
             relative = path.relative_to(root)
             if (not path.is_file() or any(part in ('vendor', '.generated', '__pycache__')
-                                          for part in relative.parts)
-                    or path.name == 'composer.lock'):
+                                          for part in relative.parts)):
                 continue
             identity = f'{case.id}/{relative.as_posix()}'.encode()
             digest.update(identity + b'\0' + hashlib.sha256(path.read_bytes()).digest())

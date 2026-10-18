@@ -95,6 +95,15 @@ class FactoryPublicationTest(unittest.TestCase):
     def remote_head(self):
         return self.git('--git-dir', str(self.remote), 'rev-parse', 'main')
 
+    def test_declared_fixture_dependencies_must_be_installed_before_measurement(self):
+        case = self.tree / 'cases/enums/adapter'
+        case.mkdir(parents=True)
+        (case / 'case.json').write_text(json.dumps({'composer': {'install': True}}))
+        self.assertFalse(factory.tooling_ready(str(self.tree)))
+        (case / 'vendor').mkdir()
+        (case / 'vendor/autoload.php').touch()
+        self.assertTrue(factory.tooling_ready(str(self.tree)))
+
     def test_accepted_candidate_publishes_source_and_full_measurement(self):
         result = self.round()
         self.assertEqual(result['status'], 'promoted')

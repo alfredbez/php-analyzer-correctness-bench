@@ -28,6 +28,7 @@ import argparse
 import fcntl
 import json
 import os
+from pathlib import Path
 import re
 import signal
 import subprocess
@@ -178,8 +179,12 @@ def ensure_worktree(state: dict) -> str:
 
 
 def tooling_ready(tree: str) -> bool:
-    return all(os.path.exists(os.path.join(tree, "tools/bin", name))
-               for name in ("phpstan.phar", "psalm.phar", "mago"))
+    binaries_ready = all(os.path.exists(os.path.join(tree, "tools/bin", name))
+                         for name in ("phpstan.phar", "psalm.phar", "mago"))
+    return binaries_ready and all(
+        (manifest.parent / "vendor/autoload.php").is_file()
+        for manifest in Path(tree, "cases").glob("*/*/case.json")
+        if json.loads(manifest.read_text()).get("composer", {}).get("install"))
 
 
 def prepare_tooling(tree: str) -> bool:

@@ -93,5 +93,35 @@ else
   rm -rf "$TMP"
 fi
 
+# Dependency-backed fixtures use a real, locked Composer autoloader.
+DEPENDENT_CASES="$(python3 - "$ROOT" <<'PY'
+import json, pathlib, sys
+for path in sorted((pathlib.Path(sys.argv[1]) / 'cases').glob('*/*/case.json')):
+    if json.loads(path.read_text()).get('composer', {}).get('install'):
+        print(path.parent)
+PY
+)"
+if [ -n "$DEPENDENT_CASES" ]; then
+  COMPOSER="$BIN_DIR/composer.phar"
+  [ -f "$COMPOSER" ] || fetch "https://getcomposer.org/download/2.8.12/composer.phar" "$COMPOSER"
+  while IFS= read -r directory; do
+    echo "  [+] Fixture dependencies: ${directory#"$ROOT/"}"
+    PYTHONPATH="$ROOT/harness" python3 - "$COMPOSER" "$directory" <<'PY'
+from bench.runner import Runner
+import sys
+runner = Runner()
+runner.ensure()
+directory = sys.argv[2]
+result = runner.php([runner.runtime_path(sys.argv[1]), 'install',
+                     '--working-dir=' + runner.runtime_path(directory),
+                     '--no-interaction', '--no-progress', '--prefer-dist',
+                     '--no-dev', '--no-scripts', '--no-plugins'], cwd=directory, timeout=600)
+print(result['stdout'], end='')
+print(result['stderr'], end='', file=sys.stderr)
+sys.exit(result['exit_code'])
+PY
+  done <<< "$DEPENDENT_CASES"
+fi
+
 echo "Done. Installed:"
 printf '  %s\n' "$(ls -1 "$BIN_DIR")"

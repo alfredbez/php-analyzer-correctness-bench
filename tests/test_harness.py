@@ -210,6 +210,17 @@ class RuntimeProofGateTest(unittest.TestCase):
                                  {"skipped"})
                 self.assertNotIn("runtime_proof", record)
 
+    def test_missing_real_dependencies_cannot_be_replaced_with_a_stub(self):
+        from bench import execute
+        with tempfile.TemporaryDirectory() as root:
+            case = self._case()
+            case.path = root
+            case.data['composer'] = {'install': True}
+            record = execute.run_case(case, self.StubRunner(0), php_version='8.3.35')
+            self.assertEqual({result['verdict'] for result in record['results'].values()}, {'case_error'})
+            self.assertTrue(all('dependencies' in result['detail'] for result in record['results'].values()))
+            self.assertFalse(os.path.exists(os.path.join(root, 'vendor/autoload.php')))
+
 
 class ContractTest(unittest.TestCase):
     def test_validator_rejects_an_unsupported_expectation_without_citation(self):

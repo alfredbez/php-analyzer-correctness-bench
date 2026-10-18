@@ -89,6 +89,9 @@ class EvidenceTest(unittest.TestCase):
             self.assertEqual(expected, fingerprint([cases[1]]))
             (root / 'src/repro.php').write_text('<?php function result(): int { return "wrong"; }')
             self.assertNotEqual(expected, fingerprint([cases[1]]))
+            expected = fingerprint([cases[1]])
+            (root / 'composer.lock').write_text('{"packages":[{"version":"1.0.0"}]}')
+            self.assertNotEqual(expected, fingerprint([cases[1]]))
 
     def test_embedded_source_cannot_close_the_json_script(self):
         payload = {'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': [],

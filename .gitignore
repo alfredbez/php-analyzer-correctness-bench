@@ -5,7 +5,6 @@ tools/bin/*
 # Per-case generated state.
 cases/**/vendor/
 cases/**/.generated/
-cases/**/composer.lock
 
 # Analyzer binaries staged from outside the repository for an override run.
 .tools-alt/

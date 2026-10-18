@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import tempfile
 from dataclasses import dataclass
 
 from . import adapters, case as case_mod, classify as classify_mod
@@ -150,7 +151,14 @@ def _runtime_args(argv: list[str], runner: Runner) -> list[str]:
 def run_tool(case: case_mod.Case, spec: ToolSpec, runner: Runner,
              php_version: str | None = None) -> tuple[dict, dict]:
     argv = _runtime_args(build_argv(case, spec), runner)
-    if spec.needs_php:
+    environment = {}
+    if spec.name == 'phpstan':
+        temporary = case.abs_path('.generated/phpstan-tmp')
+        os.makedirs(temporary, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=temporary) as isolated:
+            environment['TMPDIR'] = runner.runtime_path(isolated)
+            output = runner.php(argv, cwd=case.path, timeout=TOOL_TIMEOUT, env=environment)
+    elif spec.needs_php:
         output = runner.php(argv, cwd=case.path, timeout=TOOL_TIMEOUT)
     else:
         output = runner.exec(argv, cwd=case.path, timeout=TOOL_TIMEOUT)
@@ -167,6 +175,7 @@ def run_tool(case: case_mod.Case, spec: ToolSpec, runner: Runner,
         "case": case.id,
         "tool": spec.name,
         "argv": argv,
+        "environment": environment,
         "cwd": case.path,
         "exit_code": output["exit_code"],
         "duration_s": output["duration_s"],
@@ -205,13 +214,15 @@ def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
                              for spec in selected}
         return record
 
-    if not case.diagnostics:
-        ensure_autoload(case)
-
     # The runtime proof runs first: a case whose own proof fails cannot judge a
     # tool, so the tools are not run at all and every verdict is case_error.
     proof_failed = None
-    if case.runtime_script:
+    if not case.diagnostics:
+        if case.needs_composer_install and not os.path.exists(case.abs_path('vendor/autoload.php')):
+            proof_failed = 'fixture dependencies are missing; run ./tools/install.sh first'
+        else:
+            ensure_autoload(case)
+    if case.runtime_script and not proof_failed:
         proof = run_runtime_proof(case, runner, php_version)
         record["runtime_proof"] = proof
         if run_dir:
