@@ -27,6 +27,38 @@ The report probes the selected binary, so its recorded version matches the run.
 The nightly drift workflow uses `tools/install.sh --latest` in its fresh checkout.
 Locally, use an out-of-tree `BENCH_TOOLS_DIR` to preserve the pinned binaries.
 
+## Private review and version comparisons
+
+This is a private working repository. Publication, maintainer contact and public
+hosting require Alfred's explicit approval after he reviews the criteria and
+report. No upstream issues or pull requests are created here.
+
+The target is **120 independently reviewed semantic criteria**, not 120 files or
+120 parameter variants. `factory/catalog.json` is an unreviewed source inventory
+from Psalm, PHPStan and historical Mago probes; it contributes nothing to a
+tool's score. The report distinguishes that inventory, measured criteria and the
+release target. No claim is made that entire upstream suites have been reviewed.
+
+To compare an older release, current stable and an immutable main commit on
+identical source bytes and PHP, without modifying the ordinary analyzer pins:
+
+```
+python3 tools/prepare-mago.py --config tools/mago-matrix.json
+python3 harness/compare.py --out results/comparisons/my-review
+python3 harness/site.py --comparison results/comparisons/my-review/comparison.json --out results/comparisons/my-review/index.html
+```
+
+Preparing main needs Git, Cargo and the Rust toolchain required by its pinned
+source. Release downloads currently target Linux x86_64. Main is built with the
+recorded build profile; these measurements cannot support speed claims.
+The output directory must be new, so measurements never overwrite one another.
+
+Open `index.html` locally: it is a self-contained offline report with search,
+domain and defect filters, version transitions, source fixtures, runtime checks,
+expectations and measured diagnostics. It makes no external resource requests.
+`comparison.json` is the machine-readable evidence bundle. Failed measurements,
+changed corpora and policy exclusions cannot become fixes or regressions.
+
 ## What a result means
 
 Four judgements enter the agreement denominator:

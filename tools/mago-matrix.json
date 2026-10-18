@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "id": "historical",
+      "label": "Mago 1.54.0",
+      "kind": "release",
+      "ref": "1.54.0",
+      "binary": "tools/bin/mago-1.54.0"
+    },
+    {
+      "id": "stable",
+      "label": "Mago 1.57.0 · stable",
+      "kind": "release",
+      "ref": "1.57.0",
+      "binary": "tools/bin/mago-1.57.0"
+    },
+    {
+      "id": "main",
+      "label": "Mago main · bbabf3395981",
+      "kind": "commit",
+      "ref": "bbabf3395981ace80b8043f9020c4f28d8a9a4b3",
+      "binary": "tools/bin/mago-main",
+      "build_profile": "dev"
+    }
+  ]
+}

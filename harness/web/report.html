@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>PHP Analyzer · Korrektheit</title>
+  <style>/* REPORT_CSS */</style>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div><p class="eyebrow">PHP ANALYZER CORRECTNESS BENCHMARK</p><h1>Was erkennen die Analyzer?</h1>
+      <p class="muted">Gemeinsame PHP-Kriterien, dokumentierte Erwartungen und nachprüfbare Befunde.</p></div>
+      <div class="header-actions"><span class="private-label">Privater Arbeitsstand</span><button id="download">Rohdaten speichern ↓</button></div>
+    </header>
+    <section class="notice" aria-label="Einordnung"><strong>Kein allgemeines Qualitätsranking.</strong> Der gezielt ausgewählte Korpus misst konkrete Verhaltensweisen, keine Fehlerhäufigkeit in beliebigen Projekten. Die Erwartungen sind noch nicht mit den Maintainern abgestimmt.</section>
+    <section id="coverage" class="coverage" aria-label="Abdeckung"></section>
+    <section id="versions" class="versions" aria-label="Gemessene Versionen"></section>
+    <section class="workspace">
+      <aside class="filters" aria-label="Filter">
+        <h2>Fälle eingrenzen</h2>
+        <label for="search">Kriterium suchen</label><input id="search" type="search" placeholder="z. B. callable, null, count">
+        <label for="domain">Bereich</label><select id="domain"><option value="all">Alle Bereiche</option></select>
+        <label for="finding">Befund / Verlauf</label><select id="finding">
+          <option value="all">Alle Fälle</option><option value="defects">FP oder FN · alle Analyzer</option>
+          <option value="false_positive">False Positive · alle Analyzer</option><option value="false_negative">False Negative · alle Analyzer</option>
+          <option value="divergence">Dokumentierte Abweichung</option><option value="fixed">Mago · behoben</option>
+          <option value="regressed">Mago · Regression</option><option value="still_open">Mago · weiterhin offen</option>
+          <option value="not_comparable">Mago · nicht vergleichbar</option>
+        </select>
+        <label for="pair">Mago-Versionen vergleichen</label><select id="pair"></select>
+        <button id="reset" class="reset">Filter zurücksetzen</button>
+        <div class="legend"><h3>So liest du die Matrix</h3><p><b class="ok">OK</b> Erwartung erfüllt</p><p><b class="false_positive">FP</b> Unberechtigte Meldung</p><p><b class="false_negative">FN</b> Erwartete Meldung fehlt</p><p><b class="divergence">Abw.</b> Belegter Unterschied, ausgeschlossen</p><p><b class="tool_error">ERR</b> Messfehler, kein Qualitätsurteil</p><p>FP und FN zählen Fälle, nicht einzelne Meldungen.</p></div>
+      </aside>
+      <div class="results">
+        <div class="section-heading"><div><h2>Gemessene Fälle</h2><p id="result-count" class="muted" aria-live="polite"></p></div><span class="quiet-label">Klicke ein Kriterium für die Evidenz</span></div>
+        <div id="compatibility"></div>
+        <p class="table-hint">Weitere Zeilen und Versionen: innerhalb der Tabelle nach unten oder seitwärts scrollen. Ein Kriterium öffnet seine Evidenz.</p>
+        <div class="table-scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div>
+        <div id="empty" hidden>Kein gemessener Fall passt zu diesen Filtern.</div>
+        <section id="case-detail" class="detail" hidden aria-labelledby="detail-title" tabindex="-1"></section>
+      </div>
+    </section>
+    <details class="method"><summary>Methodik, Vergleichbarkeit und Freigabe</summary><div class="method-body">
+      <p>Ein Fall prüft eine konkrete semantische Aussage. Mehrere Werte oder Varianten derselben Aussage sind zusätzliche Kontrollen, keine neuen Kriterien. Ein Quellkandidat ist noch kein geprüftes Kriterium.</p>
+      <p>OK / gewertet = erfüllte Erwartungen / (OK + FP + FN + FP+FN). Dokumentierte Abweichungen, Messfehler, ungültige Fälle und übersprungene Fälle bleiben außerhalb dieses Nenners. Ein grüner CI-Lauf besagt, dass die Messung funktioniert, nicht dass alle Analyzer jede Erwartung erfüllen.</p>
+      <p>Ein Versionswechsel gilt nur bei gleichem Korpus-Fingerprint und gleicher PHP-Laufzeit als vergleichbar. Eine fehlgeschlagene oder ausgeschlossene Messung zählt weder als Behebung noch als Regression. Die main-Version ist auf einen vollständigen Commit festgelegt. Dieser Bericht misst keine Geschwindigkeit.</p>
+      <p>Ziel vor einer Veröffentlichung: mindestens 120 unabhängige, geprüfte Kriterien, nachvollziehbare Quellen und Alfreds ausdrückliches Abnicken der Fälle und dieser Oberfläche. Bis dahin bleiben Repository und Bericht privat. Es werden keine Upstream-PRs oder Issues erstellt und keine Maintainer automatisch kontaktiert.</p>
+      <p id="environment" class="mono muted"></p>
+    </div></details>
+    <details class="method"><summary id="catalog-heading">Quellkandidaten · noch nicht bewertet</summary><div class="method-body"><p>Diese Einträge dienen als Arbeitsvorrat. Sie erhöhen weder die gemessene Abdeckung noch einen Qualitätszähler. Überschneidungen, Test-Harness-Abhängigkeiten und strittige Erwartungen müssen vor der Übernahme geprüft werden.</p><div class="table-scroll"><table id="catalog"><thead><tr><th>Quelle</th><th>Kandidat</th><th>Bereich</th><th>Herkunft</th></tr></thead><tbody></tbody></table></div></div></details>
+    <footer><span>Eigenständige Composer-Reproducer · kein Speed-Benchmark</span><span id="timestamp"></span></footer>
+  </main>
+  <script id="report-data" type="application/json">REPORT_DATA</script>
+  <script>/* REPORT_JS */</script>
+</body>
+</html>

@@ -8,10 +8,12 @@ opinion poll.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CASES_DIR = os.path.join(ROOT, "cases")
@@ -50,6 +52,10 @@ class Case:
     @property
     def id(self) -> str:
         return self.data["id"]
+
+    @property
+    def criterion_id(self) -> str:
+        return self.data.get("criterion_id", self.id)
 
     @property
     def domain(self) -> str:
@@ -133,6 +139,12 @@ def validate(case: Case) -> list[str]:
     if case_id and case.path.split(os.sep)[-2:] != case_id.split("/"):
         problems.append(f"id {case_id!r} does not match its directory {os.sep.join(case.path.split(os.sep)[-2:])!r}")
 
+    if "criterion_id" in data:
+        criterion = data["criterion_id"]
+        if (not isinstance(criterion, str) or not _ID_RE.fullmatch(criterion)
+                or criterion.split("/")[0] != data.get("domain")):
+            problems.append("criterion_id must be '<domain>/<semantic-rule>' in the case's domain")
+
     truth = data.get("ground_truth") or {}
     basis = truth.get("basis")
     if basis not in BASES:
@@ -201,3 +213,19 @@ def validate(case: Case) -> list[str]:
 def to_json(case: Case) -> dict:
     return {"id": case.id, "path": case.path, "valid": not case.diagnostics,
             "problems": case.diagnostics}
+
+
+def fingerprint(cases: list[Case]) -> str:
+    """Identify the measured source bytes, independent of checkout location."""
+    digest = hashlib.sha256()
+    for case in sorted(cases, key=lambda item: item.id):
+        root = Path(case.path)
+        for path in sorted(root.rglob('*')):
+            relative = path.relative_to(root)
+            if (not path.is_file() or any(part in ('vendor', '.generated', '__pycache__')
+                                          for part in relative.parts)
+                    or path.name == 'composer.lock'):
+                continue
+            identity = f'{case.id}/{relative.as_posix()}'.encode()
+            digest.update(identity + b'\0' + hashlib.sha256(path.read_bytes()).digest())
+    return digest.hexdigest()

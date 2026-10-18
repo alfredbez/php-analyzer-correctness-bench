@@ -1,0 +1,61 @@
+name: Private version comparison
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cases/**'
+      - 'harness/**'
+      - 'tools/mago-matrix.json'
+      - 'tools/prepare-mago.py'
+      - 'tools/versions.json'
+      - 'factory/catalog.json'
+      - '.github/workflows/comparison.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: private-comparison-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      BENCH_PHP: native
+      CARGO_PROFILE_DEV_DEBUG: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: none
+          coverage: none
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/cache@v4
+        with:
+          path: tools/bin
+          key: comparison-${{ runner.os }}-${{ hashFiles('tools/versions.json', 'tools/mago-matrix.json', 'tools/prepare-mago.py') }}
+      - name: Prepare pinned analyzers and immutable Mago versions
+        run: |
+          ./tools/install.sh
+          python3 tools/prepare-mago.py
+      - name: Measure the identical corpus
+        run: python3 harness/compare.py --out results/comparisons/ci
+      - name: Render the offline private report
+        if: always()
+        run: |
+          if [ -f results/comparisons/ci/comparison.json ]; then
+            python3 harness/site.py --comparison results/comparisons/ci/comparison.json --out results/comparisons/ci/index.html
+            cat results/comparisons/ci/COMPARISON.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: private-correctness-comparison
+          path: results/comparisons/ci/
+          if-no-files-found: warn
+          retention-days: 30

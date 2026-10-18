@@ -15,6 +15,7 @@ cases/**/composer.lock
 # but the raw tool output inside them is not. results/latest is a regenerated
 # convenience copy of the newest run.
 results/runs/**/raw/
+results/comparisons/**/raw/
 results/latest
 
 # Autonomous factory scratch space.

@@ -12,10 +12,12 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+import hashlib
 import json
 import os
 import sys
 import time
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,9 +26,11 @@ from bench import execute, report            # noqa: E402
 from bench.runner import ROOT, Runner        # noqa: E402
 
 
-def tool_versions(runner: Runner) -> dict:
+def tool_versions(runner: Runner, selected=None) -> dict:
     versions = {}
     for spec in execute.TOOLS:
+        if selected and spec.name not in selected:
+            continue
         argv = [runner.runtime_path(execute.tool_binary(spec)), "--version"]
         output = (runner.php if spec.needs_php else runner.exec)(argv, cwd=ROOT, timeout=120)
         lines = output["stdout"].strip().splitlines()
@@ -84,16 +88,24 @@ def cmd_run(args) -> int:
 
     runner = Runner(php_version=args.php)
     php_version = args.php_version or runner.php_version()
-    run_dir = None if args.no_save else report.new_run_dir(args.label)
+    if args.output:
+        run_dir = os.path.abspath(args.output)
+        os.makedirs(run_dir, exist_ok=False)
+    else:
+        run_dir = None if args.no_save else report.new_run_dir(args.label)
     meta = {
         "run_id": os.path.basename(run_dir) if run_dir else "ephemeral",
         "started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "runner": runner.mode,
         "image": runner.image if runner.mode == "docker" else "host",
         "php_version": php_version,
-        "tools": tool_versions(runner),
+        "tools": tool_versions(runner, args.tool),
+        "tool_sha256": {spec.name: hashlib.sha256(Path(execute.tool_binary(spec)).read_bytes()).hexdigest()
+                        for spec in execute.TOOLS if not args.tool or spec.name in args.tool},
+        "corpus_fingerprint": case_mod.fingerprint(cases),
         "pins": json.load(open(os.path.join(ROOT, "tools/versions.json"), encoding="utf-8"))["tools"],
         "case_count": len(cases),
+        "criterion_count": len({case.criterion_id for case in cases}),
         "valid_cases": sum(1 for case in cases if not case.diagnostics),
         "selected": [case.id for case in cases],
     }
@@ -112,10 +124,13 @@ def cmd_run(args) -> int:
             _print_progress(record)
     records.sort(key=lambda record: record["case"])
 
+    if case_mod.fingerprint(cases) != meta["corpus_fingerprint"]:
+        raise RuntimeError("case source changed during the measurement; discard this run")
     payload = report.summarise(records, meta)
     if run_dir:
         report.write_report(run_dir, payload)
-        report.publish(payload, run_dir)
+        if not args.output:
+            report.publish(payload, run_dir)
     print(report.render_summary(payload))
     if run_dir:
         print(f"Artifacts: {os.path.relpath(run_dir, ROOT)}")
@@ -210,7 +225,9 @@ def main(argv=None) -> int:
     p_run.add_argument("--jobs", type=int, default=int(os.environ.get("BENCH_JOBS", "1")))
     p_run.add_argument("--label", default="", help="suffix for the run directory")
     p_run.add_argument("--shard", help="run only one slice of the corpus, as i/n")
-    p_run.add_argument("--no-save", action="store_true", help="do not write artifacts")
+    output = p_run.add_mutually_exclusive_group()
+    output.add_argument("--no-save", action="store_true", help="do not write artifacts")
+    output.add_argument("--output", help="write an isolated run here without refreshing results/latest")
     p_run.set_defaults(func=cmd_run)
 
     p_show = sub.add_parser("show", help="print a report file")

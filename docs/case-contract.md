@@ -51,6 +51,13 @@ cases/<domain>/<slug>/
 ### Field rules
 
 * `id` must equal the directory path under `cases/` and match `<domain>/<slug>`.
+* Optional `criterion_id` identifies a semantic rule as `<domain>/<semantic-rule>`
+  in the same domain. It defaults to `id`. Multiple fixtures of that rule share
+  one criterion ID, so parameter variants cannot inflate the coverage target.
+  Matching IDs catch declared duplicates; independent review must catch two
+  differently named fixtures testing the same fact.
+* Optional `source_candidate_id` links a clean-room fixture to a lead in
+  `factory/catalog.json`. The lead does not establish the fixture's ground truth.
 * `domain` groups cases in the report. Use an existing domain when it fits:
   `narrowing`, `assignability`, `callables`, `generics`, `nullability`,
   `legacy-patterns`, `phpdoc-extensions`, `dead-code`, `enums`, `arrays`.
