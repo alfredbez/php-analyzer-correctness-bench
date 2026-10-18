@@ -36,6 +36,7 @@ function pair() { return data.comparisons[Number($("pair").value || 0)]; }
 function change(id) { return pair()?.cases.find((row) => row.case === id)?.transition || "not_comparable"; }
 
 const stable = profiles.get("stable").report;
+const runtimeChecks = stable.cases.filter((c) => c.runtime_proof).length;
 const catalog = data.catalog || { target_criteria: 120, candidates: [] };
 const assessments = new Map((data.catalog_assessment?.entries || []).map((entry) => [entry.candidate_id, entry]));
 const criteria = new Set(data.cases.map((c) => c.manifest.criterion_id || c.id));
@@ -94,7 +95,7 @@ function render() {
     }
     row.append(node("td", names[change(c.id)], `transition ${change(c.id)}`)); body.append(row);
   }
-  $("result-count").textContent = `${visible.length} of ${data.cases.length} measured cases · PHP ${stable.meta.php_version} · ${stable.meta.runtime_proven}/${stable.meta.case_count} runtime checks passed`;
+  $("result-count").textContent = `${visible.length} of ${data.cases.length} measured cases · PHP ${stable.meta.php_version} · ${stable.meta.runtime_proven}/${runtimeChecks} executed runtime checks passed`;
   $("empty").hidden = visible.length !== 0;
   $("compatibility").replaceChildren();
   if (pair()?.problems.length) $("compatibility").append(node("p", `Versions are not comparable: ${pair().problems.join("; ")}`, "problem"));
