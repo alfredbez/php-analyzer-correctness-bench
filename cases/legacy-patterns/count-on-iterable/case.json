@@ -1,0 +1,47 @@
+{
+  "id": "legacy-patterns/count-on-iterable",
+  "title": "count() on a parameter that is only iterable throws for a non-Countable Traversable",
+  "domain": "legacy-patterns",
+  "rule_class": "argument.type",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "count() accepts an array or a Countable. An `iterable` parameter may be a Generator or another Traversable that does not implement Countable, and count() throws a TypeError for it; the fixture therefore cannot count its parameter unconditionally.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.count.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "argument.type",
+          "line": 17,
+          "message_regex": "count expects array\\|Countable"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "PossiblyInvalidArgument",
+          "line": 17,
+          "message_regex": "count expects Countable"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "possibly-invalid-argument",
+          "line": 17,
+          "message_regex": "argument #1 of `count`"
+        }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 (argument.type) and Mago 1.57.0 (possibly-invalid-argument) reject the call; Psalm 6.20.0 reports nothing for an `iterable` parameter, although its own callmap gives count() the parameter type `Countable|array<array-key, mixed>`, it reports InvalidArgument for a `Traversable` or `Generator` parameter, and it reports PossiblyInvalidArgument for a `Countable|Traversable` parameter - which is why the expected code here is PossiblyInvalidArgument and not InvalidArgument. The silence is therefore a false negative against Psalm's own documented signature, not a by-design divergence. runtime/check.php is the neutral ground truth: it calls the fixture with a Generator and the call throws a TypeError."
+}

@@ -1,0 +1,59 @@
+{
+  "id": "legacy-patterns/loose-comparison-with-zero",
+  "title": "a loose comparison of a non-numeric string with 0 is always false since PHP 8",
+  "domain": "legacy-patterns",
+  "rule_class": "impossible-condition",
+  "php": { "min": "8.0" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Since PHP 8 an int compared to a non-numeric string is compared as a string, so 'abc' == 0 is false; the branch is unreachable. PHP 7 converted the string to a number, which made the same comparison true - the legacy code kept its meaning only while the language did.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.comparison.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "equal.alwaysFalse",
+          "line": 15,
+          "message_regex": "always evaluate to false"
+        }
+      ],
+      "allowed": [
+        {
+          "code": "deadCode.unreachable",
+          "line": 16,
+          "reason": "The guarded body is unreachable for the same reason; a second correct report about the same comparison is not a false positive."
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "TypeDoesNotContainType",
+          "line": 15
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "redundant-comparison",
+          "line": 15
+        }
+      ],
+      "allowed": [
+        {
+          "code": "impossible-condition",
+          "line": 15,
+          "reason": "Mago reports the same site twice, once for the comparison and once for the resulting condition. The second diagnostic is correct, not noise."
+        }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 (equal.alwaysFalse) and Mago 1.57.0 (redundant-comparison) report the comparison as constant; Psalm 6.20.0 is silent for this operand pair, although it reports TypeDoesNotContainType for a loose comparison between two non-numeric literals and for two int literals, so the silence is a local gap rather than a different rule class. The citation is the comparison-operators page, whose type-juggling table defines the PHP 8 rule; runtime/check.php evaluates the comparison in the running PHP."
+}

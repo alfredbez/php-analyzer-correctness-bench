@@ -1,0 +1,47 @@
+{
+  "id": "legacy-patterns/array-filter-string-callable-loses-list",
+  "title": "array_filter() with a string callable keeps keys, so its result is not a list",
+  "domain": "legacy-patterns",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "array_filter() preserves the keys it keeps. Filtering a list<mixed> can therefore leave holes: filtering ['first', 1] with is_int yields [1 => 1], which is not a list<int>. The result cannot unconditionally satisfy the callee's list<int> contract.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.array-filter.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "argument.type",
+          "line": 22,
+          "message_regex": "expects list<int>"
+        }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "ArgumentTypeCoercion",
+          "line": 22,
+          "message_regex": "expects list<int>"
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        {
+          "code": "possibly-invalid-argument",
+          "line": 22,
+          "message_regex": "expected `list<int>`"
+        }
+      ]
+    }
+  },
+  "notes": "A green row kept as a regression guard: all three analyzers report the same defect. PHPStan 2.3.1 calls the argument array<int<0, max>, int>, Psalm 6.20.0 reports ArgumentTypeCoercion against the same list<int> contract, and Mago 1.57.0 reports possibly-invalid-argument. The legacy part of the fixture is the string callable ('is_int') plus the assumption that filtering a list yields a list. The runtime script demonstrates the key preservation that the expectation rests on; docblock types are not enforced at runtime, so nothing throws and the proof is the sparse key set."
+}
