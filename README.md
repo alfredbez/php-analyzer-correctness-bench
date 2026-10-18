@@ -59,6 +59,12 @@ expectations and measured diagnostics. It makes no external resource requests.
 `comparison.json` is the machine-readable evidence bundle. Failed measurements,
 changed corpora and policy exclusions cannot become fixes or regressions.
 
+The [2026-10-18 review snapshot](results/comparisons/2026-10-18-private-review-30/COMPARISON.md)
+contains 30 criteria; its adjacent `index.html` is the offline review surface.
+Later accepted case batches generate fresh private GitHub Actions artifacts.
+Older snapshots are retained, including the original classification of the
+`array-key` case before its documented PHPStan scope exclusion was established.
+
 ## What a result means
 
 Four judgements enter the agreement denominator:
