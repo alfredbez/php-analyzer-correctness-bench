@@ -9,48 +9,48 @@
 </head>
 <body>
   <main>
-    <header class="page-header">
-      <div><p class="eyebrow">PHP ANALYZER CORRECTNESS BENCHMARK</p><h1>Tool behavior</h1></div>
-      <div class="header-actions"><span class="private-label">Private draft</span><button id="download">Download JSON ↓</button></div>
-    </header>
-    <section class="notice" aria-label="Context">A low-cost, broad comparison of tool behavior. Not every benchmark expectation is desirable for every tool.</section>
-    <details class="method"><summary>Coverage and source candidates</summary><section id="coverage" class="coverage" aria-label="Coverage"></section></details>
-    <section id="versions" class="versions" aria-label="Measured versions"></section>
-    <section class="workspace">
-      <aside class="filters" aria-label="Filters">
-        <h2>Filter cases</h2>
-        <label for="search">Search</label><input id="search" type="search" placeholder="e.g. callable, null, count">
-        <label for="domain">Domain</label><select id="domain"><option value="all">All domains</option></select>
-        <label for="finding">Finding / change</label><select id="finding">
-          <option value="all">All cases</option><option value="defects">FP or FN · any tool</option>
-          <option value="false_positive">False positive · any tool</option><option value="false_negative">False negative · any tool</option>
-          <option value="divergence">Documented divergence</option><option value="fixed">Mago · fixed</option>
-          <option value="regressed">Mago · regressed</option><option value="still_open">Mago · still open</option>
-          <option value="not_comparable">Mago · not comparable</option>
-        </select>
-        <label for="pair">Compare Mago versions</label><select id="pair"></select>
-        <button id="reset" class="reset">Reset filters</button>
-        <details class="legend"><summary>Badge guide</summary><p><b class="ok">OK</b> Expectation met</p><p><b class="false_positive">FP</b> Unexpected diagnostic</p><p><b class="false_negative">FN</b> Missing diagnostic</p><p><b class="mixed">FP+FN</b> Both</p><p><b class="divergence">DIV</b> Documented divergence</p><p><b class="tool_error">ERR</b> Measurement error</p><p><b class="case_error">BAD</b> Invalid case</p><p><b class="skipped">skip</b> Skipped</p><p>FP and FN count cases, not diagnostics. Divergences, errors and skipped cases are excluded from scores.</p></details>
-      </aside>
-      <div class="results">
-        <div class="section-heading"><div><h2>Measured cases</h2><p id="result-count" class="muted" aria-live="polite"></p></div><span class="quiet-label">Select a case for evidence</span></div>
-        <div id="compatibility"></div>
-        <p class="table-hint">Scroll the matrix for more cases and versions.</p>
-        <div class="table-scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div>
-        <div id="empty" hidden>No measured cases match these filters.</div>
-        <section id="case-detail" class="detail" hidden aria-labelledby="detail-title" tabindex="-1"></section>
-      </div>
-    </section>
+    <h1>PHP analyzer correctness benchmark</h1>
+    <p class="meta"><span id="coverage"></span> · <a href="https://github.com/alfredbez/php-analyzer-correctness-bench">Repository</a></p>
+    <p class="notice">A low-cost, broad comparison of tool behavior. Not every benchmark expectation is desirable for every tool.</p>
+    <div class="filters" aria-label="Filters">
+      <label>Search <input id="search" type="search" placeholder="callable, null, count"></label>
+      <label>Domain <select id="domain"><option value="all">All domains</option></select></label>
+      <label>Result <select id="finding">
+        <option value="all">All results</option><option value="defects">FP or FN · any tool</option>
+        <option value="false_positive">False positive · any tool</option><option value="false_negative">False negative · any tool</option>
+        <option value="divergence">Documented divergence</option><option value="fixed">Mago · improved</option>
+        <option value="regressed">Mago · regressed</option><option value="still_open">Mago · still open</option>
+        <option value="not_comparable">Mago · not comparable</option>
+      </select></label>
+      <label>Mago comparison <select id="pair"></select></label>
+      <button id="reset">Reset</button>
+    </div>
+    <div id="compatibility"></div>
+    <p id="result-count" class="meta" aria-live="polite"></p>
+    <nav class="case-nav" aria-label="Examples">
+      <label for="example">Example</label><select id="example"></select>
+      <button id="previous" aria-label="Previous example">Previous</button><button id="next" aria-label="Next example">Next</button>
+    </nav>
+    <p id="empty" hidden>No measured cases match these filters.</p>
+    <section id="case-detail" aria-labelledby="detail-title" hidden></section>
+    <details class="method"><summary>All results</summary>
+      <p class="meta">OK: matches baseline. FP: unexpected diagnostic. FN: missing diagnostic. DIV: documented scope difference. ERR/BAD: measurement/case error. skip: not applicable. These are not universal quality scores.</p>
+      <div class="table-scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div>
+    </details>
+    <details class="method"><summary>Summary</summary>
+      <div class="table-scroll"><table id="versions"><thead><tr><th>Tool</th><th>OK / judged</th><th>FP</th><th>FN</th><th>FP+FN</th><th>Excluded</th></tr></thead><tbody></tbody></table></div>
+      <p class="meta">OK / judged = OK / (OK + FP + FN + FP+FN). Scope differences, errors and skips are excluded.</p>
+    </details>
     <details class="method"><summary>Method and discussion</summary><div class="method-body">
       <p>Expectations invite discussion and corrections, not a prescribed feature roadmap or maintainer endorsement. External reproducers, corrections and contributions are welcome.</p>
       <p>Cases are small semantic probes, not exhaustive upstream tests. Variants share a criterion ID. FP and FN mean disagreement with the stated baseline, including disputed warning policies, not necessarily implementation defects.</p>
-      <p>OK / judged = OK / (OK + FP + FN + FP+FN). Documented divergences, measurement errors, invalid cases and skipped cases are excluded. Passing CI confirms the measurement works, not that every expectation is met.</p>
+      <p>Passing CI confirms the measurement works, not that every expectation is met. Runtime checks cover the tested values, not all possible inputs.</p>
       <p>Version changes require the same corpus fingerprint and PHP runtime. Failed or excluded measurements count as neither fixes nor regressions. The main build uses a full commit hash. Speed is not measured.</p>
-      <p>This selected corpus is not an overall ranking or a real-project defect rate. The repository and report remain private until Alfred approves publication. No automatic upstream issues, pull requests or maintainer contact.</p>
-      <p id="environment" class="mono muted"></p>
+      <p>This selected corpus is not an overall ranking or a real-project defect rate. No automatic upstream issues, pull requests or maintainer contact.</p>
+      <p id="environment" class="meta"></p>
     </div></details>
     <details class="method"><summary id="catalog-heading">Source coverage</summary><div class="method-body"><p>Each lead maps to a reduced probe, an existing case or a reason for deferral. Coverage does not mean every upstream assertion was reproduced.</p><div class="table-scroll"><table id="catalog"><thead><tr><th>Source</th><th>Candidate</th><th>Outcome</th><th>Evidence</th><th>Origin</th></tr></thead><tbody></tbody></table></div></div></details>
-    <footer><a href="https://github.com/alfredbez/php-analyzer-correctness-bench#contributing" target="_blank" rel="noopener noreferrer">Contributions welcome</a><span id="timestamp"></span></footer>
+    <footer><a href="https://github.com/alfredbez/php-analyzer-correctness-bench#contributing" target="_blank" rel="noopener noreferrer">Contributions welcome</a> · <button id="download">Download JSON</button> · <span id="timestamp"></span></footer>
   </main>
   <script id="report-data" type="application/json">REPORT_DATA</script>
   <script>/* REPORT_JS */</script>

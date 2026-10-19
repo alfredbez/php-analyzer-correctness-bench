@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render one offline-capable, private HTML review surface from measured JSON."""
+"""Render an offline-capable HTML report from measured JSON."""
 
 import argparse
 import json

@@ -86,7 +86,7 @@ class EvidenceTest(unittest.TestCase):
         parser.feed(benchmark_site.render({'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': []}))
         ids = [attrs['id'] for _, attrs in parser.elements if 'id' in attrs]
         for control in ('search', 'domain', 'finding', 'pair', 'reset', 'download',
-                        'matrix', 'case-detail', 'report-data', 'catalog'):
+                        'example', 'previous', 'next', 'matrix', 'case-detail', 'report-data', 'catalog'):
             self.assertEqual(ids.count(control), 1)
         details = [attrs for tag, attrs in parser.elements if tag == 'details']
         self.assertTrue(details)
