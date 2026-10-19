@@ -1,0 +1,53 @@
+name: Publish reviewed report
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'harness/site.py'
+      - 'harness/web/**'
+      - 'results/comparisons/2026-10-18-expanded-review/comparison.json'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test the report generator and harness
+        run: python3 -m unittest discover -s tests -t .
+      - uses: actions/configure-pages@v5
+      - name: Render the reviewed comparison
+        run: >-
+          python3 harness/site.py
+          --comparison results/comparisons/2026-10-18-expanded-review/comparison.json
+          --out _site/index.html
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the reviewed report
+        id: deployment
+        uses: actions/deploy-pages@v4
