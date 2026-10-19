@@ -1,7 +1,7 @@
 # 0004 - Review criteria and compare immutable version cohorts
 
 Date: 2026-10-18
-Status: accepted for the private working repository
+Status: accepted; public repository and report approved on 2026-10-19
 
 ## Problem
 
@@ -35,7 +35,7 @@ Historical, stable and main Mago binaries run against the same case bytes and
 PHP runtime. Main means an immutable commit, never an unrecorded moving branch.
 Changed corpora and failed measurements cannot count as fixes or regressions.
 
-The private static website reads those reports. It shows coverage, per-case
+The static website reads those reports. It shows coverage, per-case
 expectations, diagnostics, runtime evidence, reproduction commands, citations
 and version transitions. It distinguishes source candidates, measured cases,
 documented divergences and maintainer alignment. Internal review is not a
@@ -66,8 +66,11 @@ silently overwriting it. A quota failure still blocks that round's publication.
 
 ## Release gate
 
-The repository remains private. No automation may change repository visibility,
-publish a public website, contact maintainers, or create upstream PRs or issues.
-Before publication, Alfred reviews the criteria and website, checks the
-documented policy disagreements, and explicitly approves release. Reaching a
-number alone never authorizes publication.
+Alfred approved changing the repository to public and publishing the reviewed
+report on GitHub Pages on 2026-10-19. Pages deploys only the checked-in reviewed
+snapshot with the current template. Fresh CI and nightly measurements do not
+automatically replace that snapshot.
+
+Publication does not imply maintainer agreement with the expectations. No
+automation may contact maintainers or create upstream PRs or issues. The factory
+remains paused. A criterion count alone never authorizes a new release.

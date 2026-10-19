@@ -4,6 +4,8 @@ A low-cost, broad comparison of PHPStan, Psalm and Mago behavior.
 **Not every benchmark expectation is desirable for every tool.** Warning policy,
 legacy compatibility and annotation dialects are legitimate discussion points.
 
+Browse the [examples and results](https://alfredbez.github.io/php-analyzer-correctness-bench/).
+
 Each case is a small Composer project with an explicit baseline, sources and
 runtime controls where applicable. FP and FN record disagreements with that
 baseline, not necessarily implementation defects. This is not an overall ranking,
@@ -30,11 +32,11 @@ The report probes the selected binary, so its recorded version matches the run.
 The nightly drift workflow uses `tools/install.sh --latest` in its fresh checkout.
 Locally, use an out-of-tree `BENCH_TOOLS_DIR` to preserve the pinned binaries.
 
-## Private review and version comparisons
+## Reports and version comparisons
 
-This is a private working repository. Publication, maintainer contact and public
-hosting require Alfred's explicit approval after he reviews the criteria and
-report. No upstream issues or pull requests are created here.
+The public report presents the checked-in reviewed comparison, not unreviewed
+nightly results. No upstream issues, pull requests or maintainer messages are
+created automatically.
 
 The initial target is 120 semantic criteria, not 120 parameter variants.
 `factory/catalog.json` lists 120 selected leads from Psalm, PHPStan and historical
@@ -60,6 +62,8 @@ The output directory must be new, so measurements never overwrite one another.
 Open `index.html` locally: it is a self-contained offline report with search,
 domain and defect filters, version transitions, source fixtures, runtime checks,
 expectations and measured diagnostics. It makes no external resource requests.
+PHP examples have per-file copy buttons and links to the online playgrounds.
+Cases that require extra files or dependencies are marked for local reproduction.
 `comparison.json` is the machine-readable evidence bundle. Failed measurements,
 changed corpora and policy exclusions cannot become fixes or regressions.
 
@@ -70,8 +74,12 @@ One memory/performance candidate is deferred because its available fixture canno
 reproduce the resource defect. The snapshot measures Mago 1.54.0, 1.57.0 and pinned
 main, plus PHPStan and Psalm, on PHP 8.4. Download the HTML to use it offline.
 Earlier snapshots remain available for audit, including classifications corrected
-after additional source or configuration evidence. Private GitHub Actions runs
+after additional source or configuration evidence. GitHub Actions runs
 also produce downloadable offline reports.
+
+GitHub Pages rebuilds the reviewed snapshot with the current report template.
+It deploys only the generated HTML, not the repository, runtime artifacts or
+factory state. New measurements need review before replacing that snapshot.
 
 ## What a result means
 
