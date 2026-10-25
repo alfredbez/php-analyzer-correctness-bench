@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "run_id": "2026-10-24-new-batch-final",
+    "started": "2026-10-24T17:31:05Z",
+    "runner": "docker",
+    "image": "php:8.4-cli",
+    "php_version": "8.4.27",
+    "tools": {
+      "phpstan": "PHPStan - PHP Static Analysis Tool 2.3.1",
+      "psalm": "Psalm 6.20.1@376425b8e67b79773add388e16b4f6be5693dc87",
+      "mago": "mago 1.58.2",
+      "pzoom": "pzoom c8162978033745e585f8e60d15a66a48862333cc"
+    },
+    "tool_sha256": {
+      "phpstan": "85157dba3d95d77ca603d2b7303aa78a538f9e3b56ccad07dd794c53aa96d1ae",
+      "psalm": "f0f01ef4d78361d3a2e188fd0eba25bfbd634c2c49b321021a25f64a4e684c51",
+      "mago": "2f784416aa3f30666fada14125b5758e05df2ac8e7cd0b822e3464d27ffe0b5e",
+      "pzoom": "961f57c60c180e87d029ee8354662733b35e4abdb903c4e57c085e5dae1739da"
+    },
+    "corpus_fingerprint": "eb836c23984f8db1e5ef9e2aa5acb55446789f179833bee8154e4c7c10081599",
+    "pins": {
+      "phpstan": {
+        "version": "2.3.1",
+        "url": "https://github.com/phpstan/phpstan/releases/download/{version}/phpstan.phar",
+        "binary": "tools/bin/phpstan.phar",
+        "invocation": "php {binary} analyse --no-progress --error-format=json --level={level} --autoload-file={autoload} {targets}",
+        "upstream": "phpstan/phpstan"
+      },
+      "psalm": {
+        "version": "6.20.1",
+        "url": "https://github.com/vimeo/psalm/releases/download/{version}/psalm.phar",
+        "binary": "tools/bin/psalm.phar",
+        "invocation": "php {binary} --no-cache --output-format=json --no-progress --config={config}",
+        "upstream": "vimeo/psalm"
+      },
+      "mago": {
+        "version": "1.58.2",
+        "url": "https://github.com/carthage-software/mago/releases/download/{version}/mago-{version}-x86_64-unknown-linux-gnu.tar.gz",
+        "binary": "tools/bin/mago",
+        "invocation": "{binary} analyze --format json {targets}",
+        "upstream": "carthage-software/mago"
+      }
+    },
+    "case_count": 2,
+    "criterion_count": 2,
+    "valid_cases": 2,
+    "selected": [
+      "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+      "assignability/catalog-psalm-2ed1be42908ccc536dd5"
+    ],
+    "runtime_proven": 2,
+    "runtime_proof_failed": []
+  },
+  "cases": [
+    {
+      "case": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+      "domain": "assignability",
+      "rule_class": "invalid-property-write",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+      "results": {
+        "phpstan": {
+          "case": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "property.readOnlyAssignNotInConstructor",
+              "message": "Readonly property FixedReading::$value is assigned outside of the constructor.",
+              "file": "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/src/probe.php",
+              "line": 12,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 3.511,
+          "php": "8.4.27"
+        },
+        "psalm": {
+          "case": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "InaccessibleProperty",
+              "message": "FixedReading::$value is marked readonly",
+              "file": "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/src/probe.php",
+              "line": 12,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.681,
+          "php": "8.4.27"
+        },
+        "mago": {
+          "case": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+          "tool": "mago",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "invalid-property-write",
+              "message": "Cannot modify a readonly property after initialization.",
+              "file": "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/src/probe.php",
+              "line": 12,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 0.182,
+          "php": "8.4.27"
+        },
+        "pzoom": {
+          "case": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+          "tool": "pzoom",
+          "verdict": "tool_error",
+          "detail": "incomplete or inconsistent Pzoom console report: Scan error in stubs/extensions/sockets.phpstub: Parse error: SyntaxError(UnexpectedToken(FileId(8961026941872636459), 57, Position { offset: 5848 }))\nScan error in stubs/extensions/sockets.phpstub: Parse error: UnexpectedToken(OneOf([]), Semicolon, Span { file_id: FileId(8961026941872636459), start:",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 2,
+          "duration_s": 0.726,
+          "php": "8.4.27"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    },
+    {
+      "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+      "domain": "assignability",
+      "rule_class": "invalid-operand",
+      "basis": "runtime_proof",
+      "path": "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5",
+      "results": {
+        "phpstan": {
+          "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+          "tool": "phpstan",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "unaryOp.invalid",
+              "message": "Unary operation \"~\" on bool results in an error.",
+              "file": "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/src/probe.php",
+              "line": 5,
+              "severity": "warning"
+            }
+          ],
+          "exit_code": 1,
+          "duration_s": 3.128,
+          "php": "8.4.27"
+        },
+        "psalm": {
+          "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+          "tool": "psalm",
+          "verdict": "ok",
+          "detail": "",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [
+            {
+              "code": "InvalidOperand",
+              "message": "Cannot negate a non-numeric non-string type bool",
+              "file": "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/src/probe.php",
+              "line": 5,
+              "severity": "error"
+            }
+          ],
+          "exit_code": 2,
+          "duration_s": 1.579,
+          "php": "8.4.27"
+        },
+        "mago": {
+          "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+          "tool": "mago",
+          "verdict": "false_negative",
+          "detail": "missing required diagnostic(s): invalid-operand",
+          "missing": [
+            "invalid-operand"
+          ],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 0,
+          "duration_s": 0.236,
+          "php": "8.4.27"
+        },
+        "pzoom": {
+          "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+          "tool": "pzoom",
+          "verdict": "tool_error",
+          "detail": "incomplete or inconsistent Pzoom console report: Scan error in stubs/extensions/sockets.phpstub: Parse error: SyntaxError(UnexpectedToken(FileId(8961026941872636459), 57, Position { offset: 5848 }))\nScan error in stubs/extensions/sockets.phpstub: Parse error: UnexpectedToken(OneOf([]), Semicolon, Span { file_id: FileId(8961026941872636459), start:",
+          "missing": [],
+          "unexpected": [],
+          "acknowledged": [],
+          "diagnostics": [],
+          "exit_code": 2,
+          "duration_s": 0.858,
+          "php": "8.4.27"
+        }
+      },
+      "runtime_proof": {
+        "script": "runtime/check.php",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "confirmed": true
+      }
+    }
+  ],
+  "summary": {
+    "mago": {
+      "ok": 1,
+      "false_positive": 0,
+      "false_negative": 1,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 2,
+      "cases": 2,
+      "agreement": 50.0,
+      "defects": 1,
+      "by_domain": {
+        "assignability": {
+          "ok": 1,
+          "false_positive": 0,
+          "false_negative": 1,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "phpstan": {
+      "ok": 2,
+      "false_positive": 0,
+      "false_negative": 0,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 2,
+      "cases": 2,
+      "agreement": 100.0,
+      "defects": 0,
+      "by_domain": {
+        "assignability": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "psalm": {
+      "ok": 2,
+      "false_positive": 0,
+      "false_negative": 0,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 0,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 2,
+      "cases": 2,
+      "agreement": 100.0,
+      "defects": 0,
+      "by_domain": {
+        "assignability": {
+          "ok": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 0,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "pzoom": {
+      "ok": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "mixed": 0,
+      "divergence": 0,
+      "tool_error": 2,
+      "case_error": 0,
+      "skipped": 0,
+      "judged": 0,
+      "cases": 2,
+      "agreement": null,
+      "defects": 0,
+      "by_domain": {
+        "assignability": {
+          "ok": 0,
+          "false_positive": 0,
+          "false_negative": 0,
+          "mixed": 0,
+          "divergence": 0,
+          "tool_error": 2,
+          "case_error": 0,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "divergences": []
+}

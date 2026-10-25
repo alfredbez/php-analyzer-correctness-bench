@@ -1,0 +1,9 @@
+{
+  "ref": "c8162978033745e585f8e60d15a66a48862333cc",
+  "source_url": "https://github.com/muglug/pzoom.git",
+  "experimental": true,
+  "build_profile": "release",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "lock_sha256": "b391496292e6375b0262300347c375f89cb7baf65333b5906c858cbed2ba4a6a",
+  "sha256": "961f57c60c180e87d029ee8354662733b35e4abdb903c4e57c085e5dae1739da"
+}

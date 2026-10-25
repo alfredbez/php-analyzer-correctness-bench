@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "scope": "Local uncommitted working-tree pilot, not an autonomous-factory publication receipt.",
+  "base": "b8562a6e19c142ff4d0b8219502ff440ff2ad795",
+  "reviewer_model": "github-copilot/kimi-k3",
+  "core_verdict": "accept",
+  "pzoom_verdict": "accepted as fail-closed experiment; blocked for quality scoring",
+  "primary_review": "independent-review.md",
+  "followup_review": "report-followup-review.md",
+  "reviewed_code_sha256": {
+    "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/case.json": "914cd26e17487a9a0755387585a9abfe28326992cd9c2ff3bcd2a0aee020d6f3",
+    "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/composer.json": "f131fcff8688cde450e61cb73c82100e91390634a0f40de68f19bb64a8acfb80",
+    "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/runtime/check.php": "1527accdd0e07c1c57ee42cfcc71870392156a00c0fb363ef1716aee4c796b0c",
+    "cases/assignability/catalog-phpstan-da61ed3a1be4f5592a03/src/probe.php": "9f978ecb25cfe096b0c6d5308cb026e8f6de4bb89e75fa0c9750594732fd280f",
+    "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/case.json": "87f04b30f38bead2bced5f827bd464f0571745dcf39d2ff027131482b5d378f4",
+    "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/composer.json": "ecd9457aac1abdf0eafbedcbf79458058b4578a749c43de99439575120a9e920",
+    "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/runtime/check.php": "dc6e4133ef9cb115b120df581e6c11ed92443a856d531a3c17e9aa36062f2eb8",
+    "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/src/probe.php": "4ea402573757ac62d50d77770a95e705dd993f61c55b2a71a616d54285c36608",
+    "factory/assessment.json": "32eb8e0fb46ace37abdd2b2e278ff768016fbc27362f783ac4b9dcad080dbafc",
+    "factory/bench_factory.py": "08b925ac39814251b55d308dfa8f9ab8c6ddff05863c06e6198cfa4e80281410",
+    "factory/catalog.json": "709e7edf121f54de96fd65868cc27e4a45f747d3b6ccdaf43360fd492a88861d",
+    "factory/catalog.py": "925f8fa4347d8ad83033a4e8b0fbe04d1e1e76695e4a4db0aabc6820e252f119",
+    "harness/bench.py": "7cbe79bde7c6ea680b5317c3dc1feda1ce0b2a6283cb2862b551e37f9991af4d",
+    "harness/bench/adapters.py": "f8c21270fd00f6a5fc20aecdfc142b6c1ff0b0d7a151f2386c973a727e1d662f",
+    "harness/bench/case.py": "1babd8cb4b7538c3cbf2acfca6eec169051f23cb6c2b82aa1a726696533124c7",
+    "harness/bench/classify.py": "a11dd8ae8313da71b794306c1e61d44e583464d39d90fa969f376a93a355aac6",
+    "harness/bench/execute.py": "a2dab31f43152a3218af8b5fc2ea3b83dc6b9d041e32b54bffed5716b0a09366",
+    "harness/bench/report.py": "2b246a1412588aefc63cd2d4d09dcc35dd546741bef36b2bf124f42fd0dc2485",
+    "tests/fixtures/pzoom-stub-scan-error.json": "60159aa1b977e8800b74da3b3444485f65085d19744dcee46bc4bcccf1db9182",
+    "tests/test_catalog.py": "7ab02ceeb8d7209839e4eab97cd534d7e71f2b2b938fe748492bc8a342cdbaf6",
+    "tests/test_factory.py": "9bb10c2c68d615b32c80c3091f6c5c7823a4adb54551bbef61b5232d186a41b7",
+    "tests/test_harness.py": "a81f991b32ce1eba29fc1c6129d95ee5a48c43b3a0230a24006f29dea782e885",
+    "tools/install-pzoom.py": "892e50299636798e799af22cfb16321acde8e139b7ed1825ced67d6aa3d0cad4",
+    "tools/pzoom-Cargo.lock": "b391496292e6375b0262300347c375f89cb7baf65333b5906c858cbed2ba4a6a",
+    "tools/versions.json": "24fe29b66e8c1ca36a004d370e96f98df397754f2ceef664a1f6a1efde8baf3f"
+  },
+  "hash_notes": "Primary review provided abbreviated hashes; all reviewed prefixes match. Its classify.py suffix was transcribed as 36, not the actual c6. Full canonical hashes are captured here. The post-review report.py and test changes match the full hashes from the follow-up review.",
+  "corpus_fingerprint": "c312ba2b78c66534f7f7f33c5011c0d53bd916bc751dfbf5f57e8fe734be4783",
+  "validation": {
+    "unit_tests": 54,
+    "valid_cases": 144,
+    "criteria": 129,
+    "assessed_leads": 122,
+    "pending_leads": 80,
+    "full_run_exit": 0,
+    "full_run_audit_problems": 0,
+    "new_batch_pzoom_exit": 1,
+    "pzoom_audit_problems": 3,
+    "new_case_runtime_php": [
+      "8.2.35",
+      "8.3.36",
+      "8.4.27",
+      "8.5.12"
+    ]
+  },
+  "review_observations": {
+    "version_refresh": "Requested updated measurement basis includes the release-pin bump.",
+    "historical_ledger": "Historical snapshot hash retained, not represented as a current live-ledger hash.",
+    "zero_judged_gap_report": "Fixed, regression-tested and accepted in follow-up review."
+  }
+}
