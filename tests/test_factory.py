@@ -161,6 +161,16 @@ class FactoryPublicationTest(unittest.TestCase):
         task = factory.pick_task(str(self.tree), state)
         self.assertEqual(task['candidate_ids'], ['psalm-1'])
 
+    def test_catalogue_queue_respects_terminal_assessments_without_case_links(self):
+        (self.tree / 'factory').mkdir()
+        entries = [{'id': status, 'domain': 'narrowing'}
+                   for status in ('covered', 'deferred', 'disabled', 'pending')]
+        (self.tree / 'factory/catalog.json').write_text(json.dumps({'candidates': entries}))
+        (self.tree / 'factory/assessment.json').write_text(json.dumps({'entries': [
+            {'candidate_id': entry['id'], 'status': entry['id']} for entry in entries]}))
+        task = factory.pick_task(str(self.tree), {})
+        self.assertEqual(task['candidate_ids'], ['pending'])
+
     def test_pin_changes_are_not_published(self):
         original = self.dispatch
 

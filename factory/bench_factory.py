@@ -316,6 +316,11 @@ def pick_task(tree: str, state: dict) -> dict | None:
     catalog = os.path.join(tree, "factory/catalog.json")
     if os.path.isfile(catalog):
         used = set()
+        assessment = os.path.join(tree, "factory/assessment.json")
+        if os.path.isfile(assessment):
+            with open(assessment, encoding="utf-8") as handle:
+                used.update(entry['candidate_id'] for entry in json.load(handle)['entries']
+                            if entry['status'] != 'pending')
         for previous in state.get("rounds", []):
             if previous.get("status") not in ("rate_limited", "setup_failed"):
                 used.update(previous.get("task", {}).get("candidate_ids", []))

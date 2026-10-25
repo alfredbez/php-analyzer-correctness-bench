@@ -131,20 +131,16 @@ def select(entries, limit):
     return sorted(selected, key=lambda item: item['id'])
 
 
-def build(psalm, phpstan, repro, limit=40):
+def public_leads(psalm, phpstan):
+    """Inventory public fixtures using the same extraction for build and expand."""
     roots = {name: Path(path).resolve() for name, path in
-             [('psalm', psalm), ('phpstan', phpstan), ('mago', repro)]}
-    if limit < 1:
-        raise ValueError('limit must be positive')
+             [('psalm', psalm), ('phpstan', phpstan)]}
     for name, path in roots.items():
         if not path.is_dir():
             raise ValueError(f'missing {name} source: {path}')
     refs = {name: revision(roots[name]) for name in ('psalm', 'phpstan')}
     repos = {'psalm': 'vimeo/psalm', 'phpstan': 'phpstan/phpstan-src'}
     entries = {name: [] for name in roots}
-    ledger = roots['mago'].parent / 'COORDINATION.json'
-    history = ({task['slug']: task for task in json.loads(ledger.read_text()).get('tasks', [])
-                if task.get('slug')} if ledger.is_file() else {})
     for path in sorted((roots['psalm'] / 'tests').rglob('*.php')):
         for dataset in psalm_datasets(path.read_text()):
             entries['psalm'].append(candidate('psalm', roots['psalm'], path, refs['psalm'], repos['psalm'], **dataset))
@@ -153,8 +149,25 @@ def build(psalm, phpstan, repro, limit=40):
         relative = path.relative_to(tests)
         if relative.parts[0:2] == ('Analyser', 'nsrt') or ('Rules' in relative.parts and 'data' in relative.parts):
             entries['phpstan'].append(candidate('phpstan', roots['phpstan'], path, refs['phpstan'], repos['phpstan']))
-    for path in sorted(roots['mago'].rglob('*.php')):
-        entry = candidate('mago', roots['mago'], path, None, None)
+    sources = [{'family': name, 'root': str(root), 'repo': repos[name],
+                'ref': refs[name], 'discovered_candidates': len(entries[name])}
+               for name, root in roots.items()]
+    return entries, sources
+
+
+def build(psalm, phpstan, repro, limit=40):
+    if limit < 1:
+        raise ValueError('limit must be positive')
+    repro = Path(repro).resolve()
+    if not repro.is_dir():
+        raise ValueError(f'missing mago source: {repro}')
+    entries, sources = public_leads(psalm, phpstan)
+    entries['mago'] = []
+    ledger = repro.parent / 'COORDINATION.json'
+    history = ({task['slug']: task for task in json.loads(ledger.read_text()).get('tasks', [])
+                if task.get('slug')} if ledger.is_file() else {})
+    for path in sorted(repro.rglob('*.php')):
+        entry = candidate('mago', repro, path, None, None)
         if task := history.get(path.parent.name):
             entry['historical_context'] = {key: task.get(key) for key in ('id', 'status', 'pr_url')}
         entries['mago'].append(entry)
@@ -166,10 +179,43 @@ def build(psalm, phpstan, repro, limit=40):
             'limitations': ['Candidates are not reviewed criteria. Domain tags are filename/name heuristics.',
                             'Local Mago probes have content identities, not invented upstream citations.',
                             'This inventories named literal Psalm providers and PHPStan fixture files; it does not execute or semantically review either suite.'],
-            'sources': [{'family': name, 'root': str(root), 'repo': repos.get(name),
-                         'ref': refs.get(name), 'discovered_candidates': len(entries[name])}
-                        for name, root in roots.items()],
-            'candidates': [entry for name in roots for entry in select(entries[name], limit)]}
+            'sources': sources + [{'family': 'mago', 'root': str(repro), 'repo': None,
+                                   'ref': None, 'discovered_candidates': len(entries['mago'])}],
+            'candidates': [entry for items in entries.values() for entry in select(items, limit)]}
+
+
+def expand(inventory, assessment, psalm, phpstan, limit=40):
+    """Append public leads and pending outcomes, preserving all prior records.
+
+    ID and probe-hash exclusion is syntactic deduplication, not semantic review.
+    Each public family must supply the requested number of fresh leads.
+    """
+    if limit < 1:
+        raise ValueError('limit must be positive')
+    ids = {entry['id'] for entry in inventory['candidates']}
+    outcomes = [entry['candidate_id'] for entry in assessment['entries']]
+    if (len(ids) != len(inventory['candidates']) or len(outcomes) != len(set(outcomes))
+            or set(outcomes) != ids):
+        raise ValueError('assessment must account for every candidate exactly once')
+    hashes = {entry['probe_sha256'] for entry in inventory['candidates']}
+    entries, sources = public_leads(psalm, phpstan)
+    added = []
+    for family, leads in entries.items():
+        fresh = select([entry for entry in leads
+                        if entry['id'] not in ids and entry['probe_sha256'] not in hashes], limit)
+        if len(fresh) < limit:
+            raise ValueError(f'{family} has fewer than {limit} fresh distinct source leads; refusing a partial catalogue')
+        added.extend(fresh)
+        ids.update(entry['id'] for entry in fresh)
+        hashes.update(entry['probe_sha256'] for entry in fresh)
+    pending = [{'candidate_id': entry['id'], 'status': 'pending', 'case_ids': [],
+                'criterion_ids': [], 'semantic_statement': '',
+                'reason': 'Awaiting independent semantic review and measurement.',
+                'citations': [entry['citation']]} for entry in added]
+    expanded = dict(inventory, candidates=inventory['candidates'] + added,
+                    expansions=inventory.get('expansions', []) + [
+                        {'sources': sources, 'candidate_ids': [entry['id'] for entry in added]}])
+    return expanded, dict(assessment, entries=assessment['entries'] + pending)
 
 
 def check_assessment(payload, inventory, cases):
@@ -181,6 +227,8 @@ def check_assessment(payload, inventory, cases):
         raise ValueError('assessment must account for every candidate exactly once')
     for entry in entries:
         status = entry['status']
+        if status == 'pending':
+            raise ValueError(f"unfinished candidate assessment: {entry['candidate_id']}")
         if status not in ('measured', 'covered', 'deferred', 'disabled'):
             raise ValueError(f'unknown assessment status: {status}')
         if not entry['semantic_statement'] or not entry['reason'] or not entry['citations']:
@@ -218,7 +266,7 @@ def assess(receipts, inventory, cases):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['build', 'assess', 'check'])
+    parser.add_argument('command', choices=['build', 'expand', 'assess', 'check'])
     parser.add_argument('--psalm', default='/home/abez/projects/psalm-src')
     parser.add_argument('--phpstan', default='/home/abez/projects/phpstan-src')
     parser.add_argument('--repro', default='/home/abez/projects/mago-upstream-prep/repro')
@@ -227,7 +275,23 @@ def main():
     parser.add_argument('--receipts', type=Path, nargs='+')
     parser.add_argument('--inventory', type=Path, default=ROOT / 'factory/catalog.json')
     parser.add_argument('--assessment', type=Path, default=ROOT / 'factory/assessment.json')
+    parser.add_argument('--assessment-out', type=Path,
+                        help='expanded assessment destination (default: --assessment)')
     args = parser.parse_args()
+    if args.command == 'expand':
+        inventory, assessment = expand(json.loads(args.inventory.read_text()),
+                                       json.loads(args.assessment.read_text()),
+                                       args.psalm, args.phpstan, args.limit_per_family)
+        destination = args.out or args.inventory
+        assessment_destination = args.assessment_out or args.assessment
+        if destination.resolve() == assessment_destination.resolve():
+            parser.error('inventory and assessment destinations must differ')
+        for path, payload in ((destination, inventory), (assessment_destination, assessment)):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n')
+        print(f"{len(inventory['candidates'])} source candidates written to {destination}; "
+              f'new outcomes pending in {assessment_destination}')
+        return
     if args.command == 'build':
         payload = build(args.psalm, args.phpstan, args.repro, args.limit_per_family)
         destination = args.out or args.inventory
