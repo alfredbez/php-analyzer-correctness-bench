@@ -1,0 +1,2837 @@
+{
+  "schema_version": 1,
+  "scope": "Minimal semantic reductions of selected source leads, not exhaustive upstream-suite coverage. Measured means executed, not maintainer-approved or universally desirable.",
+  "entries": [
+    {
+      "candidate_id": "psalm:2ed1be42908ccc536dd5",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-2ed1be42908ccc536dd5"
+      ],
+      "criterion_ids": [
+        "assignability/bitwise-not-boolean-operand"
+      ],
+      "semantic_statement": "Native bitwise complement rejects both boolean values while accepting integers and byte strings.",
+      "reason": "Independent operator-domain reduction with integer, string and both boolean runtime controls. No existing unary-complement criterion; boolean narrowing tests do not cover operand validity.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.bitwise.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1340"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:da61ed3a1be4f5592a03",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-da61ed3a1be4f5592a03"
+      ],
+      "criterion_ids": [
+        "assignability/native-readonly-property-reassignment"
+      ],
+      "semantic_statement": "A setter cannot overwrite an initialized native readonly scalar property, even with the same value.",
+      "reason": "Independent write-once-state reduction with separate objects, same/different-value invalid writes and preserved-value controls. Existing asymmetric property override concerns inheritance-time visibility, not initialized state.",
+      "citations": [
+        "https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties",
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Properties/data/readonly-assign.php#L19-L22"
+      ]
+    },
+    {
+      "candidate_id": "mago:011e4b9469d7500de1f2",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-011e4b9469d7500de1f2"
+      ],
+      "semantic_statement": "A break before assignment leaves the local variable undefined; the default path defines it.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/control-structures.switch.php",
+        "/home/abez/projects/mago-upstream-prep/repro/break-without-setting-var/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/switch-partial-assignment"
+      ]
+    },
+    {
+      "candidate_id": "mago:099feb9408203b5d7167",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-mago-099feb9408203b5d7167"
+      ],
+      "semantic_statement": "An exception object is truthy. After both the hello and empty paths return, the receiver is a non-null exception.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/empty-exception-after-if/repro.php"
+      ],
+      "criterion_ids": [
+        "nullability/empty-exception-exit"
+      ]
+    },
+    {
+      "candidate_id": "mago:12192c3c16be73f35ba7",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-mago-12192c3c16be73f35ba7"
+      ],
+      "semantic_statement": "empty safely reads a property on a null receiver. Its negation guarantees a nonempty string property on this unmodified object.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/allow-empty-null-property/repro.php"
+      ],
+      "criterion_ids": [
+        "nullability/empty-nullable-property"
+      ]
+    },
+    {
+      "candidate_id": "mago:1b312aa116cfe2b77850",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-1b312aa116cfe2b77850"
+      ],
+      "semantic_statement": "An assigned stdClass is truthy and retains its object type inside the condition. A nullable assignment has both outcomes, and its true branch also safely accesses the object.",
+      "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.boolean.php",
+        "/home/abez/projects/mago-upstream-prep/repro/always-true-assign/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/object-is-always-truthy"
+      ]
+    },
+    {
+      "candidate_id": "mago:1e0010ad90cf2846677d",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-mago-1e0010ad90cf2846677d"
+      ],
+      "semantic_statement": "Callable includes both object and string representations. is_string and is_object each have reachable outcomes and safely narrow the value.",
+      "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.callable.php",
+        "/home/abez/projects/mago-upstream-prep/repro/callable-type-assertions/repro.php"
+      ],
+      "criterion_ids": [
+        "callables/is-object-on-callable-parameter"
+      ]
+    },
+    {
+      "candidate_id": "mago:213d169182afe4bafef8",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-213d169182afe4bafef8"
+      ],
+      "semantic_statement": "get_class selects the actual class, so each switch branch calls a method present on its receiver.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.get-class.php",
+        "/home/abez/projects/mago-upstream-prep/repro/get-class-const-arg/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/get-class-switch-method"
+      ]
+    },
+    {
+      "candidate_id": "mago:2495784ddff2f9b32ae7",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-2495784ddff2f9b32ae7"
+      ],
+      "semantic_statement": "Independent nested empty checks can both pass or either fail; neither guard is constant for mixed shape values. This is not a claim that arbitrary mixed receivers support offsets: an ordinary object is a failing runtime control.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-on-mixed/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/empty-mixed-nested-offset"
+      ]
+    },
+    {
+      "candidate_id": "mago:28273499247a04f959b8",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-28273499247a04f959b8"
+      ],
+      "semantic_statement": "After a falsy early return the left operand is truthy, but the AND result still depends on the right operand.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.logical.php",
+        "/home/abez/projects/mago-upstream-prep/repro/always-true-binary-op/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/truthy-left-logical-and"
+      ]
+    },
+    {
+      "candidate_id": "mago:3683950199df996e9253",
+      "status": "covered",
+      "case_ids": [
+        "narrowing/redundant-instanceof-in-condition"
+      ],
+      "semantic_statement": "RuntimeException extends Exception, so every permitted argument enters the true branch. The condition is always true and the false return is unreachable. Unlike the bare-return companion, this fixture tests a conditional reporting context.",
+      "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.type.php",
+        "/home/abez/projects/mago-upstream-prep/repro/class-always-parent/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/redundant-instanceof-in-condition"
+      ]
+    },
+    {
+      "candidate_id": "mago:3c721332594e39bdab90",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-3c721332594e39bdab90"
+      ],
+      "semantic_statement": "get_class returns a valid nonempty class name, never the falsy strings empty or zero, so its truthiness test is constant.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.get-class.php",
+        "/home/abez/projects/mago-upstream-prep/repro/class-string-not-empty/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/get-class-truthy"
+      ]
+    },
+    {
+      "candidate_id": "mago:3cb66fa76d0fbac8d0a6",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-3cb66fa76d0fbac8d0a6"
+      ],
+      "semantic_statement": "Strict equality of two string lists is reachable, including empty lists, and preserves the string element contract.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. The source uses invalid native generic syntax. Its historical empty-array disjointness claim is rejected; the executable rewrite uses PHPDoc and includes equal empty arrays.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.comparison.php",
+        "/home/abez/projects/mago-upstream-prep/repro/array-equality-narrowing/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/equal-arrays-preserve-element-type"
+      ]
+    },
+    {
+      "candidate_id": "mago:43b57ad31a5d31bb2f4d",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-43b57ad31a5d31bb2f4d"
+      ],
+      "semantic_statement": "An integer is never strictly identical to null, true, or false. Integer-to-integer inequality is not constant.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.comparison.php",
+        "/home/abez/projects/mago-upstream-prep/repro/int-not-null-true-false/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/int-disjoint-null-bool"
+      ]
+    },
+    {
+      "candidate_id": "mago:48e2336d00fe4ea5a90e",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-48e2336d00fe4ea5a90e"
+      ],
+      "semantic_statement": "The only shared type of int|string and float|string under strict identity is string; equal values safely reach strtoupper.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.comparison.php",
+        "/home/abez/projects/mago-upstream-prep/repro/equality-type-reconciliation-unions/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/strict-union-equality-intersection"
+      ]
+    },
+    {
+      "candidate_id": "mago:516197fbc28d66be6138",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-516197fbc28d66be6138"
+      ],
+      "semantic_statement": "Removing null with is_array preserves the declared nested string array element type.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.is-array.php",
+        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-2d/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/is-array-preserves-nested-elements"
+      ]
+    },
+    {
+      "candidate_id": "mago:5191c871463463800e7c",
+      "status": "covered",
+      "case_ids": [
+        "arrays/numeric-string-array-key"
+      ],
+      "semantic_statement": "PHP casts an array key that is a canonical decimal integer string to int, so $data['10'] and $data[10] are one element. For [10 => 'kept'], array_key_exists('10', $data) and isset($data['10']) are both true and $data['10'] is 'kept'; neither guard is impossible and neither read is of type never. Non-canonical near misses ('10x', ' 10', '+10', '1.0') stay strings, so the claim is about canonical integers only.",
+      "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.array.php",
+        "/home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/numeric-string-array-key"
+      ]
+    },
+    {
+      "candidate_id": "mago:5fcd56c1b41c11a4f222",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-mago-5fcd56c1b41c11a4f222"
+      ],
+      "semantic_statement": "Direct and indirect children omit required generic parent arguments. This annotation-completeness concern does not make passing Product to the Entity-bounded store unsafe. Intermediate explicitly propagates its Entity bound. The runtime rejects an unrelated stdClass and accepts Product through both inheritance depths.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. Direct and intermediate bounds accept Product; all tools diagnose only omitted generic parent arguments. Native runtime rejection of an unrelated class is independently checked.",
+      "citations": [
+        "https://phpstan.org/blog/generics-in-php-using-phpdocs",
+        "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php"
+      ],
+      "criterion_ids": [
+        "generics/omitted-template-arguments"
+      ]
+    },
+    {
+      "candidate_id": "mago:70af4f68103648de14b8",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-mago-70af4f68103648de14b8"
+      ],
+      "semantic_statement": "The converter receives the original string before assignment changes the variable to Item|null; a null or invalid result throws.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.assignment.php",
+        "/home/abez/projects/mago-upstream-prep/repro/conditional-reanalysis-assigned-var-pollution/repro.php"
+      ],
+      "criterion_ids": [
+        "assignability/conditional-assignment-input-order"
+      ]
+    },
+    {
+      "candidate_id": "mago:770f9f7fa02bdaf9b3f9",
+      "status": "deferred",
+      "case_ids": [],
+      "semantic_statement": "The lead concerns dependency discovery memory use when an ordinary two-string array resembles a callable.",
+      "reason": "The source has only an empty BigContainer, not the claimed large dependency. Diagnostic correctness runs do not measure dependency parsing or peak memory. Turning the trivially safe array into a clean case would not measure the claimed performance defect; requires a reproducible large-class generator and resource protocol outside this case-only scope.",
+      "citations": [
+        "/home/abez/projects/mago-upstream-prep/repro/callable-array-dependency-guard-leak/repro.php",
+        "https://www.php.net/manual/en/language.types.callable.php"
+      ],
+      "criterion_ids": []
+    },
+    {
+      "candidate_id": "mago:7d48310c1ee3d27f86fb",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-7d48310c1ee3d27f86fb"
+      ],
+      "semantic_statement": "A nonexhaustive switch may leave its local undefined. A finally block also runs when an Error bypasses catch(Exception), before result is assigned.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/control-structures.switch.php",
+        "/home/abez/projects/mago-upstream-prep/repro/fn-possibly-undefined-switch-finally/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/switch-partial-assignment"
+      ]
+    },
+    {
+      "candidate_id": "mago:8c7967e992bbf717d0fd",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-mago-8c7967e992bbf717d0fd"
+      ],
+      "semantic_statement": "An array of an object and a public method name is callable. The same object with a missing method is not callable.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.callable.php",
+        "/home/abez/projects/mago-upstream-prep/repro/callable-array-assignable/repro.php"
+      ],
+      "criterion_ids": [
+        "callables/object-method-array-callable"
+      ]
+    },
+    {
+      "candidate_id": "mago:a1a194acdc63c66dc441",
+      "status": "covered",
+      "case_ids": [
+        "nullability/elseif-else-return-keeps-possible-null"
+      ],
+      "semantic_statement": "The elseif condition is only evaluated when the first condition was false. With $a non-null and $b null the first branch runs, $b is never tested and execution continues with $b still null, so the final `$b === null` is true on a reachable path.",
+      "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
+      "citations": [
+        "https://www.php.net/manual/en/control-structures.elseif.php",
+        "/home/abez/projects/mago-upstream-prep/repro/elseif-else-return-unsound-variable-narrowing/repro.php"
+      ],
+      "criterion_ids": [
+        "nullability/elseif-else-return-keeps-possible-null"
+      ]
+    },
+    {
+      "candidate_id": "mago:a46fe274608e52136bea",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-a46fe274608e52136bea"
+      ],
+      "semantic_statement": "An initially empty mixed value can become truthy in the loop. The repeated empty test is not constant across iterations.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-empty-mixed/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/loop-reassignment-invalidates-falsy"
+      ]
+    },
+    {
+      "candidate_id": "mago:aa06b37e787d640d9565",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-aa06b37e787d640d9565"
+      ],
+      "semantic_statement": "Successful nested isset guarantees that key b exists and is non-null in the inner string-to-int map.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.isset.php",
+        "/home/abez/projects/mago-upstream-prep/repro/nested-generic-array-isset-shape-narrowing/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/nested-isset-preserves-required-key"
+      ]
+    },
+    {
+      "candidate_id": "mago:ac60f1cdd2c628cc61fc",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-ac60f1cdd2c628cc61fc"
+      ],
+      "semantic_statement": "The Left switch branch cannot call a method that exists only on Right; the Left input throws Error.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.get-class.php",
+        "/home/abez/projects/mago-upstream-prep/repro/get-class-arg-wrong-class/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/get-class-switch-method"
+      ]
+    },
+    {
+      "candidate_id": "mago:af46b0f735b875e1a546",
+      "status": "measured",
+      "case_ids": [
+        "legacy-patterns/catalog-mago-af46b0f735b875e1a546"
+      ],
+      "semantic_statement": "extract creates the named locals. Negation of the conjunction of empty checks does not imply that arr is empty; nonempty string elements can reach the loop.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.extract.php",
+        "/home/abez/projects/mago-upstream-prep/repro/dont-bleed-empty-after-extract/repro.php"
+      ],
+      "criterion_ids": [
+        "legacy-patterns/extract-disjunctive-empty-guard"
+      ]
+    },
+    {
+      "candidate_id": "mago:af4d2483259287749e40",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-mago-af4d2483259287749e40"
+      ],
+      "semantic_statement": "A saved get_class result describes the old object. Reassigning the receiver to Other must not give Other a method from the old class.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.assignment.php",
+        "/home/abez/projects/mago-upstream-prep/repro/clear-dependent-type-when-assigning/repro.php"
+      ],
+      "criterion_ids": [
+        "assignability/assignment-invalidates-get-class-dependency"
+      ]
+    },
+    {
+      "candidate_id": "mago:b04020e1b1f459b0e255",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-b04020e1b1f459b0e255"
+      ],
+      "semantic_statement": "is_array on an array is redundant and does not change its mixed element types to int; a string element violates the callee contract.",
+      "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
+      "citations": [
+        "https://www.php.net/manual/en/function.is-array.php",
+        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-redundant/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/element-value-type-contract"
+      ]
+    },
+    {
+      "candidate_id": "mago:bc1302afb96cabb21965",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-bc1302afb96cabb21965"
+      ],
+      "semantic_statement": "The branch requiring both not-array and nonempty can contain a string or object but cannot contain an array; passing it to an array parameter is unsafe.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/can-be-non-empty-array/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/negated-array-and-nonempty"
+      ]
+    },
+    {
+      "candidate_id": "mago:bc8c6a80a3112f0b9fcf",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-mago-bc8c6a80a3112f0b9fcf"
+      ],
+      "semantic_statement": "Knowing foo or zero is nonempty says nothing about the distinct BAR or ONE offset. Both outcomes of the inner empty check are possible.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/allow-empty-class-const-offset/repro.php"
+      ],
+      "criterion_ids": [
+        "arrays/independent-constant-offset-empty"
+      ]
+    },
+    {
+      "candidate_id": "mago:c0921366ed9477f63e10",
+      "status": "measured",
+      "case_ids": [
+        "enums/catalog-mago-c0921366ed9477f63e10"
+      ],
+      "semantic_statement": "The constant map contains enum objects. A successful isset permits calling their instance method; unknown keys return null.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.enumerations.methods.php",
+        "/home/abez/projects/mago-upstream-prep/repro/enum-const-array/repro.php"
+      ],
+      "criterion_ids": [
+        "enums/enum-constant-array-method"
+      ]
+    },
+    {
+      "candidate_id": "mago:c0e93f2edb2c2610c6e8",
+      "status": "measured",
+      "case_ids": [
+        "dead-code/catalog-mago-c0e93f2edb2c2610c6e8"
+      ],
+      "semantic_statement": "All declared string literals are covered by switch cases. The defensive default throw is unreachable for conforming inputs.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/control-structures.switch.php",
+        "/home/abez/projects/mago-upstream-prep/repro/impossible-case-default-with-throw/repro.php"
+      ],
+      "criterion_ids": [
+        "dead-code/exhaustive-switch-default"
+      ]
+    },
+    {
+      "candidate_id": "mago:d4c2a7d50c52c577b298",
+      "status": "covered",
+      "case_ids": [
+        "nullability/relational-comparison-excludes-null"
+      ],
+      "semantic_statement": "When comparing null with an integer, PHP converts both operands to bool. Thus null > 0 compares false > false and is false. The input domain is {null} plus {int}, so null never enters the branch and the argument passed there is an int. The runtime control null > -1 is also false, distinguishing this rule from numeric conversion of null to zero.",
+      "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.comparison.php",
+        "/home/abez/projects/mago-upstream-prep/repro/erase-null-after-inequality/repro.php"
+      ],
+      "criterion_ids": [
+        "nullability/relational-comparison-excludes-null"
+      ]
+    },
+    {
+      "candidate_id": "mago:d86bc7b7eabe71006e0c",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c"
+      ],
+      "semantic_statement": "Under the PHP-FIG proposed PHPDoc grammar, type-expression = type *(\"|\" type) *(\"&\" type), so a trailing union separator without another type is malformed. PHP itself ignores the comment; the valid array<int, Group> annotation is the control.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. Isolates the dangling-union form under the neutral proposed PSR-5 grammar, not a ratified standard or guaranteed Mago policy.",
+      "citations": [
+        "https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#appendix-a-types",
+        "/home/abez/projects/mago-upstream-prep/repro/fn-malformed-phpdoc/repro.php"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/malformed-param-union"
+      ]
+    },
+    {
+      "candidate_id": "mago:ddd6d489f1173eabbd99",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-mago-ddd6d489f1173eabbd99"
+      ],
+      "semantic_statement": "Short-circuit OR tests the reassigned value for null before accessing its method. The final operand sees Service, not the previous string.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.logical.php",
+        "/home/abez/projects/mago-upstream-prep/repro/chained-logical-or-assignment-subsequent-operand/repro.php"
+      ],
+      "criterion_ids": [
+        "assignability/logical-or-reassignment-order"
+      ]
+    },
+    {
+      "candidate_id": "mago:e5b2d1e6e25c64063071",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-e5b2d1e6e25c64063071"
+      ],
+      "semantic_statement": "Both declared literal alternatives assign the local before break, so the subsequent read is defined.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/control-structures.switch.php",
+        "/home/abez/projects/mago-upstream-prep/repro/all-switches-met/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/exhaustive-switch-assignment"
+      ]
+    },
+    {
+      "candidate_id": "mago:e65aa880dfdaf921f063",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-e65aa880dfdaf921f063"
+      ],
+      "semantic_statement": "After array and empty paths exit, a nonempty string or exception remains; the subsequent string check has both reachable outcomes.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/empty-string-reconciliation-then-if/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/array-empty-string-exception-exits"
+      ]
+    },
+    {
+      "candidate_id": "mago:ea195975bc7c109ce598",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-mago-ea195975bc7c109ce598"
+      ],
+      "semantic_statement": "An array callable has numeric receiver and method offsets, not a guaranteed test key. is_array alone does not establish an unrelated keyed shape.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.callable.php",
+        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-callable-array-keyed/repro.php"
+      ],
+      "criterion_ids": [
+        "callables/array-callable-not-keyed-shape"
+      ]
+    },
+    {
+      "candidate_id": "mago:ea6e3e02fc81b5208281",
+      "status": "measured",
+      "case_ids": [
+        "legacy-patterns/catalog-mago-ea6e3e02fc81b5208281"
+      ],
+      "semantic_statement": "Integer and floating zero are empty; positive and negative nonzero numbers are not. Neither numeric empty branch is constant.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/allow-numeric-empty/repro.php"
+      ],
+      "criterion_ids": [
+        "legacy-patterns/numeric-empty-zero"
+      ]
+    },
+    {
+      "candidate_id": "mago:ea8b8b0683bd66f27f4f",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-mago-ea8b8b0683bd66f27f4f"
+      ],
+      "semantic_statement": "The integer initially narrowed to zero can become nonzero during iteration; the inner falsy check is not always true.",
+      "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
+      "citations": [
+        "https://www.php.net/manual/en/function.empty.php",
+        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-falsy-int-checks/repro.php"
+      ],
+      "criterion_ids": [
+        "narrowing/loop-reassignment-invalidates-falsy"
+      ]
+    },
+    {
+      "candidate_id": "mago:f3e4d9c13bfcc1c760e3",
+      "status": "covered",
+      "case_ids": [
+        "generics/template-bound-violation"
+      ],
+      "semantic_statement": "Arrays are accepted by count(), but are not instances of the Countable interface and cannot satisfy a Countable parameter.",
+      "reason": "The existing template-bound fixture already measures the same array-not-Countable fact, with an ArrayObject control. A separately measured native-interface rewrite agreed across all tools and was removed after overlap review rather than counted as novel.",
+      "citations": [
+        "https://www.php.net/manual/en/class.countable.php",
+        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-countable/repro.php"
+      ],
+      "criterion_ids": [
+        "generics/template-bound-violation"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:0f19731e70a569c020bd",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-0f19731e70a569c020bd"
+      ],
+      "semantic_statement": "Before PHP 8.3 an invalid DateTimeImmutable::modify returns false, while a valid modifier returns an object. The guarded consumer is safe for both outcomes.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php#L1",
+        "https://www.php.net/manual/en/datetimeimmutable.modify.php"
+      ],
+      "criterion_ids": [
+        "nullability/date-modify-versioned-return"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:11fdcf0b00c64eb0fb04",
+      "status": "measured",
+      "case_ids": [
+        "dead-code/catalog-phpstan-11fdcf0b00c64eb0fb04"
+      ],
+      "semantic_statement": "A variable-variable read with a resolved name consumes the incoming constructor argument. Changing that argument changes the public result.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php#L1",
+        "https://www.php.net/manual/en/language.variables.variable.php"
+      ],
+      "criterion_ids": [
+        "dead-code/constructor-dynamic-parameter-read"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:13d11cb24c0ac0aec4c0",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0"
+      ],
+      "semantic_statement": "Every PHP Throwable is an Exception or an Error. Removing Exception leaves Error and makes the Error return contract sound.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php#L1",
+        "https://www.php.net/manual/en/class.throwable.php"
+      ],
+      "criterion_ids": [
+        "narrowing/throwable-exception-complement"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:23069a8fe555fc224d34",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-phpstan-23069a8fe555fc224d34"
+      ],
+      "semantic_statement": "The trait promises an integer result when instantiated with int; the implementing method and the integer consumer satisfy that substituted contract.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php#L1",
+        "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+      ],
+      "criterion_ids": [
+        "generics/trait-abstract-template-inheritance"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:23edd0555732c08f1948",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-23edd0555732c08f1948"
+      ],
+      "semantic_statement": "A documented integer parameter supports a native integer return without coercion. This isolates the type contract from the upstream prefix parsing matrix.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. Only the documented parameter contract is retained; proprietary prefix precedence, invalid type spellings and unrelated upstream classes are intentionally not reproduced.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php#L1",
+        "https://phpstan.org/writing-php-code/phpdoc-types"
+      ],
+      "criterion_ids": [
+        "assignability/documented-parameter-consumer"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:28d71ec402e5aaedb00e",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-phpstan-28d71ec402e5aaedb00e"
+      ],
+      "semantic_statement": "A template shape key instantiated with slot denotes the slot offset, not the literal spelling TKey. The native integer consumer reads that offset.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php#L1",
+        "https://phpstan.org/writing-php-code/phpdoc-types#array-shapes"
+      ],
+      "criterion_ids": [
+        "generics/template-array-shape-key"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:2a3506b6815e78d94aa5",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-phpstan-2a3506b6815e78d94aa5"
+      ],
+      "semantic_statement": "A checked equality assertion ties an unknown value to the requested boolean. After it returns the matching true or false consumer is safe.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The relational assertion is implemented with an executable equality guard instead of a vendor-specific assertion annotation. Cross-function inference is the measured contract; no claim is made that competitor annotation parsing is required.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-conditional.php#L1",
+        "https://www.php.net/manual/en/language.operators.comparison.php"
+      ],
+      "criterion_ids": [
+        "narrowing/conditional-boolean-assertion"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:2bc9c9c0af361dbd0dea",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-phpstan-2bc9c9c0af361dbd0dea"
+      ],
+      "semantic_statement": "array_filter with is_string retains only string values and preserves their keys. Its result therefore satisfies an array of strings return contract.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php#L1",
+        "https://www.php.net/manual/en/function.array-filter.php"
+      ],
+      "criterion_ids": [
+        "arrays/filter-string-value-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:306c280bb8a6ca46a961",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-306c280bb8a6ca46a961"
+      ],
+      "semantic_statement": "Replacing a null array element with a string makes the element string in the subsequent read of that same offset.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php#L1",
+        "https://www.php.net/manual/en/language.types.type-juggling.php"
+      ],
+      "criterion_ids": [
+        "nullability/foreach-offset-null-replacement"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:34d04d27febb3bff2282",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-34d04d27febb3bff2282"
+      ],
+      "semantic_statement": "An anonymous object retains the declared type of its initialized property and the result of its method. Both can satisfy an integer consumer.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php#L1",
+        "https://www.php.net/manual/en/language.oop5.anonymous.php"
+      ],
+      "criterion_ids": [
+        "assignability/anonymous-class-member-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:3df530270084e3d904a0",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-phpstan-3df530270084e3d904a0"
+      ],
+      "semantic_statement": "array_change_key_case with CASE_UPPER changes string keys to uppercase and leaves values and integer keys unchanged.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-change-key-case.php#L1",
+        "https://www.php.net/manual/en/function.array-change-key-case.php"
+      ],
+      "criterion_ids": [
+        "arrays/change-key-case-shape"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:3df7186a1b833d024d52",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-3df7186a1b833d024d52"
+      ],
+      "semantic_statement": "A matching literal date and format produce DateTimeImmutable, not false. A mismatched separator produces false.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The clean-room literal matches the source Y-m-d format. An initial !Y-m-d variant was runtime-valid but outside the source literal precision slice; it was removed before the final measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeDynamicReturnTypes.php#L1",
+        "https://www.php.net/manual/en/datetimeimmutable.createfromformat.php"
+      ],
+      "criterion_ids": [
+        "nullability/date-format-literal-result"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:3ecb74a1fba6668eac61",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-3ecb74a1fba6668eac61"
+      ],
+      "semantic_statement": "PDOStatement::fetchObject may return false at exhaustion. After excluding false the requested row class can satisfy its native return contract.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/PDOStatement.php#L1",
+        "https://www.php.net/manual/en/pdostatement.fetchobject.php"
+      ],
+      "criterion_ids": [
+        "nullability/pdo-fetch-object-false-guard"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:50e5714f7332b2d3a4ff",
+      "status": "measured",
+      "case_ids": [
+        "enums/catalog-phpstan-50e5714f7332b2d3a4ff"
+      ],
+      "semantic_statement": "The BetterReflection enum adapter returns its own ReflectionNamedType wrapper for a backed enum, and null for a unit enum. The library-specific wrapper satisfies the native consumer contract.",
+      "reason": "Executable with the actual pinned BetterReflection library and native runtime wrapper checks. No upstream fixture or testing harness dependency is copied.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php#L1",
+        "https://www.php.net/manual/en/reflectionenum.getbackingtype.php"
+      ],
+      "criterion_ids": [
+        "enums/reflection-adapter-backing-type"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:51152d85f829e8534475",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-phpstan-51152d85f829e8534475"
+      ],
+      "semantic_statement": "A broad catch can be entered by an earlier implicit exception while the later condition is false. Catching an exception does not establish that condition.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php#L1",
+        "https://www.php.net/manual/en/language.exceptions.php"
+      ],
+      "criterion_ids": [
+        "narrowing/broad-catch-condition-not-refined"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:554b2c43131257c0d354",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-phpstan-554b2c43131257c0d354"
+      ],
+      "semantic_statement": "Binding to a real object supplies this. Binding a closure that does not access this to null is also valid. A nullable receiver must not be assumed always present.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. Initial runtime used $this ?? null, which PHP rejects on a null-bound closure. The corrected fixture uses isset($this) before reading it; both binding controls now test the stated nullable behavior.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/closure-bind-nullable-this.php#L1",
+        "https://www.php.net/manual/en/closure.bind.php"
+      ],
+      "criterion_ids": [
+        "callables/closure-bind-nullable-object"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:5588ff8af852e7139b7d",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-5588ff8af852e7139b7d"
+      ],
+      "semantic_statement": "A nullsafe chain short-circuits a static method access through a property when the initial receiver is null, and otherwise returns the static method string.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php#L1",
+        "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe"
+      ],
+      "criterion_ids": [
+        "nullability/nullsafe-static-member-chain"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:5cca931b9e656814c244",
+      "status": "measured",
+      "case_ids": [
+        "enums/catalog-phpstan-5cca931b9e656814c244"
+      ],
+      "semantic_statement": "Excluding the second and third cases of a three-case enum leaves only its first case, so a return contract restricted to that case is sound.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-enum.php#L1",
+        "https://www.php.net/manual/en/language.enumerations.basics.php"
+      ],
+      "criterion_ids": [
+        "enums/enum-case-exclusion"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:5d813bb8b104d0c619ca",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-5d813bb8b104d0c619ca"
+      ],
+      "semantic_statement": "An element attribute map lookup can return null. After a null guard its DOMAttr value is a string, including an empty string for an explicitly empty attribute.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php#L1",
+        "https://www.php.net/manual/en/domnamednodemap.getnameditem.php"
+      ],
+      "criterion_ids": [
+        "nullability/dom-named-attribute-guard"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:5d836d3e478426829ad3",
+      "status": "covered",
+      "case_ids": [
+        "enums/try-from-result-nullability"
+      ],
+      "semantic_statement": "Backed enum tryFrom returns a known case for a matching value and null otherwise; from throws on a missing backing value.",
+      "reason": "The existing case already measures literal success, arbitrary-string nullability and runtime from failure. Numeric/coercion variants are not counted as novel criteria.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-from.php#L1",
+        "https://www.php.net/manual/en/backedenum.tryfrom.php"
+      ],
+      "criterion_ids": [
+        "enums/try-from-result-nullability"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:68486e793e9b077839dc",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-68486e793e9b077839dc"
+      ],
+      "semantic_statement": "A native nullable array parameter admits null even when its PHPDoc describes the element type with string[]. Guarding null makes count safe.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-typehint-without-null-in-phpdoc.php#L1",
+        "https://www.php.net/manual/en/language.types.declarations.php"
+      ],
+      "criterion_ids": [
+        "nullability/native-nullable-array-phpdoc"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:6931357e80bcf4ac18ca",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-phpstan-6931357e80bcf4ac18ca"
+      ],
+      "semantic_statement": "An immediately invoked arrow function receives the integer argument unchanged; its parameter supports a native integer return.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php#L1",
+        "https://www.php.net/manual/en/functions.arrow.php"
+      ],
+      "criterion_ids": [
+        "callables/immediate-arrow-parameter-inference"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:6e5e8ab0ce9a991556b3",
+      "status": "measured",
+      "case_ids": [
+        "dead-code/catalog-phpstan-6e5e8ab0ce9a991556b3"
+      ],
+      "semantic_statement": "An included file inherits the constructor local scope and can consume a parameter without any read in the constructor body itself.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The included fragment lives outside the src analysis targets because it is only meaningful in its including constructor scope. The runtime includes the real fragment, not a stub. Initial standalone fragment diagnostics were fixture target errors, not analyzer findings.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php#L1",
+        "https://www.php.net/manual/en/function.include.php"
+      ],
+      "criterion_ids": [
+        "dead-code/constructor-include-variable-scope"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:7009f55abd4d6861610f",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-phpstan-7009f55abd4d6861610f"
+      ],
+      "semantic_statement": "A documented magic method returning string is implemented by __call and can feed a native string return consumer.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. Only the documented magic method return contract is retained; competing vendor-specific override precedence is not claimed as neutral semantics.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/classPhpDocs.php#L1",
+        "https://phpstan.org/writing-php-code/phpdocs-basics#magic-methods"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/magic-method-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:70f67b02133286eb99f5",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-70f67b02133286eb99f5"
+      ],
+      "semantic_statement": "An anonymous class created in a trait has its own integer method; the using class can return that result without confusing anonymous identity with the trait host.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php#L1",
+        "https://www.php.net/manual/en/language.oop5.anonymous.php"
+      ],
+      "criterion_ids": [
+        "assignability/anonymous-class-member-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:71ff2ec3ba7e1627cfa7",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-phpstan-71ff2ec3ba7e1627cfa7"
+      ],
+      "semantic_statement": "A callable stored in an array passed to a list<callable(string):int> consumer receives string context; strlen is safe in its untyped closure body.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php#L1",
+        "https://phpstan.org/writing-php-code/phpdoc-types#callables"
+      ],
+      "criterion_ids": [
+        "callables/array-contextual-closure-parameters"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:912f700441dc19e2b58b",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-phpstan-912f700441dc19e2b58b"
+      ],
+      "semantic_statement": "A catch parameter replaces a previously null local with the caught exception. The exception consumer in that catch is sound.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The catch consumer returns string rather than an unnecessarily nullable string, so the case does not collect unrelated unused-null-return diagnostics.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-specified-variable.php#L1",
+        "https://www.php.net/manual/en/language.exceptions.php"
+      ],
+      "criterion_ids": [
+        "narrowing/catch-rebinds-variable"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:935b22d9e63374f594a3",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-935b22d9e63374f594a3"
+      ],
+      "semantic_statement": "Class names and imported class aliases are case-insensitive. A differently cased PHPDoc name still identifies the class consumed by a native return.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php#L1",
+        "https://www.php.net/manual/en/language.oop5.basic.php"
+      ],
+      "criterion_ids": [
+        "assignability/case-insensitive-phpdoc-class"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:958a009704557ee9b44f",
+      "status": "measured",
+      "case_ids": [
+        "dead-code/catalog-phpstan-958a009704557ee9b44f"
+      ],
+      "semantic_statement": "Constructor property promotion consumes the parameter through implicit assignment, even without an explicit read in the body.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php#L1",
+        "https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion"
+      ],
+      "criterion_ids": [
+        "dead-code/constructor-promotion-consumes-parameter"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:a5a1bead8612b57ce91c",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-phpstan-a5a1bead8612b57ce91c"
+      ],
+      "semantic_statement": "A closure using is_string filters out integer values and preserves keys, so the resulting array satisfies its string element contract.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-callables.php#L1",
+        "https://www.php.net/manual/en/function.array-filter.php"
+      ],
+      "criterion_ids": [
+        "arrays/filter-string-value-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:abc5fa1b77dc14531ca8",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-abc5fa1b77dc14531ca8"
+      ],
+      "semantic_statement": "Distinct anonymous class expressions retain distinct members even in the same lexical scope. Reading each member satisfies its own native consumer.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php#L1",
+        "https://www.php.net/manual/en/language.oop5.anonymous.php"
+      ],
+      "criterion_ids": [
+        "assignability/anonymous-class-distinct-identities"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:bef8ffa161779c8ea9bd",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-phpstan-bef8ffa161779c8ea9bd"
+      ],
+      "semantic_statement": "The absolute value of an integer in [-9,9] is an integer in [0,9]. The bounded input avoids PHP_INT_MIN overflow to float.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abs.php#L1",
+        "https://www.php.net/manual/en/function.abs.php"
+      ],
+      "criterion_ids": [
+        "assignability/abs-bounded-integer"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:ccdd6746fb9cf55bd2d7",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-ccdd6746fb9cf55bd2d7"
+      ],
+      "semantic_statement": "Since PHP 8.3 DateTimeImmutable::modify returns an object on success and throws DateMalformedStringException on invalid input instead of returning false.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes83.php#L1",
+        "https://www.php.net/manual/en/datetimeimmutable.modify.php"
+      ],
+      "criterion_ids": [
+        "nullability/date-modify-versioned-return"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:d1f39552939e65fa35c3",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-d1f39552939e65fa35c3"
+      ],
+      "semantic_statement": "date_create_immutable with a valid literal yields an object that satisfies a native DateTimeImmutable return; an invalid literal returns false.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php#L1",
+        "https://www.php.net/manual/en/function.date-create-immutable.php"
+      ],
+      "criterion_ids": [
+        "nullability/date-create-literal-result"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:d2ee700fdda5c0e356e9",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-phpstan-d2ee700fdda5c0e356e9"
+      ],
+      "semantic_statement": "A generic holder can check equality against its stored value and return the same value with its template type. The integer instantiation satisfies the integer consumer.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The checked generic value is returned to an observable typed consumer rather than communicated by a vendor-specific assertion. This measures generic substitution and equality refinement, not competitor annotation support.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-class-type.php#L1",
+        "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+      ],
+      "criterion_ids": [
+        "generics/class-template-checked-assertion"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:d438454d94600dcbba53",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-phpstan-d438454d94600dcbba53"
+      ],
+      "semantic_statement": "A base element survives all paths. Three optional append groups produce a count from one to four, and the count-one branch remains reachable.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-append-count.php#L1",
+        "https://www.php.net/manual/en/function.count.php"
+      ],
+      "criterion_ids": [
+        "arrays/conditional-append-count"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:d88a0707d9479f04b2ed",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-phpstan-d88a0707d9479f04b2ed"
+      ],
+      "semantic_statement": "A generic first-or-default method returns the stored item or the supplied default. An omitted default permits null; a string default must remain a possible string result.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. The reduced criterion retains the generic first-or-default result and non-null default alternative; proprietary argless-call assertion parsing is not claimed.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php#L1",
+        "https://phpstan.org/blog/generics-in-php-using-phpdocs"
+      ],
+      "criterion_ids": [
+        "generics/generic-default-return-union"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:e03afd4ffd085e429c5e",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-phpstan-e03afd4ffd085e429c5e"
+      ],
+      "semantic_statement": "An ArrayAccess implementation with integer offsetGet supplies integers through bracket access; the integer consumer is sound.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-accessable.php#L1",
+        "https://www.php.net/manual/en/class.arrayaccess.php"
+      ],
+      "criterion_ids": [
+        "arrays/arrayaccess-offset-return-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:e134f5937b2ca742f51c",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-phpstan-e134f5937b2ca742f51c"
+      ],
+      "semantic_statement": "A documented integer magic property implemented by __get can feed an integer return. This isolates the property contract without competing vendor-prefix overrides.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix. Only the documented magic property contract is retained; competing vendor-specific override precedence and write-only reads are outside this reduced criterion.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/classPhpDocs-phpstanPropertyPrefix.php#L1",
+        "https://phpstan.org/writing-php-code/phpdocs-basics#magic-properties"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/magic-property-contract"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:f1455a36807cc2badc75",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-phpstan-f1455a36807cc2badc75"
+      ],
+      "semantic_statement": "A stable nullable getter checked against null remains non-null on the repeated call in that branch. Both a present item and the empty case are executable.",
+      "reason": "Re-derived as an executable contract with asymmetric runtime controls. See notes for the deliberately narrowed semantic slice of the upstream matrix.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/argless-call-narrowing-walked-type.php#L1",
+        "https://phpstan.org/writing-php-code/phpdocs-basics#impure-functions"
+      ],
+      "criterion_ids": [
+        "nullability/repeat-pure-getter-narrowing"
+      ]
+    },
+    {
+      "candidate_id": "psalm:046e3c888eee140464f5",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-046e3c888eee140464f5"
+      ],
+      "semantic_statement": "Whitespace after a throws union separator does not change its exception alternatives.",
+      "reason": "Read AnnotationTest.php:1200 in providerValidCodeParse. Re-derived an actual throwing function and normal-return control. All three tools accept the annotation. Runtime passes. This is parser acceptance, not a checked-exception enforcement claim.",
+      "citations": [
+        "https://docs.phpdoc.org/guide/references/phpdoc/tags/throws.html",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1200"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/throws-union-whitespace"
+      ]
+    },
+    {
+      "candidate_id": "psalm:06716895300af389cfc9",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-06716895300af389cfc9"
+      ],
+      "semantic_statement": "A local union alias remains attached to its declaration across blank lines and an intervening comment.",
+      "reason": "Read AnnotationTest.php:759 in providerValidCodeParse. Replaced random choices with deterministic branches and kept the alias consumer inside the declaring class to avoid accidentally measuring PHPStan's documented class-local alias scope. All union alternatives run; all tools are clean. Shares criterion with the multiline alias variant.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L759",
+        "https://phpstan.org/writing-php-code/phpdoc-types#local-type-aliases"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/local-alias-parsing"
+      ]
+    },
+    {
+      "candidate_id": "psalm:0e66d52886bd21db7846",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-0e66d52886bd21db7846"
+      ],
+      "semantic_statement": "A numeric string concatenated with a nonempty string, in either order, is a non-falsy string.",
+      "reason": "Read BinaryOperationTest.php:1155 in providerValidCodeParse, including inferred-type assertions. Replaced asserted locals with general parameter/return contracts. Length is at least two, excluding both falsey strings. Runtime controls pass. PHPStan and Psalm accept; Mago emits invalid-return-statement at lines 9 and 17, retained as genuine FPs. Shares criterion with the nonempty/nonempty variant.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.boolean.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1155"
+      ],
+      "criterion_ids": [
+        "assignability/nonempty-concatenation-truthiness"
+      ]
+    },
+    {
+      "candidate_id": "psalm:0ee15c8f34d3836c9539",
+      "status": "covered",
+      "case_ids": [
+        "arrays/scalar-array-for-string-array"
+      ],
+      "semantic_statement": "An array<int, scalar> may contain a nonstring value and cannot satisfy an array<string> parameter contract.",
+      "reason": "Read ArgTest.php:186 in providerValidCodeParse. Upstream suppresses ArgumentTypeCoercion and returns an empty array; neither establishes soundness. The unchanged existing case already replaces that vacuous producer with a concrete float and proves a strict strlen TypeError. Reran that exact existing case with this cohort. All tools correctly diagnose the call at line 26. No duplicate case authored.",
+      "citations": [
+        "https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.strict",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L186"
+      ],
+      "criterion_ids": [
+        "arrays/element-value-type-contract"
+      ]
+    },
+    {
+      "candidate_id": "psalm:100d258360108b7340f8",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-psalm-100d258360108b7340f8"
+      ],
+      "semantic_statement": "ReflectionMethod::invoke accepts null as the receiver of a static method and forwards optional arguments.",
+      "reason": "Read ArgTest.php:113 in providerValidCodeParse. Upstream reflects a nonexistent method; authored a real static target instead. Runtime verifies explicit and omitted arguments. Removed an unrelated is_string guard that Mago correctly found redundant. Final fixture is clean for all tools.",
+      "citations": [
+        "https://www.php.net/manual/en/reflectionmethod.invoke.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L113"
+      ],
+      "criterion_ids": [
+        "callables/reflection-static-invoke"
+      ]
+    },
+    {
+      "candidate_id": "psalm:13be39b2d9591fa1a9e5",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-13be39b2d9591fa1a9e5"
+      ],
+      "semantic_statement": "An absent offset in one array does not determine another array's offset; nonempty mixed values can still be invalid offsets.",
+      "reason": "Read ArrayAccessTest.php:750 in providerValidCodeParse, including ignored_issues MixedArrayOffset. Removed the suppression rather than declaring the fixture clean. Runtime proves both nested guard outcomes and the invalid-array-offset TypeError. PHPStan and Psalm correctly diagnose lines 9 and 10; Mago misses the mixed-offset hazards. No tool emits a redundant-condition FP.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.array.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAccessTest.php#L750"
+      ],
+      "criterion_ids": [
+        "arrays/independent-array-key-guards"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1fb88d68d2ffa0e1ab18",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-1fb88d68d2ffa0e1ab18"
+      ],
+      "semantic_statement": "A matching required string field satisfies an array shape parameter contract.",
+      "reason": "Read ArgTest.php:321 in providerValidCodeParse. Re-derived a minimal shape consumer with native string return. Matching positive controls pass; a wrong-valued runtime control fails. All three analyzers accept the matching call.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.array.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L321"
+      ],
+      "criterion_ids": [
+        "arrays/sealed-shape-acceptance"
+      ]
+    },
+    {
+      "candidate_id": "psalm:28307cba67aa2a6c65af",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-28307cba67aa2a6c65af"
+      ],
+      "semantic_statement": "An arbitrary object does not guarantee the required float-valued hmm property.",
+      "reason": "Read ArgTest.php:747 in providerInvalidCodeParse. The new consumer reads the property so a runtime warning proves the concrete missing-property mismatch, independently of the upstream expected coercion comment. A correctly shaped object succeeds. All three tools diagnose the call at line 6; Mago's concrete code is possibly-invalid-argument.",
+      "citations": [
+        "https://www.php.net/manual/en/language.oop5.properties.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L747"
+      ],
+      "criterion_ids": [
+        "assignability/object-shape-required-property"
+      ]
+    },
+    {
+      "candidate_id": "psalm:2d4ae8911311e23b45da",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da"
+      ],
+      "semantic_statement": "A union alias with an unmatched generic closer is malformed.",
+      "reason": "Read AnnotationTest.php:1777 in providerInvalidCodeParse. Declared both alternatives to isolate the unmatched delimiter. Psalm reports InvalidDocblock at line 3; PHPStan and Mago are silent, retained as policy-comparison FNs without claiming unsupported. Runtime only confirms that PHP ignores the comment; parser ground truth comes from the alias grammar and documented valid-expression contract.",
+      "citations": [
+        "https://psalm.dev/docs/annotating_code/supported_annotations/#psalm-type",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1777"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/malformed-alias-type"
+      ]
+    },
+    {
+      "candidate_id": "psalm:2e01e321c4dcfa1729a2",
+      "status": "measured",
+      "case_ids": [
+        "dead-code/catalog-psalm-2e01e321c4dcfa1729a2"
+      ],
+      "semantic_statement": "Casting an object to object preserves the same object's identity and is redundant.",
+      "reason": "Read ArgTest.php:761 in providerInvalidCodeParse. A direct object parameter and identity/state controls isolate the cast. Psalm and Mago report redundancy at line 4; PHPStan is silent. Its FN is a broad policy-comparison gap, not a claim that legal casts should be forbidden.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.object.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L761"
+      ],
+      "criterion_ids": [
+        "dead-code/redundant-object-cast"
+      ]
+    },
+    {
+      "candidate_id": "psalm:3cb038acaec155a5e87e",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-3cb038acaec155a5e87e"
+      ],
+      "semantic_statement": "A multiline generic array alias can be nested in an optional shape field.",
+      "reason": "Read AnnotationTest.php:507 in providerValidCodeParse. Reduced irrelevant fields but retained class-string keys, nested arrays, multiline formatting and alias reference inside a shape. Added a class-local consumer and present/absent optional-field controls. All tools are clean. Shares criterion with the separated-comment alias variant.",
+      "citations": [
+        "https://psalm.dev/docs/annotating_code/supported_annotations/#psalm-type",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L507"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/local-alias-parsing"
+      ]
+    },
+    {
+      "candidate_id": "psalm:53ae3931e59580d6f84c",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-53ae3931e59580d6f84c"
+      ],
+      "semantic_statement": "Named constructor calls violate an explicit no-named-arguments policy but still bind by name at runtime.",
+      "reason": "Read ArgTest.php:511 in providerInvalidCodeParse. Two promoted properties and a reordered call isolate the opt-in API policy. Runtime proves actual name/value bindings. All tools correctly diagnose named arguments at line 8. Psalm additionally treats reordered values as positional and emits two InvalidArgument errors; these stay FPs rather than being allowed. This does not argue every API should prohibit named calls.",
+      "citations": [
+        "https://psalm.dev/docs/annotating_code/supported_annotations/#no-named-arguments",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L511"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/no-named-arguments-policy"
+      ]
+    },
+    {
+      "candidate_id": "psalm:540e6672f974be8ec019",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-540e6672f974be8ec019"
+      ],
+      "semantic_statement": "An array-or-object union may contain a non-Traversable object that cannot be argument-unpacked.",
+      "reason": "Read ArgTest.php:663 in providerInvalidCodeParse and InvalidCodeAnalysisTestTrait:69, which skips SKIPPED datasets because of a bug. The lead remains measurable: stdClass fails unpacking and a two-int array succeeds. PHPStan reports the unpack hazard, Psalm misses it, and Mago reports only arity. An empty ArrayIterator control proves Mago's arity warning is independently valid; only that exact code/line is allowed, leaving its missing nontraversable diagnosis as FN. Not deferred merely because upstream disables the test.",
+      "citations": [
+        "https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L663",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/Traits/InvalidCodeAnalysisTestTrait.php#L69"
+      ],
+      "criterion_ids": [
+        "arrays/nontraversable-argument-unpack"
+      ]
+    },
+    {
+      "candidate_id": "psalm:5489e87365002fea3494",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-5489e87365002fea3494"
+      ],
+      "semantic_statement": "Two nonempty string operands concatenate to a string of length at least two, which cannot be falsey.",
+      "reason": "Read BinaryOperationTest.php:1143 in providerValidCodeParse, including the duplicated s1 annotation typo and inferred-type assertion. General parameter/return contracts remove the typo. Runtime confirms controls including '0'. PHPStan and Psalm accept; Mago emits invalid-return-statement at line 9, retained as a genuine FP. Shares criterion with numeric-string concatenation.",
+      "citations": [
+        "https://www.php.net/manual/en/language.types.boolean.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1143"
+      ],
+      "criterion_ids": [
+        "assignability/nonempty-concatenation-truthiness"
+      ]
+    },
+    {
+      "candidate_id": "psalm:59b1c78bfa12967fb1ac",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-59b1c78bfa12967fb1ac"
+      ],
+      "semantic_statement": "An optional array_column key can omit rows, causing a length mismatch when sorting the column and original rows together.",
+      "reason": "Read ArrayFunctionCallTest.php:2759 in providerValidCodeParse. Did not treat a valid-provider program as automatically safe. A row missing y causes array_column to omit it, and array_multisort raises ValueError for unequal lengths. Fully populated rows sort correctly. All tools miss this real hazard, retained as FN without claiming their scope promises relational length analysis.",
+      "citations": [
+        "https://www.php.net/manual/en/function.array-column.php",
+        "https://www.php.net/manual/en/function.array-multisort.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayFunctionCallTest.php#L2759"
+      ],
+      "criterion_ids": [
+        "arrays/multisort-optional-column-length"
+      ]
+    },
+    {
+      "candidate_id": "psalm:604771ba27ab94845cc5",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-604771ba27ab94845cc5"
+      ],
+      "semantic_statement": "A null alternative permits a null initializer even when the other union member is an uninhabitable class intersection.",
+      "reason": "Read AnnotationTest.php:995 in providerValidCodeParse. Made the property public to observe it and avoid unused-private-property noise. Explicit parentheses remove cross-dialect precedence ambiguity while preserving the null-or-intersection semantics. Runtime verifies null and unrelated DateTime class alternatives. All tools accept the final fixture.",
+      "citations": [
+        "https://psalm.dev/docs/annotating_code/type_syntax/intersection_types/",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L995"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/nullable-intersection-initializer"
+      ]
+    },
+    {
+      "candidate_id": "psalm:6c129980869ba963c7aa",
+      "status": "measured",
+      "case_ids": [
+        "legacy-patterns/catalog-psalm-6c129980869ba963c7aa"
+      ],
+      "semantic_statement": "AllowDynamicProperties permits dynamic property creation without PHP's deprecation.",
+      "reason": "Read AttributeTest.php:288 in providerValidCodeParse, including its PHP 8.2 version. The upstream fixture only declares an empty attributed class. Added a real write plus an unattributed negative control that throws on deprecation. All tools flag line 7 despite the permissive runtime baseline. These FP labels measure stricter static property policy, not automatically implementation defects: the attribute need not disable every analyzer's declaration checks.",
+      "citations": [
+        "https://www.php.net/manual/en/class.allowdynamicproperties.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AttributeTest.php#L288"
+      ],
+      "criterion_ids": [
+        "legacy-patterns/allow-dynamic-properties-attribute"
+      ]
+    },
+    {
+      "candidate_id": "psalm:6e0079989da3fbda2530",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-6e0079989da3fbda2530"
+      ],
+      "semantic_statement": "The sole argument in array<array-key> constrains values to int|string, not keys; scalar values also include disallowed bool and float.",
+      "reason": "Read ArgTest.php:172 in providerValidCodeParse, including suppressed ArgumentTypeCoercion. Existing array-key-for-string-key cites this lead but measures a different key-dimension contract and is unchanged. Authored the actual value-contract variant, sharing criterion with scalar-array-for-string-array. Real producer supplies false on one path; strict consumer fails while a string succeeds and integer values are handled separately. All tools diagnose line 11.",
+      "citations": [
+        "https://psalm.dev/docs/annotating_code/type_syntax/array_types/",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L172"
+      ],
+      "criterion_ids": [
+        "arrays/element-value-type-contract"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7597f481858da256f914",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-7597f481858da256f914"
+      ],
+      "semantic_statement": "A child property may not narrow inherited protected(set) access to private(set).",
+      "reason": "Read AsymmetricVisibilityTest.php:430 in providerInvalidCodeParse with PHP 8.4. Measured on actual PHP 8.4.26. Runtime isolates the declaration in a subprocess and verifies PHP's must-be-protected(set) fatal, alongside a valid protected(set) override control. Psalm and Mago diagnose line 6; PHPStan is silent, retained as FN.",
+      "citations": [
+        "https://www.php.net/manual/en/language.oop5.visibility.php#language.oop5.visibility.asymmetric",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L430"
+      ],
+      "criterion_ids": [
+        "assignability/asymmetric-property-override"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7a3fdc7ca8bd3d5091c3",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3"
+      ],
+      "semantic_statement": "Two identical return tags violate phpDocumentor's single-return-tag rule without affecting PHP execution.",
+      "reason": "Read AnnotationTest.php:2011 in providerInvalidCodeParse. Removed unrelated array parameter typing. Runtime confirms the function's value; the documented MUST-NOT-occur-more-than-once rule supplies static policy ground truth. Psalm reports InvalidDocblock at line 7; PHPStan and Mago are silent, retained as policy-comparison FNs. PHPStan's predicate uses a distinctive duplicate-return message rather than an invented diagnostic code. This does not argue that every analyzer must enforce every documentation rule.",
+      "citations": [
+        "https://docs.phpdoc.org/guide/references/phpdoc/tags/return.html",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2011"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/duplicate-return-tag"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7c8a6899c045380fcf5f",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-7c8a6899c045380fcf5f"
+      ],
+      "semantic_statement": "4 is outside the declared scalar union while 3 is a member.",
+      "reason": "Finite membership checked independently at runtime. The catalogue's enum title is a heuristic; no native enum is involved. All tools report the invalid argument at line 5 and leave the good call clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L131",
+        "https://psalm.dev/docs/annotating_code/type_syntax/scalar_types/"
+      ],
+      "criterion_ids": [
+        "assignability/catalog-literal-scalar-union"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7d2ccd7549c78392118c",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-psalm-7d2ccd7549c78392118c"
+      ],
+      "semantic_statement": "Spaced nested Closure signatures in a shape permit invoking its required callback and returning an integer map or null.",
+      "reason": "Source's falsely annotated empty initializer was replaced by a real shape parameter. Runtime exercises both return alternatives. All tools are clean. Same criterion as the no-spacing variant.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L464",
+        "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"
+      ],
+      "criterion_ids": [
+        "callables/catalog-nested-closure-shape-syntax"
+      ]
+    },
+    {
+      "candidate_id": "psalm:924aac46207f32ed8ed5",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-psalm-924aac46207f32ed8ed5"
+      ],
+      "semantic_statement": "An int cast of a positive integer is an identity and cannot lose positivity.",
+      "reason": "Controls include 1, 2 and PHP_INT_MAX. Mago invalid-return-statement at line 7 loses the range, a semantic FP. Independent review corrected the initial Psalm FP label: RedundantCastGivenDocblockType at line 7 is a correct redundancy warning, acknowledged separately from the return-type preservation criterion. PHPStan is clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L529",
+        "https://www.php.net/manual/en/language.types.integer.php#language.types.integer.casting"
+      ],
+      "criterion_ids": [
+        "narrowing/catalog-positive-int-cast"
+      ]
+    },
+    {
+      "candidate_id": "psalm:946e241294d114c29a8b",
+      "status": "measured",
+      "case_ids": [
+        "arrays/catalog-psalm-946e241294d114c29a8b"
+      ],
+      "semantic_statement": "Passing an array by reference to a mutator does not prevent replacing the variable with an integer list.",
+      "reason": "Deterministic sort replaces shuffle. The integer-list return contract detects a stale string element type. Runtime returns exactly [0,1]; all tools are clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L146",
+        "https://www.php.net/manual/en/function.sort.php"
+      ],
+      "criterion_ids": [
+        "arrays/catalog-byref-reassignment"
+      ]
+    },
+    {
+      "candidate_id": "psalm:969cef3e55d9ffe925f9",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-969cef3e55d9ffe925f9"
+      ],
+      "semantic_statement": "A named call cannot skip a required middle parameter by supplying the optional last parameter.",
+      "reason": "Runtime catches ArgumentCountError naming required; a reordered complete call succeeds. All tools report line 4 with their concrete missing-argument codes.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L774",
+        "https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments"
+      ],
+      "criterion_ids": [
+        "assignability/catalog-named-required-argument"
+      ]
+    },
+    {
+      "candidate_id": "psalm:9e4f5a27653ddc7273ca",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-psalm-9e4f5a27653ddc7273ca"
+      ],
+      "semantic_statement": "The same nested callable shape remains valid without whitespace around its signature punctuation.",
+      "reason": "Separate measured parser variant, shared criterion with the spaced candidate. Runtime checks null and map return alternatives. All tools are clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L457",
+        "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"
+      ],
+      "criterion_ids": [
+        "callables/catalog-nested-closure-shape-syntax"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a02980c52843949bdecb",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-a02980c52843949bdecb"
+      ],
+      "semantic_statement": "Identical repeated @param tags violate phpDocumentor's at-most-once-per-argument policy, although PHP erases both tags.",
+      "reason": "Policy citation verified explicitly. Portable duplicate tags and a single-tag control. Psalm InvalidDocblock line 7; PHPStan and Mago are silent, retained as policy FNs, not runtime-safety defects and not assumed unsupported.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2002",
+        "https://docs.phpdoc.org/guide/references/phpdoc/tags/param.html"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/catalog-duplicate-param"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a589cd9fbab7175a992d",
+      "status": "measured",
+      "case_ids": [
+        "phpdoc-extensions/catalog-psalm-a589cd9fbab7175a992d"
+      ],
+      "semantic_statement": "The no-named-arguments annotation forbids a named call, even though PHP itself accepts it.",
+      "reason": "Both arguments are used, so no UnusedParam suppression is needed. Runtime proves named and positional calls both return 3. All tools implement the optional API policy at line 5; this agreement does not make the policy universally desirable. Parent semantic audit groups this function and the constructor-policy fixture as variants, with a canonical phpdoc-extensions domain. Historical run paths retain their original case identity.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L673",
+        "https://psalm.dev/docs/annotating_code/supported_annotations/#no-named-arguments"
+      ],
+      "criterion_ids": [
+        "phpdoc-extensions/no-named-arguments-policy"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a6aa7787b414a8456355",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-a6aa7787b414a8456355"
+      ],
+      "semantic_statement": "self resolves to the declaring exception class, so throwing new self satisfies @throws self.",
+      "reason": "Runtime catches the exact exception class and message. All tools accept the annotation. Existing assignability domain used instead of a new exceptions domain.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1127",
+        "https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php"
+      ],
+      "criterion_ids": [
+        "assignability/catalog-throws-self"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a8cb5b46f221852f2145",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-psalm-a8cb5b46f221852f2145"
+      ],
+      "semantic_statement": "A template bound introduced by as needs a following type; the incomplete annotation is malformed.",
+      "reason": "Upstream SKIPPED label was not a reason to defer. Runtime confirms valid PHP; static policy checks malformed annotation grammar. PHPStan phpDoc.parseError line 4 and Mago invalid-docblock line 4; Psalm emits nothing, retained FN. Mago's second parser-layer report is allowed only at exact code/line.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1814",
+        "https://psalm.dev/docs/annotating_code/templated_annotations/#template-constraints"
+      ],
+      "criterion_ids": [
+        "generics/catalog-incomplete-template-bound"
+      ]
+    },
+    {
+      "candidate_id": "psalm:af4807bea53ac80a15c3",
+      "status": "measured",
+      "case_ids": [
+        "generics/catalog-psalm-af4807bea53ac80a15c3"
+      ],
+      "semantic_statement": "A multiline list of record shapes preserves the string type of the lang field.",
+      "reason": "Inlined the Psalm-specific alias to isolate common multiline grammar. Returned a real record rather than only an empty list and consumed its lang as string. Runtime and all tools agree. Alias-scope interoperability is not claimed.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L528",
+        "https://psalm.dev/docs/annotating_code/type_syntax/array_types/#lists"
+      ],
+      "criterion_ids": [
+        "generics/catalog-multiline-list-shape"
+      ]
+    },
+    {
+      "candidate_id": "psalm:b832ee21bb9a15b5e6bc",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-psalm-b832ee21bb9a15b5e6bc"
+      ],
+      "semantic_statement": "A nullable factory can return null, making an unguarded method call fail while the nullsafe control succeeds.",
+      "reason": "Removed ignore-nullable-return override rather than trusting source acceptance as runtime truth. Deterministic bool replaces randomness. All tools report line 5; runtime catches the actual null dereference. This measures underlying semantics, not suppression interoperability.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271",
+        "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe"
+      ],
+      "criterion_ids": [
+        "nullability/catalog-nullable-method-call"
+      ]
+    },
+    {
+      "candidate_id": "psalm:c013f91ca882f9f18a36",
+      "status": "measured",
+      "case_ids": [
+        "enums/catalog-psalm-c013f91ca882f9f18a36"
+      ],
+      "semantic_statement": "A real guard over backing values proves membership in value-of<Color> before a conversion call.",
+      "reason": "Source's empty asserting functions and falsely annotated null values were not accepted as proof. Runtime guard covers both enum cases and rejects a third string. PHPStan/Psalm clean; Mago possibly-invalid-argument line 8 is retained FP. This is a semantic reduction, not a test of the psalm-assert tag itself.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L2306",
+        "https://www.php.net/manual/en/language.enumerations.backed.php"
+      ],
+      "criterion_ids": [
+        "enums/catalog-value-of-narrowing"
+      ]
+    },
+    {
+      "candidate_id": "psalm:c517a982a06f57ea084b",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-psalm-c517a982a06f57ea084b"
+      ],
+      "semantic_statement": "The implementation returns null on a real branch despite a nonnullable PHPDoc return type; its native nullable type is correct.",
+      "reason": "All tools are silent. Retained as FN against the literal PHPDoc contract, with an explicit caveat that analyzers may intentionally merge native null into PHPDoc. Runtime proves both return alternatives and the necessity of the caller's null check. Not claimed as three runtime-safety defects; no unsupported policy was invented.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L608",
+        "https://www.php.net/manual/en/language.types.declarations.php"
+      ],
+      "criterion_ids": [
+        "nullability/catalog-doc-native-nullable-conflict"
+      ]
+    },
+    {
+      "candidate_id": "psalm:cd294fcb8e014ab18e3e",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-psalm-cd294fcb8e014ab18e3e"
+      ],
+      "semantic_statement": "A final class has no subclasses, and is_subclass_of excludes the class itself, so the dynamic-new branch is unreachable.",
+      "reason": "Removed source suppression and consistent-constructor override. Runtime checks final class itself plus unrelated classes; finality establishes universal exclusion. No tool diagnoses the impossible condition. PHPStan silent FN; Mago redundant-docblock-type line 7 mixed; Psalm UnsafeInstantiation line 8 mixed despite the final class and unreachable branch. The annotation warning is a policy difference, not a runtime bug.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1289",
+        "https://www.php.net/manual/en/language.oop5.final.php",
+        "https://www.php.net/manual/en/function.is-subclass-of.php"
+      ],
+      "criterion_ids": [
+        "narrowing/catalog-final-class-subclass-guard"
+      ]
+    },
+    {
+      "candidate_id": "psalm:de14e6754f8edfa65da8",
+      "status": "measured",
+      "case_ids": [
+        "narrowing/catalog-psalm-de14e6754f8edfa65da8"
+      ],
+      "semantic_statement": "Equality with a declared class name narrows an arbitrary string to a valid class-string at the consumer call.",
+      "reason": "Known class is instantiated in runtime and a nonexistent name is excluded by the guard. PHPStan clean. Psalm MixedMethodCall and Mago unknown-class-instantiation at line 5 concern the general class-string constructor policy, not the guarded call line 7. These remain FP against the executable baseline with the policy distinction documented.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L325",
+        "https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class"
+      ],
+      "criterion_ids": [
+        "narrowing/catalog-class-string-equality"
+      ]
+    },
+    {
+      "candidate_id": "psalm:e8412c2dfa81d2a9bbd5",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-e8412c2dfa81d2a9bbd5"
+      ],
+      "semantic_statement": "A two-element literal unpack after one positional argument supplies all three integer parameters.",
+      "reason": "Runtime proves result 6 and equality with the explicit positional control. All tools are clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L25",
+        "https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list"
+      ],
+      "criterion_ids": [
+        "assignability/catalog-literal-argument-unpack"
+      ]
+    },
+    {
+      "candidate_id": "psalm:f280033f57db8a07358a",
+      "status": "measured",
+      "case_ids": [
+        "callables/catalog-psalm-f280033f57db8a07358a"
+      ],
+      "semantic_statement": "A trailing colon in a callable signature requires a return type, which is missing here.",
+      "reason": "All tools diagnose the malformed docblock; the complete Closure():void control stays clean. Runtime verifies executable PHP independent of annotations. Mago's duplicate parser-layer diagnostic is acknowledged only with exact malformed-docblock-comment code at line 3.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1751",
+        "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"
+      ],
+      "criterion_ids": [
+        "callables/catalog-missing-callable-return-type"
+      ]
+    },
+    {
+      "candidate_id": "psalm:fbe59540f6b89bde9139",
+      "status": "measured",
+      "case_ids": [
+        "assignability/catalog-psalm-fbe59540f6b89bde9139"
+      ],
+      "semantic_statement": "Every declared literal, including a quoted string and integer members, is accepted by the finite scalar-union contract.",
+      "reason": "Portable parenthesized @param union retains embedded-quote parsing. Runtime verifies all five member identities; all tools are clean. Shares criterion with invalid-int variant and does not inflate coverage.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L23",
+        "https://psalm.dev/docs/annotating_code/type_syntax/scalar_types/"
+      ],
+      "criterion_ids": [
+        "assignability/catalog-literal-scalar-union"
+      ]
+    },
+    {
+      "candidate_id": "psalm:fe044cea9130c52f9d28",
+      "status": "measured",
+      "case_ids": [
+        "nullability/catalog-psalm-fe044cea9130c52f9d28"
+      ],
+      "semantic_statement": "An explicit null member in string|null|object permits null independently of object membership.",
+      "reason": "Native union anchors the membership fact directly in PHP. Runtime covers null, string and object identity; all tools are clean.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L164",
+        "https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.composite.union"
+      ],
+      "criterion_ids": [
+        "nullability/catalog-null-in-object-union"
+      ]
+    },
+    {
+      "candidate_id": "psalm:0258f917ccc4a0494ec0",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L1059"
+      ]
+    },
+    {
+      "candidate_id": "psalm:03f791600b93a59b05c4",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L887"
+      ]
+    },
+    {
+      "candidate_id": "psalm:11649f60e3f28ffc8a1d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L2748"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1abd87c604951fcbc3d2",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L43"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1cb2dac6bf06928b2228",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAccessTest.php#L924"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1d8ac6a96fa6e34f8390",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L140"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1eeb63a519431347b9cf",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L365"
+      ]
+    },
+    {
+      "candidate_id": "psalm:1f1cdb77ab0ff99ee12a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L428"
+      ]
+    },
+    {
+      "candidate_id": "psalm:27f9e976e06f5cbb2dd4",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L792"
+      ]
+    },
+    {
+      "candidate_id": "psalm:2bc63ae06aa13a35595e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L591"
+      ]
+    },
+    {
+      "candidate_id": "psalm:2be7ad2f1e0e7274188c",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L390"
+      ]
+    },
+    {
+      "candidate_id": "psalm:2df9d7d0c56e9e38aa09",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L399"
+      ]
+    },
+    {
+      "candidate_id": "psalm:3afbe113e330323d859d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CapabilitiesTest.php#L1015"
+      ]
+    },
+    {
+      "candidate_id": "psalm:3c385d7531bb930d2233",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L481"
+      ]
+    },
+    {
+      "candidate_id": "psalm:5455df24f900d6052208",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L677"
+      ]
+    },
+    {
+      "candidate_id": "psalm:6323ede91486a0eb613c",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L134"
+      ]
+    },
+    {
+      "candidate_id": "psalm:6f5dd84ff35dbe805181",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L1991"
+      ]
+    },
+    {
+      "candidate_id": "psalm:75ae7dd3203e822161a1",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L602"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7b18e2cfcceffd5664d1",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L480"
+      ]
+    },
+    {
+      "candidate_id": "psalm:7f0641301ef6342373d5",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L494"
+      ]
+    },
+    {
+      "candidate_id": "psalm:90d725978d4b70d8bc3c",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L443"
+      ]
+    },
+    {
+      "candidate_id": "psalm:94defe494cd6a89ae7ac",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L456"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a0385c82d93eba88e618",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L817"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a0e8e5c6196586370def",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CapabilitiesTest.php#L1309"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a3312948bea098671d17",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L448"
+      ]
+    },
+    {
+      "candidate_id": "psalm:a375dc7fd5adbc81dd42",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L122"
+      ]
+    },
+    {
+      "candidate_id": "psalm:aaeb1f627adf28dddb55",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L805"
+      ]
+    },
+    {
+      "candidate_id": "psalm:b08c0b710fd748d227e6",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L35"
+      ]
+    },
+    {
+      "candidate_id": "psalm:cb19dfe45d50bf78ce5e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L190"
+      ]
+    },
+    {
+      "candidate_id": "psalm:cfd53c15b80fd0b36cac",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L429"
+      ]
+    },
+    {
+      "candidate_id": "psalm:d79815e430479f229651",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L704"
+      ]
+    },
+    {
+      "candidate_id": "psalm:d87db266ee17b9affc41",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L49"
+      ]
+    },
+    {
+      "candidate_id": "psalm:da0cab54079eda0a3c5e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L348"
+      ]
+    },
+    {
+      "candidate_id": "psalm:e11944ad6491946548d2",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CoreStubsTest.php#L231"
+      ]
+    },
+    {
+      "candidate_id": "psalm:f171b6f5b9b5d1537bc7",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L687"
+      ]
+    },
+    {
+      "candidate_id": "psalm:f46b76434771c70d9b9a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1017"
+      ]
+    },
+    {
+      "candidate_id": "psalm:f6dbef552ee49c5d4391",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L389"
+      ]
+    },
+    {
+      "candidate_id": "psalm:f7a07870affa1612d3e0",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L585"
+      ]
+    },
+    {
+      "candidate_id": "psalm:fb89f57a12bb4f180e3f",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L478"
+      ]
+    },
+    {
+      "candidate_id": "psalm:fcf431b8c9398d5676be",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L834"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:00d2c9eeaa768219ad20",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk-php81.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:03c8afe288a07174a848",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-constructor.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:053e97e1af7cf48f004d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/constant-phpdoc-type.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:06906136f453cbb67538",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/early-termination-phpdoc.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:086a154a0a9cccbe2331",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/methodPhpDocs-phpstanPrefix.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:0e13b173c589207e7abe",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/dynamic-sprintf.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:0ee5fd047aed4748f568",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-map-closure.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:10af2d2cc72a7b1835dc",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:1958ad104cd5a44204f4",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Api/data/class-const-fetch-in-phpstan.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:3eb3b417f32ef973053d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/const-expr-phpdoc-type.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:4257812ae16c687ede92",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-union.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:46fd4a6d1d4708be8fb0",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-empty.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:4c1627e78f3e69eee59a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/coalesce-non-null-left-in-falsey-context.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:4ee56f6f4f59c7555cea",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-value-flow.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:6312fa3a1c6a524002d1",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/always-true-elseif.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:70eba4a5457dc70a320e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-without-variable.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:7232847fbfdcedb1f054",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array_diff_intersect_callbacks.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:73d20456b1031f31c8cd",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/impure-nullsafe-call-not-remembered.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:74b7278abf235bf8ab78",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk-php8.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:7a183705d46e1d2c1c19",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/callable-in-union.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:7c410ceac53cc46c5644",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-native-type.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:8d28fb02a64bedb06439",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/nullable-closure-parameter.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:9aecf85a1d83cf8d8b4e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assignment-in-condition.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:a11992234629cf55b694",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-datetime.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:a284b630c022fbf70716",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Comparison/data/unreachable-if-branches-not-phpdoc.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:a59042ef7c974cb878d6",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-reflection-php82.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:ad1994db9fe1bc591e18",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php7.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:af8579cb80efa80276ce",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/arrow-function-return-type.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:afea032c15faf99703a0",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-reflection.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:be87ebb47e6b5d55e9e1",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-on-expr.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:c38e20c9d01346c2c10a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/calling-multiple-classes-per-file.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:cc6d2b7935e7fc1e788d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:d5d13cace1d084a219d5",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/complex-generics-example.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:dc4912fb812ff3be0eb7",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-in-array.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:e329ab83d5861adae30d",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/eval-implicit-throw.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:e5ad45877fc3c782ce4e",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/coalesce-assign.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:e83af836300442bbd61a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-docblock.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:f5a5e972ff0d247d85fc",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php8.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:f9759d4036b7f88dedc9",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/builtin-generic-ancestor-stubs.php#L1"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:fba83b62110630b13e2a",
+      "status": "pending",
+      "case_ids": [],
+      "criterion_ids": [],
+      "semantic_statement": "",
+      "reason": "Awaiting independent semantic review and measurement.",
+      "citations": [
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-wildcard-static-template.php#L1"
+      ]
+    }
+  ]
+}

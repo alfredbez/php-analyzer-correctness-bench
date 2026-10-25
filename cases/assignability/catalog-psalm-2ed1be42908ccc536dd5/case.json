@@ -1,0 +1,30 @@
+{
+  "id": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+  "title": "Bitwise complement rejects booleans but accepts integers and strings",
+  "domain": "assignability",
+  "criterion_id": "assignability/bitwise-not-boolean-operand",
+  "rule_class": "invalid-operand",
+  "php": {"min": "8.1", "max": null},
+  "targets": ["src"],
+  "source_candidate_id": "psalm:2ed1be42908ccc536dd5",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Bitwise complement accepts integers and byte strings, but neither boolean value is a supported operand. Both true and false throw TypeError at the operator. Integer and string controls prove complement results independently; booleans are not implicitly treated as zero and one here.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.operators.bitwise.php"
+  },
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "unaryOp.invalid", "file": "src/probe.php", "line": 5}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidOperand", "file": "src/probe.php", "line": 5}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-operand", "file": "src/probe.php", "line": 5}]},
+    "pzoom": {"mode": "diagnostics", "required": [{"code": "InvalidOperand", "file": "src/probe.php", "line": 5}]}
+  },
+  "provenance": {
+    "candidate_id": "psalm:2ed1be42908ccc536dd5",
+    "provider": "providerInvalidCodeParse",
+    "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1340",
+    "license": "MIT",
+    "derivation": "Independent minimal fixture based on the invalidBooleanBitwiseNot lead. A native boolean parameter replaces the literal, and native integer/string controls expose the operator domain. No upstream program body copied."
+  },
+  "notes": "Expectations follow native operator semantics, not analyzer observations. The explicit mixed return avoids prescribing a result type to an operation that always throws. Mago 1.58.2 stays silent, a measured false negative. PHPStan 2.3.1 and Psalm 6.20.1 report the required error. Pzoom's pinned revision attempts this check but has mandatory builtin-stub scan errors; its run is a tool_error, not a quality verdict."
+}

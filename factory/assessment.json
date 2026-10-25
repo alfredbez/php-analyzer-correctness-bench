@@ -3,6 +3,30 @@
   "scope": "Minimal semantic reductions of selected source leads, not exhaustive upstream-suite coverage. Measured means executed, not maintainer-approved or universally desirable.",
   "entries": [
     {
+      "candidate_id": "psalm:2ed1be42908ccc536dd5",
+      "status": "measured",
+      "case_ids": ["assignability/catalog-psalm-2ed1be42908ccc536dd5"],
+      "criterion_ids": ["assignability/bitwise-not-boolean-operand"],
+      "semantic_statement": "Native bitwise complement rejects both boolean values while accepting integers and byte strings.",
+      "reason": "Independent operator-domain reduction with integer, string and both boolean runtime controls. No existing unary-complement criterion; boolean narrowing tests do not cover operand validity.",
+      "citations": [
+        "https://www.php.net/manual/en/language.operators.bitwise.php",
+        "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1340"
+      ]
+    },
+    {
+      "candidate_id": "phpstan:da61ed3a1be4f5592a03",
+      "status": "measured",
+      "case_ids": ["assignability/catalog-phpstan-da61ed3a1be4f5592a03"],
+      "criterion_ids": ["assignability/native-readonly-property-reassignment"],
+      "semantic_statement": "A setter cannot overwrite an initialized native readonly scalar property, even with the same value.",
+      "reason": "Independent write-once-state reduction with separate objects, same/different-value invalid writes and preserved-value controls. Existing asymmetric property override concerns inheritance-time visibility, not initialized state.",
+      "citations": [
+        "https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties",
+        "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Properties/data/readonly-assign.php#L19-L22"
+      ]
+    },
+    {
       "candidate_id": "mago:011e4b9469d7500de1f2",
       "status": "measured",
       "case_ids": [

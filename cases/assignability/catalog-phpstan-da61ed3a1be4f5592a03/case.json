@@ -1,0 +1,29 @@
+{
+  "id": "assignability/catalog-phpstan-da61ed3a1be4f5592a03",
+  "title": "A setter cannot overwrite an initialized native readonly property",
+  "domain": "assignability",
+  "criterion_id": "assignability/native-readonly-property-reassignment",
+  "rule_class": "invalid-property-write",
+  "php": {"min": "8.1", "max": null},
+  "targets": ["src"],
+  "source_candidate_id": "phpstan:da61ed3a1be4f5592a03",
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The constructor initializes the native readonly integer property. A subsequent setter write is forbidden even from the declaring class and even when it writes the same value. Separate objects initialize independently. Failed writes leave both objects unchanged.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties"
+  },
+  "expect": {
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "property.readOnlyAssignNotInConstructor", "file": "src/probe.php", "line": 12}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "InaccessibleProperty", "file": "src/probe.php", "line": 12}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-property-write", "file": "src/probe.php", "line": 12}]},
+    "pzoom": {"mode": "diagnostics", "required": [{"code": "InaccessibleProperty", "file": "src/probe.php", "line": 12}]}
+  },
+  "provenance": {
+    "candidate_id": "phpstan:da61ed3a1be4f5592a03",
+    "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Properties/data/readonly-assign.php#L19-L22",
+    "license": "MIT",
+    "derivation": "Independent minimal fixture based on the setter lead. One public native scalar property isolates reassignment after constructor initialization; no inheritance, visibility conflict, PHPDoc readonly policy or array mutation. No upstream program body copied."
+  },
+  "notes": "Expectations follow PHP readonly semantics, not analyzer observations. This is not a claim that every nonconstructor initialization is forbidden. This constructor always initializes the property before replace can be called. PHPStan 2.3.1, Psalm 6.20.1 and Mago 1.58.2 report the required write error. Pzoom's pinned revision has mandatory builtin-stub scan errors; its run is a tool_error, not a quality verdict."
+}
