@@ -32,11 +32,8 @@ a *different* analyzer's inference contradicts a documented expectation.
 
 ## 4. Psalm's issue documentation and test suite
 
-Not checked out yet. Shallow-clone when needed:
-
-```
-git clone --depth 1 https://github.com/vimeo/psalm /home/abez/projects/psalm-src
-```
+`/home/abez/projects/psalm-src` is available locally. The catalog pins the test
+revision, independently of the Psalm binary version used for measurement.
 
 `docs/running_psalm/issues/<Code>.md` documents each issue code with a small
 example and a link; `tests/` holds the expectations. Evidence **for Psalm**.
@@ -62,3 +59,26 @@ of findings per tool:
   different analyzer.
 * Your own reasoning about what a good analyzer should do, unattached to PHP
   semantics and without a runtime check.
+
+## Source revisions and licenses
+
+The October 24 batch retains the existing clean source checkouts. It does not
+claim that these tests represent the latest upstream suites:
+
+| Source | Test revision | License |
+| --- | --- | --- |
+| Psalm | `62e52cd9fe3ab4429debc0eb0306057419b0a9d6` | MIT, Copyright 2016 Vimeo |
+| PHPStan | `2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96` | MIT, Copyright 2016 Ondřej Mirtes and 2025 PHPStan s.r.o. |
+| Pzoom experiment | `c8162978033745e585f8e60d15a66a48862333cc` | MIT, Copyright 2025–2026 Matt Brown |
+
+New fixtures are independent minimal reductions, not copies of upstream test
+bodies. Their manifests cite the original test, license, and PHP semantics.
+If copying substantial source in future, retain the upstream copyright and full
+MIT permission notice. The Pzoom installer retains its license beside the local
+binary. Pzoom is a measured tool here, not an independent ground-truth source.
+
+`catalog.py expand` uses the same extraction as the original catalog. Its ID and
+probe-hash exclusions remove previously selected leads, not semantic duplicates.
+Every new criterion still needs comparison against the existing corpus and an
+independent review. Neither 8,410 Psalm datasets nor 4,938 PHPStan files means
+that the entire corresponding suite has been semantically reviewed.

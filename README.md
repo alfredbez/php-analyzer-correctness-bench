@@ -39,14 +39,22 @@ nightly results. No upstream issues, pull requests or maintainer messages are
 created automatically.
 
 The initial target is 120 semantic criteria, not 120 parameter variants.
-`factory/catalog.json` lists 120 selected leads from Psalm, PHPStan and historical
+`factory/catalog.json` lists 122 selected leads from Psalm, PHPStan and historical
 Mago probes. `factory/assessment.json` accounts for every lead: a measured reduced
 probe, coverage by an existing case, or an explicit deferral. Neither inventory
 nor assessment implies exhaustive review of the upstream suites. Run
 `python3 factory/catalog.py check` to verify the source-to-case mappings.
 
-To compare an older release, current stable and an immutable main commit on
-identical source bytes and PHP, without modifying the ordinary analyzer pins:
+The [October 24 local pilot](docs/local-pilot-2026-10-24.md) adds two independent
+criteria, bringing the corpus to 144 cases and 129 declared criteria. It refreshes
+the ordinary pins to Mago 1.58.2, Psalm 6.20.1 and PHPStan 2.3.1, and retains 80
+additional public-source leads as explicitly unreviewed. Pzoom is an opt-in fourth
+tool, currently blocked by an embedded-stub parse error. It has no valid quality
+score. See [the factory guide](factory/README.md) for local expansion and setup.
+These local results do not replace the published comparison automatically.
+
+To rerun the checked-in historical release and fixed-main comparison on identical
+source bytes and PHP, without modifying the ordinary analyzer pins:
 
 ```
 python3 tools/prepare-mago.py --config tools/mago-matrix.json
