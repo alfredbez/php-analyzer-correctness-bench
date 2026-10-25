@@ -28,8 +28,14 @@ from bench.runner import ROOT, Runner        # noqa: E402
 
 def tool_versions(runner: Runner, selected=None) -> dict:
     versions = {}
-    for spec in execute.TOOLS:
-        if selected and spec.name not in selected:
+    for spec in execute.selected_tools(selected):
+        if spec.name == "pzoom":
+            binary = Path(execute.tool_binary(spec))
+            original = Path(os.environ.get('BENCH_TOOL_PZOOM', binary))
+            receipt = json.loads(original.with_name(original.name + '.provenance.json').read_text())
+            if receipt['sha256'] != hashlib.sha256(binary.read_bytes()).hexdigest():
+                raise RuntimeError('Pzoom binary does not match its provenance receipt')
+            versions[spec.name] = 'pzoom ' + receipt['ref']
             continue
         argv = [runner.runtime_path(execute.tool_binary(spec)), "--version"]
         output = (runner.php if spec.needs_php else runner.exec)(argv, cwd=ROOT, timeout=120)
@@ -101,7 +107,7 @@ def cmd_run(args) -> int:
         "php_version": php_version,
         "tools": tool_versions(runner, args.tool),
         "tool_sha256": {spec.name: hashlib.sha256(Path(execute.tool_binary(spec)).read_bytes()).hexdigest()
-                        for spec in execute.TOOLS if not args.tool or spec.name in args.tool},
+                        for spec in execute.selected_tools(args.tool)},
         "corpus_fingerprint": case_mod.fingerprint(cases),
         "pins": json.load(open(os.path.join(ROOT, "tools/versions.json"), encoding="utf-8"))["tools"],
         "case_count": len(cases),
@@ -219,7 +225,8 @@ def main(argv=None) -> int:
     p_run = sub.add_parser("run", help="run cases through the analyzers")
     p_run.add_argument("--case", action="append", help="case id (repeatable)")
     p_run.add_argument("--domain", help="only cases in this domain")
-    p_run.add_argument("--tool", action="append", help="only these tools (repeatable)")
+    p_run.add_argument("--tool", action="append", choices=[spec.name for spec in execute.TOOLS],
+                       help="only these tools (repeatable); pzoom is experimental and opt-in")
     p_run.add_argument("--php", help="PHP version for the docker image, e.g. 8.4")
     p_run.add_argument("--php-version", help="the PHP version the runner actually uses")
     p_run.add_argument("--jobs", type=int, default=int(os.environ.get("BENCH_JOBS", "1")))

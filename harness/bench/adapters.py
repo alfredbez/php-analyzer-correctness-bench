@@ -101,4 +101,29 @@ def parse_mago(stdout: str, stderr: str) -> dict:
     return {"diagnostics": diagnostics, "tool_error": None}
 
 
-ADAPTERS = {"phpstan": parse_phpstan, "psalm": parse_psalm, "mago": parse_mago}
+def parse_pzoom(stdout: str, stderr: str) -> dict:
+    """Pinned Pzoom's --format flag is inert; require its complete console summary.
+
+    Do not confuse an empty/truncated stream with a clean analysis. Header counts
+    must agree with both error and info totals before accepting any diagnostics.
+    """
+    headers = re.findall(
+        r'^(ERROR|INFO): (\w+) - (.+):(\d+):(\d+) - (.*)$', stdout, re.M)
+    errors = re.findall(r'^(\d+) errors found$', stdout, re.M)
+    infos = re.findall(r'^(\d+) other issues found\.$', stdout, re.M)
+    expected_errors = int(errors[-1]) if errors else (0 if 'No errors found!' in stdout else None)
+    expected_infos = int(infos[-1]) if infos else 0
+    complete = re.search(r'^Checks took .+ seconds and used .+MB of memory$', stdout, re.M)
+    if ('Scan error' in stderr or not complete or expected_errors is None
+            or sum(row[0] == 'ERROR' for row in headers) != expected_errors
+            or sum(row[0] == 'INFO' for row in headers) != expected_infos):
+        return {"diagnostics": [], "tool_error":
+                "incomplete or inconsistent Pzoom console report: " + (stderr or stdout)[:300]}
+    return {"diagnostics": [
+        {"code": code, "message": message, "file": _relative(path),
+         "line": int(line), "severity": severity.lower()}
+        for severity, code, path, line, column, message in headers], "tool_error": None}
+
+
+ADAPTERS = {"phpstan": parse_phpstan, "psalm": parse_psalm, "mago": parse_mago,
+            "pzoom": parse_pzoom}

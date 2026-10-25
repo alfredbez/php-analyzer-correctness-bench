@@ -203,7 +203,10 @@ def render_gaps(report: dict, tool: str) -> str:
                      f"(case directory: `{record['path']}`)")
         lines.append("")
     if len(lines) <= 7:
-        lines.append("Nothing to report: this analyzer matched every case it was judged against.")
+        if report['summary'][tool]['judged'] == 0:
+            lines.append("No cases were judged; no quality conclusion is available.")
+        else:
+            lines.append("Nothing to report: this analyzer matched every case it was judged against.")
         lines.append("")
     return "\n".join(lines)
 

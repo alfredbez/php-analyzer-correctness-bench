@@ -1,0 +1,22 @@
+{
+  "case": "assignability/catalog-psalm-2ed1be42908ccc536dd5",
+  "tool": "pzoom",
+  "argv": [
+    "/bench/tools/bin/pzoom",
+    "--threads",
+    "1",
+    "--config",
+    "/bench/cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/.generated/psalm.xml",
+    "analyze",
+    "/bench/cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/src"
+  ],
+  "environment": {},
+  "cwd": "/home/abez/projects/php-analyzer-correctness-bench/cases/assignability/catalog-psalm-2ed1be42908ccc536dd5",
+  "exit_code": 2,
+  "duration_s": 0.858,
+  "stdout": "Scanning files...\nScanned 74 files\nResolving types...\nAnalyzing...\n\nERROR: InvalidOperand - src/probe.php:5:12 - Cannot use bitwise not on type bool (see https://psalm.dev/058)\n    return ~$value;\n\n------------------------------\n1 errors found\n------------------------------\n\nChecks took 0.76 seconds and used 84.461MB of memory\n",
+  "stderr": "Scan error in stubs/extensions/sockets.phpstub: Parse error: SyntaxError(UnexpectedToken(FileId(8961026941872636459), 57, Position { offset: 5848 }))\nScan error in stubs/extensions/sockets.phpstub: Parse error: UnexpectedToken(OneOf([]), Semicolon, Span { file_id: FileId(8961026941872636459), start: Position { offset: 5850 }, end: Position { offset: 5851 } })\nScan error in stubs/extensions/sockets.phpstub: Parse error: UnexpectedToken(OneOf([Semicolon, CloseTag]), Const, Span { file_id: FileId(8961026941872636459), start: Position { offset: 5853 }, end: Position { offset: 5858 } })\n",
+  "diagnostics": [],
+  "tool_error": "incomplete or inconsistent Pzoom console report: Scan error in stubs/extensions/sockets.phpstub: Parse error: SyntaxError(UnexpectedToken(FileId(8961026941872636459), 57, Position { offset: 5848 }))\nScan error in stubs/extensions/sockets.phpstub: Parse error: UnexpectedToken(OneOf([]), Semicolon, Span { file_id: FileId(8961026941872636459), start:",
+  "verdict": "tool_error"
+}

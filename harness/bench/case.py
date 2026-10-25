@@ -164,7 +164,7 @@ def validate(case: Case) -> list[str]:
         problems.append("rule_class must name the analyzer rule class under test")
 
     expect = data.get("expect") or {}
-    for tool in TOOLS:
+    for tool in (*TOOLS, *(['pzoom'] if 'pzoom' in expect else [])):
         exp = expect.get(tool)
         if exp is None:
             problems.append(f"expect.{tool} missing (use mode 'unsupported' with a reason)")

@@ -75,6 +75,29 @@ class AdapterTest(unittest.TestCase):
         parsed = adapters.parse_phpstan('{"totals":{"errors":1},"files":{},"errors":["Internal error"]}', "")
         self.assertEqual(parsed["tool_error"], "Internal error")
 
+    def test_pzoom_requires_complete_counts_and_keeps_one_based_locations(self):
+        captured = json.loads(fixture('pzoom-stub-scan-error.json'))
+        self.assertIsNotNone(adapters.parse_pzoom(captured['stdout'], captured['stderr'])['tool_error'])
+        output = ('ERROR: InvalidOperand - src/probe.php:5:12 - Cannot use bitwise not on type bool\n'
+                  'INFO: MixedAssignment - src/probe.php:9:3 - Mixed assignment\n'
+                  '1 errors found\n1 other issues found.\n'
+                  'Checks took 0.25 seconds and used 53.613MB of memory\n')
+        parsed = adapters.parse_pzoom(output, '')
+        self.assertIsNone(parsed['tool_error'])
+        self.assertEqual([(d['code'], d['line'], d['file'], d['severity'])
+                          for d in parsed['diagnostics']],
+                         [('InvalidOperand', 5, 'src/probe.php', 'error'),
+                          ('MixedAssignment', 9, 'src/probe.php', 'info')])
+        for broken, stderr in ((output.split('Checks took')[0], ''),
+                               (output.replace('1 errors found', '2 errors found'), ''),
+                               (output.replace('1 other issues found.', ''), ''),
+                               (output, 'Scan error in stubs/extensions/sockets.phpstub'),
+                               ('No errors found!', '')):
+            with self.subTest(output=broken, stderr=stderr):
+                self.assertIsNotNone(adapters.parse_pzoom(broken, stderr)['tool_error'])
+        clean = 'No errors found!\nChecks took 0.25 seconds and used 53.613MB of memory\n'
+        self.assertEqual(adapters.parse_pzoom(clean, ''), {'diagnostics': [], 'tool_error': None})
+
 
 class AnalyzerExitStatusTest(unittest.TestCase):
     def test_timeout_with_valid_partial_json_is_not_a_successful_measurement(self):
@@ -96,6 +119,19 @@ class AnalyzerExitStatusTest(unittest.TestCase):
 
 
 class ClassificationTest(unittest.TestCase):
+    def test_pzoom_is_opt_in_and_unreviewed_results_are_not_scored(self):
+        from bench import execute
+        self.assertEqual({spec.name for spec in execute.selected_tools()}, {'phpstan', 'psalm', 'mago'})
+        self.assertEqual([spec.name for spec in execute.selected_tools(['pzoom'])], ['pzoom'])
+        case = make_case({'psalm': {'mode': 'clean'}})
+        result = classify.classify(case, 'pzoom', {'diagnostics': []}, '8.4')
+        self.assertEqual(result['verdict'], 'skipped')
+        result = classify.classify(case, 'pzoom', {'tool_error': 'truncated report'}, '8.4')
+        self.assertEqual(result['verdict'], 'tool_error')
+        case.data['expect']['pzoom'] = {'mode': 'diagnostics', 'required': [{'code': 'InvalidOperand'}]}
+        result = classify.classify(case, 'pzoom', {'diagnostics': []}, '8.4')
+        self.assertEqual(result['verdict'], 'false_negative')
+
     def _classify(self, expect: dict, diagnostics: list[dict], tool: str = "phpstan"):
         case = make_case(expect)
         output = {"diagnostics": diagnostics, "tool_error": None, "exit_code": 1}
@@ -222,12 +258,32 @@ class RuntimeProofGateTest(unittest.TestCase):
             self.assertFalse(os.path.exists(os.path.join(root, 'vendor/autoload.php')))
 
 
+class ReportTest(unittest.TestCase):
+    def test_gap_report_does_not_claim_success_without_judged_cases(self):
+        from bench import report
+        for verdict in ('tool_error', 'skipped', 'ok'):
+            with self.subTest(verdict=verdict):
+                payload = report.summarise([
+                    {'case': 'assignability/example', 'domain': 'assignability',
+                     'results': {'pzoom': {'verdict': verdict}}}],
+                    {'run_id': 'experiment', 'tools': {'pzoom': 'pzoom pinned'}, 'php_version': '8.4'})
+                text = report.render_gaps(payload, 'pzoom')
+                if verdict == 'ok':
+                    self.assertIn('matched every case', text)
+                else:
+                    self.assertIn('No cases were judged', text)
+                    self.assertNotIn('matched every case', text)
+
+
 class ContractTest(unittest.TestCase):
     def test_validator_rejects_an_unsupported_expectation_without_citation(self):
-        case = make_case({"phpstan": {"mode": "unsupported", "reason": "no"}})
         from bench import case as case_mod
-        problems = case_mod.validate(case)
-        self.assertTrue(any("citation" in problem for problem in problems))
+        for tool in ('phpstan', 'pzoom'):
+            with self.subTest(tool=tool):
+                case = make_case({tool: {"mode": "unsupported", "reason": "no"}})
+                problems = case_mod.validate(case)
+                self.assertTrue(any(f"expect.{tool}" in problem and "citation" in problem
+                                    for problem in problems))
 
     def test_validator_rejects_an_allowed_entry_without_reason(self):
         case = make_case({"phpstan": {"mode": "diagnostics",

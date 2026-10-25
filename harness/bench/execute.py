@@ -20,13 +20,20 @@ class ToolSpec:
     binary: str          # repository-relative path of the analyzer
     needs_php: bool
     measurement_exit_codes: tuple[int, ...]
+    experimental: bool = False
 
 
 TOOLS = (
     ToolSpec("phpstan", "tools/bin/phpstan.phar", True, (0, 1)),
     ToolSpec("psalm", "tools/bin/psalm.phar", True, (0, 2)),
     ToolSpec("mago", "tools/bin/mago", False, (0, 1)),
+    ToolSpec("pzoom", "tools/bin/pzoom", False, (0, 2), experimental=True),
 )
+
+
+def selected_tools(tools=None):
+    return [spec for spec in TOOLS if spec.name in tools] if tools else [
+        spec for spec in TOOLS if not spec.experimental]
 
 
 def ensure_psalm_config(case: case_mod.Case) -> str:
@@ -126,6 +133,8 @@ def build_argv(case: case_mod.Case, spec: ToolSpec) -> list[str]:
     if spec.name == "psalm":
         return [binary, "--no-cache", "--no-progress", "--output-format=json",
                 f"--root={case.path}", f"--config={ensure_psalm_config(case)}"] + targets
+    if spec.name == "pzoom":
+        return [binary, "--threads", "1", "--config", ensure_psalm_config(case), "analyze"] + targets
     if spec.name == "mago":
         return [binary, "analyze", "--reporting-format", "json",
                 "--reporting-target", "stdout"] + targets
@@ -204,7 +213,7 @@ def run_runtime_proof(case: case_mod.Case, runner: Runner, php_version=None) -> 
 
 def run_case(case: case_mod.Case, runner: Runner, tools=None, php_version=None,
              run_dir: str | None = None) -> dict:
-    selected = [spec for spec in TOOLS if not tools or spec.name in tools]
+    selected = selected_tools(tools)
     record = {"case": case.id, "domain": case.domain, "rule_class": case.rule_class,
               "basis": case.data.get("ground_truth", {}).get("basis"),
               "path": os.path.relpath(case.path, ROOT), "results": {}}

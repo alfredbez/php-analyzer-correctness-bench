@@ -79,6 +79,11 @@ def classify(case: case_mod.Case, tool: str, output: dict, php_version: str | No
         result["detail"] = skip_reason
         return result
 
+    if tool == "pzoom" and (output.get("tool_error") or tool not in case.data["expect"]):
+        result["verdict"] = "tool_error" if output.get("tool_error") else "skipped"
+        result["detail"] = output.get("tool_error") or "experimental tool: expectation not yet reviewed"
+        return result
+
     expectation = case.expectation(tool)
     mode = expectation.get("mode")
 
