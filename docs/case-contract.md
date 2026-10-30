@@ -95,6 +95,18 @@ Predicates (`required`, `forbidden`, `allowed`) match on `code` (string or list,
 compared case-insensitively), `message_regex`, `file` (suffix match) and `line`
 (± `line_tolerance`). A predicate matches only when every field it sets matches.
 
+Use `line_tolerance` (e.g. `line_tolerance: 1` or `2`) instead of maintaining differing
+target lines per tool when docblock syntax errors or parser diagnostics attach to
+different lines across tools (e.g. docblock comment line vs. following declaration line).
+`line_tolerance` is reserved for docblock/parser diagnostic location differences to keep
+declared expectations symmetrical across tools; do not use it to soften semantic checks.
+
+In fixtures where `mode: clean` is expected, multiple cascading follow-up diagnostics
+stemming from an unrecognized inference (for example, both a missing closure parameter
+type and a mixed return statement) are not collapsed into a single diagnostic claim.
+Because benchmark accounting evaluates one binary verdict per case (`false_positive`),
+the case is counted once without suppressing the tool's actual output.
+
 An expectation may carry its own `basis` and `citation`. Use that when the
 fixture was harvested from one tool's test suite: that tool is judged against its
 own documented expectation (`"basis": "upstream_test"`, with the test file as the
