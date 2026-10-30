@@ -6,7 +6,7 @@ on:
     paths:
       - 'harness/site.py'
       - 'harness/web/**'
-      - 'results/comparisons/2026-10-18-expanded-review/comparison.json'
+      - 'results/comparisons/2026-10-30-audit-review/comparison.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
       - name: Render the reviewed comparison
         run: >-
           python3 harness/site.py
-          --comparison results/comparisons/2026-10-18-expanded-review/comparison.json
+          --comparison results/comparisons/2026-10-30-audit-review/comparison.json
           --out _site/index.html
       - uses: actions/upload-pages-artifact@v4
         with:
