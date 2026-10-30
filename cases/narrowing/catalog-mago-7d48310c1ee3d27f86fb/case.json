@@ -77,6 +77,14 @@
           "line": 15,
           "file": "src/repro.php"
         }
+      ],
+      "allowed": [
+        {
+          "code": "mixed-return-statement",
+          "line": 9,
+          "file": "src/repro.php",
+          "reason": "The undefined local also prevents a proven string return type; secondary consequence of the required variable diagnostic."
+        }
       ]
     }
   },
