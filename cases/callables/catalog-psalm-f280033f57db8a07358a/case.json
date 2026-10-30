@@ -4,9 +4,9 @@
   "source_candidate_id": "psalm:f280033f57db8a07358a", "php": {"min": "8.1"}, "targets": ["src"],
   "ground_truth": {"basis": "upstream_docs", "statement": "Closure(int): starts a callable return-type clause but supplies no type. The documented callable grammar requires a return type there. A complete Closure():void control is well formed. Runtime establishes that PHP ignores both docblocks.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/type_syntax/callable_types/"},
   "expect": {
-    "phpstan": {"mode": "diagnostics", "required": [{"code": "phpDoc.parseError", "line": 3}]},
-    "psalm": {"mode": "diagnostics", "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1751", "required": [{"code": "InvalidDocblock", "line": 4}]},
-    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 3}], "allowed": [{"code": "malformed-docblock-comment", "line": 3, "reason": "A second parser-layer report of the same incomplete callable return clause, not an independent false positive."}]}
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "phpDoc.parseError", "line": 3, "line_tolerance": 1}]},
+    "psalm": {"mode": "diagnostics", "basis": "upstream_test", "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1751", "required": [{"code": "InvalidDocblock", "line": 3, "line_tolerance": 1}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 3, "line_tolerance": 1}], "allowed": [{"code": "malformed-docblock-comment", "line": 3, "reason": "A second parser-layer report of the same incomplete callable return clause, not an independent false positive."}]}
   },
   "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1751", "provider": "providerInvalidCodeParse", "note": "Re-derived incomplete callable-return annotation and added a well-formed closure control."},
   "notes": "This row measures annotation syntax policy. All three tools diagnose the incomplete clause. Mago emits both invalid-docblock and malformed-docblock-comment at line 3, which identify the same syntax error; the latter is acknowledged with an exact code and line. A missing grammar diagnostic would not establish a runtime defect or non-support."

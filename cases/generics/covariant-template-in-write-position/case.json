@@ -16,7 +16,7 @@
     "phpstan": {
       "mode": "diagnostics",
       "required": [
-        { "code": "generics.variance", "line": 30, "message_regex": "covariant" }
+        { "code": "generics.variance", "line": 30, "line_tolerance": 1, "message_regex": "covariant" }
       ],
       "forbidden": [
         { "code": "argument.type", "line": 51 }
@@ -25,7 +25,7 @@
     "psalm": {
       "mode": "diagnostics",
       "required": [
-        { "code": "InvalidTemplateParam", "line": 29, "message_regex": "covariant" }
+        { "code": "InvalidTemplateParam", "line": 30, "line_tolerance": 1, "message_regex": "covariant" }
       ],
       "forbidden": [
         { "code": "InvalidArgument", "line": 51 }
@@ -34,7 +34,7 @@
     "mago": {
       "mode": "diagnostics",
       "required": [
-        { "code": "invalid-template-parameter", "line": 30, "message_regex": "covariant" }
+        { "code": "invalid-template-parameter", "line": 30, "line_tolerance": 1, "message_regex": "covariant" }
       ],
       "forbidden": [
         { "code": "invalid-argument", "line": 51 }

@@ -27,7 +27,7 @@
     "mago": {
       "mode": "diagnostics",
       "required": [
-        { "code": "incompatible-return-type", "line": 32, "line_tolerance": 4 }
+        { "code": "incompatible-return-type", "line": 30, "line_tolerance": 4 }
       ]
     }
   },

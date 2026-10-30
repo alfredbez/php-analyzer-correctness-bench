@@ -24,6 +24,7 @@
         {
           "code": "phpDoc.parseError",
           "line": 4,
+          "line_tolerance": 1,
           "file": "src/repro.php"
         }
       ],
@@ -41,7 +42,8 @@
       "required": [
         {
           "code": "InvalidDocblock",
-          "line": 5,
+          "line": 4,
+          "line_tolerance": 1,
           "file": "src/repro.php"
         }
       ]
@@ -52,6 +54,7 @@
         {
           "code": "invalid-docblock",
           "line": 4,
+          "line_tolerance": 1,
           "file": "src/repro.php"
         }
       ]

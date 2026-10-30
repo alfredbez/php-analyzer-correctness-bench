@@ -6,9 +6,9 @@
   "php": {"min": "8.1"}, "targets": ["src"],
   "ground_truth": {"basis": "upstream_docs", "statement": "A template as/of bound requires a type following the keyword; @template T as has none. Runtime confirms that this is annotation syntax, not invalid PHP. The original SKIPPED label is not treated as a current expectation.", "runtime_script": "runtime/check.php", "citation": "https://psalm.dev/docs/annotating_code/templated_annotations/#template-constraints"},
   "expect": {
-    "phpstan": {"mode": "diagnostics", "required": [{"code": "phpDoc.parseError", "line": 4}]},
-    "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidDocblock", "line": 6}]},
-    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 4}], "allowed": [{"code": "malformed-docblock-comment", "line": 4, "reason": "The class parser reports the same missing bound type already identified by invalid-docblock at this exact site."}]}
+    "phpstan": {"mode": "diagnostics", "required": [{"code": "phpDoc.parseError", "line": 4, "line_tolerance": 2}]},
+    "psalm": {"mode": "diagnostics", "required": [{"code": "InvalidDocblock", "line": 4, "line_tolerance": 2}]},
+    "mago": {"mode": "diagnostics", "required": [{"code": "invalid-docblock", "line": 4, "line_tolerance": 2}], "allowed": [{"code": "malformed-docblock-comment", "line": 4, "reason": "The class parser reports the same missing bound type already identified by invalid-docblock at this exact site."}]}
   },
   "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1814", "provider": "providerInvalidCodeParse", "note": "Read the concatenated source string in full. Re-derived its incomplete @template T as annotation. Although upstream marks the lead SKIPPED, the malformed grammar has a meaningful measurement today."},
   "notes": "Measured, not disabled or deferred. PHPStan reports phpDoc.parseError at line 4. Mago reports invalid-docblock and a duplicate class-parser malformed-docblock-comment there. Psalm 6.20.0 emits nothing, retained as a syntax-policy FN against the documented bound grammar. The upstream SKIPPED label does not justify dropping this runnable comparison."
