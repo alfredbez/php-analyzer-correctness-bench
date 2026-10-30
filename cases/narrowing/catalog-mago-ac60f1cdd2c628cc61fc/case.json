@@ -54,10 +54,18 @@
           "line": 7,
           "file": "src/repro.php"
         }
+      ],
+      "allowed": [
+        {
+          "code": "mixed-return-statement",
+          "line": 7,
+          "file": "src/repro.php",
+          "reason": "The required nonexistent method has no return signature; this is a secondary consequence, not an additional type error on a sound return."
+        }
       ]
     }
   },
-  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0. phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation.",
+  "notes": "The local source is a lead, not an oracle. Fixture and deterministic controls are re-derived from PHP semantics. Constant-condition diagnostics measure broad behavior, not a recommendation that every redundancy deserves a product warning. Measured with PHP 8.3.35, PHPStan 2.3.1, Psalm 6.20.0 and Mago 1.57.0 (and 1.59.0). phpstan agrees with the scoped expectation; psalm agrees with the scoped expectation; mago agrees with the scoped expectation with symmetrical mixed-return allowance on line 7.",
   "provenance": {
     "sources": [
       {
