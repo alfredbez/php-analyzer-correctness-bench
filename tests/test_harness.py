@@ -182,6 +182,14 @@ class ClassificationTest(unittest.TestCase):
         result = self._classify(expect, [{"code": "x", "line": 16, "message": ""}])
         self.assertEqual(result["verdict"], "ok")
 
+    def test_line_tolerance_exceeded_fails_match(self):
+        expect = {"phpstan": {"mode": "diagnostics",
+                              "required": [{"code": "x", "line": 15, "line_tolerance": 1}]}}
+        result = self._classify(expect, [{"code": "x", "line": 17, "message": ""}])
+        self.assertEqual(result["verdict"], "mixed")
+        self.assertIn("x", result["missing"])
+        self.assertIn("x@17", result["unexpected"])
+
     def test_php_version_skip(self):
         case = make_case({"phpstan": {"mode": "clean"}})
         case.data["php"] = {"min": "8.4"}
@@ -292,6 +300,22 @@ class ContractTest(unittest.TestCase):
         from bench import case as case_mod
         problems = case_mod.validate(case)
         self.assertTrue(any("allowed entry needs a 'reason'" in problem for problem in problems))
+
+    def test_validator_rejects_invalid_line_tolerance(self):
+        from bench import case as case_mod
+        for bad_tolerance in (-1, "one", 1.5, True):
+            with self.subTest(tolerance=bad_tolerance):
+                case = make_case({"phpstan": {"mode": "diagnostics",
+                                              "required": [{"code": "x", "line": 10, "line_tolerance": bad_tolerance}]}})
+                problems = case_mod.validate(case)
+                self.assertTrue(any("line_tolerance must be a non-negative integer" in p for p in problems))
+
+    def test_validator_rejects_line_tolerance_without_line(self):
+        from bench import case as case_mod
+        case = make_case({"phpstan": {"mode": "diagnostics",
+                                      "required": [{"code": "x", "line_tolerance": 2}]}})
+        problems = case_mod.validate(case)
+        self.assertTrue(any("line_tolerance requires 'line' to be specified" in p for p in problems))
 
     def test_corpus_is_valid(self):
         from bench import case as case_mod

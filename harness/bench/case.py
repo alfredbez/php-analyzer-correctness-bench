@@ -192,6 +192,14 @@ def validate(case: Case) -> list[str]:
                 problems.append(f"expect.{tool}.allowed entry needs 'code' or 'message_regex'")
             if not item.get("reason"):
                 problems.append(f"expect.{tool}.allowed entry needs a 'reason' - acknowledged output must be justified")
+        for pred_list in (exp.get("required", []), exp.get("forbidden", []), exp.get("allowed", [])):
+            for item in pred_list:
+                if "line_tolerance" in item:
+                    tol = item["line_tolerance"]
+                    if not isinstance(tol, int) or isinstance(tol, bool) or tol < 0:
+                        problems.append(f"expect.{tool} line_tolerance must be a non-negative integer, got {tol!r}")
+                    if item.get("line") is None:
+                        problems.append(f"expect.{tool} line_tolerance requires 'line' to be specified")
         # An expectation may name its own basis. That is how a fixture harvested
         # from one tool's test suite is judged for that tool (upstream_test) while
         # the other two are judged against the case's neutral ground truth.
