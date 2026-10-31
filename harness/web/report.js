@@ -42,6 +42,13 @@ function change(id) {
   if (!p) return null;
   return p.cases.find((row) => row.case === id)?.transition || "not_comparable";
 }
+function toolColumn(toolName) {
+  if (toolName === "mago" && pair()) {
+    return columns.find((col) => col.tool === "mago" && col.profile === pair().after) || columns.find((col) => col.tool === "mago");
+  }
+  return columns.find((col) => col.tool === toolName);
+}
+const isDefect = (v) => ["false_positive", "false_negative", "mixed", "tool_error", "case_error"].includes(v);
 
 const stable = profiles.get("stable").report;
 const runtimeChecks = stable.cases.filter((c) => c.runtime_proof).length;
@@ -74,7 +81,7 @@ if (data.comparisons.length) {
   option.value = "";
   $("pair").append(option);
   $("pair").disabled = true;
-  for (const value of ["fixed", "regressed", "still_open", "not_comparable"]) {
+  for (const value of ["fixed", "regressed", "not_comparable"]) {
     const opt = $("finding").querySelector(`option[value="${value}"]`);
     if (opt) opt.disabled = true;
   }
@@ -86,7 +93,7 @@ for (const label of headerLabels) heading.append(node("th", label));
 $("matrix").querySelector("thead").append(heading);
 
 function render() {
-  if (!pair() && ["fixed", "regressed", "still_open", "not_comparable"].includes($("finding").value)) {
+  if (!pair() && ["fixed", "regressed", "not_comparable"].includes($("finding").value)) {
     $("finding").value = "all";
   }
   const query = $("search").value.trim().toLowerCase(), domain = $("domain").value, finding = $("finding").value;
@@ -97,6 +104,9 @@ function render() {
     if (finding === "defects") return verdicts.some((v) => ["false_positive", "false_negative", "mixed"].includes(v));
     if (["false_positive", "false_negative"].includes(finding)) return verdicts.includes(finding) || verdicts.includes("mixed");
     if (finding === "divergence") return verdicts.includes("divergence");
+    if (finding === "still_open") return isDefect(result(c.id, toolColumn("mago"))?.verdict);
+    if (finding === "open_phpstan") return isDefect(result(c.id, toolColumn("phpstan"))?.verdict);
+    if (finding === "open_psalm") return isDefect(result(c.id, toolColumn("psalm"))?.verdict);
     return finding === "all" || change(c.id) === finding;
   });
   if (!visible.some((c) => c.id === selected)) selected = visible[0]?.id || null;

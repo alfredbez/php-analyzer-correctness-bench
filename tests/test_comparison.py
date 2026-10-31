@@ -123,6 +123,12 @@ class EvidenceTest(unittest.TestCase):
         self.assertIn('<summary>Summary · all examples, unfiltered</summary>', html)
         self.assertIn('Global totals. Search and result/domain filters do not affect this summary.', html)
 
+    def test_tool_defect_finding_options_are_present(self):
+        html = benchmark_site.render({'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': []})
+        self.assertIn('<option value="still_open">Mago · still open</option>', html)
+        self.assertIn('<option value="open_phpstan">PHPStan · open</option>', html)
+        self.assertIn('<option value="open_psalm">Psalm · open</option>', html)
+
     def test_embedded_source_cannot_close_the_json_script(self):
         payload = {'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': [],
                    'hostile_source': '</script><script>window.injected = true</script>'}
