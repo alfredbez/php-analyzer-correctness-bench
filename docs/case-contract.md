@@ -136,7 +136,7 @@ counts as a false positive.
 ## How a case gets written
 
 1. Find a pattern where analyzers disagree, or where one disagrees with the
-   language. The seed material is listed in `factory/SOURCES.md`.
+   language. Seed candidates are tracked in `factory/catalog.json`.
 2. Write the fixture and a `runtime/check.php` if the behaviour can be executed.
 3. Write `case.json` with your expectation, then run
    `python3 harness/bench.py run --case <id>` and read the actual verdicts.

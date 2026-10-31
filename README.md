@@ -35,8 +35,8 @@ Locally, use an out-of-tree `BENCH_TOOLS_DIR` to preserve the pinned binaries.
 ## Reports and version comparisons
 
 The public report presents the checked-in reviewed comparison, not unreviewed
-nightly results. No upstream issues, pull requests or maintainer messages are
-created automatically.
+nightly results. The benchmark measures analyzer behavior without opening
+upstream issues or pull requests.
 
 The initial target is 120 semantic criteria, not 120 parameter variants.
 `factory/catalog.json` lists 122 selected leads from Psalm, PHPStan and historical
@@ -45,12 +45,11 @@ probe, coverage by an existing case, or an explicit deferral. Neither inventory
 nor assessment implies exhaustive review of the upstream suites. Run
 `python3 factory/catalog.py check` to verify the source-to-case mappings.
 
-The [October 24 local pilot](docs/local-pilot-2026-10-24.md) adds two independent
-criteria, bringing the corpus to 144 cases and 129 declared criteria. It refreshes
-the ordinary pins to Mago 1.58.2, Psalm 6.20.1 and PHPStan 2.3.1, and retains 80
-additional public-source leads as explicitly unreviewed. Pzoom is an opt-in fourth
-tool, currently blocked by an embedded-stub parse error. It has no valid quality
-score. See [the factory guide](factory/README.md) for local expansion and setup.
+The October 24 update adds two independent criteria, bringing the corpus to 144
+cases and 129 declared criteria. It refreshes the ordinary pins to Mago 1.58.2,
+Psalm 6.20.1 and PHPStan 2.3.1, and retains 80 additional public-source leads as
+explicitly unreviewed. Pzoom is an opt-in fourth tool, currently blocked by an
+embedded-stub parse error. It has no valid quality score.
 These local results do not replace the published comparison automatically.
 
 To rerun the checked-in historical release and fixed-main comparison on identical
@@ -87,7 +86,7 @@ also produce downloadable offline reports.
 
 GitHub Pages rebuilds the reviewed snapshot with the current report template.
 It deploys only the generated HTML, not the repository, runtime artifacts or
-factory state. New measurements need review before replacing that snapshot.
+internal state. New measurements need review before replacing that snapshot.
 
 ## What a result means
 
@@ -110,7 +109,7 @@ Two things are deliberately *not* counted:
 * **tool errors, case errors, and skips.** Crashes and timeouts are failed
   measurements, invalid fixtures are case errors, and incompatible PHP versions
   are skipped. None enters the agreement denominator. Tool and case errors make
-  the run command fail, so CI and the factory cannot treat them as a valid run.
+  the run command fail, so CI cannot treat them as a valid run.
 
 The report always prints the denominator next to the rate, and lists every
 divergence with its citation. A single aggregate number would hide exactly the

@@ -5,31 +5,25 @@ Status: accepted
 
 ## Context
 
-The corpus was seeded by an agent that read Psalm's test suite, ran the patterns
-through Mago and opened pull requests for the differences. That produced useful
-findings and an unmanageable review load for the maintainer, who then asked for a
-hold-off on new pull requests (recorded in
-`~/.config/software-factory/pr-freeze.json`, enforced by a host-level `gh`
-wrapper and audited every 30 minutes).
+The corpus originated from analyzing divergence patterns across PHP analyzer test suites
+and real-world fixtures. Automated comparison and analysis can produce a large number
+of findings. Filing each divergence as an upstream issue or pull request creates an
+unmanageable review load for analyzer maintainers.
 
-An autonomous loop that keeps finding things needs somewhere to put them that is
-not somebody else's review queue.
+Tool comparisons and test suites need a neutral repository to record and track findings
+without burdening upstream issue trackers or review queues.
 
 ## Decision
 
-This repository is the destination. The factory writes cases, verdicts and
-citations into a private repository, and never opens, replaces or splits a pull
-request anywhere. Review load moves from the maintainer to the repository's own
-reviewer lane: a second model, on a different family, audits every batch before
-it is promoted.
+This repository is the destination. The benchmark records cases, verdicts, and
+citations locally, and never opens, replaces, or files pull requests or issues upstream.
+Review and validation occur within this repository before findings are committed.
 
-Divergences and defects are published as a matrix and a per-tool work list that a
-maintainer can read when they choose to.
+Divergences and defects are published as a matrix and per-tool work lists that
+maintainers can inspect at their own discretion.
 
 ## Consequences
 
-* Findings accumulate without consuming maintainer attention.
-* The repository must be self-explanatory without a human in the loop: contract,
-  methodology and citations in tree, raw evidence next to each run.
-* If a maintainer ever wants the cases, they can be handed over as data. That is
-  a decision for a human, not for the loop.
+* Findings accumulate without consuming maintainer attention or cluttering upstream trackers.
+* The repository must be self-explanatory: contract, methodology, and citations in-tree, raw evidence next to each run.
+* If maintainers want the cases or reproduction steps, they can be accessed as data or reviewed on the published report.

@@ -32,9 +32,7 @@ truth poisons the corpus for everyone downstream.
 
 ## Upstream relations
 
-* The maintainer of Mago asked for a hold-off on new pull requests
-  (`~/.config/software-factory/pr-freeze.json`). This repository is not a channel
-  for opening them, and nothing here changes that.
+* Do not open automated upstream issues or pull requests against analyzer repositories. This benchmark measures and records behavior; it is not a tool for unsolicited upstream filings.
 * The benchmark reports what it measures about a tool. It does not tell the
   maintainer what to do. A divergence is recorded with its citation; a defect is
   recorded as a defect; neither is a plan.
