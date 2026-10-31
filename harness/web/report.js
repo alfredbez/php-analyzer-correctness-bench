@@ -76,15 +76,20 @@ if (data.comparisons.length) {
     const option = node("option", `${before.kind === "release" ? before.ref : before.id} → ${after.kind === "release" ? after.ref : after.id}`);
     option.value = String(index); $("pair").append(option);
   });
+  for (const [value, label] of [
+    ["fixed", "Mago · improved"],
+    ["regressed", "Mago · regressed"],
+    ["not_comparable", "Mago · not comparable"],
+  ]) {
+    const option = node("option", label);
+    option.value = value;
+    $("finding").append(option);
+  }
 } else {
   const option = node("option", "No version comparison available");
   option.value = "";
   $("pair").append(option);
   $("pair").disabled = true;
-  for (const value of ["fixed", "regressed", "not_comparable"]) {
-    const opt = $("finding").querySelector(`option[value="${value}"]`);
-    if (opt) opt.disabled = true;
-  }
 }
 const heading = node("tr");
 const headerLabels = ["Case / domain", ...columns.map((c) => c.label)];

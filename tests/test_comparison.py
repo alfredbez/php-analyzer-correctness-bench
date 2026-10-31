@@ -128,6 +128,9 @@ class EvidenceTest(unittest.TestCase):
         self.assertIn('<option value="still_open">Mago · still open</option>', html)
         self.assertIn('<option value="open_phpstan">PHPStan · open</option>', html)
         self.assertIn('<option value="open_psalm">Psalm · open</option>', html)
+        self.assertNotIn('<option value="fixed">', html)
+        self.assertNotIn('<option value="regressed">', html)
+        self.assertNotIn('<option value="not_comparable">', html)
 
     def test_embedded_source_cannot_close_the_json_script(self):
         payload = {'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': [],
