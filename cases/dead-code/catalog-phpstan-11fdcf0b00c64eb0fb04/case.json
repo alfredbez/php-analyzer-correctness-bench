@@ -55,7 +55,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "c8e1507ab1133930e129202748105a45acb6b42b1af10bb21b81491275f3cbf6",
         "probe_sha256": "c8e1507ab1133930e129202748105a45acb6b42b1af10bb21b81491275f3cbf6",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php",
+        "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php#L1",
         "status": "candidate"
       }

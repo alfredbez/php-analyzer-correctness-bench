@@ -42,7 +42,7 @@
         "source_ref": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
         "source_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
         "probe_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/nested-generic-array-isset-shape-narrowing/repro.php",
+        "local_path": "mago/repro/nested-generic-array-isset-shape-narrowing/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

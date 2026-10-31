@@ -50,7 +50,7 @@
         "source_ref": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
         "source_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
         "probe_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/empty-string-reconciliation-then-if/repro.php",
+        "local_path": "mago/repro/empty-string-reconciliation-then-if/repro.php",
         "citation": null,
         "status": "candidate"
       }

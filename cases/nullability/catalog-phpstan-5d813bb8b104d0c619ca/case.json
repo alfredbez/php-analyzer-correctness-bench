@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "a4d7aa038b71dc7ce40a31cfb462e1e2fd2230c03097f5efc6976bb8515757b1",
         "probe_sha256": "a4d7aa038b71dc7ce40a31cfb462e1e2fd2230c03097f5efc6976bb8515757b1",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php#L1",
         "status": "candidate"
       }

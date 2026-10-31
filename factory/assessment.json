@@ -36,7 +36,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/control-structures.switch.php",
-        "/home/abez/projects/mago-upstream-prep/repro/break-without-setting-var/repro.php"
+        "mago/repro/break-without-setting-var/repro.php"
       ],
       "criterion_ids": [
         "narrowing/switch-partial-assignment"
@@ -52,7 +52,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/empty-exception-after-if/repro.php"
+        "mago/repro/empty-exception-after-if/repro.php"
       ],
       "criterion_ids": [
         "nullability/empty-exception-exit"
@@ -68,7 +68,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/allow-empty-null-property/repro.php"
+        "mago/repro/allow-empty-null-property/repro.php"
       ],
       "criterion_ids": [
         "nullability/empty-nullable-property"
@@ -84,7 +84,7 @@
       "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
       "citations": [
         "https://www.php.net/manual/en/language.types.boolean.php",
-        "/home/abez/projects/mago-upstream-prep/repro/always-true-assign/repro.php"
+        "mago/repro/always-true-assign/repro.php"
       ],
       "criterion_ids": [
         "narrowing/object-is-always-truthy"
@@ -100,7 +100,7 @@
       "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
       "citations": [
         "https://www.php.net/manual/en/language.types.callable.php",
-        "/home/abez/projects/mago-upstream-prep/repro/callable-type-assertions/repro.php"
+        "mago/repro/callable-type-assertions/repro.php"
       ],
       "criterion_ids": [
         "callables/is-object-on-callable-parameter"
@@ -116,7 +116,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.get-class.php",
-        "/home/abez/projects/mago-upstream-prep/repro/get-class-const-arg/repro.php"
+        "mago/repro/get-class-const-arg/repro.php"
       ],
       "criterion_ids": [
         "narrowing/get-class-switch-method"
@@ -132,7 +132,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-on-mixed/repro.php"
+        "mago/repro/no-redundant-condition-on-mixed/repro.php"
       ],
       "criterion_ids": [
         "arrays/empty-mixed-nested-offset"
@@ -148,7 +148,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.logical.php",
-        "/home/abez/projects/mago-upstream-prep/repro/always-true-binary-op/repro.php"
+        "mago/repro/always-true-binary-op/repro.php"
       ],
       "criterion_ids": [
         "narrowing/truthy-left-logical-and"
@@ -164,7 +164,7 @@
       "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.type.php",
-        "/home/abez/projects/mago-upstream-prep/repro/class-always-parent/repro.php"
+        "mago/repro/class-always-parent/repro.php"
       ],
       "criterion_ids": [
         "narrowing/redundant-instanceof-in-condition"
@@ -180,7 +180,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.get-class.php",
-        "/home/abez/projects/mago-upstream-prep/repro/class-string-not-empty/repro.php"
+        "mago/repro/class-string-not-empty/repro.php"
       ],
       "criterion_ids": [
         "narrowing/get-class-truthy"
@@ -196,7 +196,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. The source uses invalid native generic syntax. Its historical empty-array disjointness claim is rejected; the executable rewrite uses PHPDoc and includes equal empty arrays.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.comparison.php",
-        "/home/abez/projects/mago-upstream-prep/repro/array-equality-narrowing/repro.php"
+        "mago/repro/array-equality-narrowing/repro.php"
       ],
       "criterion_ids": [
         "arrays/equal-arrays-preserve-element-type"
@@ -212,7 +212,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.comparison.php",
-        "/home/abez/projects/mago-upstream-prep/repro/int-not-null-true-false/repro.php"
+        "mago/repro/int-not-null-true-false/repro.php"
       ],
       "criterion_ids": [
         "narrowing/int-disjoint-null-bool"
@@ -228,7 +228,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.comparison.php",
-        "/home/abez/projects/mago-upstream-prep/repro/equality-type-reconciliation-unions/repro.php"
+        "mago/repro/equality-type-reconciliation-unions/repro.php"
       ],
       "criterion_ids": [
         "narrowing/strict-union-equality-intersection"
@@ -244,7 +244,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.is-array.php",
-        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-2d/repro.php"
+        "mago/repro/psalm-harvest-array-2d/repro.php"
       ],
       "criterion_ids": [
         "arrays/is-array-preserves-nested-elements"
@@ -260,7 +260,7 @@
       "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
       "citations": [
         "https://www.php.net/manual/en/language.types.array.php",
-        "/home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php"
+        "mago/repro/array-shape-numeric-string-key-normalization/repro.php"
       ],
       "criterion_ids": [
         "arrays/numeric-string-array-key"
@@ -276,7 +276,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. Direct and intermediate bounds accept Product; all tools diagnose only omitted generic parent arguments. Native runtime rejection of an unrelated class is independently checked.",
       "citations": [
         "https://phpstan.org/blog/generics-in-php-using-phpdocs",
-        "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php"
+        "mago/repro/template-bounds/repro.php"
       ],
       "criterion_ids": [
         "generics/omitted-template-arguments"
@@ -292,7 +292,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.assignment.php",
-        "/home/abez/projects/mago-upstream-prep/repro/conditional-reanalysis-assigned-var-pollution/repro.php"
+        "mago/repro/conditional-reanalysis-assigned-var-pollution/repro.php"
       ],
       "criterion_ids": [
         "assignability/conditional-assignment-input-order"
@@ -305,7 +305,7 @@
       "semantic_statement": "The lead concerns dependency discovery memory use when an ordinary two-string array resembles a callable.",
       "reason": "The source has only an empty BigContainer, not the claimed large dependency. Diagnostic correctness runs do not measure dependency parsing or peak memory. Turning the trivially safe array into a clean case would not measure the claimed performance defect; requires a reproducible large-class generator and resource protocol outside this case-only scope.",
       "citations": [
-        "/home/abez/projects/mago-upstream-prep/repro/callable-array-dependency-guard-leak/repro.php",
+        "mago/repro/callable-array-dependency-guard-leak/repro.php",
         "https://www.php.net/manual/en/language.types.callable.php"
       ],
       "criterion_ids": []
@@ -320,7 +320,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/control-structures.switch.php",
-        "/home/abez/projects/mago-upstream-prep/repro/fn-possibly-undefined-switch-finally/repro.php"
+        "mago/repro/fn-possibly-undefined-switch-finally/repro.php"
       ],
       "criterion_ids": [
         "narrowing/switch-partial-assignment"
@@ -336,7 +336,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.types.callable.php",
-        "/home/abez/projects/mago-upstream-prep/repro/callable-array-assignable/repro.php"
+        "mago/repro/callable-array-assignable/repro.php"
       ],
       "criterion_ids": [
         "callables/object-method-array-callable"
@@ -352,7 +352,7 @@
       "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
       "citations": [
         "https://www.php.net/manual/en/control-structures.elseif.php",
-        "/home/abez/projects/mago-upstream-prep/repro/elseif-else-return-unsound-variable-narrowing/repro.php"
+        "mago/repro/elseif-else-return-unsound-variable-narrowing/repro.php"
       ],
       "criterion_ids": [
         "nullability/elseif-else-return-keeps-possible-null"
@@ -368,7 +368,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-empty-mixed/repro.php"
+        "mago/repro/no-redundant-condition-after-empty-mixed/repro.php"
       ],
       "criterion_ids": [
         "narrowing/loop-reassignment-invalidates-falsy"
@@ -384,7 +384,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.isset.php",
-        "/home/abez/projects/mago-upstream-prep/repro/nested-generic-array-isset-shape-narrowing/repro.php"
+        "mago/repro/nested-generic-array-isset-shape-narrowing/repro.php"
       ],
       "criterion_ids": [
         "arrays/nested-isset-preserves-required-key"
@@ -400,7 +400,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.get-class.php",
-        "/home/abez/projects/mago-upstream-prep/repro/get-class-arg-wrong-class/repro.php"
+        "mago/repro/get-class-arg-wrong-class/repro.php"
       ],
       "criterion_ids": [
         "narrowing/get-class-switch-method"
@@ -416,7 +416,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.extract.php",
-        "/home/abez/projects/mago-upstream-prep/repro/dont-bleed-empty-after-extract/repro.php"
+        "mago/repro/dont-bleed-empty-after-extract/repro.php"
       ],
       "criterion_ids": [
         "legacy-patterns/extract-disjunctive-empty-guard"
@@ -432,7 +432,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.assignment.php",
-        "/home/abez/projects/mago-upstream-prep/repro/clear-dependent-type-when-assigning/repro.php"
+        "mago/repro/clear-dependent-type-when-assigning/repro.php"
       ],
       "criterion_ids": [
         "assignability/assignment-invalidates-get-class-dependency"
@@ -448,7 +448,7 @@
       "reason": "Measured contextual variant of an existing criterion, with the same criterion_id. No new criterion claimed.",
       "citations": [
         "https://www.php.net/manual/en/function.is-array.php",
-        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-redundant/repro.php"
+        "mago/repro/psalm-harvest-array-redundant/repro.php"
       ],
       "criterion_ids": [
         "arrays/element-value-type-contract"
@@ -464,7 +464,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/can-be-non-empty-array/repro.php"
+        "mago/repro/can-be-non-empty-array/repro.php"
       ],
       "criterion_ids": [
         "arrays/negated-array-and-nonempty"
@@ -480,7 +480,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/allow-empty-class-const-offset/repro.php"
+        "mago/repro/allow-empty-class-const-offset/repro.php"
       ],
       "criterion_ids": [
         "arrays/independent-constant-offset-empty"
@@ -496,7 +496,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.enumerations.methods.php",
-        "/home/abez/projects/mago-upstream-prep/repro/enum-const-array/repro.php"
+        "mago/repro/enum-const-array/repro.php"
       ],
       "criterion_ids": [
         "enums/enum-constant-array-method"
@@ -512,7 +512,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/control-structures.switch.php",
-        "/home/abez/projects/mago-upstream-prep/repro/impossible-case-default-with-throw/repro.php"
+        "mago/repro/impossible-case-default-with-throw/repro.php"
       ],
       "criterion_ids": [
         "dead-code/exhaustive-switch-default"
@@ -528,7 +528,7 @@
       "reason": "Existing executable criterion covers the source semantic fact; no duplicate fixture added.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.comparison.php",
-        "/home/abez/projects/mago-upstream-prep/repro/erase-null-after-inequality/repro.php"
+        "mago/repro/erase-null-after-inequality/repro.php"
       ],
       "criterion_ids": [
         "nullability/relational-comparison-excludes-null"
@@ -544,7 +544,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls. Isolates the dangling-union form under the neutral proposed PSR-5 grammar, not a ratified standard or guaranteed Mago policy.",
       "citations": [
         "https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#appendix-a-types",
-        "/home/abez/projects/mago-upstream-prep/repro/fn-malformed-phpdoc/repro.php"
+        "mago/repro/fn-malformed-phpdoc/repro.php"
       ],
       "criterion_ids": [
         "phpdoc-extensions/malformed-param-union"
@@ -560,7 +560,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.operators.logical.php",
-        "/home/abez/projects/mago-upstream-prep/repro/chained-logical-or-assignment-subsequent-operand/repro.php"
+        "mago/repro/chained-logical-or-assignment-subsequent-operand/repro.php"
       ],
       "criterion_ids": [
         "assignability/logical-or-reassignment-order"
@@ -576,7 +576,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/control-structures.switch.php",
-        "/home/abez/projects/mago-upstream-prep/repro/all-switches-met/repro.php"
+        "mago/repro/all-switches-met/repro.php"
       ],
       "criterion_ids": [
         "narrowing/exhaustive-switch-assignment"
@@ -592,7 +592,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/empty-string-reconciliation-then-if/repro.php"
+        "mago/repro/empty-string-reconciliation-then-if/repro.php"
       ],
       "criterion_ids": [
         "narrowing/array-empty-string-exception-exits"
@@ -608,7 +608,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/language.types.callable.php",
-        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-callable-array-keyed/repro.php"
+        "mago/repro/psalm-harvest-callable-array-keyed/repro.php"
       ],
       "criterion_ids": [
         "callables/array-callable-not-keyed-shape"
@@ -624,7 +624,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/allow-numeric-empty/repro.php"
+        "mago/repro/allow-numeric-empty/repro.php"
       ],
       "criterion_ids": [
         "legacy-patterns/numeric-empty-zero"
@@ -640,7 +640,7 @@
       "reason": "Minimal executable clean-room case with independent positive and negative runtime controls.",
       "citations": [
         "https://www.php.net/manual/en/function.empty.php",
-        "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-falsy-int-checks/repro.php"
+        "mago/repro/no-redundant-condition-after-falsy-int-checks/repro.php"
       ],
       "criterion_ids": [
         "narrowing/loop-reassignment-invalidates-falsy"
@@ -656,7 +656,7 @@
       "reason": "The existing template-bound fixture already measures the same array-not-Countable fact, with an ArrayObject control. A separately measured native-interface rewrite agreed across all tools and was removed after overlap review rather than counted as novel.",
       "citations": [
         "https://www.php.net/manual/en/class.countable.php",
-        "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-countable/repro.php"
+        "mago/repro/psalm-harvest-array-countable/repro.php"
       ],
       "criterion_ids": [
         "generics/template-bound-violation"

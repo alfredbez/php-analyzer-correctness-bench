@@ -36,13 +36,13 @@
     "sources": [
       {
         "kind": "upstream_docs",
-        "path": "/home/abez/projects/psalm-src/docs/running_psalm/issues/LessSpecificImplementedReturnType.md",
+        "path": "psalm-src/docs/running_psalm/issues/LessSpecificImplementedReturnType.md",
         "revision": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
         "note": "Psalm documents the rule with an interface-implementation example"
       },
       {
         "kind": "upstream_source",
-        "path": "/home/abez/projects/phpstan-src/src/Rules/Methods/OverridingMethodRule.php",
+        "path": "phpstan-src/src/Rules/Methods/OverridingMethodRule.php",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "OverridingMethodRule.php line 376 gates the PHPDoc signature rule; MethodSignatureRule.php reports a maybe compatibility only when reportMaybesInMethodSignatures is true, and conf/config.neon line 100 sets it false (conf/config.level3.neon line 9 turns checkPhpDocMethodSignatures on)"
       }

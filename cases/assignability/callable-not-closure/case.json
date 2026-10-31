@@ -48,7 +48,7 @@
     "sources": [
       {
         "kind": "related_reproducer",
-        "path": "/home/abez/projects/mago-upstream-prep/repro/reconcile-callable/repro.php",
+        "path": "mago/repro/reconcile-callable/repro.php",
         "note": "same callable-Must-be-reconciled-as-a-union theme; this fixture is a clean-room rewrite about the Closure boundary"
       }
     ],

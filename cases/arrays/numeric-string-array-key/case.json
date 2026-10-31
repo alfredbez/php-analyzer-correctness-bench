@@ -22,12 +22,12 @@
       ]
     }
   },
-  "notes": "Mago 1.57.0 reports two diagnostics on code that demonstrably runs: impossible-condition on the array_key_exists('10', $data) guard and no-value on the guarded $data['10'] read, because its array-key reconciliation builds a string key where the shape carries the integer key 10. PHPStan 2.3.1 and Psalm 6.20.0 are silent. The runtime script is the neutral ground truth: it shows the string offset reaching the int key in both directions (read and write) and shows the non-canonical controls staying strings, so the guards are reachable and the reads are strings, not never. The pattern was taken from /home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php; the comments in that reproducer were treated as a lead, not as evidence, and the fixture here is a clean-room rewrite that only keeps the pattern.",
+  "notes": "Mago 1.57.0 reports two diagnostics on code that demonstrably runs: impossible-condition on the array_key_exists('10', $data) guard and no-value on the guarded $data['10'] read, because its array-key reconciliation builds a string key where the shape carries the integer key 10. PHPStan 2.3.1 and Psalm 6.20.0 are silent. The runtime script is the neutral ground truth: it shows the string offset reaching the int key in both directions (read and write) and shows the non-canonical controls staying strings, so the guards are reachable and the reads are strings, not never. The pattern was taken from mago/repro/array-shape-numeric-string-key-normalization/repro.php; the comments in that reproducer were treated as a lead, not as evidence, and the fixture here is a clean-room rewrite that only keeps the pattern.",
   "provenance": {
     "sources": [
       {
         "kind": "historical_reproducer",
-        "path": "/home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php",
+        "path": "mago/repro/array-shape-numeric-string-key-normalization/repro.php",
         "note": "pattern source only; re-derived from the language and the runtime"
       }
     ],

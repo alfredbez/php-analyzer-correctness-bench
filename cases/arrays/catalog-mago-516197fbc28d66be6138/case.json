@@ -42,7 +42,7 @@
         "source_ref": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
         "source_sha256": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
         "probe_sha256": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-2d/repro.php",
+        "local_path": "mago/repro/psalm-harvest-array-2d/repro.php",
         "citation": null,
         "status": "candidate"
       }

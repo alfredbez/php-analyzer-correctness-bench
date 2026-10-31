@@ -48,17 +48,17 @@
       ]
     }
   },
-  "notes": "A green row with a per-tool code split rather than a defect: PHPStan reports argument.type ('expects Countable'), Psalm reports InvalidArgument, and Mago reports template-constraint-violation plus invalid-argument for the same call. The forbidden predicates on line 26 are the asymmetric control - an ArrayObject does implement Countable and must stay silent for all three, so the reports cannot come from the native signature alone. The bound is not a tool-specific annotation in the sense the contract excludes: \\Countable is a native interface and the runtime script decides the violation with instanceof. The pattern came from /home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php, which is a different program; the fixture here is clean-room.",
+  "notes": "A green row with a per-tool code split rather than a defect: PHPStan reports argument.type ('expects Countable'), Psalm reports InvalidArgument, and Mago reports template-constraint-violation plus invalid-argument for the same call. The forbidden predicates on line 26 are the asymmetric control - an ArrayObject does implement Countable and must stay silent for all three, so the reports cannot come from the native signature alone. The bound is not a tool-specific annotation in the sense the contract excludes: \\Countable is a native interface and the runtime script decides the violation with instanceof. The pattern came from mago/repro/template-bounds/repro.php, which is a different program; the fixture here is clean-room.",
   "provenance": {
     "sources": [
       {
         "kind": "historical_reproducer",
-        "path": "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php",
+        "path": "mago/repro/template-bounds/repro.php",
         "note": "pattern source for forwarded bounds; not copied"
       },
       {
         "kind": "upstream_inference_fixture",
-        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/template-argument-bounds.php",
+        "path": "phpstan-src/tests/PHPStan/Analyser/nsrt/template-argument-bounds.php",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "PHPStan documents this bound check as intended behaviour"
       }

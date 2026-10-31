@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
         "probe_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php#L1",
         "status": "candidate"
       }

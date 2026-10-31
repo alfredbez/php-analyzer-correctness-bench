@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
         "probe_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php#L1",
         "status": "candidate"
       }

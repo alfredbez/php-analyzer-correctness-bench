@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "dde5bf2d6f881cce8cc71f92510a78f3f0da58004160cb5126098d2be2b7a8c8",
         "probe_sha256": "dde5bf2d6f881cce8cc71f92510a78f3f0da58004160cb5126098d2be2b7a8c8",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php#L1",
         "status": "candidate"
       }

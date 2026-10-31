@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "aa234e4bb595a06823cb155215f0b7a6a3f1cbe741f7f037d179889976862458",
         "probe_sha256": "aa234e4bb595a06823cb155215f0b7a6a3f1cbe741f7f037d179889976862458",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php#L1",
         "status": "candidate"
       }

@@ -95,7 +95,7 @@
         "source_ref": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
         "source_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
         "probe_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-redundant/repro.php",
+        "local_path": "mago/repro/psalm-harvest-array-redundant/repro.php",
         "citation": null,
         "status": "candidate"
       }

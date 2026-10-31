@@ -45,13 +45,13 @@
     "sources": [
       {
         "kind": "upstream_test",
-        "path": "/home/abez/projects/psalm-src/tests/MatchTest.php",
+        "path": "psalm-src/tests/MatchTest.php",
         "revision": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
         "note": "Psalm expects UnhandledMatchCondition for a partially covered match"
       },
       {
         "kind": "upstream_test",
-        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Comparison/MatchExpressionRuleTest.php",
+        "path": "phpstan-src/tests/PHPStan/Rules/Comparison/MatchExpressionRuleTest.php",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "PHPStan expects match.unhandled for the same shape"
       }

@@ -50,7 +50,7 @@
         "source_ref": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
         "source_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
         "probe_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-empty-null-property/repro.php",
+        "local_path": "mago/repro/allow-empty-null-property/repro.php",
         "citation": null,
         "status": "candidate"
       }

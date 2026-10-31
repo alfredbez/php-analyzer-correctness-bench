@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
         "probe_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-class-type.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-class-type.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-class-type.php#L1",
         "status": "candidate"
       }

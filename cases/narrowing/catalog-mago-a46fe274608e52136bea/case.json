@@ -70,7 +70,7 @@
         "source_ref": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
         "source_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
         "probe_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-empty-mixed/repro.php",
+        "local_path": "mago/repro/no-redundant-condition-after-empty-mixed/repro.php",
         "citation": null,
         "status": "candidate"
       }

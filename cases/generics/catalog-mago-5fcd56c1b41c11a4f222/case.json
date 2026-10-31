@@ -78,7 +78,7 @@
         "source_ref": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
         "source_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
         "probe_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php",
+        "local_path": "mago/repro/template-bounds/repro.php",
         "citation": null,
         "status": "candidate"
       }

@@ -42,7 +42,7 @@
         "source_ref": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
         "source_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
         "probe_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/conditional-reanalysis-assigned-var-pollution/repro.php",
+        "local_path": "mago/repro/conditional-reanalysis-assigned-var-pollution/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "58b9bd995f13240c4132101ce69dcc1e74b019957d0ee84ac926bdfe7542f960",
         "probe_sha256": "58b9bd995f13240c4132101ce69dcc1e74b019957d0ee84ac926bdfe7542f960",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-accessable.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-accessable.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-accessable.php#L1",
         "status": "candidate"
       }

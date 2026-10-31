@@ -102,7 +102,7 @@
         "source_ref": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
         "source_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
         "probe_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-possibly-undefined-switch-finally/repro.php",
+        "local_path": "mago/repro/fn-possibly-undefined-switch-finally/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

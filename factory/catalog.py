@@ -104,6 +104,28 @@ def revision(root):
     return ref
 
 
+def clean_path_str(p):
+    s = str(p)
+    for name in ('mago-upstream-prep', 'phpstan-src', 'psalm-src', 'php-analyzer-correctness-bench'):
+        idx = s.find(f'/{name}/')
+        if idx != -1:
+            rel = s[idx + len(name) + 2:]
+            if name == 'mago-upstream-prep':
+                return 'mago/' + rel
+            elif name == 'php-analyzer-correctness-bench':
+                return './' + rel
+            else:
+                return f'{name}/' + rel
+        if s.endswith(f'/{name}'):
+            if name == 'mago-upstream-prep':
+                return 'mago'
+            elif name == 'php-analyzer-correctness-bench':
+                return '.'
+            else:
+                return name
+    return s
+
+
 def candidate(family, root, path, ref, repo, title=None, **extra):
     relative = path.relative_to(root).as_posix()
     raw = path.read_bytes()
@@ -112,7 +134,7 @@ def candidate(family, root, path, ref, repo, title=None, **extra):
     return {'id': family + ':' + digest(identity.encode())[:20], 'family': family,
             'domain': domain_for(title + ' ' + relative.replace('tests/PHPStan/', '')), 'title': title, 'path': relative,
             'line': 1, 'source_ref': ref or digest(raw), 'source_sha256': digest(raw),
-            'probe_sha256': digest(raw), 'local_path': str(path),
+            'probe_sha256': digest(raw), 'local_path': clean_path_str(path),
             'citation': f'https://github.com/{repo}/blob/{ref}/{relative}#L{extra.get("line", 1)}' if repo else None,
             'status': 'candidate', **extra}
 
@@ -149,7 +171,7 @@ def public_leads(psalm, phpstan):
         relative = path.relative_to(tests)
         if relative.parts[0:2] == ('Analyser', 'nsrt') or ('Rules' in relative.parts and 'data' in relative.parts):
             entries['phpstan'].append(candidate('phpstan', roots['phpstan'], path, refs['phpstan'], repos['phpstan']))
-    sources = [{'family': name, 'root': str(root), 'repo': repos[name],
+    sources = [{'family': name, 'root': clean_path_str(root), 'repo': repos[name],
                 'ref': refs[name], 'discovered_candidates': len(entries[name])}
                for name, root in roots.items()]
     return entries, sources
@@ -179,7 +201,7 @@ def build(psalm, phpstan, repro, limit=40):
             'limitations': ['Candidates are not reviewed criteria. Domain tags are filename/name heuristics.',
                             'Local Mago probes have content identities, not invented upstream citations.',
                             'This inventories named literal Psalm providers and PHPStan fixture files; it does not execute or semantically review either suite.'],
-            'sources': sources + [{'family': 'mago', 'root': str(repro), 'repo': None,
+            'sources': sources + [{'family': 'mago', 'root': clean_path_str(repro), 'repo': None,
                                    'ref': None, 'discovered_candidates': len(entries['mago'])}],
             'candidates': [entry for items in entries.values() for entry in select(items, limit)]}
 
@@ -267,9 +289,9 @@ def assess(receipts, inventory, cases):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['build', 'expand', 'assess', 'check'])
-    parser.add_argument('--psalm', default='/home/abez/projects/psalm-src')
-    parser.add_argument('--phpstan', default='/home/abez/projects/phpstan-src')
-    parser.add_argument('--repro', default='/home/abez/projects/mago-upstream-prep/repro')
+    parser.add_argument('--psalm', default='psalm-src')
+    parser.add_argument('--phpstan', default='phpstan-src')
+    parser.add_argument('--repro', default='mago/repro')
     parser.add_argument('--out', type=Path)
     parser.add_argument('--limit-per-family', type=int, default=40)
     parser.add_argument('--receipts', type=Path, nargs='+')

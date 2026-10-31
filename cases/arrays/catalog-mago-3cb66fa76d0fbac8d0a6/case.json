@@ -42,7 +42,7 @@
         "source_ref": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
         "source_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
         "probe_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/array-equality-narrowing/repro.php",
+        "local_path": "mago/repro/array-equality-narrowing/repro.php",
         "citation": null,
         "status": "candidate"
       }

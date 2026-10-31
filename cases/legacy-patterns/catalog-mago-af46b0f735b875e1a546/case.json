@@ -42,7 +42,7 @@
         "source_ref": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
         "source_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
         "probe_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/dont-bleed-empty-after-extract/repro.php",
+        "local_path": "mago/repro/dont-bleed-empty-after-extract/repro.php",
         "citation": null,
         "status": "candidate"
       }

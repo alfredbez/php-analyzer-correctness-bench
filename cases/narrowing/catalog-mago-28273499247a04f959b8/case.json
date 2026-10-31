@@ -71,7 +71,7 @@
         "source_ref": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
         "source_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
         "probe_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/always-true-binary-op/repro.php",
+        "local_path": "mago/repro/always-true-binary-op/repro.php",
         "citation": null,
         "status": "candidate"
       }

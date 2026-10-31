@@ -71,7 +71,7 @@
         "source_ref": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
         "source_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
         "probe_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/class-string-not-empty/repro.php",
+        "local_path": "mago/repro/class-string-not-empty/repro.php",
         "citation": null,
         "status": "candidate"
       }

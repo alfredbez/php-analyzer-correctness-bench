@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "a3f78541c3f7caa789cd689e3792f1777830f10f1b799382e1b8b7a27acc6b6c",
         "probe_sha256": "a3f78541c3f7caa789cd689e3792f1777830f10f1b799382e1b8b7a27acc6b6c",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php",
+        "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php#L1",
         "status": "candidate"
       }

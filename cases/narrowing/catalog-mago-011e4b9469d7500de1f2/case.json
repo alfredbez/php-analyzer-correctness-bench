@@ -79,7 +79,7 @@
         "source_ref": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
         "source_sha256": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
         "probe_sha256": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/break-without-setting-var/repro.php",
+        "local_path": "mago/repro/break-without-setting-var/repro.php",
         "citation": null,
         "status": "candidate"
       }

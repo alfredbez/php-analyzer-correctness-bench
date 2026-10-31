@@ -79,7 +79,7 @@
         "source_ref": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
         "source_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
         "probe_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/clear-dependent-type-when-assigning/repro.php",
+        "local_path": "mago/repro/clear-dependent-type-when-assigning/repro.php",
         "citation": null,
         "status": "candidate"
       }

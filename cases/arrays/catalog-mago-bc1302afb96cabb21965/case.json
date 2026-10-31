@@ -63,7 +63,7 @@
         "source_ref": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
         "source_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
         "probe_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/can-be-non-empty-array/repro.php",
+        "local_path": "mago/repro/can-be-non-empty-array/repro.php",
         "citation": null,
         "status": "candidate"
       }

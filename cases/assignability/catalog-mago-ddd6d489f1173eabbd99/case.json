@@ -42,7 +42,7 @@
         "source_ref": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
         "source_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
         "probe_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/chained-logical-or-assignment-subsequent-operand/repro.php",
+        "local_path": "mago/repro/chained-logical-or-assignment-subsequent-operand/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

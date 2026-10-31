@@ -42,7 +42,7 @@
         "source_ref": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
         "source_sha256": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
         "probe_sha256": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/equality-type-reconciliation-unions/repro.php",
+        "local_path": "mago/repro/equality-type-reconciliation-unions/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

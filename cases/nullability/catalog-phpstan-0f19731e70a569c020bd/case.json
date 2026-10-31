@@ -48,7 +48,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "787a9413cb364148bbeb5790eeaa2109f2446ac725d62facaf9c3ae0e7bbb645",
         "probe_sha256": "787a9413cb364148bbeb5790eeaa2109f2446ac725d62facaf9c3ae0e7bbb645",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php#L1",
         "status": "candidate"
       }

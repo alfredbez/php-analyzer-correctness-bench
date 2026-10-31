@@ -45,7 +45,7 @@
     "sources": [
       {
         "kind": "upstream_inference_fixture",
-        "path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enums.php",
+        "path": "phpstan-src/tests/PHPStan/Analyser/nsrt/enums.php",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "PHPStan asserts tryFrom() returns X|null for a variable subject"
       }

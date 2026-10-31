@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
         "probe_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-conditional.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-conditional.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-conditional.php#L1",
         "status": "candidate"
       }

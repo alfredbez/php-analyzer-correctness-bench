@@ -56,7 +56,7 @@
         "source_ref": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
         "source_sha256": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
         "probe_sha256": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-empty-class-const-offset/repro.php",
+        "local_path": "mago/repro/allow-empty-class-const-offset/repro.php",
         "citation": null,
         "status": "candidate"
       }

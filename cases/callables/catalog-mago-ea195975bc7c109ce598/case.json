@@ -63,7 +63,7 @@
         "source_ref": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
         "source_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
         "probe_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-callable-array-keyed/repro.php",
+        "local_path": "mago/repro/psalm-harvest-callable-array-keyed/repro.php",
         "citation": null,
         "status": "candidate"
       }

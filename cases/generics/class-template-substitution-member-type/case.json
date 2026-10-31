@@ -49,14 +49,14 @@
     "sources": [
       {
         "kind": "upstream_test_case",
-        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_chained_call_wrong_consumer.php",
+        "path": "mago/mago/crates/analyzer/tests/cases/generics_template_chained_call_wrong_consumer.php",
         "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
         "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_chained_call_wrong_consumer.php",
         "note": "pattern source for the class-level @template T with @return T on get(); that fixture consumes the substituted value as a scalar (invalid-argument), this one resolves a member on it. Rewritten, not copied."
       },
       {
         "kind": "upstream_test_case",
-        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_generic_method_on_generic_class.php",
+        "path": "mago/mago/crates/analyzer/tests/cases/generics_generic_method_on_generic_class.php",
         "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
         "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_generic_method_on_generic_class.php",
         "note": "further evidence that the class-level type argument is substituted into member signatures in this dialect; no case in the suite expects a non-existent-method from that substitution, so Mago is judged by the runtime proof here, like the other two tools"

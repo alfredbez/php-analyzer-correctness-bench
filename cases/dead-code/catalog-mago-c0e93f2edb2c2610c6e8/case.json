@@ -63,7 +63,7 @@
         "source_ref": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
         "source_sha256": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
         "probe_sha256": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/impossible-case-default-with-throw/repro.php",
+        "local_path": "mago/repro/impossible-case-default-with-throw/repro.php",
         "citation": null,
         "status": "candidate"
       }

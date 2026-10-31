@@ -58,13 +58,13 @@
       },
       {
         "kind": "upstream_source",
-        "path": "/home/abez/projects/phpstan-src/src/Rules/RuleLevelHelper.php",
+        "path": "phpstan-src/src/Rules/RuleLevelHelper.php",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "transformCommonType / transformMixedType map a mixed type to StrictMixedType only when checkExplicitMixed (explicit mixed) or checkImplicitMixed (implicit mixed) is on; with both off the type is returned unchanged and an unspecified key stays lenient, which is why the level-9 run is silent here"
       },
       {
         "kind": "upstream_source",
-        "path": "/home/abez/projects/phpstan-src/conf/config.neon",
+        "path": "phpstan-src/conf/config.neon",
         "revision": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "note": "line 73 sets checkImplicitMixed: false in the default configuration; conf/config.level10.neon line 5 sets it true, and conf/config.levelmax.neon includes config.level10.neon"
       }

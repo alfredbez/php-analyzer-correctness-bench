@@ -46,14 +46,14 @@
     "sources": [
       {
         "kind": "upstream_test_case",
-        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_covariant_class.php",
+        "path": "mago/mago/crates/analyzer/tests/cases/generics_template_covariant_class.php",
         "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
         "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_covariant_class.php",
         "note": "pattern source for a sound @template-covariant declaration (T is only read there, and Mago expects no diagnostic); this fixture keeps the declaration and adds the write position that makes it unsound. Rewritten, not copied, and Mago's suite carries no expectation for the write-position rule (grep for invalid-template-parameter in that directory returns only @extends/@implements arity fixtures), so Mago is judged here by the runtime proof like the other two."
       },
       {
         "kind": "upstream_test_case",
-        "path": "/home/abez/projects/mago-upstream-prep/mago/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php",
+        "path": "mago/mago/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php",
         "revision": "1c3eba0efb04baadd27e17f592989410787b2d59",
         "citation": "https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php",
         "note": "shows that Mago's suite treats variance declarations as part of the supported dialect (the mirror-image contrapositive annotation), which is why this fixture does not use mode 'unsupported' for any tool"

@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "66bf6e2869b85c951308da8c0545c01ca5e2815b4109d9298db17600c3364ffe",
         "probe_sha256": "66bf6e2869b85c951308da8c0545c01ca5e2815b4109d9298db17600c3364ffe",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php#L1",
         "status": "candidate"
       }

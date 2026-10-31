@@ -42,7 +42,7 @@
         "source_ref": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
         "source_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
         "probe_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-array-assignable/repro.php",
+        "local_path": "mago/repro/callable-array-assignable/repro.php",
         "citation": null,
         "status": "candidate"
       }

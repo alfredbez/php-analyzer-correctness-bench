@@ -50,7 +50,7 @@
         "source_ref": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
         "source_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
         "probe_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-on-mixed/repro.php",
+        "local_path": "mago/repro/no-redundant-condition-on-mixed/repro.php",
         "citation": null,
         "status": "candidate"
       }

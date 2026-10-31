@@ -74,7 +74,7 @@
         "source_ref": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
         "source_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
         "probe_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-malformed-phpdoc/repro.php",
+        "local_path": "mago/repro/fn-malformed-phpdoc/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

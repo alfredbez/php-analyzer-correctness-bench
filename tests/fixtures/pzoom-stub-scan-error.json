@@ -11,7 +11,7 @@
     "/bench/cases/assignability/catalog-psalm-2ed1be42908ccc536dd5/src"
   ],
   "environment": {},
-  "cwd": "/home/abez/projects/php-analyzer-correctness-bench/cases/assignability/catalog-psalm-2ed1be42908ccc536dd5",
+  "cwd": "cases/assignability/catalog-psalm-2ed1be42908ccc536dd5",
   "exit_code": 2,
   "duration_s": 0.858,
   "stdout": "Scanning files...\nScanned 74 files\nResolving types...\nAnalyzing...\n\nERROR: InvalidOperand - src/probe.php:5:12 - Cannot use bitwise not on type bool (see https://psalm.dev/058)\n    return ~$value;\n\n------------------------------\n1 errors found\n------------------------------\n\nChecks took 0.76 seconds and used 84.461MB of memory\n",

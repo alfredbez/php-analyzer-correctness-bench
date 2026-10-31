@@ -42,7 +42,7 @@
         "source_ref": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
         "source_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
         "probe_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-type-assertions/repro.php",
+        "local_path": "mago/repro/callable-type-assertions/repro.php",
         "citation": null,
         "status": "candidate",
         "historical_context": {

@@ -79,7 +79,7 @@
         "source_ref": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
         "source_sha256": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
         "probe_sha256": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/get-class-arg-wrong-class/repro.php",
+        "local_path": "mago/repro/get-class-arg-wrong-class/repro.php",
         "citation": null,
         "status": "candidate"
       }

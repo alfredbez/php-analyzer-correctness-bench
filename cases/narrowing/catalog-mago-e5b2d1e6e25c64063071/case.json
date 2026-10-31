@@ -42,7 +42,7 @@
         "source_ref": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
         "source_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
         "probe_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/all-switches-met/repro.php",
+        "local_path": "mago/repro/all-switches-met/repro.php",
         "citation": null,
         "status": "candidate"
       }

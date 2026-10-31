@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "37733d7e6af325c5b67b7b69b655f9ba8a5ddd28d33e2518dfd31605e9ceace7",
         "probe_sha256": "37733d7e6af325c5b67b7b69b655f9ba8a5ddd28d33e2518dfd31605e9ceace7",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php#L1",
         "status": "candidate"
       }

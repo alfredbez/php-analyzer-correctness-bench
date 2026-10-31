@@ -91,7 +91,7 @@
         "source_ref": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
         "source_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
         "probe_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/int-not-null-true-false/repro.php",
+        "local_path": "mago/repro/int-not-null-true-false/repro.php",
         "citation": null,
         "status": "candidate"
       }

@@ -47,7 +47,7 @@
         "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
         "source_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
         "probe_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
-        "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
+        "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
         "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php#L1",
         "status": "candidate"
       }

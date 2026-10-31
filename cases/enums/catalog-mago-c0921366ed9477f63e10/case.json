@@ -42,7 +42,7 @@
         "source_ref": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
         "source_sha256": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
         "probe_sha256": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/enum-const-array/repro.php",
+        "local_path": "mago/repro/enum-const-array/repro.php",
         "citation": null,
         "status": "candidate"
       }

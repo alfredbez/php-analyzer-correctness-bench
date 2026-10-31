@@ -42,7 +42,7 @@
         "source_ref": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
         "source_sha256": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
         "probe_sha256": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
-        "local_path": "/home/abez/projects/mago-upstream-prep/repro/empty-exception-after-if/repro.php",
+        "local_path": "mago/repro/empty-exception-after-if/repro.php",
         "citation": null,
         "status": "candidate"
       }

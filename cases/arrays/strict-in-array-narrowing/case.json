@@ -21,12 +21,12 @@
       ]
     }
   },
-  "notes": "Mago 1.57.0 reports possibly-invalid-argument on the guarded call and describes the argument as numeric-string|'a'|'b', i.e. it reconciles the needle against a numeric-string alternative of the haystack even though the comparison is strict. PHPStan 2.3.1 and Psalm 6.20.0 narrow to 'a'|'b' and stay silent. The runtime script carries the asymmetric control the claim needs: the same needle/haystack pair under the default loose comparison matches ('1' is in [1]) while the strict form does not, so the third argument - not the values alone - is what makes the narrowing hold. The pattern was taken from /home/abez/projects/mago-upstream-prep/repro/strict-in-array-int-haystack-string-coercion/repro.php; the fixture is a clean-room rewrite.",
+  "notes": "Mago 1.57.0 reports possibly-invalid-argument on the guarded call and describes the argument as numeric-string|'a'|'b', i.e. it reconciles the needle against a numeric-string alternative of the haystack even though the comparison is strict. PHPStan 2.3.1 and Psalm 6.20.0 narrow to 'a'|'b' and stay silent. The runtime script carries the asymmetric control the claim needs: the same needle/haystack pair under the default loose comparison matches ('1' is in [1]) while the strict form does not, so the third argument - not the values alone - is what makes the narrowing hold. The pattern was taken from mago/repro/strict-in-array-int-haystack-string-coercion/repro.php; the fixture is a clean-room rewrite.",
   "provenance": {
     "sources": [
       {
         "kind": "historical_reproducer",
-        "path": "/home/abez/projects/mago-upstream-prep/repro/strict-in-array-int-haystack-string-coercion/repro.php",
+        "path": "mago/repro/strict-in-array-int-haystack-string-coercion/repro.php",
         "note": "pattern source only; the claim was re-derived from the strict comparison semantics"
       }
     ],
