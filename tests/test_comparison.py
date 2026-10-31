@@ -118,6 +118,11 @@ class EvidenceTest(unittest.TestCase):
             (root / 'composer.lock').write_text('{"packages":[{"version":"1.0.0"}]}')
             self.assertNotEqual(expected, fingerprint([cases[1]]))
 
+    def test_summary_heading_and_scope_notice_are_explicit(self):
+        html = benchmark_site.render({'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': []})
+        self.assertIn('<summary>Summary · all examples, unfiltered</summary>', html)
+        self.assertIn('Global totals. Search and result/domain filters do not affect this summary.', html)
+
     def test_embedded_source_cannot_close_the_json_script(self):
         payload = {'schema_version': 1, 'profiles': [{'id': 'stable'}], 'cases': [],
                    'hostile_source': '</script><script>window.injected = true</script>'}

@@ -33,8 +33,15 @@ function external(url, title) {
   }
   return a;
 }
-function pair() { return data.comparisons[Number($("pair").value || 0)]; }
-function change(id) { return pair()?.cases.find((row) => row.case === id)?.transition || "not_comparable"; }
+function pair() {
+  if (!data.comparisons.length) return null;
+  return data.comparisons[Number($("pair").value || 0)] || null;
+}
+function change(id) {
+  const p = pair();
+  if (!p) return null;
+  return p.cases.find((row) => row.case === id)?.transition || "not_comparable";
+}
 
 const stable = profiles.get("stable").report;
 const runtimeChecks = stable.cases.filter((c) => c.runtime_proof).length;
@@ -56,16 +63,32 @@ for (const column of columns) {
 for (const domain of [...new Set(data.cases.map((c) => c.manifest.domain))].sort()) {
   const option = node("option", domain); option.value = domain; $("domain").append(option);
 }
-data.comparisons.forEach((p, index) => {
-  const before = profiles.get(p.before), after = profiles.get(p.after);
-  const option = node("option", `${before.kind === "release" ? before.ref : before.id} → ${after.kind === "release" ? after.ref : after.id}`);
-  option.value = String(index); $("pair").append(option);
-});
+if (data.comparisons.length) {
+  data.comparisons.forEach((p, index) => {
+    const before = profiles.get(p.before), after = profiles.get(p.after);
+    const option = node("option", `${before.kind === "release" ? before.ref : before.id} → ${after.kind === "release" ? after.ref : after.id}`);
+    option.value = String(index); $("pair").append(option);
+  });
+} else {
+  const option = node("option", "No version comparison available");
+  option.value = "";
+  $("pair").append(option);
+  $("pair").disabled = true;
+  for (const value of ["fixed", "regressed", "still_open", "not_comparable"]) {
+    const opt = $("finding").querySelector(`option[value="${value}"]`);
+    if (opt) opt.disabled = true;
+  }
+}
 const heading = node("tr");
-for (const label of ["Case / domain", ...columns.map((c) => c.label), "Mago change"]) heading.append(node("th", label));
+const headerLabels = ["Case / domain", ...columns.map((c) => c.label)];
+if (data.comparisons.length) headerLabels.push("Mago change");
+for (const label of headerLabels) heading.append(node("th", label));
 $("matrix").querySelector("thead").append(heading);
 
 function render() {
+  if (!pair() && ["fixed", "regressed", "still_open", "not_comparable"].includes($("finding").value)) {
+    $("finding").value = "all";
+  }
   const query = $("search").value.trim().toLowerCase(), domain = $("domain").value, finding = $("finding").value;
   visible = data.cases.filter((c) => {
     if (query && !`${c.id} ${c.manifest.title}`.toLowerCase().includes(query)) return false;
@@ -97,12 +120,20 @@ function render() {
       const label = badge(measured?.verdict); label.title = measured?.detail || (measured?.verdict === "ok" ? "Expectation met" : names[measured?.verdict] || "Not measured");
       cell.append(label); row.append(cell);
     }
-    row.append(node("td", names[change(c.id)], `transition ${change(c.id)}`)); body.append(row);
+    if (pair()) {
+      const transition = change(c.id);
+      row.append(node("td", names[transition] || transition, `transition ${transition}`));
+    }
+    body.append(row);
   }
   $("result-count").textContent = `${visible.length} of ${data.cases.length} examples${selected ? ` · Example ${index + 1}` : ""} · ${stable.meta.runtime_proven}/${runtimeChecks} executed runtime checks passed`;
   $("empty").hidden = visible.length !== 0;
   $("compatibility").replaceChildren();
-  if (pair()?.problems.length) $("compatibility").append(node("p", `Versions are not comparable: ${pair().problems.join("; ")}`, "problem"));
+  if (!pair()) {
+    $("compatibility").append(node("p", "Only one Mago version was measured. No version comparison is available.", "problem"));
+  } else if (pair().problems.length) {
+    $("compatibility").append(node("p", `Versions are not comparable: ${pair().problems.join("; ")}`, "problem"));
+  }
   $("case-detail").hidden = !selected;
   if (selected) renderCase(selected);
 }
@@ -131,7 +162,13 @@ function sourceBlock(name, text) {
   return section;
 }
 
-function diagnosticLabel(item) { return `${item.code}${item.line ? `:${item.line}` : ""}`; }
+function diagnosticLabel(item) {
+  const line = item.line ? `:${item.line}` : "";
+  const tol = item.line && typeof item.line_tolerance === "number" && item.line_tolerance > 0
+    ? ` ±${item.line_tolerance} lines`
+    : "";
+  return `${item.code}${line}${tol}`;
+}
 
 function renderCase(id) {
   const c = data.cases.find((item) => item.id === id), manifest = c.manifest;
@@ -154,7 +191,7 @@ function renderCase(id) {
   for (const [name, text] of fixture) detail.append(sourceBlock(name, text));
   detail.append(node("p", "Benchmark defaults: PHPStan level 9, Psalm errorLevel 1, Mago analyzer only. Match the PHP version and case configuration; playground versions and defaults can differ.", "meta"));
   const table = node("table", undefined, "result-table"), head = node("thead"), heading = node("tr"), body = node("tbody");
-  for (const label of ["Tool", "Expected", "Observed", "Result"]) heading.append(node("th", label));
+  for (const label of ["Tool", "Result", "Expected", "Observed"]) heading.append(node("th", label));
   head.append(heading); table.append(head, body);
   for (const column of columns) {
     const measured = result(id, column), expectation = manifest.expect[column.tool];
@@ -165,7 +202,7 @@ function renderCase(id) {
     const unmeasured = !measured || ["tool_error", "case_error", "skipped"].includes(measured.verdict);
     const observed = unmeasured ? "Not measured" : measured.diagnostics.map(diagnosticLabel).join(", ") || "No diagnostic";
     const row = node("tr");
-    for (const text of [column.label, expected, observed, names[measured?.verdict] || "Not measured"]) row.append(node("td", text));
+    for (const text of [column.label, names[measured?.verdict] || "Not measured", expected, observed]) row.append(node("td", text));
     body.append(row);
   }
   const scroll = node("div", undefined, "table-scroll"); scroll.append(table); detail.append(scroll);
@@ -214,7 +251,7 @@ function renderCase(id) {
 }
 
 for (const id of ["search", "domain", "finding", "pair"]) $(id).addEventListener(id === "search" ? "input" : "change", render);
-$("reset").onclick = () => { $("search").value = ""; $("domain").value = "all"; $("finding").value = "all"; $("pair").value = "0"; render(); };
+$("reset").onclick = () => { $("search").value = ""; $("domain").value = "all"; $("finding").value = "all"; if (data.comparisons.length) $("pair").value = "0"; render(); };
 $("example").onchange = () => { selected = $("example").value; render(); };
 for (const [control, offset] of [["previous", -1], ["next", 1]]) $(control).onclick = () => {
   selected = visible[visible.findIndex((c) => c.id === selected) + offset].id; render();

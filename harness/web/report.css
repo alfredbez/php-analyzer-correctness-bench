@@ -34,7 +34,7 @@ table { border-collapse: collapse; width: 100%; font-size: 12px; text-align: lef
 th, td { border: 1px solid #ccc; padding: 3px 8px; vertical-align: top; }
 th { background: #f2f2f2; font-weight: 600; }
 .result-table th:first-child { width: 170px; }
-.result-table td:last-child { white-space: nowrap; }
+.result-table td:nth-child(2) { white-space: nowrap; }
 #versions th:not(:first-child), #versions td:not(:first-child) { text-align: right; white-space: nowrap; }
 #matrix { min-width: 780px; }
 #matrix th { white-space: nowrap; }
@@ -61,5 +61,6 @@ footer button { color: #333; border: 0; padding: 0; text-decoration: underline; 
   .case-nav { flex-wrap: wrap; }
   .case-nav select { flex-basis: calc(100% - 70px); }
   .case-nav button { flex: 1; }
+  .result-table th:first-child, .result-table td:first-child { width: 100px; overflow-wrap: anywhere; }
   h2 { overflow-wrap: anywhere; }
 }
