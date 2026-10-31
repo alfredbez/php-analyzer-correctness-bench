@@ -26,7 +26,7 @@
       "observation": "Official documentation says: PHPStan defines benevolent union types, such as array-key. Benevolent unions aren't checked strictly even at the highest level. Its example marks both requireInt($value1) and requireString($value1) as No error for array-key, while the corresponding int|string calls are Error. checkBenevolentUnionTypes defaults false and requires level 7 or higher."
     },
     {
-      "source": "/home/abez/projects/phpstan-src at 2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
+      "source": "phpstan-src at 2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "observation": "Verified HEAD and no local diff in inspected source files. src/PhpDoc/TypeNodeResolver.php:283-284 maps array-key to new BenevolentUnionType([new IntegerType(), new StringType()]). src/Type/ArrayType.php:75-85 converts this benevolent key to new MixedType(), and converts StrictMixedType back to a plain string/int union. src/Rules/RuleLevelHelper.php:85-118 traverses nested types and converts implicit mixed only when checkImplicitMixed is true. conf/config.neon:73 sets it false; level9 sets checkExplicitMixed true, not checkImplicitMixed; level10 enables checkImplicitMixed."
     },
     {

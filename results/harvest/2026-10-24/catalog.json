@@ -20,21 +20,21 @@
   "sources": [
     {
       "family": "psalm",
-      "root": "/home/abez/projects/psalm-src",
+      "root": "psalm-src",
       "repo": "vimeo/psalm",
       "ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "discovered_candidates": 8410
     },
     {
       "family": "phpstan",
-      "root": "/home/abez/projects/phpstan-src",
+      "root": "phpstan-src",
       "repo": "phpstan/phpstan-src",
       "ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "discovered_candidates": 4938
     },
     {
       "family": "mago",
-      "root": "/home/abez/projects/mago-upstream-prep/repro",
+      "root": "mago/repro",
       "repo": null,
       "ref": null,
       "discovered_candidates": 200
@@ -51,7 +51,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "93e661a3734e8c3146b309ec3259c894dc6c2a1f57a0f749ba7b261477bc3c2a",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1340",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -66,7 +66,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4c718f668c60c038f92da51d4baa253b95cf3ad0adbbe7fb4f15773c41838b8a",
       "probe_sha256": "4c718f668c60c038f92da51d4baa253b95cf3ad0adbbe7fb4f15773c41838b8a",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Properties/data/readonly-assign.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Properties/data/readonly-assign.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Properties/data/readonly-assign.php#L1",
       "status": "candidate"
     },
@@ -80,7 +80,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "36e03c3aa77d18daa4a2a50a657d7f793a72fba07b6a5a80a1d8c9fbefb0f99a",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1200",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -95,7 +95,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "46a05ba8a356410c4e244de05ff2c5193245bd8d5f79a83224b34a21338fc852",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L759",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -110,7 +110,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "ef06c561c5b83dfe64d11ac634670d956b982b2bac50c9c1e7e24316ffabb72e",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1155",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -125,7 +125,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "5a82e5e867d061bd52ee0b583f3cdfa8ae3ba9b19a8a2473dbb66673e19e4868",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L186",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -140,7 +140,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "9709b5d263ad94805ec58cd32272416b36133b250b88479aa15eb86080f0b358",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L113",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -155,7 +155,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "d4f390852a63cf2473bfce31158018c462c61cd2c44d22ba59ebed2f722d0d24",
       "probe_sha256": "ecf755e02eeb689f4f23d5b66ebccd480618511e7956ad273ed56a603aca077b",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayAccessTest.php",
+      "local_path": "psalm-src/tests/ArrayAccessTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAccessTest.php#L750",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -170,7 +170,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "73ebb648e6ab56cf1ab5366946b779ddb11ec7b82a8c43539246ac4595f70a5d",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L321",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -185,7 +185,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "74dd6e83e362644552a23f5fe2a6873f7756a6aa55222421aa060b0f3fb1dec2",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L747",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -200,7 +200,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "12ec9fc680464eee5c50d70f5bb23c71bcf9254b55182c5cfc6b9119e3aa08c8",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1777",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -215,7 +215,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "d500e8741d0c1af09455616362900c187ccb9a9893a07ad2803ceaf6340d9dd3",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L761",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -230,7 +230,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "3a404df892741ddbc45d8aab3d7d8f6142e54aec8619ec45507ff6f7d8b01be2",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L507",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -245,7 +245,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "63786b6f507aa17e36d052fbd6fe037378a0fd300f54b8a8c8b644e1a9465659",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L511",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -260,7 +260,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "dcca165d697226bd15c3ebe4b4d5645ca0d33cf2bdd64b36477b0f0a6be4d281",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L663",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -275,7 +275,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "145f924f1dca3180b06d370add0b5c4ce0d19e84d0ef10ba6df10b75c3e86857",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L1143",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -290,7 +290,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "4979ec07f0972c0c0e6794b70ba713d5ffb6ae894c560049594d787a921723c1",
       "probe_sha256": "8ab886d5d5df11ce9b0848067d57034d94587bf96441ed4fa4bf4090cf22b2bf",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayFunctionCallTest.php",
+      "local_path": "psalm-src/tests/ArrayFunctionCallTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayFunctionCallTest.php#L2759",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -305,7 +305,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "775b8d36829eff80329df8c6109025feedce3605cd48de265617ae102c1ed223",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L995",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -320,7 +320,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "121c6a7ae81fc5fe6134523b278aeeb91b6a17bc90540983d521a831be3cd1b4",
       "probe_sha256": "bd079b3f7c3ea0c5930b3484f22c827cf6cd6de4af1f595c9695712a2c4d920e",
-      "local_path": "/home/abez/projects/psalm-src/tests/AttributeTest.php",
+      "local_path": "psalm-src/tests/AttributeTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AttributeTest.php#L288",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -335,7 +335,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "7bc4ed82ba628be876acb7084975505c2710f3b2f142ad7569f4494bcbf9be49",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L172",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -350,7 +350,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "32b1f5290abf9b60ed01ceb60200cbf18c26717e1e8cd93c910456fc5c1269d5",
       "probe_sha256": "eea29d97e1a143b79524a55073097e5ed3e637e94865e1e50e18619b4ef58f7d",
-      "local_path": "/home/abez/projects/psalm-src/tests/AsymmetricVisibilityTest.php",
+      "local_path": "psalm-src/tests/AsymmetricVisibilityTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L430",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -365,7 +365,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "b1da8a973a73f26cb4d86a27b4ea2e3f4a17934f563fdd32530a02edbe51f236",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2011",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -380,7 +380,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "303269ac89f71659ecd2fe4028c9425d7b5a485eb26afb8b6075768e893c6a77",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L131",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -395,7 +395,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "96f5aa17c321374528d787ea386c3728ab7c81669be524c8f7a762bf5f2d026d",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L464",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -410,7 +410,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "96284eabd99b042d9adcef8061f1382f392b5e5f20e81e4bb46fc3a446174cd7",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L529",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -425,7 +425,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "ded376abe6ee54f27b8c937e0b4dd4cf523a91fad2a9032616a01fed82436dbd",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L146",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -440,7 +440,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "62a1074ebc6a6e20ed6ebb5767f40a7b4314549ec2359927d50dddc5a48706c2",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L774",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -455,7 +455,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "7dc7211358203dc363a77ad0083e1f9ef570b8d7241eb7f5502f24e76e74b4c1",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L457",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -470,7 +470,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "53f9f4674daf618f58c42934c4d6131d705e4233b0aec0cac01811d7ae0d8692",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L2002",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -485,7 +485,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "69bd568ba78c86d89f8eee8260ca33ba4163082c7b453eace20a59bd52a87ed5",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L673",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -500,7 +500,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "69f8137c4488ba4c052987777de4fc380acd9d2adfe15166a0aa44ba7ebd11e5",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1127",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -515,7 +515,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "a96d09d441753a9864ae3e99e2ed8c80a27410c8c54f2eed1762d3062f268064",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1814",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -530,7 +530,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "e28de318fd8b5bcae89e666b4102a63eb86a2adb8520bdaa793b24b6bf44bc40",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L528",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -545,7 +545,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "90bc82e93b1162db7790c0ae9bfdbbda85e1598a25bfc57085aa5ad6ab5844e6",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -560,7 +560,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "7c08ee74ec5d7894e3cf2b4a4e78908fbe091290df8613e2280fc02ba8123175",
       "probe_sha256": "5d68a3d3a1ece54ba75dfb02b210895de6cbfd758b8e07a00aef1c3a461c6c34",
-      "local_path": "/home/abez/projects/psalm-src/tests/AssertAnnotationTest.php",
+      "local_path": "psalm-src/tests/AssertAnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L2306",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -575,7 +575,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "f2be678c37879da43cc8f83f3c5f6613524c94998ef61cf77cd80c6ffabc49f7",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L608",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -590,7 +590,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "e0c6fd54626447305f49f872a0e3f1e9824625f95b03bee2c510c3ab2d8fd4b2",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1289",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -605,7 +605,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "28f882b60faa0db193701fa699f681342e2ceeb18ca12b4b44ea2bca01d98330",
       "probe_sha256": "a4e80ef1f355df43c03eff2e3cd3606ceb39336da3519a469ecc87412d7244d2",
-      "local_path": "/home/abez/projects/psalm-src/tests/ClassLikeStringTest.php",
+      "local_path": "psalm-src/tests/ClassLikeStringTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L325",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -620,7 +620,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "a33368daaabe2be9d373fd285f5f1a455cc8bd9d40bda90fe34089e0f0e23eed",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L25",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -635,7 +635,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "d71a6e27c17746c1045716c472cf7a7e3a284aff83f1e634c0faa6a52175676e",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1751",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -650,7 +650,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "345cc0850ef1898ae3679e69d6b137eb2fa29bf318848a4803b52786ef3d057f",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L23",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -665,7 +665,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "e9d070430a5162dbd4bd8ea740aeb33b7255ba7d4b62007d8db93101aa7859fe",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L164",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -680,7 +680,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "787a9413cb364148bbeb5790eeaa2109f2446ac725d62facaf9c3ae0e7bbb645",
       "probe_sha256": "787a9413cb364148bbeb5790eeaa2109f2446ac725d62facaf9c3ae0e7bbb645",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes.php#L1",
       "status": "candidate"
     },
@@ -694,7 +694,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "c8e1507ab1133930e129202748105a45acb6b42b1af10bb21b81491275f3cbf6",
       "probe_sha256": "c8e1507ab1133930e129202748105a45acb6b42b1af10bb21b81491275f3cbf6",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-resolved-dynamic.php#L1",
       "status": "candidate"
     },
@@ -708,7 +708,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e55dbfb1b225e5cfe01b48eb23b70d7b4f8c6bd4b736e181287167562b2e7b82",
       "probe_sha256": "e55dbfb1b225e5cfe01b48eb23b70d7b4f8c6bd4b736e181287167562b2e7b82",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-throwable.php#L1",
       "status": "candidate"
     },
@@ -722,7 +722,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
       "probe_sha256": "91a352ab8c74d6db3f52fb3673c5e90107476925fce178a23e372194e6a842c2",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abstract-generic-trait-method-implicit-phpdoc-inheritance.php#L1",
       "status": "candidate"
     },
@@ -736,7 +736,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
       "probe_sha256": "a7c8c42b96c7875fbd2db00cde494f55109e516aa4141e15f58c6b04b1c61f95",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/functionPhpDocs-phpstanPrefix.php#L1",
       "status": "candidate"
     },
@@ -750,7 +750,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "9f10373f53f806a7d0ada430c660ce89480ebb15d5ec9b814231aa72a0f59a1a",
       "probe_sha256": "9f10373f53f806a7d0ada430c660ce89480ebb15d5ec9b814231aa72a0f59a1a",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-shape-template-key.php#L1",
       "status": "candidate"
     },
@@ -764,7 +764,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
       "probe_sha256": "aa01b77251f961aaf151dcc1a7e5dc00636471212083c7410286472bc08616ac",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-conditional.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-conditional.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-conditional.php#L1",
       "status": "candidate"
     },
@@ -778,7 +778,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "aa234e4bb595a06823cb155215f0b7a6a3f1cbe741f7f037d179889976862458",
       "probe_sha256": "aa234e4bb595a06823cb155215f0b7a6a3f1cbe741f7f037d179889976862458",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-string-callables.php#L1",
       "status": "candidate"
     },
@@ -792,7 +792,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1c95ff6e5a087f7eb5198c59113cdf84a7a1a66485d7e87f7963b4763a86bfc5",
       "probe_sha256": "1c95ff6e5a087f7eb5198c59113cdf84a7a1a66485d7e87f7963b4763a86bfc5",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/composer-treatPhpDocTypesAsCertainBug.php#L1",
       "status": "candidate"
     },
@@ -806,7 +806,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "cc70904ace489f1d2d952d26ac3c8e13852fa6965f85b3cd9170e350eddc03b2",
       "probe_sha256": "cc70904ace489f1d2d952d26ac3c8e13852fa6965f85b3cd9170e350eddc03b2",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name.php#L1",
       "status": "candidate"
     },
@@ -820,7 +820,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1270435da764b70a9c3ed880970f5b96d0f90bff5528e4cabb5045087175bf94",
       "probe_sha256": "1270435da764b70a9c3ed880970f5b96d0f90bff5528e4cabb5045087175bf94",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-change-key-case.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-change-key-case.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-change-key-case.php#L1",
       "status": "candidate"
     },
@@ -834,7 +834,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "cb3623d510626e548245bf16689429c435397173db5400609a8e3353d8595913",
       "probe_sha256": "cb3623d510626e548245bf16689429c435397173db5400609a8e3353d8595913",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeDynamicReturnTypes.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeDynamicReturnTypes.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeDynamicReturnTypes.php#L1",
       "status": "candidate"
     },
@@ -848,7 +848,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "37f59139cf8777e8e0c4930dadae2c59bdf63788462692c9666d8fab59ba9457",
       "probe_sha256": "37f59139cf8777e8e0c4930dadae2c59bdf63788462692c9666d8fab59ba9457",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/PDOStatement.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/PDOStatement.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/PDOStatement.php#L1",
       "status": "candidate"
     },
@@ -862,7 +862,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "86b2f6dcb0cabd400875348bb54c2bfe95b87bbee063fea6a527996409bb345e",
       "probe_sha256": "86b2f6dcb0cabd400875348bb54c2bfe95b87bbee063fea6a527996409bb345e",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/adapter-reflection-enum-return-types.php#L1",
       "status": "candidate"
     },
@@ -876,7 +876,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
       "probe_sha256": "1468687bf7c95de89612a4ffd08fb13f5435320022bd6cffcc2137c71a23b499",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/broad-catch-implicit-throws.php#L1",
       "status": "candidate"
     },
@@ -890,7 +890,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "46c76eb70a49ace3763e8957d8ee55c7ab84dd377c63a3f287155957fdb209c9",
       "probe_sha256": "46c76eb70a49ace3763e8957d8ee55c7ab84dd377c63a3f287155957fdb209c9",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/closure-bind-nullable-this.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/closure-bind-nullable-this.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/closure-bind-nullable-this.php#L1",
       "status": "candidate"
     },
@@ -904,7 +904,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "2717ea7208eda235f0fe8fe025e4517f5930c7a349ee3cc435214c07089a55db",
       "probe_sha256": "2717ea7208eda235f0fe8fe025e4517f5930c7a349ee3cc435214c07089a55db",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bug-nullsafe-prop-static-access.php#L1",
       "status": "candidate"
     },
@@ -918,7 +918,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "fa36445851c61b38ba9ee49337519cdcfc59e48367631dc33b8468788b49bfc2",
       "probe_sha256": "fa36445851c61b38ba9ee49337519cdcfc59e48367631dc33b8468788b49bfc2",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-enum.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-enum.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-enum.php#L1",
       "status": "candidate"
     },
@@ -932,7 +932,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "a4d7aa038b71dc7ce40a31cfb462e1e2fd2230c03097f5efc6976bb8515757b1",
       "probe_sha256": "a4d7aa038b71dc7ce40a31cfb462e1e2fd2230c03097f5efc6976bb8515757b1",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DOMLegacyNamedNodeMap.php#L1",
       "status": "candidate"
     },
@@ -946,7 +946,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4b77dff98e5755b0f1eb6f4db890ffa9e64e9905ca71afde6e28b6f950c14444",
       "probe_sha256": "4b77dff98e5755b0f1eb6f4db890ffa9e64e9905ca71afde6e28b6f950c14444",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enum-from.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/enum-from.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-from.php#L1",
       "status": "candidate"
     },
@@ -960,7 +960,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e74898757e7a30ad6853d6845f11e90124463991a2dc4a8e954860eab1c68f60",
       "probe_sha256": "e74898757e7a30ad6853d6845f11e90124463991a2dc4a8e954860eab1c68f60",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-typehint-without-null-in-phpdoc.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-typehint-without-null-in-phpdoc.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-typehint-without-null-in-phpdoc.php#L1",
       "status": "candidate"
     },
@@ -974,7 +974,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "dde5bf2d6f881cce8cc71f92510a78f3f0da58004160cb5126098d2be2b7a8c8",
       "probe_sha256": "dde5bf2d6f881cce8cc71f92510a78f3f0da58004160cb5126098d2be2b7a8c8",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/arrow-function-argument-type.php#L1",
       "status": "candidate"
     },
@@ -988,7 +988,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "a3f78541c3f7caa789cd689e3792f1777830f10f1b799382e1b8b7a27acc6b6c",
       "probe_sha256": "a3f78541c3f7caa789cd689e3792f1777830f10f1b799382e1b8b7a27acc6b6c",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-include.php#L1",
       "status": "candidate"
     },
@@ -1002,7 +1002,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "de5477894994fe3c7f8abc7e45095c9632eb9830c749d6a64995bad9a2c876c4",
       "probe_sha256": "de5477894994fe3c7f8abc7e45095c9632eb9830c749d6a64995bad9a2c876c4",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/classPhpDocs.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/classPhpDocs.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/classPhpDocs.php#L1",
       "status": "candidate"
     },
@@ -1016,7 +1016,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1ec46e777802a49c1766bb1321e3ca7d4b97b5dd222fba42533f4c886425fb11",
       "probe_sha256": "1ec46e777802a49c1766bb1321e3ca7d4b97b5dd222fba42533f4c886425fb11",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-in-trait.php#L1",
       "status": "candidate"
     },
@@ -1030,7 +1030,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "37733d7e6af325c5b67b7b69b655f9ba8a5ddd28d33e2518dfd31605e9ceace7",
       "probe_sha256": "37733d7e6af325c5b67b7b69b655f9ba8a5ddd28d33e2518dfd31605e9ceace7",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-closure-parameters.php#L1",
       "status": "candidate"
     },
@@ -1044,7 +1044,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "7e7ae2c6194e534032851a3b2b25079c36353ea11af8181fcc002cd94d1af586",
       "probe_sha256": "7e7ae2c6194e534032851a3b2b25079c36353ea11af8181fcc002cd94d1af586",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/catch-specified-variable.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/catch-specified-variable.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-specified-variable.php#L1",
       "status": "candidate"
     },
@@ -1058,7 +1058,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "9135e7825f203f7aeab02a8c371b4e4c41ac3bf776d3e5830ebe9b1cd604b571",
       "probe_sha256": "9135e7825f203f7aeab02a8c371b4e4c41ac3bf776d3e5830ebe9b1cd604b571",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/case-insensitive-phpdocs.php#L1",
       "status": "candidate"
     },
@@ -1072,7 +1072,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "cae7dd42280122f2955837d9be05a54b9f3fef578842bc7e43799b3942c3a068",
       "probe_sha256": "cae7dd42280122f2955837d9be05a54b9f3fef578842bc7e43799b3942c3a068",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-promoted-properties.php#L1",
       "status": "candidate"
     },
@@ -1086,7 +1086,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "9138a34130a0ad1b6cae2e86c7eed3a404d1f5c89921f690c53d60fd15e136df",
       "probe_sha256": "9138a34130a0ad1b6cae2e86c7eed3a404d1f5c89921f690c53d60fd15e136df",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-callables.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-filter-callables.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-filter-callables.php#L1",
       "status": "candidate"
     },
@@ -1100,7 +1100,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e8763585650a7c327c0e84fb47d478a830c009b3ab8870be1c4f868f08922712",
       "probe_sha256": "e8763585650a7c327c0e84fb47d478a830c009b3ab8870be1c4f868f08922712",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/anonymous-class-name-same-line.php#L1",
       "status": "candidate"
     },
@@ -1114,7 +1114,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e53803063e0e039a9526dd1da5922ec0aebceee1a19437e89087cc452bf3dc7f",
       "probe_sha256": "e53803063e0e039a9526dd1da5922ec0aebceee1a19437e89087cc452bf3dc7f",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/abs.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/abs.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/abs.php#L1",
       "status": "candidate"
     },
@@ -1128,7 +1128,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "95cabfe01814dd9368a790140e0d505dbed12679a5f06c43e3fe9db67a87e305",
       "probe_sha256": "95cabfe01814dd9368a790140e0d505dbed12679a5f06c43e3fe9db67a87e305",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes83.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes83.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeModifyReturnTypes83.php#L1",
       "status": "candidate"
     },
@@ -1142,7 +1142,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "66bf6e2869b85c951308da8c0545c01ca5e2815b4109d9298db17600c3364ffe",
       "probe_sha256": "66bf6e2869b85c951308da8c0545c01ca5e2815b4109d9298db17600c3364ffe",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/DateTimeCreateDynamicReturnTypes.php#L1",
       "status": "candidate"
     },
@@ -1156,7 +1156,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
       "probe_sha256": "929156831cae39da775f1ff4f41571ce000254e11d0e626fee801c3d80910495",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-class-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-class-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-class-type.php#L1",
       "status": "candidate"
     },
@@ -1170,7 +1170,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "b0d011a93082a2e263bba6292ff843ea37795ab4ba0e925a15308fdd37ac7625",
       "probe_sha256": "b0d011a93082a2e263bba6292ff843ea37795ab4ba0e925a15308fdd37ac7625",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-append-count.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-append-count.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-append-count.php#L1",
       "status": "candidate"
     },
@@ -1184,7 +1184,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "9909d6029181ab32630888e0853c79a8fa167d846e52ff6a44cfe18575d5d0fa",
       "probe_sha256": "9909d6029181ab32630888e0853c79a8fa167d846e52ff6a44cfe18575d5d0fa",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-argless-call-template-default.php#L1",
       "status": "candidate"
     },
@@ -1198,7 +1198,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "58b9bd995f13240c4132101ce69dcc1e74b019957d0ee84ac926bdfe7542f960",
       "probe_sha256": "58b9bd995f13240c4132101ce69dcc1e74b019957d0ee84ac926bdfe7542f960",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-accessable.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-accessable.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-accessable.php#L1",
       "status": "candidate"
     },
@@ -1212,7 +1212,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "42869db73c7d08fb6b9fa46ee882762586d30aa8b792cbaa9e3d2f9d8490a2ff",
       "probe_sha256": "42869db73c7d08fb6b9fa46ee882762586d30aa8b792cbaa9e3d2f9d8490a2ff",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/classPhpDocs-phpstanPropertyPrefix.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/classPhpDocs-phpstanPropertyPrefix.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/classPhpDocs-phpstanPropertyPrefix.php#L1",
       "status": "candidate"
     },
@@ -1226,7 +1226,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "ac087d9c9bdd98cddc282c7774ef7d15ab3a55c5d3a0ff3e2ae264b68e291d6e",
       "probe_sha256": "ac087d9c9bdd98cddc282c7774ef7d15ab3a55c5d3a0ff3e2ae264b68e291d6e",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/argless-call-narrowing-walked-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/argless-call-narrowing-walked-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/argless-call-narrowing-walked-type.php#L1",
       "status": "candidate"
     },
@@ -1240,7 +1240,7 @@
       "source_ref": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
       "source_sha256": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
       "probe_sha256": "e7bdff320ebfe1b115fc25cf3705d455ac5a77870c766351a4d5d00a80e4638d",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/break-without-setting-var/repro.php",
+      "local_path": "mago/repro/break-without-setting-var/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1254,7 +1254,7 @@
       "source_ref": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
       "source_sha256": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
       "probe_sha256": "a4eaa891ca772f188bcf66d29f6bcaa49f8a7f8cd7192054334a05eebb7935e6",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/empty-exception-after-if/repro.php",
+      "local_path": "mago/repro/empty-exception-after-if/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1268,7 +1268,7 @@
       "source_ref": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
       "source_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
       "probe_sha256": "8a402e2696700630d9d13e04798bd25dad1082ad9ee5fcd86e542ece157a98fd",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-empty-null-property/repro.php",
+      "local_path": "mago/repro/allow-empty-null-property/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1282,7 +1282,7 @@
       "source_ref": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
       "source_sha256": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
       "probe_sha256": "bd24d3dfbb49463123eb41ccb3943edc9c51f94792c65674a5daad29ee2f4600",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/always-true-assign/repro.php",
+      "local_path": "mago/repro/always-true-assign/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1296,7 +1296,7 @@
       "source_ref": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
       "source_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
       "probe_sha256": "2a297e6d7a69e7c5ecb9c0de7eb7d8762099900c170773d97c32c0f095fcad03",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-type-assertions/repro.php",
+      "local_path": "mago/repro/callable-type-assertions/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1315,7 +1315,7 @@
       "source_ref": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
       "source_sha256": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
       "probe_sha256": "093fcaca8f96ea9e9a281aaca44af3374d3f5ed2f66cfc45dce4c5fae94d3128",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/get-class-const-arg/repro.php",
+      "local_path": "mago/repro/get-class-const-arg/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1329,7 +1329,7 @@
       "source_ref": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
       "source_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
       "probe_sha256": "43fb6db3004c3d7106a253069cd2cda800973e236551a778306dadda76bf4575",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-on-mixed/repro.php",
+      "local_path": "mago/repro/no-redundant-condition-on-mixed/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1343,7 +1343,7 @@
       "source_ref": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
       "source_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
       "probe_sha256": "22349a90ec658c409d9f717dcb6e3e6f1fa97eac8baf1e8850c0d2d2cb183343",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/always-true-binary-op/repro.php",
+      "local_path": "mago/repro/always-true-binary-op/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1357,7 +1357,7 @@
       "source_ref": "6b80725032a6948b4071e01ad25b634fbc6cc7207dfa1231f9ce6fba9eaafffd",
       "source_sha256": "6b80725032a6948b4071e01ad25b634fbc6cc7207dfa1231f9ce6fba9eaafffd",
       "probe_sha256": "6b80725032a6948b4071e01ad25b634fbc6cc7207dfa1231f9ce6fba9eaafffd",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/class-always-parent/repro.php",
+      "local_path": "mago/repro/class-always-parent/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1371,7 +1371,7 @@
       "source_ref": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
       "source_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
       "probe_sha256": "193751a58f341b82c04c4a6a7f9c0acea8351c262d904ed237962992421cac5d",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/class-string-not-empty/repro.php",
+      "local_path": "mago/repro/class-string-not-empty/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1385,7 +1385,7 @@
       "source_ref": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
       "source_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
       "probe_sha256": "10d9a5d8dffd66a7cdf25adfca8a5719ac37ca4076871709632be5c716aeceba",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/array-equality-narrowing/repro.php",
+      "local_path": "mago/repro/array-equality-narrowing/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1399,7 +1399,7 @@
       "source_ref": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
       "source_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
       "probe_sha256": "bef394aec918c4dd15cef4016c77c41a8fc90071d68dedf27fc588fdd4e5cb4e",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/int-not-null-true-false/repro.php",
+      "local_path": "mago/repro/int-not-null-true-false/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1413,7 +1413,7 @@
       "source_ref": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
       "source_sha256": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
       "probe_sha256": "252b543923aaf2b4ae6fe57674b8ddbcbeae79f4a916c8b0fbd890e167d3b86e",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/equality-type-reconciliation-unions/repro.php",
+      "local_path": "mago/repro/equality-type-reconciliation-unions/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1432,7 +1432,7 @@
       "source_ref": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
       "source_sha256": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
       "probe_sha256": "89d90cef4dd67f6efa9848c213de0847359b2023cdc35f7e5c15fbe87de82b66",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-2d/repro.php",
+      "local_path": "mago/repro/psalm-harvest-array-2d/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1446,7 +1446,7 @@
       "source_ref": "c5bd1031037e0bc6eb6c8f9880a13b52017bc23ef36b295a8903e276095f625e",
       "source_sha256": "c5bd1031037e0bc6eb6c8f9880a13b52017bc23ef36b295a8903e276095f625e",
       "probe_sha256": "c5bd1031037e0bc6eb6c8f9880a13b52017bc23ef36b295a8903e276095f625e",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/array-shape-numeric-string-key-normalization/repro.php",
+      "local_path": "mago/repro/array-shape-numeric-string-key-normalization/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1465,7 +1465,7 @@
       "source_ref": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
       "source_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
       "probe_sha256": "e2ed63f8ac3e0fb8a7b7db8c2fc31a03e06aab56a5b6caa0faf33a01122096d8",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/template-bounds/repro.php",
+      "local_path": "mago/repro/template-bounds/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1479,7 +1479,7 @@
       "source_ref": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
       "source_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
       "probe_sha256": "1d4af372ac3b1331a4cc4f2b3b8b47ee5ec2434f2cd49758b117bca98fd6fb80",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/conditional-reanalysis-assigned-var-pollution/repro.php",
+      "local_path": "mago/repro/conditional-reanalysis-assigned-var-pollution/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1498,7 +1498,7 @@
       "source_ref": "ff8cbb3359bdb21146b37e1cce40720ec0d5a6f8d2ca44a6e0d53a2c7ff234c2",
       "source_sha256": "ff8cbb3359bdb21146b37e1cce40720ec0d5a6f8d2ca44a6e0d53a2c7ff234c2",
       "probe_sha256": "ff8cbb3359bdb21146b37e1cce40720ec0d5a6f8d2ca44a6e0d53a2c7ff234c2",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-array-dependency-guard-leak/repro.php",
+      "local_path": "mago/repro/callable-array-dependency-guard-leak/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1512,7 +1512,7 @@
       "source_ref": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
       "source_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
       "probe_sha256": "8b35c0426d388ea1666b642cb6f12add8dcd89a8ba09715cdab5bc5cb08b45f9",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-possibly-undefined-switch-finally/repro.php",
+      "local_path": "mago/repro/fn-possibly-undefined-switch-finally/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1531,7 +1531,7 @@
       "source_ref": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
       "source_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
       "probe_sha256": "4696c9f8345dd4d6aec0f93e79df5791a6bfc9baaeae090ca4b5640fce9e3702",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/callable-array-assignable/repro.php",
+      "local_path": "mago/repro/callable-array-assignable/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1545,7 +1545,7 @@
       "source_ref": "ba5c5dd1160ea526caf4260eca7f97b70e388a850ef3dd8f1c8a5921e3e1153c",
       "source_sha256": "ba5c5dd1160ea526caf4260eca7f97b70e388a850ef3dd8f1c8a5921e3e1153c",
       "probe_sha256": "ba5c5dd1160ea526caf4260eca7f97b70e388a850ef3dd8f1c8a5921e3e1153c",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/elseif-else-return-unsound-variable-narrowing/repro.php",
+      "local_path": "mago/repro/elseif-else-return-unsound-variable-narrowing/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1564,7 +1564,7 @@
       "source_ref": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
       "source_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
       "probe_sha256": "1dab44344f21f1962989361c532c72260f4b7bb8fa177ef223aa7be475491d86",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-empty-mixed/repro.php",
+      "local_path": "mago/repro/no-redundant-condition-after-empty-mixed/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1578,7 +1578,7 @@
       "source_ref": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
       "source_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
       "probe_sha256": "94ab71726473a19c4cdcb62867cd2607270f5c5fa5b0c092a44fc712993e2df1",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/nested-generic-array-isset-shape-narrowing/repro.php",
+      "local_path": "mago/repro/nested-generic-array-isset-shape-narrowing/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1597,7 +1597,7 @@
       "source_ref": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
       "source_sha256": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
       "probe_sha256": "811beac3aa5df900167f403a9ed59e06dec1e7c6424d0c72d8f7250d50bda9c8",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/get-class-arg-wrong-class/repro.php",
+      "local_path": "mago/repro/get-class-arg-wrong-class/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1611,7 +1611,7 @@
       "source_ref": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
       "source_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
       "probe_sha256": "6dc45f691aa1e4339e598e22529f2020788db7153a26816a73361ccfd682bb56",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/dont-bleed-empty-after-extract/repro.php",
+      "local_path": "mago/repro/dont-bleed-empty-after-extract/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1625,7 +1625,7 @@
       "source_ref": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
       "source_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
       "probe_sha256": "81423951a2c9b8c112d94b848b0fe38024fe2a0694be281014f6bee0ff3a8fdd",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/clear-dependent-type-when-assigning/repro.php",
+      "local_path": "mago/repro/clear-dependent-type-when-assigning/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1639,7 +1639,7 @@
       "source_ref": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
       "source_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
       "probe_sha256": "d9681bc06b9f6495dfd1de2b694b6bade934cf6416c12a490a95e9dff9b92079",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-redundant/repro.php",
+      "local_path": "mago/repro/psalm-harvest-array-redundant/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1653,7 +1653,7 @@
       "source_ref": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
       "source_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
       "probe_sha256": "18b9bc570c094fcdd05a288031921eff6d0258ea33881998cb899039d9140d6e",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/can-be-non-empty-array/repro.php",
+      "local_path": "mago/repro/can-be-non-empty-array/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1667,7 +1667,7 @@
       "source_ref": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
       "source_sha256": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
       "probe_sha256": "47ff00f30ff3c1aeec0f18a8108b9c789b3b14e265679650df6368801ca3094c",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-empty-class-const-offset/repro.php",
+      "local_path": "mago/repro/allow-empty-class-const-offset/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1681,7 +1681,7 @@
       "source_ref": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
       "source_sha256": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
       "probe_sha256": "77b2bc66fffef0e321fd3f526e6bbf7c027f9a48ca944fcbc723d5f3cec902be",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/enum-const-array/repro.php",
+      "local_path": "mago/repro/enum-const-array/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1695,7 +1695,7 @@
       "source_ref": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
       "source_sha256": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
       "probe_sha256": "313f1181b623db0cbd66e2298a437c95cd0e27b56d3f76907e851168b3e09a52",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/impossible-case-default-with-throw/repro.php",
+      "local_path": "mago/repro/impossible-case-default-with-throw/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1709,7 +1709,7 @@
       "source_ref": "5338e2b145ccee33d5d020b448f7c4461122f2256f3f57ffa982e67b9c62dde0",
       "source_sha256": "5338e2b145ccee33d5d020b448f7c4461122f2256f3f57ffa982e67b9c62dde0",
       "probe_sha256": "5338e2b145ccee33d5d020b448f7c4461122f2256f3f57ffa982e67b9c62dde0",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/erase-null-after-inequality/repro.php",
+      "local_path": "mago/repro/erase-null-after-inequality/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1723,7 +1723,7 @@
       "source_ref": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
       "source_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
       "probe_sha256": "e5932f7fd5230385448c6d9ae8088e6a45c205b99e9803c95b7ace8d4c79c075",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/fn-malformed-phpdoc/repro.php",
+      "local_path": "mago/repro/fn-malformed-phpdoc/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1742,7 +1742,7 @@
       "source_ref": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
       "source_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
       "probe_sha256": "38e52b8be741799df2e99261c0b61ac3e08da0e43fabea9f3c35100849022dca",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/chained-logical-or-assignment-subsequent-operand/repro.php",
+      "local_path": "mago/repro/chained-logical-or-assignment-subsequent-operand/repro.php",
       "citation": null,
       "status": "candidate",
       "historical_context": {
@@ -1761,7 +1761,7 @@
       "source_ref": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
       "source_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
       "probe_sha256": "4016f989cd6b251f4d5b4e5628c088cfd7e803c9d96b5b2f531d30269c3dadc7",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/all-switches-met/repro.php",
+      "local_path": "mago/repro/all-switches-met/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1775,7 +1775,7 @@
       "source_ref": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
       "source_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
       "probe_sha256": "033fc12ecc9a7d46534279c4c2b85a2734b64e06d3ed47666507f1b24588279b",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/empty-string-reconciliation-then-if/repro.php",
+      "local_path": "mago/repro/empty-string-reconciliation-then-if/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1789,7 +1789,7 @@
       "source_ref": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
       "source_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
       "probe_sha256": "99acc5caf2449694996281656df0cd31635ff174aea1807062eb2c4e2f6c960b",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-callable-array-keyed/repro.php",
+      "local_path": "mago/repro/psalm-harvest-callable-array-keyed/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1803,7 +1803,7 @@
       "source_ref": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
       "source_sha256": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
       "probe_sha256": "2ce3affb84f3e6ca40c54497e5a0980ee68c4b09564e91f4428435ba51fe91fc",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/allow-numeric-empty/repro.php",
+      "local_path": "mago/repro/allow-numeric-empty/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1817,7 +1817,7 @@
       "source_ref": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
       "source_sha256": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
       "probe_sha256": "d7d727736f7a25a050ba20998530615b137e97cafee0842f0aef96397d76a560",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/no-redundant-condition-after-falsy-int-checks/repro.php",
+      "local_path": "mago/repro/no-redundant-condition-after-falsy-int-checks/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1831,7 +1831,7 @@
       "source_ref": "55d63e79e4b7a3d35f3e9091dd1b5edd6837b52429adda5078266990f09a546f",
       "source_sha256": "55d63e79e4b7a3d35f3e9091dd1b5edd6837b52429adda5078266990f09a546f",
       "probe_sha256": "55d63e79e4b7a3d35f3e9091dd1b5edd6837b52429adda5078266990f09a546f",
-      "local_path": "/home/abez/projects/mago-upstream-prep/repro/psalm-harvest-array-countable/repro.php",
+      "local_path": "mago/repro/psalm-harvest-array-countable/repro.php",
       "citation": null,
       "status": "candidate"
     },
@@ -1845,7 +1845,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "7c08ee74ec5d7894e3cf2b4a4e78908fbe091290df8613e2280fc02ba8123175",
       "probe_sha256": "e862a89e3a64dab43f11442a302a238ee10f56b8ea909668745ed712de280e7e",
-      "local_path": "/home/abez/projects/psalm-src/tests/AssertAnnotationTest.php",
+      "local_path": "psalm-src/tests/AssertAnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L1059",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1860,7 +1860,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "d9584e0874f47d944bf24fd7ebe2c385f06b565b23d95a9a49c4a3de6e7cc3ce",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L887",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1875,7 +1875,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "b463fd78e2d4b77277393d76906e524a1295f276a34ba20280d7d482c9701eb0",
       "probe_sha256": "a2c267456f2fa3f0f1cfb472f31dfb0956577f4723526dc472799b48095bc5d1",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayAssignmentTest.php",
+      "local_path": "psalm-src/tests/ArrayAssignmentTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L2748",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -1890,7 +1890,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "9d5875d56a900c738ff5e28b3dc0d6312c66342b0009f1756c172204ac1b1284",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L43",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1905,7 +1905,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "d4f390852a63cf2473bfce31158018c462c61cd2c44d22ba59ebed2f722d0d24",
       "probe_sha256": "4efae8023e11b3dee58db2655e7fc70becbe997dd9d82aa64ae1dc584cec7d0e",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayAccessTest.php",
+      "local_path": "psalm-src/tests/ArrayAccessTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAccessTest.php#L924",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1920,7 +1920,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "c8af3d2378b492e9d545296bc9098bc428681ded5f0ef7956548d1c74ce39574",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L140",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -1935,7 +1935,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "022114487dd656a740640428e0bf6bfb06c022f0a52892094ccd56dc3394d22e",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L365",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1950,7 +1950,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "417d2236770c8fb1dc818ed7951c502bd0c5f239cce3de3e267a62c002fbb431",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L428",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -1965,7 +1965,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "6956868b27e3681ec0a9c65362e234bbc7becec3e5b5da0f980a39e94a944571",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L792",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -1980,7 +1980,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "28f882b60faa0db193701fa699f681342e2ceeb18ca12b4b44ea2bca01d98330",
       "probe_sha256": "c30d5847064e1325b74b15ac1aca7a919d7b55214457f4d534dd12a89dc9f777",
-      "local_path": "/home/abez/projects/psalm-src/tests/ClassLikeStringTest.php",
+      "local_path": "psalm-src/tests/ClassLikeStringTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L591",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -1995,7 +1995,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "28f882b60faa0db193701fa699f681342e2ceeb18ca12b4b44ea2bca01d98330",
       "probe_sha256": "d9c8a9b832ca88f32496834d69eae393b043f97bbbb7341c0246fc344b50e88f",
-      "local_path": "/home/abez/projects/psalm-src/tests/ClassLikeStringTest.php",
+      "local_path": "psalm-src/tests/ClassLikeStringTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L390",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2010,7 +2010,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "fc642101c40a8322de087bfe116f5e3aeda94f8b31c8bb1ad4e0b89e4863033a",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L399",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2025,7 +2025,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "8ce292b9580f0e41a6cf5b8b1d4010fb03bd6fe916605ab5bb16803502313bd5",
       "probe_sha256": "c160baf12cf24bf9af26536832206e2a95b3a316c5c77e05cd1831dcf3bea19e",
-      "local_path": "/home/abez/projects/psalm-src/tests/CapabilitiesTest.php",
+      "local_path": "psalm-src/tests/CapabilitiesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CapabilitiesTest.php#L1015",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2040,7 +2040,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "b463fd78e2d4b77277393d76906e524a1295f276a34ba20280d7d482c9701eb0",
       "probe_sha256": "5be0b11d60a67e734b6cf7c7169670e099d00debd7667f241758580c3c7669ad",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayAssignmentTest.php",
+      "local_path": "psalm-src/tests/ArrayAssignmentTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L481",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2055,7 +2055,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "294188739b22364ae17ee16664b028512221ea51f70b7320cc55b064342f1f80",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L677",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2070,7 +2070,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "e808eb8973fe0e97c0380209d9df87aa674ed1fa6958d61569f8ae90b233b1fd",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L134",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2085,7 +2085,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "b463fd78e2d4b77277393d76906e524a1295f276a34ba20280d7d482c9701eb0",
       "probe_sha256": "b4a7609c1c613eb83b4fc4f713167384fad73fcdbe5811d61ae698f372ddf9de",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArrayAssignmentTest.php",
+      "local_path": "psalm-src/tests/ArrayAssignmentTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArrayAssignmentTest.php#L1991",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2100,7 +2100,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "28f882b60faa0db193701fa699f681342e2ceeb18ca12b4b44ea2bca01d98330",
       "probe_sha256": "af6358b362016b679edc44e21cb7f092c6147081024ab1afd0f84b9c40c0ebb7",
-      "local_path": "/home/abez/projects/psalm-src/tests/ClassLikeStringTest.php",
+      "local_path": "psalm-src/tests/ClassLikeStringTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ClassLikeStringTest.php#L602",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2115,7 +2115,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "c4e9716ab3460a5fa95616be8c577104baedd081ddb37654e95f92cc984f3658",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L480",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2130,7 +2130,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "aa613b67e4b9ba1d644f9aab4d04955539355f96f367e60f8fad0ac30a1687df",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L494",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2145,7 +2145,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "7a29272d8cf80ae3f42af300b6cdb6ae9021f5d4894494c60f7a7c08bbdf71d4",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L443",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2160,7 +2160,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "32b1f5290abf9b60ed01ceb60200cbf18c26717e1e8cd93c910456fc5c1269d5",
       "probe_sha256": "089c4062b780553c7b5557ab5548437229b7688b25fa947d2988193e3b53caba",
-      "local_path": "/home/abez/projects/psalm-src/tests/AsymmetricVisibilityTest.php",
+      "local_path": "psalm-src/tests/AsymmetricVisibilityTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L456",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2175,7 +2175,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "fb3913f86180e1351053adf857dcfe47ab82da4378ffdf40eeb26204a4807b7d",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L817",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2190,7 +2190,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "8ce292b9580f0e41a6cf5b8b1d4010fb03bd6fe916605ab5bb16803502313bd5",
       "probe_sha256": "64bfd6c55c8838cbdb3ab1f9a4053f864d7c04ec1cea3fb9985e740a7f5a794d",
-      "local_path": "/home/abez/projects/psalm-src/tests/CapabilitiesTest.php",
+      "local_path": "psalm-src/tests/CapabilitiesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CapabilitiesTest.php#L1309",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2205,7 +2205,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "ee554f05fb89f751cc33d9db13658a7122e77ac66aa5ca1438d4e816384352ba",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L448",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2220,7 +2220,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "48d063b9146036e51ab1d33e4b9465a30987ce8faeb9a045b323bcb0b376ccd5",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L122",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2235,7 +2235,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "9f80bf86207278a361b36ce8beb636243a0a363777fd6708546c8f424381ff29",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L805",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2250,7 +2250,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "1c97d26b34eb13af36d67eae5aaf5b04f797b310d1139c8e9509c6c4f7abab39",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L35",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2265,7 +2265,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "32b1f5290abf9b60ed01ceb60200cbf18c26717e1e8cd93c910456fc5c1269d5",
       "probe_sha256": "275ada2906f16b6f029c33c36358361ec3b9a6bcfbe03373af3a71aa5bcfd09c",
-      "local_path": "/home/abez/projects/psalm-src/tests/AsymmetricVisibilityTest.php",
+      "local_path": "psalm-src/tests/AsymmetricVisibilityTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L190",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2280,7 +2280,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "7c08ee74ec5d7894e3cf2b4a4e78908fbe091290df8613e2280fc02ba8123175",
       "probe_sha256": "fe06813e51a5b7ca7039bbe6a27ce0662e73c5c001380645019b45d715b48a2b",
-      "local_path": "/home/abez/projects/psalm-src/tests/AssertAnnotationTest.php",
+      "local_path": "psalm-src/tests/AssertAnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AssertAnnotationTest.php#L429",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2295,7 +2295,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "f515117dbbcc86f4fdb660dbdc9bfe991547f6cc6e18c6f6560b15d49d8aff18",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L704",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2310,7 +2310,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5e8caf5ecc7e129a0e98529d504d2f436c9c6be7478b1018fb68ee0195589905",
       "probe_sha256": "79834499bb37fe70ce11600f1bf6d601bdabe5c2ea9739b79c101826fed7004e",
-      "local_path": "/home/abez/projects/psalm-src/tests/ConstValuesTest.php",
+      "local_path": "psalm-src/tests/ConstValuesTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ConstValuesTest.php#L49",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2325,7 +2325,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "df838f20ed1f6f3140e164e6d08b4771f224fcb72e83f090048f235c7365cde6",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L348",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2340,7 +2340,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "f568e095554cbefed08464f44c80ec3769b1019fa9390d4d65a6e305dc494a64",
       "probe_sha256": "d6e545ecff4c1592147d5f7281a2773c244e40e94c058294d16729533d144e18",
-      "local_path": "/home/abez/projects/psalm-src/tests/CoreStubsTest.php",
+      "local_path": "psalm-src/tests/CoreStubsTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/CoreStubsTest.php#L231",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2355,7 +2355,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "a5e4ad6d5d6c778e5918730f368de6db438ebd26017afd47c97eb2a0c3c007fc",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L687",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2370,7 +2370,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "31275df24d7c9da96d73746c6404d24012f9eaba9783977fa5a2a7ecd5549c10",
       "probe_sha256": "bf68f8d9144bf9c26af937b65a1ebdedac62049c73174ddf0021003ce5fe4870",
-      "local_path": "/home/abez/projects/psalm-src/tests/AnnotationTest.php",
+      "local_path": "psalm-src/tests/AnnotationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L1017",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2385,7 +2385,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "3011963953389638ad170dddb88a44c2f7d31383f079eac76d69281cb026b7d2",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L389",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2400,7 +2400,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "e1c873d85e71e97ffe203c3c3672214a1128ae1c741846f6f782e1e6462be7c9",
       "probe_sha256": "49bdf204e7ec90846012ed9f1ede1a396934e68c3c7803da849659496116764d",
-      "local_path": "/home/abez/projects/psalm-src/tests/BinaryOperationTest.php",
+      "local_path": "psalm-src/tests/BinaryOperationTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/BinaryOperationTest.php#L585",
       "status": "candidate",
       "provider": "providerValidCodeParse"
@@ -2415,7 +2415,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "32b1f5290abf9b60ed01ceb60200cbf18c26717e1e8cd93c910456fc5c1269d5",
       "probe_sha256": "8bb4a1dc517d558d8b578a573ca7871ed5f63899b15db07760c4e0a5dc096325",
-      "local_path": "/home/abez/projects/psalm-src/tests/AsymmetricVisibilityTest.php",
+      "local_path": "psalm-src/tests/AsymmetricVisibilityTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AsymmetricVisibilityTest.php#L478",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2430,7 +2430,7 @@
       "source_ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
       "source_sha256": "5312753663b0002d41083ecc1cd656667c8f2007780efce050c9874a0ba290fb",
       "probe_sha256": "cc68fbe7930b97df3bf5c6330f20b1e5834e12729f62130664eede3ec27ef960",
-      "local_path": "/home/abez/projects/psalm-src/tests/ArgTest.php",
+      "local_path": "psalm-src/tests/ArgTest.php",
       "citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/ArgTest.php#L834",
       "status": "candidate",
       "provider": "providerInvalidCodeParse"
@@ -2445,7 +2445,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "7f2ad769b8928a01fbb03f06424799048d70bfbd57ebaa4133321cc0539950a2",
       "probe_sha256": "7f2ad769b8928a01fbb03f06424799048d70bfbd57ebaa4133321cc0539950a2",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk-php81.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk-php81.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk-php81.php#L1",
       "status": "candidate"
     },
@@ -2459,7 +2459,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4d5468b2ddf491f3673748faa2d2cb2b7c59b4c0695a8dbb365c0283cab78cb5",
       "probe_sha256": "4d5468b2ddf491f3673748faa2d2cb2b7c59b4c0695a8dbb365c0283cab78cb5",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-constructor.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-constructor.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-constructor.php#L1",
       "status": "candidate"
     },
@@ -2473,7 +2473,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "7ad296143f30c017dab3e04e274bec878c31b681cbd50bbb170738d5ad3f5c87",
       "probe_sha256": "7ad296143f30c017dab3e04e274bec878c31b681cbd50bbb170738d5ad3f5c87",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/constant-phpdoc-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/constant-phpdoc-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/constant-phpdoc-type.php#L1",
       "status": "candidate"
     },
@@ -2487,7 +2487,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "d8c42f602b4bde76c31a84646a23a90e7d0783e50274130c4f2d95a85b19c51f",
       "probe_sha256": "d8c42f602b4bde76c31a84646a23a90e7d0783e50274130c4f2d95a85b19c51f",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/early-termination-phpdoc.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/early-termination-phpdoc.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/early-termination-phpdoc.php#L1",
       "status": "candidate"
     },
@@ -2501,7 +2501,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "5ba01ea94491b1292068622f7959110ca2648b1074cb0c09abecdef0328a49be",
       "probe_sha256": "5ba01ea94491b1292068622f7959110ca2648b1074cb0c09abecdef0328a49be",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/methodPhpDocs-phpstanPrefix.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/methodPhpDocs-phpstanPrefix.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/methodPhpDocs-phpstanPrefix.php#L1",
       "status": "candidate"
     },
@@ -2515,7 +2515,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "0c2dfc1c03df05b29ec1c34fb7cec5e6a97b7f30904786b3dba10581af0a31e4",
       "probe_sha256": "0c2dfc1c03df05b29ec1c34fb7cec5e6a97b7f30904786b3dba10581af0a31e4",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/dynamic-sprintf.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/dynamic-sprintf.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/dynamic-sprintf.php#L1",
       "status": "candidate"
     },
@@ -2529,7 +2529,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "893c648bcc70ad5a3bfeb2d74d4877791d9146030ec943d2e8e32fa85d999109",
       "probe_sha256": "893c648bcc70ad5a3bfeb2d74d4877791d9146030ec943d2e8e32fa85d999109",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-map-closure.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-map-closure.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-map-closure.php#L1",
       "status": "candidate"
     },
@@ -2543,7 +2543,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "05520994f486a314a876f77897f722efeec0b49522e64dd72256edacf5dacd4f",
       "probe_sha256": "05520994f486a314a876f77897f722efeec0b49522e64dd72256edacf5dacd4f",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk.php#L1",
       "status": "candidate"
     },
@@ -2557,7 +2557,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e910175f3217d7746ed7d355e716158e831f8c653644983d361b282b37c37aed",
       "probe_sha256": "e910175f3217d7746ed7d355e716158e831f8c653644983d361b282b37c37aed",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Api/data/class-const-fetch-in-phpstan.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Api/data/class-const-fetch-in-phpstan.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Api/data/class-const-fetch-in-phpstan.php#L1",
       "status": "candidate"
     },
@@ -2571,7 +2571,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "e3a1f77a0ef469739a4f825c7f2c9648726ec37f80b679c65dcc14b4817164d3",
       "probe_sha256": "e3a1f77a0ef469739a4f825c7f2c9648726ec37f80b679c65dcc14b4817164d3",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/const-expr-phpdoc-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/const-expr-phpdoc-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/const-expr-phpdoc-type.php#L1",
       "status": "candidate"
     },
@@ -2585,7 +2585,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4d45f98c5b506a2ab73ebe7c56785846a807b8b897a57edffad703f296d20526",
       "probe_sha256": "4d45f98c5b506a2ab73ebe7c56785846a807b8b897a57edffad703f296d20526",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/catch-union.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/catch-union.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-union.php#L1",
       "status": "candidate"
     },
@@ -2599,7 +2599,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "911cef431754759e466d95be53497085b1ed1328a00677298dfd5ee27a4ee8ea",
       "probe_sha256": "911cef431754759e466d95be53497085b1ed1328a00677298dfd5ee27a4ee8ea",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-empty.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-empty.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-empty.php#L1",
       "status": "candidate"
     },
@@ -2613,7 +2613,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "ef5d199bad04edfe7475573af40154e809e3e9106001d20a1a6832354d2b1b47",
       "probe_sha256": "ef5d199bad04edfe7475573af40154e809e3e9106001d20a1a6832354d2b1b47",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/coalesce-non-null-left-in-falsey-context.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/coalesce-non-null-left-in-falsey-context.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/coalesce-non-null-left-in-falsey-context.php#L1",
       "status": "candidate"
     },
@@ -2627,7 +2627,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "b2395c8849a15e5a19c9d7c3ad8f18ec6e938c3f1d88c41d7e59fa7b2f8ecf8e",
       "probe_sha256": "b2395c8849a15e5a19c9d7c3ad8f18ec6e938c3f1d88c41d7e59fa7b2f8ecf8e",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-value-flow.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-value-flow.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters-value-flow.php#L1",
       "status": "candidate"
     },
@@ -2641,7 +2641,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "6f6d08176b54e1231c7a7b64ee9c0f5a5e829db24ffc4a4276d5d63ed4cdc1bd",
       "probe_sha256": "6f6d08176b54e1231c7a7b64ee9c0f5a5e829db24ffc4a4276d5d63ed4cdc1bd",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/always-true-elseif.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/always-true-elseif.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/always-true-elseif.php#L1",
       "status": "candidate"
     },
@@ -2655,7 +2655,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "594d14651fb1ff37dbc7262f0f61d2a34a24e2638deada791feaf88cc8a44dc3",
       "probe_sha256": "594d14651fb1ff37dbc7262f0f61d2a34a24e2638deada791feaf88cc8a44dc3",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/catch-without-variable.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/catch-without-variable.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/catch-without-variable.php#L1",
       "status": "candidate"
     },
@@ -2669,7 +2669,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "204892f62cb95c077e94860608a5dfdc8b5f2f831c37722bd156091c15f16fe8",
       "probe_sha256": "204892f62cb95c077e94860608a5dfdc8b5f2f831c37722bd156091c15f16fe8",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array_diff_intersect_callbacks.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array_diff_intersect_callbacks.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array_diff_intersect_callbacks.php#L1",
       "status": "candidate"
     },
@@ -2683,7 +2683,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "170e6594efd13cb31f00117bf9c7b4d6e71618eaded2fca2fa8eafc853a419c1",
       "probe_sha256": "170e6594efd13cb31f00117bf9c7b4d6e71618eaded2fca2fa8eafc853a419c1",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/impure-nullsafe-call-not-remembered.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/impure-nullsafe-call-not-remembered.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/impure-nullsafe-call-not-remembered.php#L1",
       "status": "candidate"
     },
@@ -2697,7 +2697,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "7b35d89dbd10878d33a1817be14aba8b350b0c817c238581ffdb74cb30e691d5",
       "probe_sha256": "7b35d89dbd10878d33a1817be14aba8b350b0c817c238581ffdb74cb30e691d5",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk-php8.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/array-chunk-php8.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/array-chunk-php8.php#L1",
       "status": "candidate"
     },
@@ -2711,7 +2711,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4c282279f6f00cad7b381b7a9481f1f741d4caa12b0cf66c5f132e5dbd5e2b68",
       "probe_sha256": "4c282279f6f00cad7b381b7a9481f1f741d4caa12b0cf66c5f132e5dbd5e2b68",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/callable-in-union.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/callable-in-union.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/callable-in-union.php#L1",
       "status": "candidate"
     },
@@ -2725,7 +2725,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "997a0ccab96a15c2095afd4d1e5c2d31ef9ddce05fc1e3a92cb19cbde2098a3b",
       "probe_sha256": "997a0ccab96a15c2095afd4d1e5c2d31ef9ddce05fc1e3a92cb19cbde2098a3b",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-native-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-native-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-native-type.php#L1",
       "status": "candidate"
     },
@@ -2739,7 +2739,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "f2e10cd7d493db48113330ac9f2e3b01d21b3e5a056aa2c70a4ae645fd77bc83",
       "probe_sha256": "f2e10cd7d493db48113330ac9f2e3b01d21b3e5a056aa2c70a4ae645fd77bc83",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/nullable-closure-parameter.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/nullable-closure-parameter.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/nullable-closure-parameter.php#L1",
       "status": "candidate"
     },
@@ -2753,7 +2753,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "548de09a9403602960a2cab27d61b8e145ffa769989ae5af6867ce2159e6af5c",
       "probe_sha256": "548de09a9403602960a2cab27d61b8e145ffa769989ae5af6867ce2159e6af5c",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assignment-in-condition.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assignment-in-condition.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assignment-in-condition.php#L1",
       "status": "candidate"
     },
@@ -2767,7 +2767,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1a763bcde8679f27d0643641cd185bff12daf268b192c7058fe5cf900d0526a3",
       "probe_sha256": "1a763bcde8679f27d0643641cd185bff12daf268b192c7058fe5cf900d0526a3",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-datetime.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/allowed-subtypes-datetime.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/allowed-subtypes-datetime.php#L1",
       "status": "candidate"
     },
@@ -2781,7 +2781,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "1aef08674ff9532bbc1be231a4439943eb1097a4d84b8e632277a19941ac95d4",
       "probe_sha256": "1aef08674ff9532bbc1be231a4439943eb1097a4d84b8e632277a19941ac95d4",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Comparison/data/unreachable-if-branches-not-phpdoc.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Comparison/data/unreachable-if-branches-not-phpdoc.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Comparison/data/unreachable-if-branches-not-phpdoc.php#L1",
       "status": "candidate"
     },
@@ -2795,7 +2795,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "6f0df83a62a3920137bd3991bd1690dd1b3f16b26fd40895c4fc8faa482f1564",
       "probe_sha256": "6f0df83a62a3920137bd3991bd1690dd1b3f16b26fd40895c4fc8faa482f1564",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enum-reflection-php82.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/enum-reflection-php82.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-reflection-php82.php#L1",
       "status": "candidate"
     },
@@ -2809,7 +2809,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "068900dd078ba2cdf33dcac7d8fc8d7e8e209743ab69d2ff917cbefdff29b889",
       "probe_sha256": "068900dd078ba2cdf33dcac7d8fc8d7e8e209743ab69d2ff917cbefdff29b889",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php7.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php7.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php7.php#L1",
       "status": "candidate"
     },
@@ -2823,7 +2823,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "3c6a37e34c2fd761ddbfcedf624b99e0b383f0b04c12bc51031f70c78303fcea",
       "probe_sha256": "3c6a37e34c2fd761ddbfcedf624b99e0b383f0b04c12bc51031f70c78303fcea",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-return-type.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/arrow-function-return-type.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/arrow-function-return-type.php#L1",
       "status": "candidate"
     },
@@ -2837,7 +2837,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "5151d019ab2c0319b20904024e13dceca2c65271847a41f2022a72bebacfe467",
       "probe_sha256": "5151d019ab2c0319b20904024e13dceca2c65271847a41f2022a72bebacfe467",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enum-reflection.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/enum-reflection.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-reflection.php#L1",
       "status": "candidate"
     },
@@ -2851,7 +2851,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "2f7df54061290b91c814614958bf357e3352b54c9521432e01505a5d9638d304",
       "probe_sha256": "2f7df54061290b91c814614958bf357e3352b54c9521432e01505a5d9638d304",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-on-expr.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-on-expr.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-on-expr.php#L1",
       "status": "candidate"
     },
@@ -2865,7 +2865,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "8883c234133efcf5c4f3641cfb33334a5ba20c77dfa7971e0e1d570452297901",
       "probe_sha256": "8883c234133efcf5c4f3641cfb33334a5ba20c77dfa7971e0e1d570452297901",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/calling-multiple-classes-per-file.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/calling-multiple-classes-per-file.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/calling-multiple-classes-per-file.php#L1",
       "status": "candidate"
     },
@@ -2879,7 +2879,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "7d45a77749682d3bfe01d92a8906552fd5c536ea5c45dc6e00d4db37491ab006",
       "probe_sha256": "7d45a77749682d3bfe01d92a8906552fd5c536ea5c45dc6e00d4db37491ab006",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters.php",
+      "local_path": "phpstan-src/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Rules/Classes/data/unused-constructor-parameters.php#L1",
       "status": "candidate"
     },
@@ -2893,7 +2893,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "a78a8ac1144daae9bc1bfe2af0ebc16423cc2fd06b2eb42e9533df206d3f6441",
       "probe_sha256": "a78a8ac1144daae9bc1bfe2af0ebc16423cc2fd06b2eb42e9533df206d3f6441",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/complex-generics-example.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/complex-generics-example.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/complex-generics-example.php#L1",
       "status": "candidate"
     },
@@ -2907,7 +2907,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "650eb84f6755e574b0e2dab0c6404bfbf26819e30113ecd92cc7bea2c7eb82ea",
       "probe_sha256": "650eb84f6755e574b0e2dab0c6404bfbf26819e30113ecd92cc7bea2c7eb82ea",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/enum-in-array.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/enum-in-array.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/enum-in-array.php#L1",
       "status": "candidate"
     },
@@ -2921,7 +2921,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "fe6bea4df156fa390bb43610194102ce71688a122c8e5801174faacbd80e13b9",
       "probe_sha256": "fe6bea4df156fa390bb43610194102ce71688a122c8e5801174faacbd80e13b9",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/eval-implicit-throw.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/eval-implicit-throw.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/eval-implicit-throw.php#L1",
       "status": "candidate"
     },
@@ -2935,7 +2935,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "102ec840ba5d1ea503a8480d9681a4b5dab2a0a83a732f761a5e7c6c2b267c3d",
       "probe_sha256": "102ec840ba5d1ea503a8480d9681a4b5dab2a0a83a732f761a5e7c6c2b267c3d",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/coalesce-assign.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/coalesce-assign.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/coalesce-assign.php#L1",
       "status": "candidate"
     },
@@ -2949,7 +2949,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "3750ff015e7631f888a1cbc7ff0574e0d3c8033bc00d4b12c3a8da02e0556a60",
       "probe_sha256": "3750ff015e7631f888a1cbc7ff0574e0d3c8033bc00d4b12c3a8da02e0556a60",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/assert-docblock.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/assert-docblock.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/assert-docblock.php#L1",
       "status": "candidate"
     },
@@ -2963,7 +2963,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "c134e3e6de1bd0e0ea8c0353625d571f234ad03d17117f80bd09b30a23e8cc23",
       "probe_sha256": "c134e3e6de1bd0e0ea8c0353625d571f234ad03d17117f80bd09b30a23e8cc23",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php8.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php8.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/bcmath-dynamic-return-php8.php#L1",
       "status": "candidate"
     },
@@ -2977,7 +2977,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "4dbd5f887212b7b9e60761ae1fd34d12b3380bfc94e3da33646f38b0760a3b99",
       "probe_sha256": "4dbd5f887212b7b9e60761ae1fd34d12b3380bfc94e3da33646f38b0760a3b99",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/builtin-generic-ancestor-stubs.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/builtin-generic-ancestor-stubs.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/builtin-generic-ancestor-stubs.php#L1",
       "status": "candidate"
     },
@@ -2991,7 +2991,7 @@
       "source_ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
       "source_sha256": "6db607382f324433b52ce15692d8d093f714442ad72cf44cdab873ba777949db",
       "probe_sha256": "6db607382f324433b52ce15692d8d093f714442ad72cf44cdab873ba777949db",
-      "local_path": "/home/abez/projects/phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-wildcard-static-template.php",
+      "local_path": "phpstan-src/tests/PHPStan/Analyser/nsrt/class-constant-wildcard-static-template.php",
       "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/tests/PHPStan/Analyser/nsrt/class-constant-wildcard-static-template.php#L1",
       "status": "candidate"
     }
@@ -3001,14 +3001,14 @@
       "sources": [
         {
           "family": "psalm",
-          "root": "/home/abez/projects/psalm-src",
+          "root": "psalm-src",
           "repo": "vimeo/psalm",
           "ref": "62e52cd9fe3ab4429debc0eb0306057419b0a9d6",
           "discovered_candidates": 8410
         },
         {
           "family": "phpstan",
-          "root": "/home/abez/projects/phpstan-src",
+          "root": "phpstan-src",
           "repo": "phpstan/phpstan-src",
           "ref": "2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96",
           "discovered_candidates": 4938

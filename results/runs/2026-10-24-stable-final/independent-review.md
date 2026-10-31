@@ -31,7 +31,7 @@ All verification is complete. Here is the independent review report.
 ## Findings (non-blocking)
 
 1. **`tools/versions.json` edited inside a non-version-bump task** (psalm 6.20.0→6.20.1, mago 1.57.0→1.58.2). AGENT-PROTOCOL.md: "Never edit tools/versions.json outside an explicit version-bump task." Installed binaries do match the new pins (run meta proves it) and the pilot doc discloses the refresh, so no measurement corruption — but this is a protocol deviation Alfred should ratify or revert.
-2. **`history_ledger_sha256` is stale** (pre-existing, not this diff): catalog records `0ccca55b…` but live `/home/abez/projects/mago-upstream-prep/COORDINATION.json` hashes to `82277003…`. Same value at HEAD, so untouched by this change; `expand` preserves it verbatim.
+2. **`history_ledger_sha256` is stale** (pre-existing, not this diff): catalog records `0ccca55b…` but live `mago/COORDINATION.json` hashes to `82277003…`. Same value at HEAD, so untouched by this change; `expand` preserves it verbatim.
 3. **Nit**: `GAPS-pzoom.md` says "matched every case it was judged against" over 0 judged + 2 tool errors — vacuously true; audit catches it, but the sentence reads as success.
 4. **Note**: `docs/local-pilot-2026-10-24.md` (referenced by README) is untracked, mode 600 — must be `git add`ed for the README reference to survive a commit. New-case `.generated/psalm.xml` files are properly gitignored.
 

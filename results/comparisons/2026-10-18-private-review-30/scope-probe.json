@@ -22,7 +22,7 @@
       "--debug",
       "/bench/cases/arrays/array-key-for-string-key/src"
     ],
-    "cwd": "/home/abez/projects/php-analyzer-correctness-bench"
+    "cwd": "."
   },
   "strict": {
     "exit_code": 1,
@@ -41,6 +41,6 @@
       "/bench/.amp/in/key-scope.neon",
       "/bench/cases/arrays/array-key-for-string-key/src"
     ],
-    "cwd": "/home/abez/projects/php-analyzer-correctness-bench"
+    "cwd": "."
   }
 }

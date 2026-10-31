@@ -21,6 +21,6 @@
       "novelty": "criterion arrays/element-value-type-contract is new; lead psalm:0ee15c8f34d3836c9539 verified at ArgTest.php:186"
     }
   },
-  "implementer": "opencode/deepseek-v4.1-flash-free",
-  "reviewer": "opencode/longcat-2.5-preview-free"
+  "implementer": "automated",
+  "reviewer": "automated"
 }
