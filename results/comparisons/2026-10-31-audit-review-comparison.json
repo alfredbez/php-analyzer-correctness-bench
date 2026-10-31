@@ -18,7 +18,7 @@
       "report": {
         "meta": {
           "run_id": "stable",
-          "started": "2026-10-30T16:18:21Z",
+          "started": "2026-10-31T16:05:01Z",
           "runner": "docker",
           "image": "php:8.3-cli",
           "php_version": "8.3.36",
@@ -32,7 +32,7 @@
             "psalm": "f0f01ef4d78361d3a2e188fd0eba25bfbd634c2c49b321021a25f64a4e684c51",
             "mago": "b839641903fe5160093386fbc7750e9fcbad8dd43100669abfb1462a378b8ec5"
           },
-          "corpus_fingerprint": "639cf05c53ad5ee50b58bb134f97c66bb15302e798f694aca60b02e5cc351ae8",
+          "corpus_fingerprint": "f1db1feb72ccf1d14779f3acee5082aa1b4df14676f1e779e93345cea0c214d7",
           "pins": {
             "phpstan": {
               "version": "2.3.1",
@@ -226,7 +226,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.302,
+                "duration_s": 2.649,
                 "php": "8.3.36",
                 "citation": "https://phpstan.org/config-reference#checkbenevolentuniontypes"
               },
@@ -248,7 +248,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.722,
+                "duration_s": 1.344,
                 "php": "8.3.36"
               },
               "mago": {
@@ -269,7 +269,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.212,
+                "duration_s": 0.245,
                 "php": "8.3.36"
               }
             },
@@ -308,7 +308,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.331,
+                "duration_s": 2.645,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -321,7 +321,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.73,
+                "duration_s": 1.36,
                 "php": "8.3.36"
               },
               "mago": {
@@ -334,7 +334,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.224,
+                "duration_s": 0.23,
                 "php": "8.3.36"
               }
             },
@@ -363,7 +363,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.101,
+                "duration_s": 2.948,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -376,7 +376,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.555,
+                "duration_s": 1.36,
                 "php": "8.3.36"
               },
               "mago": {
@@ -389,7 +389,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.13,
+                "duration_s": 0.194,
                 "php": "8.3.36"
               }
             },
@@ -418,7 +418,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.317,
+                "duration_s": 2.782,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -431,7 +431,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.867,
+                "duration_s": 1.328,
                 "php": "8.3.36"
               },
               "mago": {
@@ -444,7 +444,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.177,
+                "duration_s": 0.302,
                 "php": "8.3.36"
               }
             },
@@ -473,7 +473,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.68,
+                "duration_s": 2.683,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -486,7 +486,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.537,
+                "duration_s": 1.337,
                 "php": "8.3.36"
               },
               "mago": {
@@ -499,7 +499,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.159,
+                "duration_s": 0.226,
                 "php": "8.3.36"
               }
             },
@@ -552,7 +552,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.481,
+                "duration_s": 2.56,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -580,7 +580,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.593,
+                "duration_s": 1.318,
                 "php": "8.3.36"
               },
               "mago": {
@@ -617,7 +617,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.183,
+                "duration_s": 0.265,
                 "php": "8.3.36"
               }
             },
@@ -654,7 +654,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.659,
+                "duration_s": 2.664,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -675,7 +675,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.607,
+                "duration_s": 1.312,
                 "php": "8.3.36"
               },
               "mago": {
@@ -696,7 +696,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.168,
+                "duration_s": 0.212,
                 "php": "8.3.36"
               }
             },
@@ -725,7 +725,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.579,
+                "duration_s": 2.541,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -772,7 +772,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.688,
+                "duration_s": 1.398,
                 "php": "8.3.36"
               },
               "mago": {
@@ -785,7 +785,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.152,
+                "duration_s": 0.215,
                 "php": "8.3.36"
               }
             },
@@ -814,7 +814,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.171,
+                "duration_s": 2.651,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -827,7 +827,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.766,
+                "duration_s": 1.334,
                 "php": "8.3.36"
               },
               "mago": {
@@ -840,7 +840,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.158,
+                "duration_s": 0.182,
                 "php": "8.3.36"
               }
             },
@@ -869,7 +869,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.407,
+                "duration_s": 2.607,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -900,7 +900,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.788,
+                "duration_s": 1.327,
                 "php": "8.3.36"
               },
               "mago": {
@@ -931,7 +931,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.193,
+                "duration_s": 0.217,
                 "php": "8.3.36"
               }
             },
@@ -960,7 +960,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.15,
+                "duration_s": 2.655,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -973,7 +973,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.839,
+                "duration_s": 1.331,
                 "php": "8.3.36"
               },
               "mago": {
@@ -986,7 +986,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.217,
+                "duration_s": 0.232,
                 "php": "8.3.36"
               }
             },
@@ -1015,7 +1015,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.365,
+                "duration_s": 2.668,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1028,7 +1028,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.088,
+                "duration_s": 1.38,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1051,7 +1051,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.175,
+                "duration_s": 0.227,
                 "php": "8.3.36"
               }
             },
@@ -1080,7 +1080,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.94,
+                "duration_s": 2.969,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1093,7 +1093,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.69,
+                "duration_s": 1.421,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1106,7 +1106,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.251,
+                "duration_s": 0.249,
                 "php": "8.3.36"
               }
             },
@@ -1150,7 +1150,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.051,
+                "duration_s": 2.557,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1178,7 +1178,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.739,
+                "duration_s": 1.409,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1193,7 +1193,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.148,
+                "duration_s": 0.245,
                 "php": "8.3.36"
               }
             },
@@ -1222,7 +1222,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.842,
+                "duration_s": 2.705,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1235,7 +1235,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.892,
+                "duration_s": 1.34,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1248,7 +1248,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.137,
+                "duration_s": 0.215,
                 "php": "8.3.36"
               }
             },
@@ -1285,7 +1285,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.658,
+                "duration_s": 2.541,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1300,7 +1300,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.752,
+                "duration_s": 1.365,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1325,7 +1325,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.142,
+                "duration_s": 0.331,
                 "php": "8.3.36"
               }
             },
@@ -1356,7 +1356,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.378,
+                "duration_s": 2.884,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1371,7 +1371,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.88,
+                "duration_s": 1.409,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1386,7 +1386,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.216,
+                "duration_s": 0.294,
                 "php": "8.3.36"
               }
             },
@@ -1423,7 +1423,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.211,
+                "duration_s": 2.776,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1444,7 +1444,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.09,
+                "duration_s": 1.429,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1465,7 +1465,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.158,
+                "duration_s": 0.332,
                 "php": "8.3.36"
               }
             },
@@ -1494,7 +1494,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.396,
+                "duration_s": 2.591,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1507,7 +1507,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.681,
+                "duration_s": 1.588,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1520,7 +1520,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.162,
+                "duration_s": 0.302,
                 "php": "8.3.36"
               }
             },
@@ -1549,7 +1549,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.296,
+                "duration_s": 2.544,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1562,7 +1562,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.801,
+                "duration_s": 1.542,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1575,7 +1575,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.17,
+                "duration_s": 0.303,
                 "php": "8.3.36"
               }
             },
@@ -1612,7 +1612,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.292,
+                "duration_s": 2.791,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1633,7 +1633,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.588,
+                "duration_s": 1.297,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1654,7 +1654,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.159,
+                "duration_s": 0.235,
                 "php": "8.3.36"
               }
             },
@@ -1683,7 +1683,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.341,
+                "duration_s": 2.63,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1696,7 +1696,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.628,
+                "duration_s": 1.304,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1709,7 +1709,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.141,
+                "duration_s": 0.202,
                 "php": "8.3.36"
               }
             },
@@ -1753,7 +1753,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.354,
+                "duration_s": 2.68,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1781,7 +1781,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.624,
+                "duration_s": 1.299,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1809,7 +1809,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.152,
+                "duration_s": 0.225,
                 "php": "8.3.36"
               }
             },
@@ -1838,7 +1838,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.413,
+                "duration_s": 2.63,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1851,7 +1851,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.671,
+                "duration_s": 1.32,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1901,7 +1901,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.95,
+                "duration_s": 2.664,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -1931,7 +1931,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.05,
+                "duration_s": 1.323,
                 "php": "8.3.36"
               },
               "mago": {
@@ -1961,7 +1961,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.185,
+                "duration_s": 0.227,
                 "php": "8.3.36"
               }
             },
@@ -1990,7 +1990,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.85,
+                "duration_s": 2.664,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2003,7 +2003,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.007,
+                "duration_s": 1.343,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2016,7 +2016,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.346,
+                "duration_s": 0.276,
                 "php": "8.3.36"
               }
             },
@@ -2045,7 +2045,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.535,
+                "duration_s": 2.5,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2058,7 +2058,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.445,
+                "duration_s": 1.365,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2071,7 +2071,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.243,
+                "duration_s": 0.337,
                 "php": "8.3.36"
               }
             },
@@ -2100,7 +2100,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.799,
+                "duration_s": 2.598,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2113,7 +2113,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.691,
+                "duration_s": 1.495,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2126,7 +2126,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.142,
+                "duration_s": 0.251,
                 "php": "8.3.36"
               }
             },
@@ -2155,7 +2155,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.609,
+                "duration_s": 2.589,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2168,7 +2168,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.601,
+                "duration_s": 1.322,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2181,7 +2181,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.232,
+                "duration_s": 0.224,
                 "php": "8.3.36"
               }
             },
@@ -2220,7 +2220,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.259,
+                "duration_s": 2.556,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2243,7 +2243,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.563,
+                "duration_s": 1.438,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2256,7 +2256,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.214,
+                "duration_s": 0.234,
                 "php": "8.3.36"
               }
             },
@@ -2285,7 +2285,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.26,
+                "duration_s": 2.594,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2298,7 +2298,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.562,
+                "duration_s": 1.303,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2321,7 +2321,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.18,
+                "duration_s": 0.19,
                 "php": "8.3.36"
               }
             },
@@ -2350,7 +2350,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.15,
+                "duration_s": 2.573,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2381,7 +2381,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.674,
+                "duration_s": 1.327,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2394,7 +2394,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.202,
+                "duration_s": 0.185,
                 "php": "8.3.36"
               }
             },
@@ -2431,7 +2431,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.207,
+                "duration_s": 2.581,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2452,7 +2452,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.676,
+                "duration_s": 1.312,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2473,7 +2473,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.337,
+                "duration_s": 0.258,
                 "php": "8.3.36"
               }
             },
@@ -2502,7 +2502,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.319,
+                "duration_s": 2.547,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2515,7 +2515,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.583,
+                "duration_s": 1.331,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2546,7 +2546,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.269,
+                "duration_s": 0.177,
                 "php": "8.3.36"
               }
             },
@@ -2583,7 +2583,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.22,
+                "duration_s": 2.564,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2604,7 +2604,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.576,
+                "duration_s": 1.324,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2625,7 +2625,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.253,
+                "duration_s": 0.25,
                 "php": "8.3.36"
               }
             },
@@ -2662,7 +2662,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.254,
+                "duration_s": 2.479,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2683,7 +2683,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.781,
+                "duration_s": 1.296,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2698,7 +2698,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.156,
+                "duration_s": 0.236,
                 "php": "8.3.36"
               }
             },
@@ -2727,7 +2727,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.338,
+                "duration_s": 2.528,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2740,7 +2740,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.548,
+                "duration_s": 1.324,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2763,7 +2763,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.195,
+                "duration_s": 0.252,
                 "php": "8.3.36"
               }
             },
@@ -2848,7 +2848,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.264,
+                "duration_s": 2.65,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2869,7 +2869,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.637,
+                "duration_s": 1.302,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2890,7 +2890,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.167,
+                "duration_s": 0.291,
                 "php": "8.3.36"
               }
             },
@@ -2927,7 +2927,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.284,
+                "duration_s": 2.674,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -2948,7 +2948,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.465,
+                "duration_s": 1.326,
                 "php": "8.3.36"
               },
               "mago": {
@@ -2969,7 +2969,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.229,
+                "duration_s": 0.279,
                 "php": "8.3.36"
               }
             },
@@ -2998,7 +2998,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.185,
+                "duration_s": 2.631,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3011,7 +3011,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.817,
+                "duration_s": 1.339,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3024,7 +3024,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.144,
+                "duration_s": 0.188,
                 "php": "8.3.36"
               }
             },
@@ -3053,7 +3053,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.353,
+                "duration_s": 2.517,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3066,7 +3066,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.761,
+                "duration_s": 1.7,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3079,7 +3079,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.243,
+                "duration_s": 0.229,
                 "php": "8.3.36"
               }
             },
@@ -3108,7 +3108,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.378,
+                "duration_s": 2.557,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3121,7 +3121,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.776,
+                "duration_s": 1.658,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3134,7 +3134,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.233,
+                "duration_s": 0.221,
                 "php": "8.3.36"
               }
             },
@@ -3163,7 +3163,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.363,
+                "duration_s": 2.748,
                 "php": "8.3.36",
                 "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L115-L131"
               },
@@ -3185,7 +3185,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.656,
+                "duration_s": 1.424,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3206,7 +3206,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.259,
+                "duration_s": 0.204,
                 "php": "8.3.36"
               }
             },
@@ -3235,7 +3235,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.334,
+                "duration_s": 2.866,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3248,7 +3248,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.808,
+                "duration_s": 1.464,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3261,7 +3261,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.17,
+                "duration_s": 0.196,
                 "php": "8.3.36"
               }
             },
@@ -3290,7 +3290,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.557,
+                "duration_s": 2.51,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3303,7 +3303,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.87,
+                "duration_s": 1.326,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3316,7 +3316,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.146,
+                "duration_s": 0.185,
                 "php": "8.3.36"
               }
             },
@@ -3353,7 +3353,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.371,
+                "duration_s": 2.495,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3374,7 +3374,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.672,
+                "duration_s": 1.301,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3395,7 +3395,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.164,
+                "duration_s": 0.229,
                 "php": "8.3.36"
               }
             },
@@ -3424,7 +3424,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.38,
+                "duration_s": 2.647,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3462,7 +3462,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.654,
+                "duration_s": 1.309,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3485,7 +3485,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.236,
+                "duration_s": 0.182,
                 "php": "8.3.36"
               }
             },
@@ -3514,7 +3514,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.216,
+                "duration_s": 2.536,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3545,7 +3545,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.847,
+                "duration_s": 1.328,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3575,7 +3575,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.129,
+                "duration_s": 0.218,
                 "php": "8.3.36"
               }
             },
@@ -3604,7 +3604,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.179,
+                "duration_s": 3.193,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3635,7 +3635,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.611,
+                "duration_s": 1.307,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3658,7 +3658,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.291,
+                "duration_s": 0.159,
                 "php": "8.3.36"
               }
             },
@@ -3687,7 +3687,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.1,
+                "duration_s": 2.999,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3700,7 +3700,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.562,
+                "duration_s": 1.351,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3713,7 +3713,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.233,
+                "duration_s": 0.208,
                 "php": "8.3.36"
               }
             },
@@ -3742,7 +3742,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.969,
+                "duration_s": 2.521,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3755,7 +3755,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.636,
+                "duration_s": 1.355,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3768,7 +3768,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.171,
+                "duration_s": 0.187,
                 "php": "8.3.36"
               }
             },
@@ -3797,7 +3797,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.99,
+                "duration_s": 2.519,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3810,7 +3810,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.628,
+                "duration_s": 1.305,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3823,7 +3823,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.124,
+                "duration_s": 0.21,
                 "php": "8.3.36"
               }
             },
@@ -3860,7 +3860,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.061,
+                "duration_s": 3.101,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3881,7 +3881,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.738,
+                "duration_s": 1.621,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3911,7 +3911,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.188,
+                "duration_s": 0.351,
                 "php": "8.3.36"
               }
             },
@@ -3940,7 +3940,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.036,
+                "duration_s": 3.074,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -3953,7 +3953,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.748,
+                "duration_s": 1.657,
                 "php": "8.3.36"
               },
               "mago": {
@@ -3966,7 +3966,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.219,
+                "duration_s": 0.387,
                 "php": "8.3.36"
               }
             },
@@ -3995,7 +3995,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.222,
+                "duration_s": 2.712,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4008,7 +4008,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.682,
+                "duration_s": 1.32,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4021,7 +4021,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.22,
+                "duration_s": 0.19,
                 "php": "8.3.36"
               }
             },
@@ -4052,7 +4052,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.256,
+                "duration_s": 2.703,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4067,7 +4067,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.69,
+                "duration_s": 1.41,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4088,7 +4088,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.15,
+                "duration_s": 0.183,
                 "php": "8.3.36"
               }
             },
@@ -4117,7 +4117,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.619,
+                "duration_s": 2.77,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4140,7 +4140,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.971,
+                "duration_s": 1.458,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4153,7 +4153,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.316,
+                "duration_s": 0.237,
                 "php": "8.3.36"
               }
             },
@@ -4182,7 +4182,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.678,
+                "duration_s": 2.644,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4195,7 +4195,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.93,
+                "duration_s": 1.449,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4208,7 +4208,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.264,
+                "duration_s": 0.228,
                 "php": "8.3.36"
               }
             },
@@ -4237,7 +4237,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.68,
+                "duration_s": 2.542,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4250,7 +4250,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.993,
+                "duration_s": 1.518,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4263,7 +4263,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.18,
+                "duration_s": 0.208,
                 "php": "8.3.36"
               }
             },
@@ -4294,7 +4294,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.981,
+                "duration_s": 2.563,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4315,7 +4315,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.83,
+                "duration_s": 1.479,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4336,7 +4336,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.16,
+                "duration_s": 0.197,
                 "php": "8.3.36"
               }
             },
@@ -4375,7 +4375,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.41,
+                "duration_s": 3.085,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4388,7 +4388,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.785,
+                "duration_s": 1.291,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4401,7 +4401,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.228,
+                "duration_s": 0.226,
                 "php": "8.3.36"
               }
             },
@@ -4430,7 +4430,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.145,
+                "duration_s": 2.953,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4443,7 +4443,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.889,
+                "duration_s": 1.373,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4456,7 +4456,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.181,
+                "duration_s": 0.281,
                 "php": "8.3.36"
               }
             },
@@ -4485,7 +4485,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.375,
+                "duration_s": 2.677,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4498,7 +4498,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.19,
+                "duration_s": 2.757,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4511,7 +4511,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.498,
+                "duration_s": 0.337,
                 "php": "8.3.36"
               }
             },
@@ -4540,7 +4540,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.956,
+                "duration_s": 2.52,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4553,7 +4553,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.876,
+                "duration_s": 1.354,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4566,7 +4566,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.181,
+                "duration_s": 0.475,
                 "php": "8.3.36"
               }
             },
@@ -4595,7 +4595,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.157,
+                "duration_s": 2.889,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4608,7 +4608,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.972,
+                "duration_s": 1.514,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4631,7 +4631,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.244,
+                "duration_s": 0.205,
                 "php": "8.3.36"
               }
             },
@@ -4668,7 +4668,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.01,
+                "duration_s": 2.675,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4689,7 +4689,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.259,
+                "duration_s": 1.27,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4710,7 +4710,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.185,
+                "duration_s": 0.17,
                 "php": "8.3.36"
               }
             },
@@ -4747,7 +4747,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.8,
+                "duration_s": 2.562,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4777,7 +4777,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.713,
+                "duration_s": 1.262,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4807,7 +4807,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.27,
+                "duration_s": 0.489,
                 "php": "8.3.36"
               }
             },
@@ -4851,7 +4851,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.761,
+                "duration_s": 2.485,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4879,7 +4879,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.411,
+                "duration_s": 1.392,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4907,7 +4907,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.286,
+                "duration_s": 0.24,
                 "php": "8.3.36"
               }
             },
@@ -4936,7 +4936,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.869,
+                "duration_s": 2.557,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -4949,7 +4949,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.386,
+                "duration_s": 1.293,
                 "php": "8.3.36"
               },
               "mago": {
@@ -4962,7 +4962,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.227,
+                "duration_s": 0.447,
                 "php": "8.3.36"
               }
             },
@@ -4991,7 +4991,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.669,
+                "duration_s": 2.502,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5038,7 +5038,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.23,
+                "duration_s": 1.434,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5077,7 +5077,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.217,
+                "duration_s": 0.145,
                 "php": "8.3.36"
               }
             },
@@ -5106,7 +5106,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.508,
+                "duration_s": 2.69,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5129,7 +5129,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.958,
+                "duration_s": 1.311,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5142,7 +5142,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.429,
+                "duration_s": 0.27,
                 "php": "8.3.36"
               }
             },
@@ -5171,7 +5171,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.927,
+                "duration_s": 2.591,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5184,7 +5184,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.011,
+                "duration_s": 1.333,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5197,7 +5197,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.343,
+                "duration_s": 0.186,
                 "php": "8.3.36"
               }
             },
@@ -5234,7 +5234,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.77,
+                "duration_s": 2.452,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5249,7 +5249,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.846,
+                "duration_s": 1.32,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5279,7 +5279,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.132,
+                "duration_s": 0.164,
                 "php": "8.3.36"
               }
             },
@@ -5308,7 +5308,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.641,
+                "duration_s": 2.537,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5321,7 +5321,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.3,
+                "duration_s": 1.324,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5334,7 +5334,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.158,
+                "duration_s": 0.433,
                 "php": "8.3.36"
               }
             },
@@ -5371,7 +5371,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.229,
+                "duration_s": 2.599,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5392,7 +5392,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.965,
+                "duration_s": 1.34,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5413,7 +5413,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.178,
+                "duration_s": 0.298,
                 "php": "8.3.36"
               }
             },
@@ -5450,7 +5450,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.652,
+                "duration_s": 2.802,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5471,7 +5471,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.09,
+                "duration_s": 1.389,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5492,7 +5492,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.302,
+                "duration_s": 0.235,
                 "php": "8.3.36"
               }
             },
@@ -5529,7 +5529,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.366,
+                "duration_s": 2.721,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5550,7 +5550,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.334,
+                "duration_s": 1.347,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5580,7 +5580,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.247,
+                "duration_s": 0.305,
                 "php": "8.3.36"
               }
             },
@@ -5617,7 +5617,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.849,
+                "duration_s": 2.651,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5638,7 +5638,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.183,
+                "duration_s": 1.39,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5659,7 +5659,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.368,
+                "duration_s": 0.347,
                 "php": "8.3.36"
               }
             },
@@ -5696,7 +5696,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.151,
+                "duration_s": 3.046,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5717,7 +5717,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.317,
+                "duration_s": 1.405,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5738,7 +5738,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.351,
+                "duration_s": 0.354,
                 "php": "8.3.36"
               }
             },
@@ -5767,7 +5767,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.024,
+                "duration_s": 2.988,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5780,7 +5780,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.838,
+                "duration_s": 1.584,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5835,7 +5835,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.161,
+                "duration_s": 0.328,
                 "php": "8.3.36"
               }
             },
@@ -5864,7 +5864,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.996,
+                "duration_s": 2.612,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5877,7 +5877,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.961,
+                "duration_s": 1.381,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5890,7 +5890,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.211,
+                "duration_s": 0.302,
                 "php": "8.3.36"
               }
             },
@@ -5929,7 +5929,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.158,
+                "duration_s": 2.668,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -5952,7 +5952,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.96,
+                "duration_s": 1.394,
                 "php": "8.3.36"
               },
               "mago": {
@@ -5975,7 +5975,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.196,
+                "duration_s": 0.332,
                 "php": "8.3.36"
               }
             },
@@ -6012,7 +6012,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.159,
+                "duration_s": 2.723,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6027,7 +6027,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.009,
+                "duration_s": 1.419,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6048,7 +6048,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.42,
+                "duration_s": 0.289,
                 "php": "8.3.36"
               }
             },
@@ -6085,7 +6085,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.796,
+                "duration_s": 2.566,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6100,7 +6100,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.302,
+                "duration_s": 1.41,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6130,7 +6130,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.23,
+                "duration_s": 0.205,
                 "php": "8.3.36"
               }
             },
@@ -6167,7 +6167,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.896,
+                "duration_s": 2.723,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6197,7 +6197,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.071,
+                "duration_s": 1.38,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6227,7 +6227,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.165,
+                "duration_s": 0.287,
                 "php": "8.3.36"
               }
             },
@@ -6273,7 +6273,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.302,
+                "duration_s": 2.712,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6294,7 +6294,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.782,
+                "duration_s": 1.479,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6315,7 +6315,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.198,
+                "duration_s": 0.311,
                 "php": "8.3.36"
               }
             },
@@ -6354,7 +6354,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.351,
+                "duration_s": 2.776,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6367,7 +6367,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.98,
+                "duration_s": 1.473,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6380,7 +6380,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.231,
+                "duration_s": 0.252,
                 "php": "8.3.36"
               }
             },
@@ -6417,7 +6417,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.123,
+                "duration_s": 2.498,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6438,7 +6438,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.108,
+                "duration_s": 1.498,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6468,7 +6468,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.14,
+                "duration_s": 0.304,
                 "php": "8.3.36"
               }
             },
@@ -6499,7 +6499,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.645,
+                "duration_s": 2.752,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6520,7 +6520,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.589,
+                "duration_s": 1.356,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6541,7 +6541,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.142,
+                "duration_s": 0.201,
                 "php": "8.3.36"
               }
             },
@@ -6617,7 +6617,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.565,
+                "duration_s": 2.586,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6666,7 +6666,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.024,
+                "duration_s": 1.403,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6742,7 +6742,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.232,
+                "duration_s": 0.245,
                 "php": "8.3.36"
               }
             },
@@ -6771,7 +6771,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.452,
+                "duration_s": 2.77,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6784,7 +6784,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.878,
+                "duration_s": 1.353,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6797,7 +6797,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.203,
+                "duration_s": 0.481,
                 "php": "8.3.36"
               }
             },
@@ -6850,7 +6850,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.725,
+                "duration_s": 2.708,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6887,7 +6887,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.823,
+                "duration_s": 1.57,
                 "php": "8.3.36"
               },
               "mago": {
@@ -6915,7 +6915,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.226,
+                "duration_s": 0.21,
                 "php": "8.3.36"
               }
             },
@@ -6944,7 +6944,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 4.099,
+                "duration_s": 2.87,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -6975,7 +6975,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.954,
+                "duration_s": 1.363,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7006,7 +7006,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.165,
+                "duration_s": 0.311,
                 "php": "8.3.36"
               }
             },
@@ -7043,7 +7043,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 4.445,
+                "duration_s": 2.807,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7073,7 +7073,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.643,
+                "duration_s": 1.402,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7103,7 +7103,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.126,
+                "duration_s": 0.353,
                 "php": "8.3.36"
               }
             },
@@ -7132,7 +7132,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.662,
+                "duration_s": 2.67,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7145,7 +7145,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.769,
+                "duration_s": 1.339,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7158,7 +7158,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.147,
+                "duration_s": 0.325,
                 "php": "8.3.36"
               }
             },
@@ -7187,7 +7187,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.748,
+                "duration_s": 2.668,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7210,7 +7210,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.646,
+                "duration_s": 1.424,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7223,7 +7223,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.137,
+                "duration_s": 0.441,
                 "php": "8.3.36"
               }
             },
@@ -7252,7 +7252,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.187,
+                "duration_s": 2.967,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7265,7 +7265,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.581,
+                "duration_s": 1.397,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7278,7 +7278,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.137,
+                "duration_s": 0.371,
                 "php": "8.3.36"
               }
             },
@@ -7307,7 +7307,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.211,
+                "duration_s": 2.764,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7338,7 +7338,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.559,
+                "duration_s": 1.405,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7361,7 +7361,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.141,
+                "duration_s": 0.208,
                 "php": "8.3.36"
               }
             },
@@ -7400,7 +7400,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.224,
+                "duration_s": 2.82,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7423,7 +7423,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.558,
+                "duration_s": 1.376,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7446,7 +7446,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.136,
+                "duration_s": 0.26,
                 "php": "8.3.36"
               }
             },
@@ -7475,7 +7475,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.239,
+                "duration_s": 2.749,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7488,7 +7488,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.538,
+                "duration_s": 1.397,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7501,7 +7501,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.154,
+                "duration_s": 0.191,
                 "php": "8.3.36"
               }
             },
@@ -7530,7 +7530,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.212,
+                "duration_s": 2.786,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7543,7 +7543,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.577,
+                "duration_s": 1.259,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7556,7 +7556,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.143,
+                "duration_s": 0.257,
                 "php": "8.3.36"
               }
             },
@@ -7585,7 +7585,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 2.977,
+                "duration_s": 2.528,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7608,7 +7608,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.689,
+                "duration_s": 1.307,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7631,7 +7631,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.147,
+                "duration_s": 0.204,
                 "php": "8.3.36"
               }
             },
@@ -7662,7 +7662,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.233,
+                "duration_s": 2.64,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7687,7 +7687,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.653,
+                "duration_s": 1.316,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7712,7 +7712,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.129,
+                "duration_s": 0.202,
                 "php": "8.3.36"
               }
             },
@@ -7741,7 +7741,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.241,
+                "duration_s": 2.546,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7764,7 +7764,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.494,
+                "duration_s": 1.318,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7787,7 +7787,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.149,
+                "duration_s": 0.216,
                 "php": "8.3.36"
               }
             },
@@ -7816,7 +7816,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.182,
+                "duration_s": 2.739,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7829,7 +7829,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.725,
+                "duration_s": 1.361,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7842,7 +7842,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.142,
+                "duration_s": 0.284,
                 "php": "8.3.36"
               }
             },
@@ -7879,7 +7879,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.209,
+                "duration_s": 2.763,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7900,7 +7900,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.646,
+                "duration_s": 1.474,
                 "php": "8.3.36"
               },
               "mago": {
@@ -7930,7 +7930,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.272,
+                "duration_s": 0.238,
                 "php": "8.3.36"
               }
             },
@@ -7967,7 +7967,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.165,
+                "duration_s": 2.816,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -7995,7 +7995,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.012,
+                "duration_s": 1.409,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8025,7 +8025,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.327,
+                "duration_s": 0.321,
                 "php": "8.3.36"
               }
             },
@@ -8054,7 +8054,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.506,
+                "duration_s": 2.791,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8067,7 +8067,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.77,
+                "duration_s": 1.417,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8080,7 +8080,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.157,
+                "duration_s": 0.209,
                 "php": "8.3.36"
               }
             },
@@ -8117,7 +8117,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.596,
+                "duration_s": 2.583,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8138,7 +8138,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.659,
+                "duration_s": 1.433,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8151,7 +8151,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.149,
+                "duration_s": 0.213,
                 "php": "8.3.36",
                 "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/src/expression/unary.rs#L86-L106"
               }
@@ -8189,7 +8189,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.176,
+                "duration_s": 2.591,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8217,7 +8217,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.607,
+                "duration_s": 1.49,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8238,7 +8238,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.151,
+                "duration_s": 0.232,
                 "php": "8.3.36"
               }
             },
@@ -8284,7 +8284,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.318,
+                "duration_s": 2.771,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8305,7 +8305,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.653,
+                "duration_s": 1.414,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8326,7 +8326,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.146,
+                "duration_s": 0.307,
                 "php": "8.3.36"
               }
             },
@@ -8363,7 +8363,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.32,
+                "duration_s": 2.752,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8376,7 +8376,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.661,
+                "duration_s": 1.4,
                 "php": "8.3.36",
                 "citation": "https://github.com/vimeo/psalm/blob/6.20.0/src/Psalm/Internal/Analyzer/Statements/Expression/InstanceofAnalyzer.php#L25-L100"
               },
@@ -8390,7 +8390,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.165,
+                "duration_s": 0.264,
                 "php": "8.3.36",
                 "citation": "https://github.com/carthage-software/mago/blob/1.57.0/crates/analyzer/tests/cases/inheritance_instanceof_parent_class.php#L5-L17"
               }
@@ -8420,7 +8420,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.367,
+                "duration_s": 2.678,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8433,7 +8433,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.704,
+                "duration_s": 1.414,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8446,7 +8446,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.135,
+                "duration_s": 0.212,
                 "php": "8.3.36"
               }
             },
@@ -8475,7 +8475,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.385,
+                "duration_s": 2.629,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8498,7 +8498,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.659,
+                "duration_s": 1.418,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8511,7 +8511,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.178,
+                "duration_s": 0.227,
                 "php": "8.3.36"
               }
             },
@@ -8588,7 +8588,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.616,
+                "duration_s": 2.816,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8619,7 +8619,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.653,
+                "duration_s": 1.341,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8632,7 +8632,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.206,
+                "duration_s": 0.269,
                 "php": "8.3.36"
               }
             },
@@ -8671,7 +8671,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.381,
+                "duration_s": 2.8,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8702,7 +8702,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.637,
+                "duration_s": 1.372,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8733,7 +8733,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.139,
+                "duration_s": 0.267,
                 "php": "8.3.36"
               }
             },
@@ -8762,7 +8762,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.467,
+                "duration_s": 2.799,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8793,7 +8793,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.6,
+                "duration_s": 1.381,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8806,7 +8806,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.149,
+                "duration_s": 0.21,
                 "php": "8.3.36"
               }
             },
@@ -8835,7 +8835,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.188,
+                "duration_s": 2.737,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8848,7 +8848,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.748,
+                "duration_s": 1.306,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8871,7 +8871,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.205,
+                "duration_s": 0.251,
                 "php": "8.3.36"
               }
             },
@@ -8900,7 +8900,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.407,
+                "duration_s": 2.978,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -8939,7 +8939,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.713,
+                "duration_s": 1.359,
                 "php": "8.3.36"
               },
               "mago": {
@@ -8962,7 +8962,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.148,
+                "duration_s": 0.232,
                 "php": "8.3.36"
               }
             },
@@ -8991,7 +8991,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.323,
+                "duration_s": 2.729,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9004,7 +9004,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.633,
+                "duration_s": 1.322,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9017,7 +9017,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.136,
+                "duration_s": 0.264,
                 "php": "8.3.36"
               }
             },
@@ -9046,7 +9046,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.345,
+                "duration_s": 2.779,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9059,7 +9059,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.542,
+                "duration_s": 1.472,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9072,7 +9072,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.159,
+                "duration_s": 0.205,
                 "php": "8.3.36"
               }
             },
@@ -9101,7 +9101,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.326,
+                "duration_s": 2.795,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9132,7 +9132,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.684,
+                "duration_s": 1.429,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9163,7 +9163,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.149,
+                "duration_s": 0.214,
                 "php": "8.3.36"
               }
             },
@@ -9192,7 +9192,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.151,
+                "duration_s": 2.771,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9205,7 +9205,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.941,
+                "duration_s": 1.511,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9228,7 +9228,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.323,
+                "duration_s": 0.224,
                 "php": "8.3.36"
               }
             },
@@ -9265,7 +9265,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.507,
+                "duration_s": 2.738,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9286,7 +9286,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.794,
+                "duration_s": 1.509,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9307,7 +9307,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.162,
+                "duration_s": 0.185,
                 "php": "8.3.36"
               }
             },
@@ -9338,7 +9338,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.593,
+                "duration_s": 2.692,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9353,7 +9353,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.782,
+                "duration_s": 1.342,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9368,7 +9368,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.196,
+                "duration_s": 0.24,
                 "php": "8.3.36"
               }
             },
@@ -9397,7 +9397,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.486,
+                "duration_s": 2.563,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9410,7 +9410,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.886,
+                "duration_s": 1.373,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9423,7 +9423,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.143,
+                "duration_s": 0.267,
                 "php": "8.3.36"
               }
             },
@@ -9452,7 +9452,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.392,
+                "duration_s": 2.703,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9465,7 +9465,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.834,
+                "duration_s": 1.34,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9478,7 +9478,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.162,
+                "duration_s": 0.202,
                 "php": "8.3.36"
               }
             },
@@ -9507,7 +9507,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.532,
+                "duration_s": 2.718,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9520,7 +9520,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.566,
+                "duration_s": 1.34,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9533,7 +9533,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.181,
+                "duration_s": 0.178,
                 "php": "8.3.36"
               }
             },
@@ -9562,7 +9562,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.342,
+                "duration_s": 2.485,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9575,7 +9575,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.667,
+                "duration_s": 1.284,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9606,7 +9606,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.146,
+                "duration_s": 0.286,
                 "php": "8.3.36"
               }
             },
@@ -9635,7 +9635,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.22,
+                "duration_s": 2.523,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9648,7 +9648,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.664,
+                "duration_s": 1.295,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9671,7 +9671,7 @@
                   }
                 ],
                 "exit_code": 0,
-                "duration_s": 0.295,
+                "duration_s": 0.243,
                 "php": "8.3.36"
               }
             },
@@ -9717,7 +9717,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.276,
+                "duration_s": 2.866,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9738,7 +9738,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 2.024,
+                "duration_s": 1.598,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9753,7 +9753,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.152,
+                "duration_s": 0.199,
                 "php": "8.3.36"
               }
             },
@@ -9782,7 +9782,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.24,
+                "duration_s": 2.752,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9795,7 +9795,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.875,
+                "duration_s": 1.518,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9808,7 +9808,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.158,
+                "duration_s": 0.29,
                 "php": "8.3.36"
               }
             },
@@ -9837,7 +9837,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.468,
+                "duration_s": 2.867,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9850,7 +9850,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.732,
+                "duration_s": 1.365,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9863,7 +9863,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.335,
+                "duration_s": 0.22,
                 "php": "8.3.36"
               }
             },
@@ -9892,7 +9892,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.636,
+                "duration_s": 2.883,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9905,7 +9905,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.756,
+                "duration_s": 1.353,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9918,7 +9918,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.161,
+                "duration_s": 0.257,
                 "php": "8.3.36"
               }
             },
@@ -9947,7 +9947,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.582,
+                "duration_s": 2.696,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -9960,7 +9960,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.734,
+                "duration_s": 1.362,
                 "php": "8.3.36"
               },
               "mago": {
@@ -9973,7 +9973,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.165,
+                "duration_s": 0.257,
                 "php": "8.3.36"
               }
             },
@@ -10004,7 +10004,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.601,
+                "duration_s": 2.588,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10025,7 +10025,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.685,
+                "duration_s": 1.354,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10040,7 +10040,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.142,
+                "duration_s": 0.257,
                 "php": "8.3.36"
               }
             },
@@ -10069,7 +10069,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.242,
+                "duration_s": 2.675,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10082,7 +10082,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.569,
+                "duration_s": 1.402,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10095,7 +10095,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.179,
+                "duration_s": 0.228,
                 "php": "8.3.36"
               }
             },
@@ -10139,7 +10139,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.081,
+                "duration_s": 2.578,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10183,7 +10183,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.699,
+                "duration_s": 1.405,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10211,7 +10211,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.18,
+                "duration_s": 0.256,
                 "php": "8.3.36"
               }
             },
@@ -10240,7 +10240,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.259,
+                "duration_s": 2.646,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10253,7 +10253,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 1.732,
+                "duration_s": 1.386,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10266,7 +10266,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.14,
+                "duration_s": 0.208,
                 "php": "8.3.36"
               }
             },
@@ -10297,7 +10297,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.243,
+                "duration_s": 2.441,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10318,7 +10318,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.621,
+                "duration_s": 1.332,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10333,7 +10333,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.129,
+                "duration_s": 0.254,
                 "php": "8.3.36"
               }
             },
@@ -10364,7 +10364,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 3.421,
+                "duration_s": 2.678,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10385,7 +10385,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.527,
+                "duration_s": 1.338,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10400,7 +10400,7 @@
                 "acknowledged": [],
                 "diagnostics": [],
                 "exit_code": 0,
-                "duration_s": 0.159,
+                "duration_s": 0.22,
                 "php": "8.3.36"
               }
             },
@@ -10444,7 +10444,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 3.212,
+                "duration_s": 2.644,
                 "php": "8.3.36"
               },
               "psalm": {
@@ -10472,7 +10472,7 @@
                   }
                 ],
                 "exit_code": 2,
-                "duration_s": 1.458,
+                "duration_s": 1.398,
                 "php": "8.3.36"
               },
               "mago": {
@@ -10500,7 +10500,7 @@
                   }
                 ],
                 "exit_code": 1,
-                "duration_s": 0.129,
+                "duration_s": 0.147,
                 "php": "8.3.36"
               }
             },
@@ -13868,8 +13868,7 @@
             "required": [
               {
                 "code": "LessSpecificImplementedReturnType",
-                "line": 30,
-                "line_tolerance": 4
+                "line": 30
               }
             ]
           },
@@ -13878,8 +13877,7 @@
             "required": [
               {
                 "code": "incompatible-return-type",
-                "line": 30,
-                "line_tolerance": 4
+                "line": 32
               }
             ]
           }
@@ -13912,7 +13910,7 @@
         }
       },
       "files": {
-        "case.json": "{\n  \"id\": \"assignability/docblock-return-covariance\",\n  \"title\": \"An overriding method must not widen the return type its parent documents\",\n  \"domain\": \"assignability\",\n  \"rule_class\": \"method.childReturnType\",\n  \"php\": { \"min\": \"8.3\" },\n  \"targets\": [\"src\"],\n  \"ground_truth\": {\n    \"basis\": \"runtime_proof\",\n    \"statement\": \"Shelter::adopt() documents @return Dog and BadShelter::adopt() documents @return Animal, returning a Cat. PHP enforces only the native signature (Animal -> Animal is legal), so the widening is silent until a caller that believes the parent's contract calls a Dog-only method: wake(new BadShelter()) throws Error because Cat has no bark(). The override is therefore not assignable to the parent contract it claims to implement.\",\n    \"runtime_script\": \"runtime/check.php\",\n    \"citation\": \"https://www.php.net/manual/en/language.oop5.variance.php\"\n  },\n  \"expect\": {\n    \"phpstan\": {\n      \"mode\": \"unsupported\",\n      \"reason\": \"In this baseline configuration PHPStan deliberately suppresses maybe-compatible PHPDoc override checks: reportMaybesInMethodSignatures defaults to false. MethodSignatureRule emits method.childReturnType for this widening only with that optional flag enabled. This is an excluded configuration-scope difference, not evidence that PHPStan lacks the rule.\",\n      \"basis\": \"upstream_docs\",\n      \"citation\": \"https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L115-L131\"\n    },\n    \"psalm\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"LessSpecificImplementedReturnType\", \"line\": 30, \"line_tolerance\": 4 }\n      ]\n    },\n    \"mago\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"incompatible-return-type\", \"line\": 30, \"line_tolerance\": 4 }\n      ]\n    }\n  },\n  \"notes\": \"Psalm 6.20.0 (LessSpecificImplementedReturnType) and Mago 1.57.0 (incompatible-return-type) report the widened override. PHPStan 2.3.1 is silent at the baseline level-9 configuration because reportMaybesInMethodSignatures is false (conf/config.neon:100). Its MethodSignatureRule explicitly gates maybe-compatible overrides on that option. Enabling the option yields method.childReturnType; therefore its baseline silence is a documented configuration-scope divergence, excluded from the defect denominator. The fixture and runtime consequence remain unchanged: wake(new BadShelter()) throws when the widened override breaks the parent's PHPDoc contract. The benchmark records both the concrete program defect and which configured checks promise to diagnose it.\",\n  \"provenance\": {\n    \"sources\": [\n      {\n        \"kind\": \"upstream_docs\",\n        \"path\": \"psalm-src/docs/running_psalm/issues/LessSpecificImplementedReturnType.md\",\n        \"revision\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\",\n        \"note\": \"Psalm documents the rule with an interface-implementation example\"\n      },\n      {\n        \"kind\": \"upstream_source\",\n        \"path\": \"phpstan-src/src/Rules/Methods/OverridingMethodRule.php\",\n        \"revision\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n        \"note\": \"OverridingMethodRule.php line 376 gates the PHPDoc signature rule; MethodSignatureRule.php reports a maybe compatibility only when reportMaybesInMethodSignatures is true, and conf/config.neon line 100 sets it false (conf/config.level3.neon line 9 turns checkPhpDocMethodSignatures on)\"\n      }\n    ],\n    \"tool_pins\": { \"mago\": \"1.57.0\", \"phpstan\": \"2.3.1\", \"psalm\": \"6.20.0\" },\n    \"source_checkouts\": {\n      \"phpstan\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n      \"psalm\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\"\n    }\n  }\n}\n",
+        "case.json": "{\n  \"id\": \"assignability/docblock-return-covariance\",\n  \"title\": \"An overriding method must not widen the return type its parent documents\",\n  \"domain\": \"assignability\",\n  \"rule_class\": \"method.childReturnType\",\n  \"php\": { \"min\": \"8.3\" },\n  \"targets\": [\"src\"],\n  \"ground_truth\": {\n    \"basis\": \"runtime_proof\",\n    \"statement\": \"Shelter::adopt() documents @return Dog and BadShelter::adopt() documents @return Animal, returning a Cat. PHP enforces only the native signature (Animal -> Animal is legal), so the widening is silent until a caller that believes the parent's contract calls a Dog-only method: wake(new BadShelter()) throws Error because Cat has no bark(). The override is therefore not assignable to the parent contract it claims to implement.\",\n    \"runtime_script\": \"runtime/check.php\",\n    \"citation\": \"https://www.php.net/manual/en/language.oop5.variance.php\"\n  },\n  \"expect\": {\n    \"phpstan\": {\n      \"mode\": \"unsupported\",\n      \"reason\": \"In this baseline configuration PHPStan deliberately suppresses maybe-compatible PHPDoc override checks: reportMaybesInMethodSignatures defaults to false. MethodSignatureRule emits method.childReturnType for this widening only with that optional flag enabled. This is an excluded configuration-scope difference, not evidence that PHPStan lacks the rule.\",\n      \"basis\": \"upstream_docs\",\n      \"citation\": \"https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L115-L131\"\n    },\n    \"psalm\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"LessSpecificImplementedReturnType\", \"line\": 30 }\n      ]\n    },\n    \"mago\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"incompatible-return-type\", \"line\": 32 }\n      ]\n    }\n  },\n  \"notes\": \"Psalm 6.20.0 (LessSpecificImplementedReturnType) and Mago 1.57.0 (incompatible-return-type) report the widened override. PHPStan 2.3.1 is silent at the baseline level-9 configuration because reportMaybesInMethodSignatures is false (conf/config.neon:100). Its MethodSignatureRule explicitly gates maybe-compatible overrides on that option. Enabling the option yields method.childReturnType; therefore its baseline silence is a documented configuration-scope divergence, excluded from the defect denominator. The fixture and runtime consequence remain unchanged: wake(new BadShelter()) throws when the widened override breaks the parent's PHPDoc contract. The benchmark records both the concrete program defect and which configured checks promise to diagnose it.\",\n  \"provenance\": {\n    \"sources\": [\n      {\n        \"kind\": \"upstream_docs\",\n        \"path\": \"psalm-src/docs/running_psalm/issues/LessSpecificImplementedReturnType.md\",\n        \"revision\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\",\n        \"note\": \"Psalm documents the rule with an interface-implementation example\"\n      },\n      {\n        \"kind\": \"upstream_source\",\n        \"path\": \"phpstan-src/src/Rules/Methods/OverridingMethodRule.php\",\n        \"revision\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n        \"note\": \"OverridingMethodRule.php line 376 gates the PHPDoc signature rule; MethodSignatureRule.php reports a maybe compatibility only when reportMaybesInMethodSignatures is true, and conf/config.neon line 100 sets it false (conf/config.level3.neon line 9 turns checkPhpDocMethodSignatures on)\"\n      }\n    ],\n    \"tool_pins\": { \"mago\": \"1.57.0\", \"phpstan\": \"2.3.1\", \"psalm\": \"6.20.0\" },\n    \"source_checkouts\": {\n      \"phpstan\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n      \"psalm\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\"\n    }\n  }\n}\n",
         "composer.json": "{\n  \"name\": \"bench/assignability-docblock-return-covariance\",\n  \"description\": \"An overriding method must not widen the inherited return type\",\n  \"type\": \"project\",\n  \"license\": \"MIT\",\n  \"require\": {\n    \"php\": \">=8.3\"\n  },\n  \"require-dev\": {\n    \"phpstan/phpstan\": \"2.3.1\",\n    \"vimeo/psalm\": \"6.20.0\"\n  },\n  \"autoload\": {\n    \"files\": [\n      \"src/repro.php\"\n    ]\n  },\n  \"scripts\": {\n    \"analyze\": [\n      \"phpstan analyse --level=9 --no-progress src\",\n      \"psalm --no-progress --config=psalm.xml\",\n      \"mago analyze src\"\n    ],\n    \"runtime-check\": \"php runtime/check.php\"\n  }\n}\n",
         "psalm.xml": "<?xml version=\"1.0\"?>\n<psalm errorLevel=\"1\" resolveFromConfigFile=\"true\" findUnusedBaselineEntry=\"false\" findUnusedCode=\"false\" cacheDirectory=\".generated/psalm-cache\">\n    <projectFiles>\n        <directory name=\"src\" />\n    </projectFiles>\n</psalm>\n",
         "runtime/check.php": "<?php\n\ndeclare(strict_types=1);\n\n// Runtime side of the ground truth. Shelter documents adopt() as returning\n// Dog; BadShelter overrides it and documents Animal, returning a Cat. PHP\n// enforces only the native signature (Animal -> Animal is legal), so the\n// widening is silent until a caller that believes the parent's contract calls a\n// Dog-only method.\n\nrequire __DIR__ . '/../src/repro.php';\n\nuse Bench\\Assignability\\DocblockReturnCovariance\\BadShelter;\nuse Bench\\Assignability\\DocblockReturnCovariance\\Cat;\nuse Bench\\Assignability\\DocblockReturnCovariance\\Dog;\nuse Bench\\Assignability\\DocblockReturnCovariance\\Shelter;\nuse function Bench\\Assignability\\DocblockReturnCovariance\\wake;\n\nif (!(new Shelter())->adopt() instanceof Dog) {\n    fwrite(STDERR, \"Shelter::adopt() does not return a Dog; the parent promise is wrong\\n\");\n    exit(1);\n}\n\n// The parent contract holds, so wake() works against the parent.\nif (wake(new Shelter()) !== 'woof') {\n    fwrite(STDERR, \"wake(new Shelter()) did not return 'woof'\\n\");\n    exit(1);\n}\n\n$widened = (new BadShelter())->adopt();\n\nif (!$widened instanceof Cat) {\n    fwrite(STDERR, \"BadShelter::adopt() did not return a Cat\\n\");\n    exit(1);\n}\n\n// The consequence the case is about: a caller that trusts the parent's\n// documented return type crashes on the widened override.\ntry {\n    wake(new BadShelter());\n} catch (Error $error) {\n    if (strpos($error->getMessage(), 'bark') === false) {\n        fwrite(STDERR, sprintf(\"unexpected Error: %s\\n\", $error->getMessage()));\n        exit(1);\n    }\n\n    printf(\"BadShelter::adopt() returns a Cat, so wake() throws: %s\\n\", $error->getMessage());\n    exit(0);\n}\n\nfwrite(STDERR, \"wake(new BadShelter()) returned; the widened override did not break the caller\\n\");\nexit(1);\n",
@@ -16091,7 +16089,6 @@
               {
                 "code": "generics.variance",
                 "line": 30,
-                "line_tolerance": 1,
                 "message_regex": "covariant"
               }
             ],
@@ -16107,8 +16104,7 @@
             "required": [
               {
                 "code": "InvalidTemplateParam",
-                "line": 30,
-                "line_tolerance": 1,
+                "line": 29,
                 "message_regex": "covariant"
               }
             ],
@@ -16125,7 +16121,6 @@
               {
                 "code": "invalid-template-parameter",
                 "line": 30,
-                "line_tolerance": 1,
                 "message_regex": "covariant"
               }
             ],
@@ -16168,7 +16163,7 @@
         }
       },
       "files": {
-        "case.json": "{\n  \"id\": \"generics/covariant-template-in-write-position\",\n  \"title\": \"A covariant template used in a parameter position makes the declared variance unsound\",\n  \"domain\": \"generics\",\n  \"criterion_id\": \"generics/template-variance\",\n  \"rule_class\": \"template-variance-violation\",\n  \"php\": { \"min\": \"8.1\" },\n  \"targets\": [\"src\"],\n  \"ground_truth\": {\n    \"basis\": \"runtime_proof\",\n    \"statement\": \"Bag declares @template-covariant T, which promises that a Bag<Dog> may be used wherever a Bag<Animal> is expected, and it also declares push() with @param T, a write position. Those two promises cannot both hold. The runtime script executes the program the declarations license: put_cat() is typed Bag<Animal>, the covariant promise makes the caller's Bag<Dog> acceptable to it, put_cat() stores a Cat in that box, and the caller - whose annotation says Bag<Dog> - reads a Cat back. A Cat is not a Dog (the script checks the sibling relationship directly), and adopt() declares the native return type Dog, so the call fails with 'adopt(): Return value must be of type Dog, Cat returned'. A fresh Bag constructed with a Dog does read back a Dog, so the failure is caused by the declared write position and not by the widening on its own.\",\n    \"runtime_script\": \"runtime/check.php\",\n    \"citation\": \"https://www.php.net/manual/en/language.types.declarations.php\"\n  },\n  \"expect\": {\n    \"phpstan\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"generics.variance\", \"line\": 30, \"line_tolerance\": 1, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"argument.type\", \"line\": 51 }\n      ]\n    },\n    \"psalm\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"InvalidTemplateParam\", \"line\": 30, \"line_tolerance\": 1, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"InvalidArgument\", \"line\": 51 }\n      ]\n    },\n    \"mago\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"invalid-template-parameter\", \"line\": 30, \"line_tolerance\": 1, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"invalid-argument\", \"line\": 51 }\n      ]\n    }\n  },\n  \"notes\": \"The rule under test is the consistency of a declared generic variance: @template-covariant T means 'every reader of a Bag<Dog> may treat it as a Bag<Animal>', and that is sound only while T never appears in a write position. PHP has no generics, so the declaration itself cannot fail; what fails is the program the declaration grants, and the case's neutral ground truth for all three tools is that program. The three tools report it under different codes and on adjacent lines of the same declaration - PHPStan 2.3.1 generics.variance on the push() signature (line 30), Psalm 6.20.0 InvalidTemplateParam on the @param T docblock line (29), Mago 1.57.0 invalid-template-parameter on the signature (30) - so the row is green with a code and site split rather than a defect. The forbidden predicate on line 51 is the asymmetric control: that call is the covariance widening itself, which the declaration licenses, and a tool that reports it as an argument mismatch instead of reporting the declaration would be pointing at the site the annotation permits. Building a Bag<Dog> that goes through the covariant view into put_cat() is exercised by the runtime script, so no predicate is acknowledged away and nothing is widened. Distinct from the two existing generics cases: generics/template-inference-from-argument tests an inferred function template reaching a native consumer, generics/template-bound-violation tests a value against a declared bound, and neither touches a variance declaration. The round's source material is Mago's analyzer test suite, a directory of fixtures without catalogue candidate IDs, so no source_candidate_id is recorded; the closest catalogue leads cover bound enforcement and @extends arity, which are different rules, and are not claimed here.\",\n  \"provenance\": {\n    \"sources\": [\n      {\n        \"kind\": \"upstream_test_case\",\n        \"path\": \"mago/mago/crates/analyzer/tests/cases/generics_template_covariant_class.php\",\n        \"revision\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n        \"citation\": \"https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_covariant_class.php\",\n        \"note\": \"pattern source for a sound @template-covariant declaration (T is only read there, and Mago expects no diagnostic); this fixture keeps the declaration and adds the write position that makes it unsound. Rewritten, not copied, and Mago's suite carries no expectation for the write-position rule (grep for invalid-template-parameter in that directory returns only @extends/@implements arity fixtures), so Mago is judged here by the runtime proof like the other two.\"\n      },\n      {\n        \"kind\": \"upstream_test_case\",\n        \"path\": \"mago/mago/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php\",\n        \"revision\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n        \"citation\": \"https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php\",\n        \"note\": \"shows that Mago's suite treats variance declarations as part of the supported dialect (the mirror-image contrapositive annotation), which is why this fixture does not use mode 'unsupported' for any tool\"\n      }\n    ],\n    \"tool_pins\": { \"mago\": \"1.57.0\", \"phpstan\": \"2.3.1\", \"psalm\": \"6.20.0\" },\n    \"source_checkouts\": {\n      \"mago\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n      \"phpstan\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n      \"psalm\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\"\n    }\n  }\n}\n",
+        "case.json": "{\n  \"id\": \"generics/covariant-template-in-write-position\",\n  \"title\": \"A covariant template used in a parameter position makes the declared variance unsound\",\n  \"domain\": \"generics\",\n  \"criterion_id\": \"generics/template-variance\",\n  \"rule_class\": \"template-variance-violation\",\n  \"php\": { \"min\": \"8.1\" },\n  \"targets\": [\"src\"],\n  \"ground_truth\": {\n    \"basis\": \"runtime_proof\",\n    \"statement\": \"Bag declares @template-covariant T, which promises that a Bag<Dog> may be used wherever a Bag<Animal> is expected, and it also declares push() with @param T, a write position. Those two promises cannot both hold. The runtime script executes the program the declarations license: put_cat() is typed Bag<Animal>, the covariant promise makes the caller's Bag<Dog> acceptable to it, put_cat() stores a Cat in that box, and the caller - whose annotation says Bag<Dog> - reads a Cat back. A Cat is not a Dog (the script checks the sibling relationship directly), and adopt() declares the native return type Dog, so the call fails with 'adopt(): Return value must be of type Dog, Cat returned'. A fresh Bag constructed with a Dog does read back a Dog, so the failure is caused by the declared write position and not by the widening on its own.\",\n    \"runtime_script\": \"runtime/check.php\",\n    \"citation\": \"https://www.php.net/manual/en/language.types.declarations.php\"\n  },\n  \"expect\": {\n    \"phpstan\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"generics.variance\", \"line\": 30, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"argument.type\", \"line\": 51 }\n      ]\n    },\n    \"psalm\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"InvalidTemplateParam\", \"line\": 29, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"InvalidArgument\", \"line\": 51 }\n      ]\n    },\n    \"mago\": {\n      \"mode\": \"diagnostics\",\n      \"required\": [\n        { \"code\": \"invalid-template-parameter\", \"line\": 30, \"message_regex\": \"covariant\" }\n      ],\n      \"forbidden\": [\n        { \"code\": \"invalid-argument\", \"line\": 51 }\n      ]\n    }\n  },\n  \"notes\": \"The rule under test is the consistency of a declared generic variance: @template-covariant T means 'every reader of a Bag<Dog> may treat it as a Bag<Animal>', and that is sound only while T never appears in a write position. PHP has no generics, so the declaration itself cannot fail; what fails is the program the declaration grants, and the case's neutral ground truth for all three tools is that program. The three tools report it under different codes and on adjacent lines of the same declaration - PHPStan 2.3.1 generics.variance on the push() signature (line 30), Psalm 6.20.0 InvalidTemplateParam on the @param T docblock line (29), Mago 1.57.0 invalid-template-parameter on the signature (30) - so the row is green with a code and site split rather than a defect. The forbidden predicate on line 51 is the asymmetric control: that call is the covariance widening itself, which the declaration licenses, and a tool that reports it as an argument mismatch instead of reporting the declaration would be pointing at the site the annotation permits. Building a Bag<Dog> that goes through the covariant view into put_cat() is exercised by the runtime script, so no predicate is acknowledged away and nothing is widened. Distinct from the two existing generics cases: generics/template-inference-from-argument tests an inferred function template reaching a native consumer, generics/template-bound-violation tests a value against a declared bound, and neither touches a variance declaration. The round's source material is Mago's analyzer test suite, a directory of fixtures without catalogue candidate IDs, so no source_candidate_id is recorded; the closest catalogue leads cover bound enforcement and @extends arity, which are different rules, and are not claimed here.\",\n  \"provenance\": {\n    \"sources\": [\n      {\n        \"kind\": \"upstream_test_case\",\n        \"path\": \"mago/mago/crates/analyzer/tests/cases/generics_template_covariant_class.php\",\n        \"revision\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n        \"citation\": \"https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_covariant_class.php\",\n        \"note\": \"pattern source for a sound @template-covariant declaration (T is only read there, and Mago expects no diagnostic); this fixture keeps the declaration and adds the write position that makes it unsound. Rewritten, not copied, and Mago's suite carries no expectation for the write-position rule (grep for invalid-template-parameter in that directory returns only @extends/@implements arity fixtures), so Mago is judged here by the runtime proof like the other two.\"\n      },\n      {\n        \"kind\": \"upstream_test_case\",\n        \"path\": \"mago/mago/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php\",\n        \"revision\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n        \"citation\": \"https://github.com/carthage-software/mago/blob/1c3eba0efb04baadd27e17f592989410787b2d59/crates/analyzer/tests/cases/generics_template_contravariant_comparator.php\",\n        \"note\": \"shows that Mago's suite treats variance declarations as part of the supported dialect (the mirror-image contrapositive annotation), which is why this fixture does not use mode 'unsupported' for any tool\"\n      }\n    ],\n    \"tool_pins\": { \"mago\": \"1.57.0\", \"phpstan\": \"2.3.1\", \"psalm\": \"6.20.0\" },\n    \"source_checkouts\": {\n      \"mago\": \"1c3eba0efb04baadd27e17f592989410787b2d59\",\n      \"phpstan\": \"2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96\",\n      \"psalm\": \"62e52cd9fe3ab4429debc0eb0306057419b0a9d6\"\n    }\n  }\n}\n",
         "composer.json": "{\n  \"name\": \"bench/generics-covariant-template-in-write-position\",\n  \"description\": \"A covariant template type used in a parameter position makes the declared variance unsound\",\n  \"type\": \"project\",\n  \"license\": \"MIT\",\n  \"require\": {\n    \"php\": \">=8.1\"\n  },\n  \"require-dev\": {\n    \"phpstan/phpstan\": \"2.3.1\",\n    \"vimeo/psalm\": \"6.20.0\"\n  },\n  \"autoload\": {\n    \"files\": [\n      \"src/repro.php\"\n    ]\n  },\n  \"scripts\": {\n    \"analyze\": [\n      \"phpstan analyse --level=9 --no-progress src\",\n      \"psalm --no-progress --config=psalm.xml\",\n      \"mago analyze src\"\n    ],\n    \"runtime-check\": \"php runtime/check.php\"\n  }\n}\n",
         "psalm.xml": "<?xml version=\"1.0\"?>\n<psalm errorLevel=\"1\" resolveFromConfigFile=\"true\" findUnusedBaselineEntry=\"false\" findUnusedCode=\"false\" cacheDirectory=\".generated/psalm-cache\">\n    <projectFiles>\n        <directory name=\"src\" />\n    </projectFiles>\n</psalm>\n",
         "runtime/check.php": "<?php\n\ndeclare(strict_types=1);\n\n// Runtime side of the ground truth. Bag declares @template-covariant T, so the\n// declaration promises that a Bag<Dog> may be used wherever a Bag<Animal> is\n// expected - that is what covariance buys the caller. It also declares push()\n// with @param T, a write position. Those two promises cannot both hold: put_cat()\n// accepts a Bag<Animal> and writes a Cat through that view, the original holder\n// of a Bag<Dog> then reads a Cat where its annotation promises a Dog, and the\n// native return type of adopt() enforces exactly that promise.\n\nrequire __DIR__ . '/../src/repro.php';\n\nuse function Bench\\Generics\\CovariantTemplateInWritePosition\\adopt;\nuse function Bench\\Generics\\CovariantTemplateInWritePosition\\put_cat;\nuse function Bench\\Generics\\CovariantTemplateInWritePosition\\run;\n\nuse Bench\\Generics\\CovariantTemplateInWritePosition\\Bag;\nuse Bench\\Generics\\CovariantTemplateInWritePosition\\Cat;\nuse Bench\\Generics\\CovariantTemplateInWritePosition\\Dog;\n\n// The sibling classes are unrelated: a Cat is not a Dog, so a Cat written into a\n// Bag<Dog> makes the caller's guarantee false independently of any analyzer.\nif ((new Cat()) instanceof Dog) {\n    fwrite(STDERR, \"Cat is a Dog; the fixture no longer witnesses the write\\n\");\n    exit(1);\n}\n\n// The honest path: a fresh Bag<Dog> holding a Dog reads back a Dog.\n$fresh = new Bag(new Dog());\nif (!$fresh->get() instanceof Dog) {\n    fwrite(STDERR, \"a fresh Bag constructed with a Dog did not read back a Dog\\n\");\n    exit(1);\n}\n\n// The write through the widened view: put_cat() is typed Bag<Animal>, which\n// covariance makes the Bag<Dog> acceptable to, and it stores a Cat in the very\n// box the caller annotated as Bag<Dog>.\n$holder = new Bag(new Dog());\nput_cat($holder);\nif (!$holder->get() instanceof Cat) {\n    fwrite(STDERR, \"put_cat() did not write a Cat through the widened view\\n\");\n    exit(1);\n}\n\n// The consequence: adopt() is annotated Bag<Dog> and declares a native Dog\n// return type, so the Cat that covariance let in reaches that return type and\n// the call fails. This is the fact the case is about - the covariant\n// declaration plus a write position is unsound, not merely unidiomatic.\n$type_error = null;\ntry {\n    run();\n} catch (TypeError $error) {\n    $type_error = $error;\n}\n\nif ($type_error === null) {\n    fwrite(STDERR, \"run() returned; the Cat did not reach adopt()'s Dog return type\\n\");\n    exit(1);\n}\n\nif (strpos($type_error->getMessage(), 'adopt') === false\n    || strpos($type_error->getMessage(), 'Dog') === false\n    || strpos($type_error->getMessage(), 'Cat') === false) {\n    fwrite(STDERR, sprintf(\"unexpected failure: %s\\n\", $type_error->getMessage()));\n    exit(1);\n}\n\nprintf(\n    \"put_cat() stored a Cat in a Bag<Dog> through the covariant widening; adopt() failed on its Dog return type: %s\\n\",\n    $type_error->getMessage()\n);\nexit(0);\n",
