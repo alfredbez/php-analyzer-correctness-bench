@@ -21,13 +21,13 @@
     "psalm": {
       "mode": "diagnostics",
       "required": [
-        { "code": "LessSpecificImplementedReturnType", "line": 30, "line_tolerance": 4 }
+        { "code": "LessSpecificImplementedReturnType", "line": 30 }
       ]
     },
     "mago": {
       "mode": "diagnostics",
       "required": [
-        { "code": "incompatible-return-type", "line": 30, "line_tolerance": 4 }
+        { "code": "incompatible-return-type", "line": 32 }
       ]
     }
   },
