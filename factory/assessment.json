@@ -1806,7 +1806,7 @@
       "case_ids": [
         "nullability/catalog-psalm-b832ee21bb9a15b5e6bc"
       ],
-      "semantic_statement": "A nullable factory can return null, making an unguarded method call fail while the nullsafe control succeeds.",
+      "semantic_statement": "A method can return null, making an unguarded method call fail while the nullsafe control succeeds.",
       "reason": "Removed ignore-nullable-return override rather than trusting source acceptance as runtime truth. Deterministic bool replaces randomness. All tools report line 5; runtime catches the actual null dereference. This measures underlying semantics, not suppression interoperability.",
       "citations": [
         "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271",

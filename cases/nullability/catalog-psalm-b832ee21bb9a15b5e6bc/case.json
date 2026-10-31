@@ -8,6 +8,6 @@
     "psalm": {"mode": "diagnostics", "required": [{"code": "PossiblyNullReference", "line": 5}]},
     "mago": {"mode": "diagnostics", "required": [{"code": "possible-method-access-on-null", "line": 5}]}
   },
-  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271", "provider": "providerValidCodeParse", "note": "The source uses @psalm-ignore-nullable-return and random selection. Removed that analyzer-only override, used an explicit bool for deterministic controls, and retained the nullable factory followed by a method call."},
+  "provenance": {"citation": "https://github.com/vimeo/psalm/blob/62e52cd9fe3ab4429debc0eb0306057419b0a9d6/tests/AnnotationTest.php#L271", "provider": "providerValidCodeParse", "note": "The source uses @psalm-ignore-nullable-return and random selection. Removed that analyzer-only override, used an explicit bool for deterministic controls, and retained the nullable return value followed by a method call."},
   "notes": "Measures the underlying nullable operation rather than suppression portability. All three tools diagnose the unsafe call at line 5 and leave the nullsafe control clean. Mago's measured code is possible-method-access-on-null. The source being accepted under an explicit ignore annotation is not an oracle of runtime safety."
 }
