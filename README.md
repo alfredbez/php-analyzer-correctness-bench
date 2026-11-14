@@ -104,7 +104,7 @@ remain available for audit, including classifications corrected after additional
 source or configuration evidence. GitHub Actions runs also produce downloadable
 offline reports.
 
-GitHub Pages rebuilds the reviewed snapshot with the current report template.
+GitHub Pages rebuilds the 2026-11-13 reviewed snapshot with the current report template.
 It deploys only the generated HTML, not the repository, runtime artifacts or
 internal state. New measurements need review before replacing that snapshot.
 
