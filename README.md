@@ -74,27 +74,26 @@ Cases that require extra files or dependencies are marked for local reproduction
 `comparison.json` is the machine-readable evidence bundle. Failed measurements,
 changed corpora and policy exclusions cannot become fixes or regressions.
 
-The [2026-11-13 Mago main comparison snapshot](results/comparisons/2026-11-13-mago-main/index.html)
-([markdown summary](results/comparisons/2026-11-13-mago-main/COMPARISON.md)) measures
-Mago `1.59.0` (`stable`) and Mago `main` (`abae518568e9cb5d415c1a369275a6887f98e959`,
-`dev` build; both report `mago 1.59.0` via `mago --version`) alongside PHPStan
+The [2026-11-17 Mago 1.60.2 comparison snapshot](results/comparisons/2026-11-17-mago-1.60.2/index.html)
+([markdown summary](results/comparisons/2026-11-17-mago-1.60.2/COMPARISON.md)) measures
+Mago `1.59.0` (`historical`) and Mago `1.60.2` (`stable`) alongside PHPStan
 `2.3.1` and Psalm `6.20.1` across all 144 cases on identical source bytes using
 `php:8.4-cli` (`PHP 8.4.27`). Download the HTML to use it offline.
 
 | Profile | Source | Observed `--version` | Judged | ok | FP | FN | mixed | by-design | skipped | agreement |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Mago 1.59.0 · stable | `1.59.0` | `mago 1.59.0` | 141 | 109 | 22 | 9 | 1 | 2 | 1 | 77.3% |
-| Mago main · abae518568e9 | `abae518568e9cb5d415c1a369275a6887f98e959` | `mago 1.59.0` | 141 | 112 | 19 | 9 | 1 | 2 | 1 | 79.4% |
+| Mago 1.59.0 | `1.59.0` | `mago 1.59.0` | 141 | 109 | 22 | 9 | 1 | 2 | 1 | 77.3% |
+| Mago 1.60.2 · stable | `1.60.2` | `mago 1.60.2` | 141 | 112 | 19 | 9 | 1 | 2 | 1 | 79.4% |
 
-- **Fixed on `main` vs `1.59.0` (3 cases, 0 regressions):**
+- **Fixed on `1.60.2` vs `1.59.0` (3 cases, 0 regressions):**
   `assignability/catalog-psalm-0e66d52886bd21db7846`,
   `assignability/catalog-psalm-5489e87365002fea3494`,
   `enums/catalog-psalm-c013f91ca882f9f18a36` (all `false_positive` → `ok`).
-- **Still open on `main` (29 judged defects):**
+- **Still open on `1.60.2` (29 judged defects):**
   - **False positives (19):** `arrays/catalog-phpstan-3df530270084e3d904a0`, `arrays/catalog-phpstan-d438454d94600dcbba53`, `assignability/catalog-phpstan-abc5fa1b77dc14531ca8`, `callables/catalog-phpstan-554b2c43131257c0d354`, `callables/catalog-phpstan-6931357e80bcf4ac18ca`, `callables/catalog-phpstan-71ff2ec3ba7e1627cfa7`, `enums/try-from-result-nullability`, `generics/catalog-phpstan-28d71ec402e5aaedb00e`, `legacy-patterns/catalog-mago-af46b0f735b875e1a546`, `legacy-patterns/catalog-psalm-6c129980869ba963c7aa`, `narrowing/catalog-phpstan-13d11cb24c0ac0aec4c0`, `narrowing/catalog-phpstan-2a3506b6815e78d94aa5`, `narrowing/catalog-psalm-924aac46207f32ed8ed5`, `narrowing/catalog-psalm-de14e6754f8edfa65da8`, `nullability/catalog-phpstan-3df7186a1b833d024d52`, `nullability/catalog-phpstan-5588ff8af852e7139b7d`, `nullability/catalog-phpstan-5d813bb8b104d0c619ca`, `nullability/catalog-phpstan-d1f39552939e65fa35c3`, `nullability/catalog-phpstan-f1455a36807cc2badc75`.
   - **False negatives (9):** `arrays/catalog-psalm-13be39b2d9591fa1a9e5`, `arrays/catalog-psalm-540e6672f974be8ec019`, `arrays/catalog-psalm-59b1c78bfa12967fb1ac`, `assignability/catalog-psalm-2ed1be42908ccc536dd5`, `nullability/catalog-psalm-c517a982a06f57ea084b`, `phpdoc-extensions/catalog-mago-d86bc7b7eabe71006e0c`, `phpdoc-extensions/catalog-psalm-2d4ae8911311e23b45da`, `phpdoc-extensions/catalog-psalm-7a3fdc7ca8bd3d5091c3`, `phpdoc-extensions/catalog-psalm-a02980c52843949bdecb`.
   - **Mixed (1):** `narrowing/catalog-psalm-cd294fcb8e014ab18e3e`.
-- **Excluded on `main` (3 cases):**
+- **Excluded on `1.60.2` (3 cases):**
   - **By-design divergences (2):** `narrowing/negated-instanceof-unrelated-class`, `narrowing/redundant-instanceof-on-declared-class`.
   - **Skipped on `php:8.4-cli` (1):** `nullability/catalog-phpstan-0f19731e70a569c020bd`.
 
@@ -104,7 +103,7 @@ remain available for audit, including classifications corrected after additional
 source or configuration evidence. GitHub Actions runs also produce downloadable
 offline reports.
 
-GitHub Pages rebuilds the 2026-11-13 reviewed snapshot with the current report template.
+GitHub Pages rebuilds the 2026-11-17 reviewed snapshot with the current report template.
 It deploys only the generated HTML, not the repository, runtime artifacts or
 internal state. New measurements need review before replacing that snapshot.
 
