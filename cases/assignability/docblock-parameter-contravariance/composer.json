@@ -1,0 +1,14 @@
+{
+  "name": "bench/assignability-docblock-parameter-contravariance",
+  "description": "An overriding method must not narrow a parameter type via PHPDoc",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.3"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}

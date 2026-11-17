@@ -1,0 +1,35 @@
+{
+  "id": "assignability/docblock-parameter-contravariance",
+  "title": "An overriding method must not narrow a parameter type via PHPDoc",
+  "domain": "assignability",
+  "rule_class": "method.childParameterType",
+  "php": { "min": "8.3" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "BaseValidator::validate() accepts (mixed, Constraint). LengthValidator::validate() keeps the native signature (mixed, Constraint) so PHP allows the override, but narrows @param to (string, LengthConstraint) and relies on those narrower types. A caller holding BaseValidator that passes 123 or a base Constraint triggers TypeError / Error at runtime, proving the PHPDoc narrowing violates parameter contravariance.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.variance.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "unsupported",
+      "reason": "In this baseline configuration PHPStan deliberately suppresses maybe-compatible PHPDoc override checks: reportMaybesInMethodSignatures defaults to false. MethodSignatureRule emits method.childParameterType for this narrowing only with that optional flag enabled.",
+      "basis": "upstream_docs",
+      "citation": "https://github.com/phpstan/phpstan-src/blob/2c12dac5e4f8626c8a7cfc0b4bb9c5ce48d37c96/src/Rules/Methods/MethodSignatureRule.php#L155-L180"
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "MoreSpecificImplementedParamType", "line": 32 }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "incompatible-parameter-type", "line": 32 }
+      ]
+    }
+  },
+  "notes": "Counterpart to assignability/docblock-return-covariance. Psalm 6.20.1 (MoreSpecificImplementedParamType) and Mago 1.60.2 (incompatible-parameter-type) both report the narrowed @param override. PHPStan 2.3.1 is silent at baseline level 9 because reportMaybesInMethodSignatures defaults to false (conf/config.neon:100), and emits method.childParameterType when enabled."
+}
