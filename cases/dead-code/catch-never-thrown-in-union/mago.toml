@@ -1,0 +1,3 @@
+[analyzer]
+check-throws = true
+check-dead-catch = true

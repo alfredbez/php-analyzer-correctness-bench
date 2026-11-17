@@ -1,0 +1,36 @@
+{
+  "id": "dead-code/catch-never-thrown-in-union",
+  "title": "A multi-catch union retains a dead exception type that is never thrown in the try block",
+  "domain": "dead-code",
+  "criterion_id": "dead-code/catch-never-thrown-in-union",
+  "rule_class": "catch.neverThrown",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "loadCount() only throws MissingItemException and never throws StaleStateException, so StaleStateException in the multi-catch clause can never match any thrown exception.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.exceptions.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "catch.neverThrown", "line": 31, "file": "src/repro.php" }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "UnusedCatch", "line": 31, "file": "src/repro.php" }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "dead-catch", "line": 31, "file": "src/repro.php" }
+      ]
+    }
+  },
+  "notes": "mago.toml explicitly enables check-throws = true and check-dead-catch = true. Even with dead-catch checking enabled, Mago 1.60.2 stays silent because another union member (MissingItemException) is thrown, whereas PHPStan 2.3.1 reports catch.neverThrown for StaleStateException. Psalm 6.20.1 lacks dead-catch checking."
+}

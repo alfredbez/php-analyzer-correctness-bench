@@ -1,0 +1,14 @@
+{
+  "name": "bench/dead-code-catch-never-thrown-in-union",
+  "description": "Multi-catch union contains an exception type never thrown in the try block",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}
