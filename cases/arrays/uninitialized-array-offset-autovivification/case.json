@@ -1,0 +1,26 @@
+{
+  "id": "arrays/uninitialized-array-offset-autovivification",
+  "title": "Assigning to a key on an uninitialized local variable autovivifies an array",
+  "domain": "arrays",
+  "rule_class": "undefined-variable",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "In PHP, assigning to an array key on an uninitialized local variable ($result['offset'] = $offset) autovivifies $result as an array without emitting an E_WARNING or E_NOTICE, and subsequent reads/writes produce the expected array{offset: int, limit: int}.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.types.array.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "forbidden": [
+        { "code": "no-value" },
+        { "code": "undefined-variable" }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 accepts array-offset autovivification cleanly. Mago 1.60.2 (as well as 1.54.0, 1.57.0, and 1.59.0) reports undefined-variable, mixed-array-assignment, mixed-array-access, mixed-argument, and mixed-return-statement (falling back to mixed rather than never/no-value). Psalm 6.20.1 reports PossiblyUndefinedVariable, InvalidReturnType, and InvalidReturnStatement."
+}

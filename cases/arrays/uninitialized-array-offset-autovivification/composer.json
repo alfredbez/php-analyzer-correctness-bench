@@ -1,0 +1,14 @@
+{
+  "name": "bench/arrays-uninitialized-array-offset-autovivification",
+  "description": "Assigning to a string offset on an uninitialized local variable autovivifies an array",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}
