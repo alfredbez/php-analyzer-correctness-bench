@@ -1,0 +1,52 @@
+{
+  "id": "dead-code/unreachable-after-exhaustive-elseif",
+  "title": "Code following exhaustive if and elseif branches that both return is unreachable",
+  "domain": "dead-code",
+  "criterion_id": "dead-code/unreachable-after-exhaustive-elseif",
+  "rule_class": "deadCode.unreachable",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Every bool input enters either if ($flag) and returns 1 or elseif (!$flag) and returns 2, so the trailing return 3 is unreachable.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/control-structures.elseif.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "deadCode.unreachable", "line": 15, "file": "src/repro.php" }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "UnevaluatedCode", "line": 15, "file": "src/repro.php" }
+      ],
+      "allowed": [
+        {
+          "code": "RedundantCondition",
+          "line": 11,
+          "file": "src/repro.php",
+          "reason": "The negated boolean condition in elseif (!$flag) is always true after the first branch returns; this is a correct secondary diagnostic."
+        }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "unevaluated-code", "line": 15, "file": "src/repro.php" }
+      ],
+      "allowed": [
+        {
+          "code": "redundant-condition",
+          "line": 11,
+          "file": "src/repro.php",
+          "reason": "The negated boolean condition in elseif (!$flag) is always true after the first branch returns; this is a correct secondary diagnostic."
+        }
+      ]
+    }
+  },
+  "notes": "Mago 1.60.2 detects unevaluated-code directly after return/throw/if-else, but fails to mark trailing code unreachable after exhaustive if/elseif termination (even though Mago itself proves !$flag is always true via redundant-condition). PHPStan 2.3.1 reports deadCode.unreachable at line 15. Psalm 6.20.1 also omits UnevaluatedCode here (even with findUnusedCode=\"true\")."
+}

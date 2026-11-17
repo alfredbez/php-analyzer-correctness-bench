@@ -1,0 +1,14 @@
+{
+  "name": "bench/dead-code-unreachable-after-exhaustive-elseif",
+  "description": "Unreachable return after exhaustive if/elseif branches",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}
