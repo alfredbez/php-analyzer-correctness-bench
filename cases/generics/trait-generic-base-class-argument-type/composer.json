@@ -1,0 +1,14 @@
+{
+  "name": "bench/generics-trait-generic-base-class-argument-type",
+  "description": "Trait calling template-typed base class method in generic subclass context",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}

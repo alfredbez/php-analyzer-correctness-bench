@@ -1,0 +1,36 @@
+{
+  "id": "generics/trait-generic-base-class-argument-type",
+  "title": "A trait calling a template-typed base method must respect the host class's generic instantiation",
+  "domain": "generics",
+  "criterion_id": "generics/trait-generic-base-class-argument-type",
+  "rule_class": "argument.type",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "OrderRepository extends BaseRepository<OrderEntity>, binding BaseRepository::persist()'s template parameter T to OrderEntity. ArchivableTrait::archive() accepts any EntityInterface and passes it to $this->persist($entity). Passing a CustomerEntity into OrderRepository::archive() is accepted by the trait signature but throws TypeError at runtime when OrderRepository's callable(OrderEntity): string formatter is invoked.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.traits.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "argument.type", "line": 51 }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "ArgumentTypeCoercion", "line": 51, "file": "src/repro.php" }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "invalid-argument", "line": 51, "file": "src/repro.php" }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 (argument.type) and Psalm 6.20.1 (ArgumentTypeCoercion) analyze ArchivableTrait in the context of OrderRepository and catch that EntityInterface is not assignable to T=OrderEntity. Mago 1.60.2 recognizes @require-extends BaseRepository enough to resolve $this->persist(), yet emits no diagnostics and misses the template-substituted parameter type in OrderRepository's context."
+}
