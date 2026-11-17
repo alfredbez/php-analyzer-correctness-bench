@@ -1,0 +1,35 @@
+{
+  "id": "assignability/static-private-property-access",
+  "title": "Accessing a private static property via static:: in a non-final class fails in subclasses",
+  "domain": "assignability",
+  "rule_class": "staticClassAccess.privateProperty",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Late static binding resolves static::$count to the called subclass SubCounter. Because SubCounter defines its own private static int $count = 2, BaseCounter::readCount() cannot access SubCounter::$count: BaseCounter::readCount() returns 1, while SubCounter::readCount() throws Error at runtime.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.oop5.late-static-bindings.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "staticClassAccess.privateProperty", "line": 13, "file": "src/repro.php" }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "InaccessibleProperty", "line": 13, "file": "src/repro.php" }
+      ]
+    },
+    "mago": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "invalid-static-property-access", "line": 13, "file": "src/repro.php" }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 reports staticClassAccess.privateProperty on static::$count inside non-final BaseCounter. Both Mago 1.60.2 and Psalm 6.20.1 stay silent, even though SubCounter::readCount() throws Error: Cannot access private property SubCounter::$count at runtime."
+}
