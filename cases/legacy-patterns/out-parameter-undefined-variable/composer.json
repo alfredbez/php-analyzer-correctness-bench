@@ -1,0 +1,14 @@
+{
+  "name": "bench/legacy-patterns-out-parameter-undefined-variable",
+  "description": "Passing an uninitialized variable to preg_match() &$matches out-parameter",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}

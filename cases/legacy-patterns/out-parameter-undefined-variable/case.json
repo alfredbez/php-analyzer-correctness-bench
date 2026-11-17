@@ -1,0 +1,25 @@
+{
+  "id": "legacy-patterns/out-parameter-undefined-variable",
+  "title": "Passing an uninitialized variable to a preg_match() out-parameter is idiomatic PHP",
+  "domain": "legacy-patterns",
+  "rule_class": "reference-to-undefined-variable",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Passing an uninitialized local variable $matches as the by-reference out-parameter of preg_match() produces no runtime warning or notice under E_ALL and populates $matches on match.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.preg-match.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "forbidden": [
+        { "code": "reference-to-undefined-variable" }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 and Psalm 6.20.1 accept uninitialized variables passed to @param-out parameters without diagnostics. Mago 1.60.2 recognizes @param-out for $matches[1] downstream, yet still emits help-level reference-to-undefined-variable on $matches in the preg_match() call."
+}
