@@ -1,0 +1,14 @@
+{
+  "name": "bench/dead-code-get-object-vars-reads-private-properties",
+  "description": "get_object_vars($this) inside a JsonSerializable DTO reads private properties",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.3"
+  },
+  "autoload": {
+    "files": [
+      "src/repro.php"
+    ]
+  }
+}

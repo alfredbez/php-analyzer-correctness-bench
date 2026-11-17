@@ -1,0 +1,25 @@
+{
+  "id": "dead-code/get-object-vars-reads-private-properties",
+  "title": "get_object_vars($this) inside a class reads its private properties",
+  "domain": "dead-code",
+  "rule_class": "unused-property",
+  "php": { "min": "8.3" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "Calling get_object_vars($this) from inside MessageDto::jsonSerialize() reads all accessible properties including private promoted properties $type and $body, and includes them in the serialized JSON output.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/function.get-object-vars.php"
+  },
+  "expect": {
+    "phpstan": { "mode": "clean" },
+    "psalm": { "mode": "clean" },
+    "mago": {
+      "mode": "clean",
+      "forbidden": [
+        { "code": "unused-property" }
+      ]
+    }
+  },
+  "notes": "PHPStan 2.3.1 recognizes get_object_vars($this) as reading the class's private properties and stays clean. Mago 1.60.2 reports unused-property for both $type and $body. Default harness Psalm config runs with findUnusedCode=\"false\" (if findUnusedCode=\"true\" is enabled, Psalm 6.20.1 also reports UnusedProperty)."
+}
