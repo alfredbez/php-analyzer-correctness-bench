@@ -1,0 +1,36 @@
+{
+  "id": "dead-code/catch-never-thrown",
+  "title": "A catch clause for an exception never thrown in the try block is unreachable",
+  "domain": "dead-code",
+  "criterion_id": "dead-code/catch-never-thrown",
+  "rule_class": "catch.neverThrown",
+  "php": { "min": "8.1" },
+  "targets": ["src"],
+  "ground_truth": {
+    "basis": "runtime_proof",
+    "statement": "The try block only multiplies an int by 2 and never throws UnusedDomainException, so the catch clause is unreachable.",
+    "runtime_script": "runtime/check.php",
+    "citation": "https://www.php.net/manual/en/language.exceptions.php"
+  },
+  "expect": {
+    "phpstan": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "catch.neverThrown", "line": 15, "file": "src/repro.php" }
+      ]
+    },
+    "psalm": {
+      "mode": "diagnostics",
+      "required": [
+        { "code": "UnusedCatch", "line": 15, "file": "src/repro.php" }
+      ]
+    },
+    "mago": {
+      "mode": "unsupported",
+      "basis": "upstream_docs",
+      "reason": "Mago 1.60.2 implements dead-catch (introduced in 1.58.0) under [analyzer] check-dead-catch, but defaults both check-throws and check-dead-catch to false. Enabling both options in mago.toml emits dead-catch on this fixture.",
+      "citation": "https://mago.carthage.software/tools/analyzer/configuration"
+    }
+  },
+  "notes": "PHPStan 2.3.1 reports catch.neverThrown at line 15. Psalm 6.20.1 lacks dead-catch analysis and stays silent (recorded as false_negative). Mago 1.60.2 implements dead-catch behind check-throws = true and check-dead-catch = true, both false by default, so its baseline silence is recorded as an opt-in configuration divergence."
+}
