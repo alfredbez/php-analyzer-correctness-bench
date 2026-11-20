@@ -25,6 +25,13 @@ Dependency-backed cases also need PHP ZIP support or `unzip` in that runtime.
 The installer prepares their locked Composer dependencies; lock files are part
 of the corpus fingerprint.
 
+For the [19 November 2026 PHP security release](https://www.php.net/archive/2026.php),
+use PHP 8.2.36, 8.3.37, 8.4.28 or 8.5.13, depending on the series under test.
+On Docker hosts, pull the relevant series image (for example, `docker pull php:8.3-cli`)
+and recreate any idle benchmark container on that image. Restarting an existing
+container does not update its image. Run `python3 harness/bench.py doctor` to check
+the PHP version used for new runs. Leave historical reports unchanged.
+
 Running a newer release without touching the pins:
 `BENCH_TOOL_MAGO=/path/to/mago python3 harness/bench.py run --label drift`.
 The same override exists for `BENCH_TOOL_PHPSTAN` and `BENCH_TOOL_PSALM`.
